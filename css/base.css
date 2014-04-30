@@ -1,0 +1,36 @@
+body {
+    padding-top: 70px;
+}
+
+#fork_me_on_github {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+    z-index: 5000;
+}
+.border {
+    border: solid rgb(220,220,220) 1px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+.border-notop {
+    border-top: none;
+}
+
+.breath {
+    margin-top: 15px;
+}
+
+.edit-sentence {
+    padding: 2px;
+    border: dotted #d58512 3px;
+}
+.edit-main {
+    background-color: #7be0fe;
+    color: white;
+}
+.edit-sub {
+    background-color: #77d477;
+    color: white;
+}

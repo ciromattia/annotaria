@@ -1,0 +1,1185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html id="i311i5352"><head id="x8m3588"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" id="y805w7432"><title id="q102f932">Zhang: I-TASSER server for protein 3D structure prediction</title><link rel="stylesheet" type="text/css" href="jats-preview.css" id="u688p3329"></head><body id="i413v3511">
+      <div id="article1-front" class="front">
+         <div class="metadata two-column table" id="q13s8037">
+            <div class="row" id="h258v9730">
+               <div class="cell" id="b26a7977">
+                  <h4 class="generated" id="u119t2209">Journal Information</h4>
+                  <div class="metadata-group" id="v26q9332">
+                     <p class="metadata-entry" id="j146n6328"><span class="generated" id="n361z8351">Journal ID (<span class="data" id="s247y8515">nlm-ta</span>): </span>BMC Bioinformatics
+                     </p>
+                     <p class="metadata-entry" id="r241g5760"><span class="generated" id="c439g5505">Title: </span>BMC Bioinformatics
+                     </p>
+                     <p class="metadata-entry" id="z112h4462"><span class="generated" id="m910q9157">ISSN (<span class="data" id="d190s103">electronic</span>): </span>1471-2105
+                     </p>
+                     <p class="metadata-entry" id="s9s8773"><span class="generated" id="k344i4218">Publisher: </span>BioMed Central
+                     </p>
+                  </div>
+               </div>
+               <div class="cell" id="z229y3558">
+                  <h4 class="generated" id="s226b4856">Article Information</h4>
+                  <div class="metadata-group" id="l329b2514">
+                     <p class="metadata-entry" id="v284z4470"><span class="generated" id="j473w3092">External link: </span><a target="xrefwindow" href="http://www.biomedcentral.com/1471-2105/9/40" id="d1e62">http://www.biomedcentral.com/1471-2105/9/40</a></p>
+                     <p class="metadata-entry" id="l381w6178"><span class="generated" id="m942i7405">Copyright statement: </span>Copyright &copy; 2008 Zhang; licensee BioMed Central Ltd.
+                     </p>
+                     <p class="metadata-entry" id="n453v1882"><span class="generated" id="d592i6930">Copyright: </span>2008, Zhang; licensee BioMed Central Ltd.
+                     </p>
+                     <div class="metadata-area" id="t765i306">
+                        <p class="metadata-entry" id="k244z8752"><span class="generated" id="q477r1527">License (<span class="data" id="i791y6661">open-access, <a href="http://creativecommons.org/licenses/by/2.0" id="c163c7996">http://creativecommons.org/licenses/by/2.0</a></span>): </span></p>
+                        <div class="metadata-chunk" id="c544x5060">
+                           <p class="first" id="d1e86">This is an Open Access article distributed under the terms of the Creative Commons Attribution License (<a target="xrefwindow" href="http://creativecommons.org/licenses/by/2.0" id="d1e88">http://creativecommons.org/licenses/by/2.0</a>), which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited.
+                           </p>
+                        </div>
+                     </div>
+                     <p class="metadata-entry" id="x222b7717"><span class="generated" id="x862c4467">Date received: </span>19 September 2007
+                     </p>
+                     <p class="metadata-entry" id="l258h1906"><span class="generated" id="f699n5404">Date accepted: </span>23 January 2008
+                     </p>
+                     <p class="metadata-entry" id="c638y1702"><span class="generated" id="x850v177">Publication date (<span class="data" id="l788u7914">collection</span>): </span>2008
+                     </p>
+                     <p class="metadata-entry" id="y759k2409"><span class="generated" id="b980q3500">Publication date (<span class="data" id="i934f7437">electronic</span>): </span>23 January 2008
+                     </p>
+                     <p class="metadata-entry" id="t381s1773"><span class="generated" id="y619n8573">Volume: </span>9
+                     </p>
+                     <p class="metadata-entry" id="c330f4096"><span class="generated" id="x524o4928">Page: </span>40
+                     </p>
+                     <p class="metadata-entry" id="t210w667"><span class="generated" id="p999u4304">PubMed ID: </span>18215316
+                     </p>
+                     <p class="metadata-entry" id="x839b8606"><span class="generated" id="i878p956">Article Id (<span class="data" id="h52z5751">pmc</span>): </span>2245901
+                     </p>
+                     <p class="metadata-entry" id="m636m6887"><span class="generated" id="t746h4855">Publisher ID: </span>1471-2105-9-40
+                     </p>
+                     <p class="metadata-entry" id="u707e5333"><span class="generated" id="m277u4644">DOI: </span>10.1186/1471-2105-9-40
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <hr class="part-rule" id="z775n2563"><div class="metadata centered" id="t815x7079">
+            <h1 class="document-title" id="x1000g1949">I-TASSER server for protein 3D structure prediction</h1>
+         </div>
+         <div class="metadata two-column table" id="z886o6187">
+            <div class="row" id="h53v2150">
+               <div class="cell" style="text-align: right" id="i29r5755">
+                  <div class="metadata-group" id="u708j2374">
+                     <p class="metadata-entry" id="f643r7065"><a id="d1e32">
+                           <!-- named anchor --></a>Yang Zhang<span class="generated" id="y668j4806">[</span><a href="#I1" id="c568v5448">1</a><span class="generated" id="t577r6182">]</span></p>
+                  </div>
+               </div>
+               <div class="cell" id="j120o2120">
+                  <div class="metadata-group" id="n307d8650">
+                     <p class="metadata-entry" id="z698o131"><span class="generated" id="x399y9741">Email: </span><a href="mailto:yzhang@ku.edu" id="t478g1723">yzhang@ku.edu</a></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="metadata two-column table" id="c231m2919">
+            <div class="row" id="p881z2303">
+               <div class="cell empty" id="i487r7652"></div>
+               <div class="cell" id="s849y5389">
+                  <div class="metadata-group" id="q981c8771">
+                     <p class="metadata-entry" id="p115w6879"><a id="I1">
+                           <!-- named anchor --></a><span class="generated" id="o115n7565">[</span>1<span class="generated" id="d395l7821">] </span>Center for Bioinformatics and Department of Molecular Bioscience, University of Kansas, 2030 Becker Dr, Lawrence, KS 66047,
+                        USA
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <hr class="section-rule" id="c238a9614"><div class="metadata two-column table" id="s327u8131">
+            <div class="row" id="r580b4466">
+               <div class="cell" style="text-align: right" id="c25l8863">
+                  <h4 class="callout-title" id="t312c7224"><span class="generated" id="w900x7097">Abstract</span></h4>
+               </div>
+               <div class="cell" id="k697q3768">
+                  <div class="section" id="p882r9268"><a id="d1e92">
+                        <!-- named anchor --></a><h3 class="section-title" id="w669h7620">Background</h3>
+                     <p id="d1e95">Prediction of 3-dimensional protein structures from amino acid sequences represents one of the most important problems in
+                        computational structural biology. The community-wide Critical Assessment of Structure Prediction (CASP) experiments have been
+                        designed to obtain an objective assessment of the state-of-the-art of the field, where I-TASSER was ranked as the best method
+                        in the server section of the recent 7th CASP experiment. Our laboratory has since then received numerous requests about the
+                        public availability of the I-TASSER algorithm and the usage of the I-TASSER predictions.
+                     </p>
+                  </div>
+                  <div class="section" id="m157q1553"><a id="d1e97">
+                        <!-- named anchor --></a><h3 class="section-title" id="u528a59">Results</h3>
+                     <p id="d1e100">An on-line version of I-TASSER is developed at the KU Center for Bioinformatics which has generated protein structure predictions
+                        for thousands of modeling requests from more than 35 countries. A scoring function (C-score) based on the relative clustering
+                        structural density and the consensus significance score of multiple threading templates is introduced to estimate the accuracy
+                        of the I-TASSER predictions. A large-scale benchmark test demonstrates a strong correlation between the C-score and the TM-score
+                        (a structural similarity measurement with values in [0, 1]) of the first models with a correlation coefficient of 0.91. Using
+                        a C-score cutoff &gt; -1.5 for the models of correct topology, both false positive and false negative rates are below 0.1. Combining
+                        C-score and protein length, the accuracy of the I-TASSER models can be predicted with an average error of 0.08 for TM-score
+                        and 2 &Aring; for RMSD.
+                     </p>
+                  </div>
+                  <div class="section" id="h695q5072"><a id="d1e102">
+                        <!-- named anchor --></a><h3 class="section-title" id="q883g8084">Conclusion</h3>
+                     <p id="d1e105">The I-TASSER server has been developed to generate automated full-length 3D protein structural predictions where the benchmarked
+                        scoring system helps users to obtain quantitative assessments of the I-TASSER models. The output of the I-TASSER server for
+                        each query includes up to five full-length models, the confidence score, the estimated TM-score and RMSD, and the standard
+                        deviation of the estimations. The I-TASSER server is freely available to the academic community at <a target="xrefwindow" href="http://zhang.bioinformatics.ku.edu/I-TASSER" id="d1e107">http://zhang.bioinformatics.ku.edu/I-TASSER</a>.
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <hr class="part-rule" id="j195f9973"></div>
+      <div id="article1-body" class="body">
+         <div class="section" id="s565r5894"><a id="d1e110">
+               <!-- named anchor --></a><h2 class="main-title" id="j780q8019">Background</h2>
+            <p id="d1e113">Protein structure prediction refers to the effort of generating 3-dimensional models from amino acid sequences using computer
+               algorithms. However, structure modeling processes often involve human interventions because the human-expert knowledge combined
+               with biochemical information (function, mutagenesis, catalytic residues, etc.) could help in both structural assembly and
+               model selection [<a href="#B1" id="v551z1061">1</a>,<a href="#B2" id="t615e1302">2</a>]. Nevertheless, the development of fully-automated algorithms has the advantage in the potential application on proteome-scale
+               structure predictions [<a href="#B3" id="g553d6399">3</a>,<a href="#B4" id="e17e8642">4</a>]. Especially, it allows non-experts to generate structural models for their own sequences through Internet services. In the
+               recent community-wide blind experiment, CASP7, I-TASSER (as 'Zhang-Server') generated the best 3D structure predictions among
+               all automated servers. The average GDT_TS [<a href="#B5" id="v363y9157">5</a>] or TM-score [<a href="#B6" id="d574v587">6</a>] of all 124 targets/domains is at least 5% higher than the second best server and comparable with the best human-expert predictions
+               [<a href="#B7" id="s293u4557">7</a>].
+            </p>
+            <p id="d1e137">Since the first public release in November 2006, the I-TASSER server has generated structure predictions for thousands of
+               modeling requests from various laboratories in the world. We have been frequently asked by the users about how the quality
+               of the I-TASSER models should be annotated because this will essentially decide how they will exploit the predictions in their
+               research. The general idea of the modeling quality estimation of 3D models has been pursued by a number of authors [<a href="#B8" id="f986f9611">8</a>-<a href="#B10" id="d218h1424">10</a>], which merges as a new research topic of "model quality assessment programs" (MQAP) [<a href="#B11" id="e117i7447">11</a>] and is assessed in the recent CASP7 experiment in the category of QA [<a href="#B12" id="r149m8104">12</a>].
+            </p>
+            <p id="d1e151">In this work, we introduce the on-line setting of the I-TASSER server and develop a confidence scoring system which can provide
+               the users with a simple and reliable assessment of the I-TASSER models. Different from most of the MQAP programs that assess
+               models purely based on the structure of the final models, the confidence scoring function developed here incorporates the
+               information and parameters of the modeling simulations.
+            </p>
+         </div>
+         <div class="section" id="w252a312"><a id="d1e153">
+               <!-- named anchor --></a><h2 class="main-title" id="n619u4469">Implementation</h2>
+            <div class="section" id="r29a1835"><a id="d1e156">
+                  <!-- named anchor --></a><h3 class="section-title" id="j37b8078">I-TASSER method</h3>
+               <p id="d1e159">I-TASSER is a hierarchical protein structure modeling approach based on the secondary-structure enhanced Profile-Profile threading
+                  Alignment (PPA) [<a href="#B13" id="w986h5869">13</a>] and the iterative implementation of the Threading ASSEmbly Refinement (TASSER) program [<a href="#B14" id="o914f6003">14</a>]. The detail of the I-TASSER method has been described in [<a href="#B15" id="i717f4665">15</a>,<a href="#B16" id="p241q7334">16</a>]. Here we give a brief overview of the method.
+               </p>
+               <p id="d1e173">The target sequences are first threaded through a representative PDB structure library (with a pair-wise sequence identity
+                  cut-off of 70%) to search for the possible folds by four simple variants of PPA methods, with different combinations of the
+                  hidden Markov model [<a href="#B17" id="b331k6023">17</a>] and PSI-BLAST [<a href="#B18" id="r650j9044">18</a>] profiles and the Needleman-Wunsch [<a href="#B19" id="a661l9415">19</a>] and Smith-Waterman [<a href="#B20" id="i361k6463">20</a>] alignment algorithms. The continuous fragments are then excised from the threading aligned regions which are used to reassemble
+                  full-length models while the threading unaligned regions (mainly loops) are built by <i id="g903k5777">ab initio </i>modeling [<a href="#B21" id="i789n188">21</a>]. The conformational space is searched by replica-exchange Monte Carlo simulations [<a href="#B22" id="m323z9369">22</a>]. The structure trajectories are clustered by SPICKER [<a href="#B23" id="t830m5743">23</a>,<a href="#B24" id="a968q4478">24</a>] and the cluster centroids are obtained by the averaging the coordinates of all clustered structures. To rule out the steric
+                  clashes on the centroid structures and to refine the models further, we implement the fragment assembly simulation again,
+                  which starts from the cluster centroid of the first round simulation. Spatial restraints are extracted from the centroids
+                  and the PDB structures searched by the structure alignment program TM-align [<a href="#B25" id="i22n9964">25</a>], which are used to guide the second round simulation. Finally, the structure decoys are clustered and the lowest energy
+                  structure in each cluster is selected, which has the C<sub id="r632a573">&alpha; </sub>atoms and the side-chain centers of mass specified. Pulchra [<a href="#B26" id="a805v6166">26</a>] is used to add backbone atoms (N, C, O) and Scwrl_3.0 [<a href="#B27" id="o645b7180">27</a>] to build side-chain rotamers.
+               </p>
+               <p id="d1e216">If any region with &gt;80 residues has no aligned residues in at least two strong PPA alignments of Z-score &gt; Z<sub id="k217t3610">0 </sub>(see below), the target will be judged as a multiple domain protein and domain boundaries are automatically assigned based
+                  on the borders of the large gaps. I-TASSER simulations will be run for the full chain as well as the separate domains. The
+                  final full-length models are generated by docking the model of domains together. The domain docking is performed by a quick
+                  Metropolis Monte Carlo simulation where the energy is defined as the RMSD of domain models to the full-chain model plus the
+                  reciprocal of the number of steric clashes between domains. The goal of the docking is to find the domain orientation that
+                  is closest to the I-TASSER full-chain model but has the minimum steric clashes. This procedure does not influence the multiple
+                  domain proteins which have all domains completely aligned by the PPAs.
+               </p>
+            </div>
+            <div class="section" id="l185n4569"><a id="d1e221">
+                  <!-- named anchor --></a><h3 class="section-title" id="o95j5150">C-score</h3>
+               <p id="d1e224">The C-score of the I-TASSER models is defined as</p>
+               <p id="d1e226">
+                  </p><div class="disp-formula panel" id="k60w7434"><a id="bmcM1">
+                        <!-- named anchor --></a><h5 class="label" id="h420f7200">(1)</h5>
+                     <math xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="M1" name="1471-2105-9-40-i1" overflow="scroll"><semantics definitionurl="" encoding="" id="j685z7794"><mrow id="w367e5874"><mtext id="v358t1549">C-score</mtext><mo id="f607e6795">=</mo><mtext id="h92x4353">ln</mtext><mrow id="j254y597"><mo id="s884y2747">(</mo><mrow id="p56k5143"><mfrac id="i332j8602"><mtext id="i131h9760">M</mtext><mrow id="i579g3477"><msub id="s337m7625"><mtext id="k805a4313">M</mtext><mrow id="n278a8637"><mtext id="x175n6968">tot</mtext></mrow></msub></mrow></mfrac><mo id="w584w8596">&sdot;</mo><mfrac id="r477i9499"><mtext id="y447s8332">1</mtext><mrow id="n105v531"><mrow id="f513l1964"><mo id="b489e7663">&lang;</mo><mrow id="g256i3714"><mtext id="n41a3120">RMSD</mtext></mrow><mo id="k886d3728">&rang;</mo></mrow></mrow></mfrac><mo id="j173n166">&sdot;</mo><mfrac id="r349t7502"><mrow id="h365e6857"><mstyle displaystyle="true" id="m513w1687"><munderover id="z117f7901"><mo id="h33b2916">&prod;</mo><mrow id="e487r6160"><mi id="s152l9630">i</mi><mo id="h566y5980">=</mo><mn id="f797o6705">1</mn></mrow><mn id="m651z3088">4</mn></munderover><mrow id="x867h1394"><mtext id="r75l1227">Z</mtext><mo stretchy="false" id="f511n1160">(</mo><mi id="k435j3964">i</mi><mo stretchy="false" id="x489y6066">)</mo></mrow></mstyle></mrow><mrow id="f413z8375"><mstyle displaystyle="true" id="d357y7770"><munderover id="y524a8693"><mo id="n946l6399">&prod;</mo><mrow id="v660d9780"><mi id="g932g1462">i</mi><mo id="s594q825">=</mo><mn id="r110j1597">1</mn></mrow><mn id="s681c9053">4</mn></munderover><mrow id="e831n3314"><msub id="e215f6968"><mtext id="v471z2890">Z</mtext><mtext id="o820z9814">0</mtext></msub><mo stretchy="false" id="w405p2539">(</mo><mi id="r378t8936">i</mi><mo stretchy="false" id="w861g7905">)</mo></mrow></mstyle></mrow></mfrac></mrow><mo id="c732g2172">)</mo></mrow></mrow></semantics></math></div>
+               
+               <p id="d1e321">where M is the multiplicity of structures in the SPICKER cluster; M<sub id="x568z2541">tot </sub>is the total number of the I-TASSER structure decoys used in the clustering; &#10216;RMSD&#10217; is the average RMSD of the decoys to the
+                  cluster centroid; Z(<i id="n87l5131">i</i>) is the highest Z-score (the energy to mean in the unit of standard deviation) of the templates by the <i id="p894l7457">i</i>th PPA threading program and Z<sub id="t492c8254">0</sub>(<i id="l892v850">i</i>) is a program-specified Z-score cutoff for distinguishing between good and bad templates, i.e. Z<sub id="b908j9">0</sub>(1) = 7.0, Z<sub id="z245x5882">0</sub>(2) = 8.5, Z<sub id="m907o746">0</sub>(3) = 8.0, Z<sub id="r920x1202">0</sub>(4) = 10.5.
+               </p>
+               <p id="d1e351">The first two factors of Equation 1 account for the degree of structure convergence in the SPICKER clustering, which correlates
+                  with the consistency of the external restraints and the inherent I-TASSER potential. The third factor accounts for the quality
+                  of threading alignments. The logarithm in Equation 1 is to adjust the C-score values in an approximately even distribution.
+                  A previously defined C-score has been shown to have a strong correlation with the quality of the predicted models [<a href="#B14" id="v772s3903">14</a>]. Here, the definition of C-score is slightly different. First, a normalized Z-score by Z<sub id="h410f5907">0 </sub>is used instead of the Z-score itself which makes it easy to extend the definition to the cases when templates are generated
+                  by different threading algorithms. Second, it accounts for the consensus of alignment confidence of multiple threading programs
+                  rather than one threading program.
+               </p>
+               <p id="d1e359">We also tried other alternatives for the C-score definition. For example, if we add &#10216;TM-score&#10217;, the average TM-score of the
+                  decoys to the cluster centroid, in the numerator of the second factor in Equation 1, the correlation between the C-score and
+                  TM-score will increase by ~2%. But it does not increase the correlation of C-score with RMSD and the calculation of &#10216;TM-score&#10217;
+                  will increase the SPICKER running time by ~20%. So we did not include &#10216;TM-score&#10217; in the C-score definition. We also attempted
+                  to optimize the powers of the three factors of Equation 1 by maximizing the correlation between C-score and the quality of
+                  final models in the training proteins. Interestingly, the optimized powers of all three factors are close to 1, which indicates
+                  that the C-score in Equation 1 is close to an optimal definition if considering these 3 factors.
+               </p>
+            </div>
+            <div class="section" id="s372n8141"><a id="d1e361">
+                  <!-- named anchor --></a><h3 class="section-title" id="c845s7494">TM-score</h3>
+               <p id="d1e364">TM-score is defined to assess the topological similarity of two protein structures [<a href="#B6" id="q708k7051">6</a>]:
+               </p>
+               <p id="d1e369">
+                  </p><div class="disp-formula panel" id="v540i4387"><a id="bmcM2">
+                        <!-- named anchor --></a><h5 class="label" id="j923x1073">(2)</h5>
+                     <math xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="M2" name="1471-2105-9-40-i2" overflow="scroll"><semantics definitionurl="" encoding="" id="u693r85"><mrow id="f621d5866"><mtext id="k755f1114">TM-score</mtext><mo id="b412n6460">=</mo><mfrac id="l197q3197"><mn id="z647y4409">1</mn><mi id="o908j5530">L</mi></mfrac><mstyle displaystyle="true" id="v516x8275"><munderover id="f674w2868"><mo id="u218w822">&sum;</mo><mrow id="s878m5894"><mi id="b897g7220">i</mi><mo id="f339v6039">=</mo><mn id="n427j8785">1</mn></mrow><mi id="i43r3491">L</mi></munderover><mrow id="p986n7352"><mfrac id="y358k6061"><mn id="n322w1117">1</mn><mrow id="t718p7337"><mn id="k758r9138">1</mn><mo id="t54p4044">+</mo><mrow id="f355m9612"><mrow id="e958p8701"><msubsup id="c789w6304"><mi id="t157p64">d</mi><mi id="k713n343">i</mi><mn id="q596o6089">2</mn></msubsup></mrow><mo id="s757k9344">/</mo><mrow id="c213j1832"><msubsup id="s813j2552"><mi id="n533c7987">d</mi><mn id="c991u8898">0</mn><mn id="z405g3120">2</mn></msubsup></mrow></mrow></mrow></mfrac></mrow></mstyle><mo id="l2z1222">,</mo></mrow></semantics></math></div>
+               
+               <p id="d1e428">where <i id="b46w7590">d</i><sub id="m36j990"><i id="l164a3907">i </i></sub>is the distance of the <i id="i61z1208">i</i>th pair of residues between two structures after an optimal superposition, <span class="inline-formula" id="w261i8488">
+                     <math xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="M3" name="1471-2105-9-40-i3" overflow="scroll"><semantics definitionurl="" encoding="" id="y752z4176"><mrow id="c856j4637"><msub id="n452l4508"><mi id="v73t2080">d</mi><mn id="p386b2852">0</mn></msub><mo id="x392o1980">=</mo><mn id="t541g9233">1.24</mn><mroot id="e997j5306"><mrow id="u813l4014"><mi id="l843y8144">L</mi><mo id="q524q8882">&minus;</mo><mn id="h574m5596">15</mn></mrow><mn id="j988z7368">3</mn></mroot><mo id="v951d472">&minus;</mo><mn id="c858r2110">1.8</mn></mrow></semantics></math></span>, and <i id="b896q6086">L </i>is the protein length. TM-score stays in [0, 1] with higher values indicating better models. Statistically, a TM-score &le; 0.17
+                  corresponds to a similarity between two randomly selected structures from the PDB library; a TM-score &gt; 0.5 corresponds approximately
+                  to two structures of the similar topology. One advantage of the TM-score is that the meaning of the TM-score cutoffs is independent
+                  of the size of proteins [<a href="#B6" id="q629s7510">6</a>].
+               </p>
+            </div>
+            <div class="section" id="r73u803"><a id="d1e473">
+                  <!-- named anchor --></a><h3 class="section-title" id="x202i1447">Server setting</h3>
+               <p id="d1e476">The URL address of the on-line I-TASSER server is listed at the end of the paper. To use the server, what users need to provide
+                  is the amino acid sequence of the proteins to be modeled in the FASTA format. Currently, the acceptable size range of the
+                  targets is between 10&ndash;1,500 residues. Depending on the protein size, the I-TASSER modeling procedure takes a maximum of 48
+                  hours (typically 5&ndash;10 hours for a sequence around 200 residues). After the modeling is finished, an email will be sent to
+                  the users, which include the PDB format files of up to 5 predicted models, C-score of the models, and the predicted RMSD and
+                  TM-score of the first model. A brief explanation of the RMSD, TM-score, and C-score is also provided in the email.
+               </p>
+               <p id="d1e478">Once a prediction is made, a GIF visual file is made for each of the I-TASSER models so that the users can get a quick on-line
+                  view of how the topology of their models looks like. The PDB files and the visual files are kept on our server for 365 days
+                  and made publicly downloadable at [<a href="#B28" id="c289n5868">28</a>], so that other users can quickly retrieve the modeling results without resubmitting the jobs when they want to model the
+                  same or similar proteins. The queue of the jobs is shown on the page as well so that the users can track their submitted jobs.
+                  Finally, an "About I-TASSER server" webpage [<a href="#B29" id="z430w6793">29</a>] is designed to provide a detailed introduction of the server which is kept updated when new features are developed.
+               </p>
+            </div>
+         </div>
+         <div class="section" id="e785c9701"><a id="d1e486">
+               <!-- named anchor --></a><h2 class="main-title" id="l603x7814">Results and Discussions</h2>
+            <p id="d1e489">For the benchmark of the I-TASSER server, we collect 800 nonhomologous single-domain proteins directly from the PDB library
+               [<a href="#B30" id="h501l4156">30</a>], which have a pair-wise sequence identity &lt;30% with the size ranging from 50 to 300 residues. The purpose has been made
+               to have the selected proteins of a balanced distribution in secondary structure classes and modeling difficulty. As a result,
+               the benchmark set includes 220/212/368 &alpha;/&beta;/&alpha;&beta;-proteins. Based on the Z-scores of the PPA alignments, 236/248/316 targets are
+               assigned as easy/medium/hard targets respectively. We randomly select 300 proteins as the training set to fit the parameters
+               of the estimated model quality (see below); the remaining 500 proteins will be used as the test set (see [<a href="#B31" id="u183s3432">31</a>]). When I-TASSER is used to generate models for the 800 proteins, homologous templates with sequence identity &gt;30% to the
+               target are excluded from the threading template library.
+            </p>
+            <p id="d1e497">It should be mentioned that here we benchmark the I-TASSER algorithm only on the single-domain proteins. For multiple-domain
+               proteins, a small misorientation of the domains may result in dramatic change in TM-score and RMSD values even if the topology
+               of the individual domains is unchanged, which can result in divergent correlations of the C-score and the overall model qualities.
+               Consequently, the confidence score and quality estimation of multiple-domain models should be understood approximately as
+               those for the individual domain units.
+            </p>
+            <div class="section" id="n230v7063"><a id="d1e499">
+                  <!-- named anchor --></a><h3 class="section-title" id="c232p8033">Correlation of C-score and model qualities</h3>
+               <p id="d1e502">In Figure <a href="#F1" id="b266f2185">1a</a>, we display the TM-score of the first I-TASSER models of all 500 testing proteins, which shows a strong correlation to the
+                  C-scores with a Pearson correlation coefficient of 0.91. If we define a model of TM-score &gt; 0.5 as a correct fold and assess
+                  the models using a cutoff of C-score &gt; -1.5, the false-positive and false-negative rate are 0.05 and 0.09 respectively.
+               </p>
+               <div class="fig panel" style="display: float; clear: both" id="f541p2160"><a id="F1">
+                     <!-- named anchor --></a><h5 class="label" id="a266p3975">Figure&nbsp;1</h5>
+                  <div class="caption" id="u427m1615">
+                     <p class="first" id="d1e511">TM-score (a) and RMSD (b) versus C-score of the I-TASSER models for 500 testing proteins. The dashed curve in (a) is from
+                        Equation 3 which is fit from the 300 training proteins and used for estimating the TM-score of the I-TASSER models. The solid
+                        circles are the root mean squared deviation from the estimated TM-score values (RMSTD). The solid curve is from Equation 4
+                        which is fit from the 300 training proteins. The dotted lines are the TM-score and C-score cutoffs for correct folds.
+                     </p>
+                  </div><img alt="1471-2105-9-40-1" src="images/1471-2105-9-40-1.jpg" id="x7f554"></div>
+               <p id="d1e514">The correlation of RMSD with the C-score is not as strong as that of the TM-score (Figure <a href="#F1" id="c913n783">1b</a>). Many high C-score models have a big RMSD. This is mainly because of the definition of RMSD which averages distances of
+                  all residue pairs with an equal weight [<a href="#B32" id="j136g1140">32</a>]. Therefore, a big local modeling error will result in a high RMSD value even when the global topology is correct. For illustration,
+                  in Figure <a href="#F2" id="y223k4238">2</a>, we show two examples of the I-TASSER modeling. For 1ca4A which has a high C-score = 1.1, the core region of the model is
+                  very close to the native with a RMSD = 2.2 &Aring;. But the N-terminus of the model is mis-orientated which results in an overall
+                  RMSD = 12.1 &Aring;, a region usually implying wrong folds. As defined in Equation 2, TM-score weights the residue pairs of small
+                  distances stronger than those of large distances, which is not sensitive to the local structure errors and has a value of
+                  0.81 in the example. For 1cmaA, the global topology of the secondary structure arrangements in the I-TASSER modeling is incorrect
+                  with a TM-score of 0.22 (close to random). The C-score in this case is -3.5. However, the RMSD (= 12.5 &Aring;) is similar as that
+                  of 1ca4A. Therefore, the RMSD values in the high RMSD region are not sensitive to the global topology of structures.
+               </p>
+               <div class="fig panel" style="display: float; clear: both" id="y701e6527"><a id="F2">
+                     <!-- named anchor --></a><h5 class="label" id="f104v4856">Figure&nbsp;2</h5>
+                  <div class="caption" id="l623q7056">
+                     <p class="first" id="d1e529">Two examples of the I-TASSER models from 1ca4A and 1cmaA. Both models have similar RMSD values but indicate significantly
+                        different modeling qualities. In the superposition, the thin backbones are the native structure and thick backbones the I-TASSER
+                        models. Blue to red runs from N- to C-terminal.
+                     </p>
+                  </div><img alt="1471-2105-9-40-2" src="images/1471-2105-9-40-2.jpg" id="c267y1235"></div>
+               <p id="d1e532">The second reason for the low RMSD/C-score correlation is due to the inherent size dependence of RMSD. In Figure <a href="#F3" id="j122e4497">3</a>, we show the TM-score and RMSD values of the I-TASSER models versus the protein length for the 500 test proteins. Obviously,
+                  the small proteins tend to have a lower RMSD, a tendency also seen in the randomly selected PDB structure pairs [<a href="#B6" id="x467w3510">6</a>,<a href="#B33" id="u156q6980">33</a>], which results in a non-trivial RMSD/length correlation (Figure <a href="#F3" id="j155u4217">3b</a>). Since the distance in TM-score is normalized by a length dependent scale (see Equation 2), there is no length dependence
+                  in the TM-score values, which have an almost uniform cut near 0.17 (Figure <a href="#F3" id="p917a6943">3a</a>).
+               </p>
+               <div class="fig panel" style="display: float; clear: both" id="s638f1820"><a id="F3">
+                     <!-- named anchor --></a><h5 class="label" id="i92b645">Figure&nbsp;3</h5>
+                  <div class="caption" id="p344w978">
+                     <p class="first" id="d1e553">TM-score (a) and RMSD (b) of the I-TASSER models versus the length of target proteins. The numbers indicate the Pearson correlation
+                        coefficients.
+                     </p>
+                  </div><img alt="1471-2105-9-40-3" src="images/1471-2105-9-40-3.jpg" id="c120i2557"></div>
+               <p id="d1e556">In Figure <a href="#F4" id="a176e2553">4</a>, we plot the RMSD values versus C-score-ln(<i id="x370o3989">L</i>), which has an obviously stronger correlation (correlation coefficient = 0.81) than that in Figure <a href="#F1" id="k680z704">1b</a>.
+               </p>
+               <p id="d1e567">As a control, we also calculate the correlation of TM-score (or RMSD) with the sequence identity between the target and the
+                  best template, which is 0.33 (or -0.23). The low correlation is not surprising because all homologous templates with a high
+                  sequence identity &gt;30% have been excluded and the profile-profile programs often identify templates of correct topology even
+                  when the sequence identity to the target is low.
+               </p>
+               <div class="fig panel" style="display: float; clear: both" id="x52p7821"><a id="F4">
+                     <!-- named anchor --></a><h5 class="label" id="c556v6744">Figure&nbsp;4</h5>
+                  <div class="caption" id="v488i8228">
+                     <p class="first" id="d1e573">RMSD versus C-score-ln(<i id="o798a6086">L</i>) of the I-TASSER models for 500 test proteins (open circles). The dashed curve is from Equation 5 which is fit from the 300
+                        training proteins and used for estimating RMSD of the I-TASSER models. The solid circles are the root mean squared RMSD deviation
+                        (RMSRD) from the estimated RMSD values. The solid curve is from Equation 6 which is fit from the 300 training proteins.
+                     </p>
+                  </div><img alt="1471-2105-9-40-4" src="images/1471-2105-9-40-4.jpg" id="e273f2644"></div>
+            </div>
+            <div class="section" id="s960v4283"><a id="d1e579">
+                  <!-- named anchor --></a><h3 class="section-title" id="f963x1137">Quantitative estimate of the quality of I-TASSER models</h3>
+               <p id="d1e582">Based on the I-TASSER models of the 300 training proteins, we fit a two-order polynomial to the TM-score/C-score data by the
+                  least square fitting method [<a href="#B34" id="b850u8787">34</a>]. We obtain
+               </p>
+               <p id="d1e587">
+                  </p><div class="disp-formula panel" id="d808z4875"><a id="bmcM3">
+                        <!-- named anchor --></a><h5 class="label" id="f61y8996">(3)</h5>Tm-score = 0.0006*C-score<sup id="y552a4039">2 </sup>+ 0.13*C-score + 0.71,
+                  </div>
+               
+               <p id="d1e595">with a root mean squared TM-score deviation (RMSTD) of 0.08 for the training protein set. In Figure <a href="#F1" id="u998v6717">1a</a>, we show the curve of Equation 3 (dashed curve) which fits very well with the test proteins with a RMSTD of 0.09. If we consider
+                  Equation 3 as the estimated TM-score, the average error of the estimation is 0.08 in the test set. Here we note that the RMSTD
+                  is defined as sqrt&#10216;(TM-score - &#10216;TM-score&#10217;)<sup id="d660f1733">2</sup>&#10217; and the average error of estimation is &#10216;|TM-score - &#10216;TM-score&#10217;|&#10217;, where &#10216;TM-score&#10217; is the average TM-score in the training
+                  set and the estimated TM-score in the test set. If we use RMSTD as the standard deviation of the TM-score estimation, there
+                  is a probability of 68.3% that the real TM-score will fall in the range of TM-score &plusmn; RMSTD [<a href="#B34" id="g927q292">34</a>].
+               </p>
+               <p id="d1e606">In the lower part of Figure <a href="#F1" id="s573g6061">1a</a>, we show the data of RMSTD versus C-score. At each point, the RMSTD from the estimated TM-score by Equation 3 is calculated
+                  for the proteins in a bin of [C-score-0.5, C-score+0.5]. On average, each bin contains 70 proteins. The dependence of RMSTD
+                  with C-score is spindle-like, which indicates that the TM-score can be relatively easier predicted in both high and low C-score
+                  regions compared with that in the medium C-score region. The data fits well with the Gaussian function in the training proteins
+                  as
+               </p>
+               <p id="d1e611">
+                  </p><div class="disp-formula panel" id="l100o6237"><a id="bmcM4">
+                        <!-- named anchor --></a><h5 class="label" id="a389o6555">(4)</h5>
+                     <math xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="M4" name="1471-2105-9-40-i4" overflow="scroll"><semantics definitionurl="" encoding="" id="v298q8757"><mrow id="d479e957"><mtext id="t485l7507">RMSTD</mtext><mo id="g361g4438">=</mo><mn id="k179s3223">0.14</mn><mi id="b558c288">exp</mi><mo id="y201d3654">&#8289;</mo><mrow id="b517g2615"><mo id="h265w682">(</mo><mrow id="l666t2622"><mo id="e740g3250">&minus;</mo><mfrac id="t436i6668"><mrow id="a355e75"><msup id="h273k4537"><mrow id="v632l6609"><mrow id="m110g9291"><mo id="c537t5874">(</mo><mrow id="x25r207"><mtext id="a338d3848">C-score</mtext><mo id="a465o5168">+</mo><mn id="d708g219">1.7</mn></mrow><mo id="y546u9080">)</mo></mrow></mrow><mn id="x388c618">2</mn></msup></mrow><mrow id="v170u6521"><mn id="m130f8349">10.7</mn></mrow></mfrac></mrow><mo id="p915b8699">)</mo></mrow><mo id="r160j3497">.</mo></mrow></semantics></math></div>
+               
+               <p id="d1e659">An overlap of Equation 4 with the RMSTD data is shown in Figure <a href="#F1" id="w537a5140">1a</a> (solid curve).
+               </p>
+               <p id="d1e664">Since the RMSD of the I-TASSER models correlates better with C-score-ln(<i id="n358a8095">L</i>) than with C-score, we fit the 2-order polynomial with the data of RMSD/C-score-ln(<i id="w968x9883">L</i>) in the 300 training proteins. We obtain
+               </p>
+               <p id="d1e672">
+                  </p><div class="disp-formula panel" id="j471h767"><a id="bmcM5">
+                        <!-- named anchor --></a><h5 class="label" id="p918w68">(5)</h5>RMSD = 0.09(C-score - ln <i id="y665j9421">L</i>)<sup id="w28h20">2 </sup>- 1.14(C-score - ln <i id="l327k4919">L</i>) - 3.17,
+                  </div>
+               
+               <p id="d1e686">with a root mean squared RMSD deviation (RMSRD) of 3.1 &Aring;. In Figure <a href="#F4" id="g519o339">4</a>, we show the curve of Equation 5 (dashed curve) which fits well with the testing proteins with a RMSRD = 3.7 &Aring;. The average
+                  error of the estimated RMSD using Equation 5 is 2.0 &Aring; in the test set.
+               </p>
+               <p id="d1e691">In the low part of Figure <a href="#F4" id="x514o643">4</a>, we display the RMSRD value calculated in each bin of [C-score-ln<i id="t942m9009">L</i>-0.5, C-score-ln<i id="i127l1114">L</i>+0.5] and the Gaussian curve fitted from the training proteins, i.e.
+               </p>
+               <p id="d1e703">
+                  </p><div class="disp-formula panel" id="a553f2561"><a id="bmcM6">
+                        <!-- named anchor --></a><h5 class="label" id="m947j4673">(6)</h5>
+                     <math xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="M5" name="1471-2105-9-40-i5" overflow="scroll"><semantics definitionurl="" encoding="" id="q126v1060"><mrow id="l817g6625"><mtext id="i620h1741">RMSRD</mtext><mo id="g472m5875">=</mo><mn id="m163p9422">4.5</mn><mi id="q665r797">exp</mi><mo id="u949d3282">&#8289;</mo><mrow id="u22w9763"><mo id="i331u3487">(</mo><mrow id="y469f8488"><mo id="u383k9819">&minus;</mo><mfrac id="o914j3244"><mrow id="a883a391"><msup id="f436y4358"><mrow id="a296o3819"><mrow id="t903d4210"><mo id="u488q7199">(</mo><mrow id="p84d1077"><mtext id="z894j5552">C-score</mtext><mo id="j696c562">&minus;</mo><mi id="g498h3592">ln</mi><mo id="k136b4462">&#8289;</mo><mi id="u688n1577">L</mi><mo id="j423q174">+</mo><mn id="q507k8906">7.4</mn></mrow><mo id="p867y8888">)</mo></mrow></mrow><mn id="c873a7792">2</mn></msup></mrow><mrow id="l214i7553"><mn id="s819q6489">13.7</mn></mrow></mfrac></mrow><mo id="y191r1133">)</mo></mrow><mo id="y31b940">.</mo></mrow></semantics></math></div>
+               
+            </div>
+         </div>
+         <div class="section" id="l535l5185"><a id="d1e759">
+               <!-- named anchor --></a><h2 class="main-title" id="e814p6176">Conclusion</h2>
+            <p id="d1e762">We develop the I-TASSER server for the automated full-length protein structure prediction. A series of accessorial WebPages
+               are designed to facilitate the users in submitting, viewing and tracking the predictions. Based on the statistical significance
+               of the PPA threading alignments and the structure convergence of the Monte Carlo simulations, a new confidence score (C-score)
+               is introduced and benchmarked for the I-TASSER server, which demonstrates a strong correlation with the real quality of the
+               final models. The Pearson correlation coefficients of the C-score with TM-score and RMSD are 0.91 and 0.75 respectively. The
+               strong correlation data allows us to make quantitative estimates of the accuracy of the I-TASSER predictions. Using a 2-order
+               polynomial equation fit from 300 training proteins, we can predict the TM-score and RMSD of the final models with an average
+               error of 0.08 and 2.0 &Aring; respectively in a large scale benchmark test.
+            </p>
+            <p id="d1e764">For each submitted sequence, following items will be returned to the users by email after the I-TASSER modeling: (1) up to
+               five predicted models ranked based on the structure density of the SPICKER clustering; (2) C-score of all the I-TASSER models;
+               (3) estimated TM-score and RMSD for the first model in the form of <i id="i627r7076">Estimation </i>&plusmn; <i id="p173t3211">Deviation </i>where the values of <i id="k764v6701">Estimation </i>and <i id="l681t8997">Deviation </i>are calculated by Equations 3&ndash;6. By definition, in 68.3% of cases, the real TM-score and RMSD values will fall in this range
+               [<a href="#B34" id="f117n3676">34</a>]. Despite the significant correlation between the C-score and the TM-score, they have been introduced for the different purposes.
+               While the C-score judges how confident the server feels about the predictions based on the information from the modeling simulations,
+               TM-score is a measure of the absolute quality of the final model in comparison with the native structure, which is estimated
+               through the calculation of the C-score.
+            </p>
+            <p id="d1e781">It should be mentioned that the estimated qualities are provided only for the first model, although for the purpose of providing
+               more information the C-score of all 5 models are sent to the users. The correlation of C-score and modeling quality for the
+               lower-rank models is much weaker than that for the first model. This is understandable because the conformational space covered
+               by the I-TASSER simulations is limited. For easy targets almost all decoys are near-native and the structures are mainly clustered
+               in the first cluster. After removing the structures in the first cluster, the size of the lower-rank clusters will be much
+               smaller which may be comparable to that of hard targets. But the quality of the lower-rank clusters from the easy targets
+               is still on average better than that from the hard targets because most decoys generated in the hard targets are incorrect.
+               Nevertheless, there is a correlation between the rank and the quality of the clusters for the same target. In this set of
+               test proteins, the average TM-score (RMSD) of the top-five models are 0.501 (9.6 &Aring;), 0.468 (10.6 &Aring;), 0.466 (10.7 &Aring;), 0.461
+               (11.1 &Aring;), and 0.454 (11.3 &Aring;) respectively. Therefore, the C-score and predicted data should be considered as an upper-limit
+               estimate for the quality of all I-TASSER models.
+            </p>
+         </div>
+         <div class="section" id="v58h5386"><a id="d1e783">
+               <!-- named anchor --></a><h2 class="main-title" id="k385x5636">Availability and requirements</h2>
+            <p id="d1e786">Project name: I-TASSER server</p>
+            <p id="d1e788">Project home page: <a target="xrefwindow" href="http://zhang.bioinformatics.ku.edu/I-TASSER" id="d1e790">http://zhang.bioinformatics.ku.edu/I-TASSER</a></p>
+            <p id="d1e791">Operating system(s): Windows, Linux, Mac</p>
+            <p id="d1e793">Programming language: Perl, Fortran77</p>
+            <p id="d1e795">License: GPL</p>
+            <p id="d1e797">Any restrictions to use by non-academics: license needed</p>
+         </div>
+         <div class="section" id="z430f2510"><a id="d1e799">
+               <!-- named anchor --></a><h2 class="main-title" id="i453o3017">Abbreviations</h2>
+            <p id="d1e802">I-TASSER: iterative threading assembly refinement algorithm.</p>
+            <p id="d1e804">PPA: profile-profile alignment threading algorithm.</p>
+            <p id="d1e806">RMSD: root mean squared deviation.</p>
+            <p id="d1e808">RMSRD: root mean squared RMSD deviation from average or estimated RMSD.</p>
+            <p id="d1e810">RMSTD: root mean squared TM-score deviation from average or estimated TM-score.</p>
+         </div>
+         <div class="section" id="n31t6655"><a id="d1e812">
+               <!-- named anchor --></a><h2 class="main-title" id="p57q8483">Authors' contributions</h2>
+            <p id="d1e815">YZ developed the I-TASSER server, performed the benchmark calculation and wrote the manuscript. He has read and approved the
+               final manuscript.
+            </p>
+         </div>
+      </div>
+      <div id="article1-back" class="back">
+         <div class="back-section" id="d315c2479"><a id="d1e818">
+               <!-- named anchor --></a><h2 class="main-title" id="s962o3450">Acknowledgements</h2>
+            <div class="section" id="q342t4957"><a id="d1e819">
+                  <!-- named anchor --></a><h3 class="section-title" id="w864o1555">Acknowledgements</h3>
+               <p id="d1e822">The author wants to thank Dr. Sitao Wu for help in constructing the WebPages. The project is partly supported by KU Start-up
+                  Fund 06194.
+               </p>
+            </div>
+         </div>
+         <div class="back-section" id="e114u4894"><a id="d1e824">
+               <!-- named anchor --></a><h2 class="main-title" id="g864d2859">References</h2>
+            <div class="section ref-list" id="u811o6268"><a id="a851n8274">
+                  <!-- named anchor --></a><div class="ref-list table" id="w956c4908">
+                  <div class="row" id="f527d721">
+                     <div class="ref-label cell" id="f859j5837">
+                        <p class="ref-label" id="i611f2431"><span class="label" id="n148i398"><span class="generated" id="d495h5994">1</span></span>&nbsp;<a id="B1">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="c342l5242">
+                        <p class="citation" id="g265n3983"><a id="d1e826">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="x373c5791"><span class="ref-citation-surname" id="c647u3339">Murzin</span> <span class="ref-citation-given-name" id="u924d9879">AG.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="c830m7873"><span class="ref-citation-surname" id="n144u9427">Bateman</span> <span class="ref-citation-given-name" id="f277o63">A.  
+                                 	</span></span> <span class="ref-citation-article-title" id="v229i872">CASP2 knowledge-based approach to distant homology recognition and fold prediction in CASP4</span>  <span class="ref-citation-source" id="z634p1845">Proteins</span>.
+                           	  <span class="ref-citation-year" id="v578d1595">2001</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="z257q4362">11835484</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="p744u8672">10.1002/prot.10037</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="x680h8902">
+                     <div class="ref-label cell" id="d907y1733">
+                        <p class="ref-label" id="k490m2484"><span class="label" id="i698k7544"><span class="generated" id="i647g697">2</span></span>&nbsp;<a id="B2">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="p334z2928">
+                        <p class="citation" id="h404v2574"><a id="d1e855">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="f281g2331"><span class="ref-citation-surname" id="h45f4239">Ginalski</span> <span class="ref-citation-given-name" id="m176m3214">K.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="r431b4044"><span class="ref-citation-surname" id="v409m632">Rychlewski</span> <span class="ref-citation-given-name" id="d589c9864">L.  
+                                 	</span></span> <span class="ref-citation-article-title" id="t223r8454">Protein structure prediction of CASP5 comparative modeling and fold recognition targets using consensus alignment approach
+                              and 3D assessment</span>  <span class="ref-citation-source" id="d423t9656">Proteins</span>.
+                           	  <span class="ref-citation-year" id="g713v1017">2003</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="d856d6195">14579329</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="s275n3453">10.1002/prot.10548</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="r868s9723">
+                     <div class="ref-label cell" id="b100l5145">
+                        <p class="ref-label" id="o42n4330"><span class="label" id="y808a4455"><span class="generated" id="w691s878">3</span></span>&nbsp;<a id="B3">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="u679v7350">
+                        <p class="citation" id="e512n8543"><a id="d1e884">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="w57u9416"><span class="ref-citation-surname" id="b259d4649">Baker</span> <span class="ref-citation-given-name" id="d5f8473">D.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="l452s2273"><span class="ref-citation-surname" id="g693e8737">Sali</span> <span class="ref-citation-given-name" id="z193e4052">A.  
+                                 	</span></span> <span class="ref-citation-article-title" id="l976w485">Protein structure prediction and structural genomics</span>  <span class="ref-citation-source" id="y25c2502">Science</span>.
+                           	  <span class="ref-citation-year" id="x394r8924">2001</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="u223y4933">11588250</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="r407n2644">10.1126/science.1065659</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="i927b2140">
+                     <div class="ref-label cell" id="x710c6166">
+                        <p class="ref-label" id="g302a3884"><span class="label" id="l352n8132"><span class="generated" id="a243y4079">4</span></span>&nbsp;<a id="B4">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="e755t5011">
+                        <p class="citation" id="e873y7595"><a id="d1e913">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="g349j3239"><span class="ref-citation-surname" id="w987y410">Skolnick</span> <span class="ref-citation-given-name" id="c198p1794">J.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="x447q1728"><span class="ref-citation-surname" id="m228s4707">Fetrow</span> <span class="ref-citation-given-name" id="i423x6215">JS.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="o363l6454"><span class="ref-citation-surname" id="a115s7698">Kolinski</span> <span class="ref-citation-given-name" id="f910z409">A.  
+                                 	</span></span> <span class="ref-citation-article-title" id="z984y6196">Structural genomics and its importance for gene function analysis</span>  <span class="ref-citation-source" id="f658r2854">Nat Biotechnol</span>.
+                           	  <span class="ref-citation-year" id="p8j90">2000</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="j99c2505">10700142</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="x417a8533">10.1038/73723</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="a752o2895">
+                     <div class="ref-label cell" id="q613i999">
+                        <p class="ref-label" id="y614i5994"><span class="label" id="g141a8107"><span class="generated" id="f779u5869">5</span></span>&nbsp;<a id="B5">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="q984f66">
+                        <p class="citation" id="m58h4063"><a id="d1e947">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="y628o4205"><span class="ref-citation-surname" id="s52v7427">Zemla</span> <span class="ref-citation-given-name" id="t191f9614">A.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="f784e1740"><span class="ref-citation-surname" id="e581y4410">Venclovas</span> <span class="ref-citation-given-name" id="c460f5888">C.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="a450b5579"><span class="ref-citation-surname" id="g840l8667">Moult</span> <span class="ref-citation-given-name" id="b412g5908">J.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="x157e239"><span class="ref-citation-surname" id="r691p7693">Fidelis</span> <span class="ref-citation-given-name" id="t624d8314">K.  
+                                 	</span></span> <span class="ref-citation-article-title" id="e580z4019">Processing and analysis of CASP3 protein structure predictions</span>  <span class="ref-citation-source" id="q419i5633">Proteins</span>.
+                           	  <span class="ref-citation-year" id="t409b4758">1999</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="n970y365">10526349</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="w897b211">10.1002/(SICI)1097-0134(1999)37:3+&lt;22::AID-PROT5&gt;3.0.CO;2-W</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="b780y865">
+                     <div class="ref-label cell" id="m983m5626">
+                        <p class="ref-label" id="y261j5633"><span class="label" id="a4v7197"><span class="generated" id="p153z4534">6</span></span>&nbsp;<a id="B6">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="a278c9914">
+                        <p class="citation" id="p320g6887"><a id="d1e986">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="s583s4760"><span class="ref-citation-surname" id="k713c2727">Zhang</span> <span class="ref-citation-given-name" id="h246m3358">Y.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="r104e8251"><span class="ref-citation-surname" id="l738i5222">Skolnick</span> <span class="ref-citation-given-name" id="z389g1461">J.  
+                                 	</span></span> <span class="ref-citation-article-title" id="t998r3578">Scoring function for automated assessment of protein structure template quality</span>  <span class="ref-citation-source" id="y183h8941">Proteins</span>.
+                           	  <span class="ref-citation-year" id="u379l9616">2004</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="z981m3613">15476259</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="a525u2409">10.1002/prot.20264</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="u925j5277">
+                     <div class="ref-label cell" id="n961g767">
+                        <p class="ref-label" id="e981p2381"><span class="label" id="d68v3010"><span class="generated" id="l927z6501">7</span></span>&nbsp;<a id="B7">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="z777g6393">
+                        <p class="citation" id="o923o222"><a id="d1e1015">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="t976k267"><span class="ref-citation-surname" id="c848b7127">Battey</span> <span class="ref-citation-given-name" id="h549h2355">JN.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="n859e5467"><span class="ref-citation-surname" id="t594j411">Kopp</span> <span class="ref-citation-given-name" id="d441h9721">J.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="z3p4213"><span class="ref-citation-surname" id="f334t5268">Bordoli</span> <span class="ref-citation-given-name" id="d663x2580">L.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="g55u6226"><span class="ref-citation-surname" id="b335a354">Read</span> <span class="ref-citation-given-name" id="r861o4026">RJ.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="g337z7874"><span class="ref-citation-surname" id="r53x1133">Clarke</span> <span class="ref-citation-given-name" id="k427b9753">ND.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="b136d4017"><span class="ref-citation-surname" id="s2v9826">Schwede</span> <span class="ref-citation-given-name" id="q115s5507">T.  
+                                 	</span></span> <span class="ref-citation-article-title" id="e218r9730">Automated server predictions in CASP7</span>  <span class="ref-citation-source" id="r98m8113">Proteins</span>.
+                           	  <span class="ref-citation-year" id="b15y5381">2007</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="t784s167">17894354</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="x960i1167">10.1002/prot.21761</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="x544c6213">
+                     <div class="ref-label cell" id="v375e5977">
+                        <p class="ref-label" id="j244c7092"><span class="label" id="z634e1045"><span class="generated" id="d112u9693">8</span></span>&nbsp;<a id="B8">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="g892e1643">
+                        <p class="citation" id="z83q3185"><a id="d1e1064">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="o140i2179"><span class="ref-citation-surname" id="o721p1414">Tosatto</span> <span class="ref-citation-given-name" id="h201q8344">SC.  
+                                 	</span></span> <span class="ref-citation-article-title" id="s692s4184">The victor/FRST function for model quality estimation</span>  <span class="ref-citation-source" id="y808y7893">J Comput Biol</span>.
+                           	  <span class="ref-citation-year" id="a230k8214">2005</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="r328d130">16379537</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="w838s2865">10.1089/cmb.2005.12.1316</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="x130f3814">
+                     <div class="ref-label cell" id="j908w5042">
+                        <p class="ref-label" id="h979x1517"><span class="label" id="r214y6120"><span class="generated" id="d257r3250">9</span></span>&nbsp;<a id="B9">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="l582b1480">
+                        <p class="citation" id="k490o6639"><a id="d1e1088">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="i467m6288"><span class="ref-citation-surname" id="r882s1866">Pettitt</span> <span class="ref-citation-given-name" id="m771n821">CS.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="n21h4620"><span class="ref-citation-surname" id="t501h8283">McGuffin</span> <span class="ref-citation-given-name" id="p252r7301">LJ.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="u650k5785"><span class="ref-citation-surname" id="d743x4876">Jones</span> <span class="ref-citation-given-name" id="w865f8726">DT.  
+                                 	</span></span> <span class="ref-citation-article-title" id="b869o7728">Improving sequence-based fold recognition by using 3D model quality assessment</span>  <span class="ref-citation-source" id="d377b8479">Bioinformatics</span>.
+                           	  <span class="ref-citation-year" id="w925o5900">2005</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="u460t1805">15955780</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="v915h412">10.1093/bioinformatics/bti540</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="c329s4043">
+                     <div class="ref-label cell" id="g705t7949">
+                        <p class="ref-label" id="k33t5867"><span class="label" id="e982q8031"><span class="generated" id="v669l24">10</span></span>&nbsp;<a id="B10">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="d265g1692">
+                        <p class="citation" id="g831p5162"><a id="d1e1122">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="z900u4802"><span class="ref-citation-surname" id="m95j6422">Wallner</span> <span class="ref-citation-given-name" id="h968c9595">B.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="c515p8367"><span class="ref-citation-surname" id="w733p8914">Elofsson</span> <span class="ref-citation-given-name" id="m685m6566">A.  
+                                 	</span></span> <span class="ref-citation-article-title" id="l482i1445">Prediction of global and local model quality in CASP7 using Pcons and ProQ</span>  <span class="ref-citation-source" id="y837y3963">Proteins</span>.
+                           	  <span class="ref-citation-year" id="p186l1654">2007</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="n801d8906">17894353</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="f961l8335">10.1002/prot.21774</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="u478x9416">
+                     <div class="ref-label cell" id="g637z1460">
+                        <p class="ref-label" id="i944x9015"><span class="label" id="y316a7745"><span class="generated" id="g418n2143">11</span></span>&nbsp;<a id="B11">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="q255a5122">
+                        <p class="citation" id="g857f2224"><a id="d1e1151">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="k472x3711"><span class="ref-citation-surname" id="p60x2039">Fischer</span> <span class="ref-citation-given-name" id="n263v7436">D.  
+                                 	</span></span> <span class="ref-citation-article-title" id="z861f7437">Servers for protein structure prediction</span>  <span class="ref-citation-source" id="r888i6974">Current opinion in structural biology</span>.
+                           	  <span class="ref-citation-year" id="z140p736">2006</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="a863d9404">16546376</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="f965v8230">10.1016/j.sbi.2006.03.004</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="i774l4414">
+                     <div class="ref-label cell" id="l765c4103">
+                        <p class="ref-label" id="r588r7084"><span class="label" id="j312w9024"><span class="generated" id="o483k7294">12</span></span>&nbsp;<a id="B12">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="s117j7374">
+                        <p class="citation" id="e242i9732"><a id="d1e1176">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="v960d7133"><span class="ref-citation-surname" id="x345l189">Cozzetto</span> <span class="ref-citation-given-name" id="x918c6066">D.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="h763h7775"><span class="ref-citation-surname" id="y351t6504">Kryshtafovych</span> <span class="ref-citation-given-name" id="t475w4901">A.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="p724l3376"><span class="ref-citation-surname" id="g431e6881">Ceriani</span> <span class="ref-citation-given-name" id="f161m2042">M.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="i130n9250"><span class="ref-citation-surname" id="t615m7167">Tramontano</span> <span class="ref-citation-given-name" id="z634i9262">A.  
+                                 	</span></span> <span class="ref-citation-article-title" id="c620h1161">Assessment of predictions in the model quality assessment category</span>  <span class="ref-citation-source" id="y656i7358">Proteins</span>.
+                           	  <span class="ref-citation-year" id="v854h8970">2007</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="k709f8132">17680695</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="c611v531">10.1002/prot.21669</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="k833b5273">
+                     <div class="ref-label cell" id="o660s5945">
+                        <p class="ref-label" id="q305q97"><span class="label" id="d245r7796"><span class="generated" id="g500w9688">13</span></span>&nbsp;<a id="B13">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="l118t9301">
+                        <p class="citation" id="q657b2776"><a id="d1e1215">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="c135l7862"><span class="ref-citation-surname" id="c203p7486">Wu</span> <span class="ref-citation-given-name" id="b503o8358">ST.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="g675u1219"><span class="ref-citation-surname" id="e952q3302">Zhang</span> <span class="ref-citation-given-name" id="k858j8053">Y.  
+                                 	</span></span> <span class="ref-citation-article-title" id="q228e5665">LOMETS: A local meta-threading-server for protein structure prediction</span>  <span class="ref-citation-source" id="z619q8374">Nucl Acids Res</span>.
+                           	  <span class="ref-citation-year" id="x620r4505">2007</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="c365k2790">17478507</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="j45u6693">10.1093/nar/gkm251</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="e289w2897">
+                     <div class="ref-label cell" id="y449v7884">
+                        <p class="ref-label" id="t259d5658"><span class="label" id="h719z9153"><span class="generated" id="e844w8526">14</span></span>&nbsp;<a id="B14">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="m702h459">
+                        <p class="citation" id="z602d2043"><a id="d1e1244">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="f882a2759"><span class="ref-citation-surname" id="g327y8335">Zhang</span> <span class="ref-citation-given-name" id="u606d1838">Y.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="p639e8331"><span class="ref-citation-surname" id="v751t2571">Skolnick</span> <span class="ref-citation-given-name" id="d671p3698">J.  
+                                 	</span></span> <span class="ref-citation-article-title" id="j708x350">Automated structure prediction of weakly homologous proteins on a genomic scale</span>  <span class="ref-citation-source" id="s649j7524">Proceedings of the National Academy of Sciences of the United States of America</span>.
+                           	  <span class="ref-citation-year" id="v705d9374">2004</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="j43o1529">15126668</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="q726l3005">10.1073/pnas.0305695101</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="s719b4440">
+                     <div class="ref-label cell" id="z216h5621">
+                        <p class="ref-label" id="x297m9172"><span class="label" id="l608t8977"><span class="generated" id="k122f4896">15</span></span>&nbsp;<a id="B15">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="k174e4476">
+                        <p class="citation" id="f323z7794"><a id="d1e1273">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="s632n9617"><span class="ref-citation-surname" id="k613m3817">Wu</span> <span class="ref-citation-given-name" id="c219t2829">ST.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="v752w9262"><span class="ref-citation-surname" id="n318u4000">Skolnick</span> <span class="ref-citation-given-name" id="x679n220">J.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="x338c7206"><span class="ref-citation-surname" id="n175t630">Zhang</span> <span class="ref-citation-given-name" id="b21a8935">Y.  
+                                 	</span></span> <span class="ref-citation-article-title" id="v507r2367">Ab initio modeling of small proteins by iterative TASSER simulations</span>  <span class="ref-citation-source" id="j456x8035">BMC Biology</span>.
+                           	  <span class="ref-citation-year" id="z154h634">2007</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="j702h2753">17488521</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="z553m8745">10.1186/1741-7007-5-17</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="q723i8759">
+                     <div class="ref-label cell" id="t654l3542">
+                        <p class="ref-label" id="d838g2664"><span class="label" id="w736o562"><span class="generated" id="g550h4871">16</span></span>&nbsp;<a id="B16">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="v983n8670">
+                        <p class="citation" id="k888t6609"><a id="d1e1305">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="r889a2244"><span class="ref-citation-surname" id="l382b637">Zhang</span> <span class="ref-citation-given-name" id="j288g4024">Y.  
+                                 	</span></span> <span class="ref-citation-article-title" id="m958q7943">Template-based modeling and free modeling by I-TASSER in CASP7</span>  <span class="ref-citation-source" id="w640f4126">Proteins</span>.
+                           	  <span class="ref-citation-year" id="a598q7929">2007</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="w476d2988">17894355</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="p69j289">10.1002/prot.21702</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="h174x7909">
+                     <div class="ref-label cell" id="q905f8272">
+                        <p class="ref-label" id="e146q7422"><span class="label" id="n94n8809"><span class="generated" id="e799z6427">17</span></span>&nbsp;<a id="B17">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="m368p7807">
+                        <p class="citation" id="w510y2551"><a id="d1e1329">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="n442j3984"><span class="ref-citation-surname" id="u480j8230">Karplus</span> <span class="ref-citation-given-name" id="f462l7668">K.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="s226n4191"><span class="ref-citation-surname" id="e562c8644">Barrett</span> <span class="ref-citation-given-name" id="t832l1588">C.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="s658e3076"><span class="ref-citation-surname" id="h458p7253">Hughey</span> <span class="ref-citation-given-name" id="x337u6308">R.  
+                                 	</span></span> <span class="ref-citation-article-title" id="y517b2411">Hidden Markov models for detecting remote protein homologies</span>  <span class="ref-citation-source" id="n458s6613">Bioinformatics</span>.
+                           	  <span class="ref-citation-year" id="f984l5515">1998</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="b543q7817">9927713</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="s195p9100">10.1093/bioinformatics/14.10.846</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="o563d7036">
+                     <div class="ref-label cell" id="u166h39">
+                        <p class="ref-label" id="t102n6445"><span class="label" id="y827f5639"><span class="generated" id="x412m520">18</span></span>&nbsp;<a id="B18">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="o983g9722">
+                        <p class="citation" id="t917z8145"><a id="d1e1363">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="d131u5735"><span class="ref-citation-surname" id="a122n5884">Altschul</span> <span class="ref-citation-given-name" id="y299s4584">SF.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="k220l8149"><span class="ref-citation-surname" id="h700h6772">Madden</span> <span class="ref-citation-given-name" id="h477z6828">TL.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="t229m182"><span class="ref-citation-surname" id="l465n4226">Schaffer</span> <span class="ref-citation-given-name" id="k929b267">AA.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="z127c932"><span class="ref-citation-surname" id="m31x2280">Zhang</span> <span class="ref-citation-given-name" id="b738x8573">J.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="c792x1487"><span class="ref-citation-surname" id="l910m7747">Zhang</span> <span class="ref-citation-given-name" id="c121p8256">Z.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="w590o2517"><span class="ref-citation-surname" id="f399b7112">Miller</span> <span class="ref-citation-given-name" id="b841f6977">W.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="n170c593"><span class="ref-citation-surname" id="m513p8690">Lipman</span> <span class="ref-citation-given-name" id="q737p9886">DJ.  
+                                 	</span></span> <span class="ref-citation-article-title" id="h552i9650">Gapped BLAST and PSI-BLAST: a new generation of protein database search programs</span>  <span class="ref-citation-source" id="h7g162">Nucleic acids research</span>.
+                           	  <span class="ref-citation-year" id="s388l9348">1997</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="j43e5136">9254694</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="s28p733">10.1093/nar/25.17.3389</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="t742s7655">
+                     <div class="ref-label cell" id="m931y5334">
+                        <p class="ref-label" id="s915z8398"><span class="label" id="c309t350"><span class="generated" id="r666r8972">19</span></span>&nbsp;<a id="B19">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="p287s643">
+                        <p class="citation" id="m609w1267"><a id="d1e1417">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="z762f7779"><span class="ref-citation-surname" id="b186z2744">Needleman</span> <span class="ref-citation-given-name" id="c647s9224">SB.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="l263q1986"><span class="ref-citation-surname" id="s888z2697">Wunsch</span> <span class="ref-citation-given-name" id="q215b2748">CD.  
+                                 	</span></span> <span class="ref-citation-article-title" id="p205s2575">A general method applicable to the search for similarities in the amino acid sequence of two proteins</span>  <span class="ref-citation-source" id="g789r2324">Journal of molecular biology</span>.
+                           	  <span class="ref-citation-year" id="h331y5299">1970</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="e998u2613">5420325</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="a64a9119">10.1016/0022-2836(70)90057-4</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="n102y3712">
+                     <div class="ref-label cell" id="p947f7664">
+                        <p class="ref-label" id="c269s2335"><span class="label" id="j831w8767"><span class="generated" id="n361u5925">20</span></span>&nbsp;<a id="B20">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="w655m5461">
+                        <p class="citation" id="b867i3013"><a id="d1e1446">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="d469d1298"><span class="ref-citation-surname" id="v500l3558">Smith</span> <span class="ref-citation-given-name" id="f400o7145">TF.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="s631c6039"><span class="ref-citation-surname" id="q972e4188">Waterman</span> <span class="ref-citation-given-name" id="d837a3027">MS.  
+                                 	</span></span> <span class="ref-citation-article-title" id="i949i8340">Identification of common molecular subsequences</span>  <span class="ref-citation-source" id="h564s118">Journal of molecular biology</span>.
+                           	  <span class="ref-citation-year" id="w746b6651">1981</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="j383k6926">7265238</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="m432t6513">10.1016/0022-2836(81)90087-5</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="g927r2619">
+                     <div class="ref-label cell" id="k528d2862">
+                        <p class="ref-label" id="h855k1823"><span class="label" id="s833v7212"><span class="generated" id="e484o3007">21</span></span>&nbsp;<a id="B21">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="a851f9833">
+                        <p class="citation" id="r657j2503"><a id="d1e1475">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="b698p2869"><span class="ref-citation-surname" id="u855w6697">Zhang</span> <span class="ref-citation-given-name" id="v706g6903">Y.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="s973t6542"><span class="ref-citation-surname" id="v525x5363">Kolinski</span> <span class="ref-citation-given-name" id="i666f2700">A.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="j202w488"><span class="ref-citation-surname" id="k963e6327">Skolnick</span> <span class="ref-citation-given-name" id="e700l8886">J.  
+                                 	</span></span> <span class="ref-citation-article-title" id="m895z2278">TOUCHSTONE II: A new approach to ab initio protein structure prediction</span>  <span class="ref-citation-source" id="z175f7488">Biophysical journal</span>.
+                           	  <span class="ref-citation-year" id="e411r70">2003</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="l470i8936">12885659</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="o308s3208">
+                     <div class="ref-label cell" id="g877a9640">
+                        <p class="ref-label" id="d572h5746"><span class="label" id="z251b4252"><span class="generated" id="w245b9564">22</span></span>&nbsp;<a id="B22">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="s116m2166">
+                        <p class="citation" id="q611d6396"><a id="d1e1507">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="f753o2763"><span class="ref-citation-surname" id="j910i9542">Zhang</span> <span class="ref-citation-given-name" id="s325x8722">Y.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="u587o250"><span class="ref-citation-surname" id="x761r4812">Kihara</span> <span class="ref-citation-given-name" id="v253s9355">D.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="z230d6628"><span class="ref-citation-surname" id="y943j6999">Skolnick</span> <span class="ref-citation-given-name" id="g557i2500">J.  
+                                 	</span></span> <span class="ref-citation-article-title" id="d21g4332">Local energy landscape flattening: Parallel hyperbolic Monte Carlo sampling of protein folding</span>  <span class="ref-citation-source" id="b214p5917">Proteins</span>.
+                           	  <span class="ref-citation-year" id="b8d4648">2002</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="e17i2520">12112688</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="p422k1322">10.1002/prot.10141</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="o469w316">
+                     <div class="ref-label cell" id="g772q2214">
+                        <p class="ref-label" id="n308z6813"><span class="label" id="f176f6329"><span class="generated" id="b554x7623">23</span></span>&nbsp;<a id="B23">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="s658q3141">
+                        <p class="citation" id="z244u9105"><a id="d1e1542">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="o250z4735"><span class="ref-citation-surname" id="x574p1919">Zhang</span> <span class="ref-citation-given-name" id="n174z1295">Y.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="e442y1938"><span class="ref-citation-surname" id="j563p6558">Skolnick</span> <span class="ref-citation-given-name" id="y786l5704">J.  
+                                 	</span></span> <span class="ref-citation-article-title" id="m121o8022">SPICKER: A clustering approach to identify near-native protein folds</span>  <span class="ref-citation-source" id="g823n5416">Journal of computational chemistry</span>.
+                           	  <span class="ref-citation-year" id="n935y2909">2004</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="t574q7061">15011258</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="u513f8811">10.1002/jcc.20011</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="j388j6878">
+                     <div class="ref-label cell" id="k514n9408">
+                        <p class="ref-label" id="h451x1717"><span class="label" id="k255t6935"><span class="generated" id="f83e5043">24</span></span>&nbsp;<a id="B24">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="x167i6554">
+                        <p class="citation" id="t697o3401"><a id="d1e1571">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="f785m1379">SPICKER package</span> <a target="xrefwindow" href="http://zhang.bioinformatics.ku.edu/SPICKER" id="d1e1574">http://zhang.bioinformatics.ku.edu/SPICKER</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="f534i3475">
+                     <div class="ref-label cell" id="y794s3193">
+                        <p class="ref-label" id="i918j9141"><span class="label" id="x122s7401"><span class="generated" id="t456g558">25</span></span>&nbsp;<a id="B25">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="j31u289">
+                        <p class="citation" id="d762e5431"><a id="d1e1576">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="p910f1492"><span class="ref-citation-surname" id="m231n4238">Zhang</span> <span class="ref-citation-given-name" id="z90w6809">Y.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="z596p3447"><span class="ref-citation-surname" id="z375k6777">Skolnick</span> <span class="ref-citation-given-name" id="j849i5412">J.  
+                                 	</span></span> <span class="ref-citation-article-title" id="y333j5451">TM-align: a protein structure alignment algorithm based on the TM-score</span>  <span class="ref-citation-source" id="c882k1178">Nucleic acids research</span>.
+                           	  <span class="ref-citation-year" id="g683s4151">2005</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="w466d4766">15849316</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="d735a3829">10.1093/nar/gki524</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="p391a8558">
+                     <div class="ref-label cell" id="n123m8463">
+                        <p class="ref-label" id="e912m1538"><span class="label" id="e876p6734"><span class="generated" id="g697r7850">26</span></span>&nbsp;<a id="B26">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="m823d9278">
+                        <p class="citation" id="d209x9123"><a id="d1e1605">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="k609w8042"><span class="ref-citation-surname" id="m257j9829">Feig</span> <span class="ref-citation-given-name" id="v482a1059">M.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="q525m8148"><span class="ref-citation-surname" id="j651w4053">Rotkiewicz</span> <span class="ref-citation-given-name" id="p933n3338">P.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="h821z3977"><span class="ref-citation-surname" id="k811g5548">Kolinski</span> <span class="ref-citation-given-name" id="j781l2010">A.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="j411z9035"><span class="ref-citation-surname" id="s48y3220">Skolnick</span> <span class="ref-citation-given-name" id="w58c9223">J.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="a996i7542"><span class="ref-citation-surname" id="k708w8178">Brooks</span> <span class="ref-citation-given-name" id="d682a9161">CL.  
+                                 	</span>3rd</span> <span class="ref-citation-article-title" id="a731g2905">Accurate reconstruction of all-atom protein representations from side-chain-based low-resolution models</span>  <span class="ref-citation-source" id="q721w9870">Proteins</span>.
+                           	  <span class="ref-citation-year" id="z274s2021">2000</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="f93d7973">10944396</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="v17n7438">10.1002/1097-0134(20001001)41:1&lt;86::AID-PROT110&gt;3.0.CO;2-Y</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="e203r9493">
+                     <div class="ref-label cell" id="t78y229">
+                        <p class="ref-label" id="n347b8878"><span class="label" id="s578r1276"><span class="generated" id="g89s9881">27</span></span>&nbsp;<a id="B27">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="b32f1359">
+                        <p class="citation" id="t311o883"><a id="d1e1651">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="v59b3054"><span class="ref-citation-surname" id="z843k7655">Canutescu</span> <span class="ref-citation-given-name" id="z124c5243">AA.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="q682l8531"><span class="ref-citation-surname" id="g815h4017">Shelenkov</span> <span class="ref-citation-given-name" id="e841z880">AA.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="n604h9329"><span class="ref-citation-surname" id="x886w6205">Dunbrack</span> <span class="ref-citation-given-name" id="o677i878">RL.  
+                                 	</span>Jr.</span> <span class="ref-citation-article-title" id="s570o7541">A graph-theory algorithm for rapid protein side-chain prediction</span>  <span class="ref-citation-source" id="d111k9167">Protein Sci</span>.
+                           	  <span class="ref-citation-year" id="o642t6882">2003</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="m45f7306">12930999</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="n677j753">10.1110/ps.03154503</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="p867l9863">
+                     <div class="ref-label cell" id="s164t9246">
+                        <p class="ref-label" id="g292d60"><span class="label" id="f691j4147"><span class="generated" id="l531s3715">28</span></span>&nbsp;<a id="B28">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="z268t3450">
+                        <p class="citation" id="v774d1078"><a id="d1e1687">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="n433e3768">I-TASSER queue</span> <a target="xrefwindow" href="http://zhang.bioinformatics.ku.edu/I-TASSER/output.html" id="d1e1690">http://zhang.bioinformatics.ku.edu/I-TASSER/output.html</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="h41x3182">
+                     <div class="ref-label cell" id="r998b7172">
+                        <p class="ref-label" id="c406c5670"><span class="label" id="o472i5165"><span class="generated" id="w484v1131">29</span></span>&nbsp;<a id="B29">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="w205b5279">
+                        <p class="citation" id="m844l8809"><a id="d1e1692">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="z604a7101">About I-TASSER</span> <a target="xrefwindow" href="http://zhang.bioinformatics.ku.edu/I-TASSER/about.html" id="d1e1695">http://zhang.bioinformatics.ku.edu/I-TASSER/about.html</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="a868u7667">
+                     <div class="ref-label cell" id="j635o1588">
+                        <p class="ref-label" id="y773i3247"><span class="label" id="f574e3029"><span class="generated" id="h697c8411">30</span></span>&nbsp;<a id="B30">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="g648v4693">
+                        <p class="citation" id="h949x807"><a id="d1e1697">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="j846d9893"><span class="ref-citation-surname" id="l399c8432">Berman</span> <span class="ref-citation-given-name" id="v707k8047">HM.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="u411c1777"><span class="ref-citation-surname" id="z322m8937">Westbrook</span> <span class="ref-citation-given-name" id="a291s5258">J.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="i422b1345"><span class="ref-citation-surname" id="p407l246">Feng</span> <span class="ref-citation-given-name" id="i845o2738">Z.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="q792q4792"><span class="ref-citation-surname" id="q433x5638">Gilliland</span> <span class="ref-citation-given-name" id="n804k58">G.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="g867c5000"><span class="ref-citation-surname" id="f847n5145">Bhat</span> <span class="ref-citation-given-name" id="b970f7956">TN.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="l596u8152"><span class="ref-citation-surname" id="v785t9939">Weissig</span> <span class="ref-citation-given-name" id="p659m4913">H.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="p799x685"><span class="ref-citation-surname" id="b669t1196">Shindyalov</span> <span class="ref-citation-given-name" id="d963r9597">IN.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="o646z3837"><span class="ref-citation-surname" id="r95e519">Bourne</span> <span class="ref-citation-given-name" id="l409r9386">PE.  
+                                 	</span></span> <span class="ref-citation-article-title" id="h326g1994">The Protein Data Bank</span>  <span class="ref-citation-source" id="w418j7580">Nucleic acids research</span>.
+                           	  <span class="ref-citation-year" id="z764j2216">2000</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="x764d6298">10592235</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="b722k6106">10.1093/nar/28.1.235</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="u145p6908">
+                     <div class="ref-label cell" id="g407z7393">
+                        <p class="ref-label" id="k506o1910"><span class="label" id="i734n1643"><span class="generated" id="p683w5316">31</span></span>&nbsp;<a id="B31">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="i233l3512">
+                        <p class="citation" id="g652f1949"><a id="d1e1756">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="t311e2964">Benchmark protein list</span> <a target="xrefwindow" href="http://zhang.bioinformatics.ku.edu/I-TASSER/decoys/proteins" id="d1e1759">http://zhang.bioinformatics.ku.edu/I-TASSER/decoys/proteins</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="h579y4050">
+                     <div class="ref-label cell" id="r349f9867">
+                        <p class="ref-label" id="p344f6738"><span class="label" id="f187o7613"><span class="generated" id="m432k9492">32</span></span>&nbsp;<a id="B32">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="e983z1956">
+                        <p class="citation" id="d579s7044"><a id="d1e1761">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="h807k7232"><span class="ref-citation-surname" id="n396e2123">Kabsch</span> <span class="ref-citation-given-name" id="y463c9010">W.  
+                                 	</span></span> <span class="ref-citation-article-title" id="f404k1955">A solution for the best rotation to relate two sets of vectors</span>  <span class="ref-citation-source" id="c66r855">Acta Cryst</span>.
+                           	  <span class="ref-citation-year" id="d728y2980">1976</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="x437d3782">
+                     <div class="ref-label cell" id="r493j7475">
+                        <p class="ref-label" id="v675h714"><span class="label" id="l153k228"><span class="generated" id="h58t4960">33</span></span>&nbsp;<a id="B33">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="g697v2441">
+                        <p class="citation" id="f258y1284"><a id="d1e1781">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="q194r2401"><span class="ref-citation-surname" id="k324t7722">Betancourt</span> <span class="ref-citation-given-name" id="n945d1300">MR.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="a496m3394"><span class="ref-citation-surname" id="z343r9576">Skolnick</span> <span class="ref-citation-given-name" id="u241p7455">J.  
+                                 	</span></span> <span class="ref-citation-article-title" id="w154d3055">Universal similarity measure for comparing protein structures</span>  <span class="ref-citation-source" id="t831l8801">Biopolymers</span>.
+                           	  <span class="ref-citation-year" id="e604t2675">2001</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="p259w963">11514933</span>.
+                           DOI:
+                           	 <span class="ref-citation-doi" id="s15w9329">10.1002/1097-0282(20011015)59:5&lt;305::AID-BIP1027&gt;3.0.CO;2-6</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="z168r1675">
+                     <div class="ref-label cell" id="n956y2256">
+                        <p class="ref-label" id="x664v6522"><span class="label" id="y470m9207"><span class="generated" id="x781p6628">34</span></span>&nbsp;<a id="B34">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="i161l1044">
+                        <p class="citation" id="x435f1050"><a id="d1e1811">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="x235q9301"><span class="ref-citation-surname" id="n445n5767">Reichl</span> <span class="ref-citation-given-name" id="e888u6847">LE.  
+                                 	</span></span>  <span class="ref-citation-source" id="e323d408">A Modern Course in Statistical Physics </span>.
+                           	  <span class="ref-citation-year" id="k991d1530">1998</span>.
+                           2ndNew York , Wiley-Interscience
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="article1-footer" class="footer">
+         <hr class="part-rule" id="e921m5936"><div class="metadata" id="k421u1791">
+            <h4 class="generated" id="k690j4355">Article Information (continued)</h4>
+            <div class="metadata-group" id="n112u8575">
+               <div class="metadata-area" id="n603z675">
+                  <p class="metadata-entry" id="a83x2663"><span class="generated" id="k720o5526">Categories: </span></p>
+                  <div class="metadata-chunk" id="q187b5002">
+                     <p class="metadata-entry" id="f216r3476"><span class="generated" id="q605g6502">Subject: </span>Software
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <hr class="part-rule" id="e453b8390"><div class="branding" id="w581o8969">
+            <p id="s416k4679">This display is generated from NISO JATS XML with <b id="s582r7377">jats-html.xsl</b>. The XSLT engine is SAXON 9.2.0.6 from Saxonica.
+            </p>
+         </div>
+      </div>
+   </body></html>
