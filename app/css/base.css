@@ -1,0 +1,65 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+body > .container {
+    /* padding top for navbar */
+    padding: 70px 15px 0;
+}
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+}
+.container .text-muted {
+    margin: 20px 0;
+}
+#footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
+/* classes */
+.border {
+
+}
+.border-notop {
+    border-top: none;
+}
+
+.breath {
+    margin-top: 15px;
+}
+
+#widget_doclist {
+    border: solid rgb(220,220,220) 1px;
+    padding: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.doclist {
+    text-align: left;
+    height: 500px !important;
+    overflow: scroll;
+}
+
+.edit-sentence {
+    padding: 2px;
+    border: dotted #d58512 3px;
+}
+.edit-main {
+    background-color: #7be0fe;
+    color: white;
+}
+.edit-sub {
+    background-color: #77d477;
+    color: white;
+}

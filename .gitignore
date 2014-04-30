@@ -1,1 +1,9 @@
 .idea
+atlassian-ide-plugin.xml
+*.log
+logs/*
+!.gitkeep
+node_modules/
+tmp
+.DS_Store
+bower_components/

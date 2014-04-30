@@ -20,7 +20,7 @@ switch ($_GET['id']) {
 			$cont  = file_get_contents($file);
 			$title = preg_match('!<title.*>(.*?)</title>!i', $cont, $matches) ? $matches[1] : $file;
 			// add filepath and title to the output array
-			$ret[] = array('filepath' => $file, 'doctitle' => $title);
+			$ret[] = array('href' => $file, 'doctitle' => $title);
 		}
 		// output array in JSON
 		echo json_encode($ret);
