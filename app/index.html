@@ -3,7 +3,7 @@
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<html ng-app="appotaria" ng-controller="AppotariaCtrl">
+<html ng-app="appotaria">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,12 +14,15 @@
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<!-- AnnOtaria custom styles -->
 	<!--<link rel="stylesheet" type="text/css" href="css/base.css" />-->
-	<link rel="stylesheet" type="text/css" href="../css/docs.css" />
-	<link rel="stylesheet" type="text/css" href="../css/prettify-theme.css" />
+	<link rel="stylesheet" type="text/css" href="css/docs.css" />
+	<link rel="stylesheet" type="text/css" href="css/prettify-theme.css" />
 	<!-- AngularJS -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.7/angular.min.js"> </script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.7/angular-route.js"> </script>
 	<!-- Our custom AnnOtaria JS functions -->
-	<script src="js/controllers.js"> </script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers.js"></script>
 	<title>AnnOtaria</title>
 </head>
 
@@ -33,7 +36,7 @@
 
 <div id="wrapper">
 	<header class="header header-fixed">
-		<section class="navbar navbar-inverse docs-navbar-primary" ng-controller="AppotariaSearchCtrl">
+		<section class="navbar navbar-inverse docs-navbar-primary">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-9 header-branding">
@@ -53,40 +56,15 @@
 				</div>
 			</div>
 		</section>
-		<section class="sup-header">
-			<div class="container main-grid main-header-grid">
-				<div class="grid-left">
-				</div>
-				<div class="grid-right">
-					<ul class="nav-breadcrumb">
-						<li ng-repeat="crumb in breadcrumb" class="nav-breadcrumb-entry naked-list">
-							<span class="divider"> /</span>
-							<a ng-href="{{crumb.url}}">{{crumb.name}}</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</section>
 	</header>
 
 	<section role="main" class="container main-body">
 		<div class="main-grid main-body-grid">
 			<div class="grid-left">
-				<a class="btn toc-toggle visible-xs" ng-click="toc=!toc">Show / Hide available documents</a>
-				<div class="side-navigation" ng-show="toc==true">
-					<h3>Available documents</h3>
-					Filter by: <input ng-model="docquery">
-					<ul class="nav-list aside-nav">
-						<li ng-repeat="item in documents | filter:docquery" class="nav-index-listing">
-							<small><a ng-if="item.href" href ng-click="loadDocument(item.href)">{{item.doctitle}}</a></small>
-						</li>
-					</ul>
-					<a href="" ng-click="toc=false" class="toc-close visible-xs">Close</a>
-				</div>
+				<div ng-include="'partials/articlelist.html'"></div>
 			</div>
 			<div class="grid-right">
-				<div id="loading" ng-show="loading">Loading...</div>
-				<div ng-hide="loading" ng-include="currentPage.outputPath || 'Error404.html'" onload="afterPartialLoaded()"  autoscroll></div>
+				<div ng-view></div>
 			</div>
 		</div>
 	</section>
@@ -157,8 +135,6 @@
 	</div>
 </div>
 
-<!-- Fancy JavaScripts are placed at the end for the pace of page loading -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"> </script>
 </body>
 

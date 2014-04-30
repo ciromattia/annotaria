@@ -1,26 +1,34 @@
-var appOtaria = angular.module('appotaria', [])
+'use strict';
 
-appOtaria.controller('AppotariaCtrl', function ($scope, $http, $sce) {
+/* Controllers */
 
-	/* Entry point: this should be the first thing the controller does when instantiated. */
-	/* It actually get the whole document list from the backend and assigns it to "documents" variable in the scope */
-	$http.get('document.php?id=all').success(function (data) {
-		$scope.documents = data;
-	});
+var appotariaControllers = angular.module('appotariaControllers', [])
 
-	/* */
-	$scope.loadDocument = function (filename) {
-		$http.get('document.php?id=file&filepath=' + filename).success(function (data) {
-			$scope.doctext = $sce.trustAsHtml(data);
+appotariaControllers.controller('AppotariaCtrl', ['$scope', '$http',
+	function ($scope, $http) {
+		/*$http.get('annotaria-td/' + data[0]['href']).success(function (article) {
+			$scope.currentArticle = article;
+		});*/
+	}]);
+
+appotariaControllers.controller('AppotariaArticleListCtrl', ['$scope', '$http',
+	function ($scope, $http) {
+		/* Entry point: this should be the first thing the controller does when instantiated. */
+		/* It actually get the whole document list from the backend and assigns it to "articlelist" variable in the scope */
+		$http.get('annotaria-td/article-list.json').success(function (data) {
+			$scope.articlelist = data;
 		});
-	};
-});
+	}]);
 
-appOtaria.controller('AppotariaSearchCtrl', function ($scope, $http, $sce) {
 
-});
+appotariaControllers.controller('AppotariaDetailCtrl', ['$scope', '$routeParams', '$http',
+	function ($scope, $routeParams, $http) {
+		$http.get('annotaria-td/' + $routeParams.articlePath).success(function (data) {
+			$scope.article_body = data;
+		});
+	}]);
 
-appOtaria.controller('LoginCtrl', function ($scope, $http, $window) {
+appotariaControllers.controller('LoginCtrl', function ($scope, $http, $window) {
 	$scope.user = {username: '', password: ''};
 	$scope.message = '';
 	$scope.submit = function () {
