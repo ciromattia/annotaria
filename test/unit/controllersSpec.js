@@ -11,7 +11,7 @@ describe('AppOtaria controllers', function () {
 	// Load our app module definition before each test.
 	beforeEach(module('appotaria'));
 
-	describe('AppotariaCtrl', function () {
+	describe('AppotariaArticleListCtrl', function () {
 		var scope, ctrl, $httpBackend;
 
 		// The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
@@ -32,11 +32,11 @@ describe('AppOtaria controllers', function () {
 					{
 						"href": "BMC_Bioinformatics_2008_Jan_23_9_40.html",
 						"title": "Zhang: I-TASSER server for protein 3D structure prediction"
-					},
+					}
 				]);
 
 			scope = $rootScope.$new();
-			ctrl = $controller('AppotariaCtrl', {$scope: scope});
+			ctrl = $controller('AppotariaArticleListCtrl', {$scope: scope});
 		}));
 
 		it('should create "articlelist" model with 3 documents', function () {
@@ -55,7 +55,7 @@ describe('AppOtaria controllers', function () {
 				{
 					"href": "BMC_Bioinformatics_2008_Jan_23_9_40.html",
 					"title": "Zhang: I-TASSER server for protein 3D structure prediction"
-				},
+				}
 			]);
 		});
 	});

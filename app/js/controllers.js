@@ -1,16 +1,15 @@
 'use strict';
 
 /* Controllers */
-
 var appotariaControllers = angular.module('appotariaControllers', [])
 
-appotariaControllers.controller('AppotariaCtrl', ['$scope', '$http',
-	function ($scope, $http) {
-		/*$http.get('annotaria-td/' + data[0]['href']).success(function (article) {
-			$scope.currentArticle = article;
-		});*/
-	}]);
+appotariaControllers.controller('AppotariaCtrl', []);
 
+/**
+ * Controller for the article list widget
+ *
+ * @description
+ */
 appotariaControllers.controller('AppotariaArticleListCtrl', ['$scope', '$http',
 	function ($scope, $http) {
 		/* Entry point: this should be the first thing the controller does when instantiated. */
@@ -20,14 +19,25 @@ appotariaControllers.controller('AppotariaArticleListCtrl', ['$scope', '$http',
 		});
 	}]);
 
-
-appotariaControllers.controller('AppotariaDetailCtrl', ['$scope', '$routeParams', '$http',
-	function ($scope, $routeParams, $http) {
+/**
+ * Controller for the article detail page
+ *
+ * @description
+ */
+appotariaControllers.controller('AppotariaDetailCtrl', ['$scope', '$routeParams', '$http', '$sce',
+	function ($scope, $routeParams, $http, $sce) {
 		$http.get('annotaria-td/' + $routeParams.articlePath).success(function (data) {
-			$scope.article_body = data;
+			// TODO: here we should add all the logic for parsing the HTML of the selected article.
+			$scope.article_body = $sce.trustAsHtml(data);
 		});
 	}]);
 
+/**
+ * Controller for the user login
+ *
+ * @description Log in a user
+ * @todo It's only a stub for now
+ */
 appotariaControllers.controller('LoginCtrl', function ($scope, $http, $window) {
 	$scope.user = {username: '', password: ''};
 	$scope.message = '';

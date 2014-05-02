@@ -11,7 +11,7 @@ appotaria.config(['$routeProvider',
 	function ($routeProvider) {
 		$routeProvider.
 			when('/', {
-				templateUrl: 'partials/index.html',
+				templateUrl: 'partials/home.html',
 				controller: 'AppotariaCtrl'
 			}).
 			when('/annotaria-td/:articlePath', {
