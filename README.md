@@ -12,28 +12,27 @@ Once you have it installed just run:
 
     npm install
 
-This will install bower
+This will install all the required packages.
 
-## Using AnnOtaria
+To test and build:
 
-If you already have a webserver configured on your machine you can open
-[http://localhost/path/to/annotaria/app](http://localhost/path/to/annotaria/app).
-If you don't own a webserver, run
+	grunt
 
-	npm start
+To develop:
 
-then navigate to [http://localhost:8000/app](http://localhost:8000/app)
+	grunt serve
 
+To launch unit tests and functional test:
 
-## Running Tests
+	grunt test
 
-To execute all unit tests, use:
+AnnOtaria is built with [Yeoman](http://yeoman.io/) so you can use all subtasks of
 
-    npm test
+	yo angular:*
 
-To execute end-to-end (e2e) tests, use:
+for component scaffolding.
 
-    npm run protractor
+Have fun!
 
 ## COPYRIGHT
 Copyright (c) 2014 Ciro Mattia Gonano
