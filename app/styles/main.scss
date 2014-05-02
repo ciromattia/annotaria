@@ -1,14 +1,30 @@
+@import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+$fa-font-path: "/bower_components/font-awesome/fonts";
+@import "font-awesome/scss/font-awesome";
+
+// bower:scss
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+// endbower
+
+
 html, body {
   position:relative;
   height:100%;
 }
 
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
 #fork_me_on_github {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border: 0;
-    z-index: 5000;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  z-index: 5000;
 }
 
 #wrapper {
@@ -435,8 +451,8 @@ ul.events > li {
     padding:3px 0;
   }
   .nav-index-group .nav-index-listing:not(.nav-index-section) + .nav-index-listing:not(.nav-index-section):after {
-      padding-right:5px;
-      content:",  ";
+    padding-right:5px;
+    content:",  ";
   }
   .nav-index-group .nav-index-listing:last-child {
     content:"";

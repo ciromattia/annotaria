@@ -3,7 +3,7 @@ describe('AnnOtaria', function () {
 	describe('Article list view', function () {
 
 		beforeEach(function () {
-			browser.get('app/');
+			browser.get('/');
 		});
 
 		it('should filter the document list as user types into the search box', function () {

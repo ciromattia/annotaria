@@ -1,9 +1,9 @@
 .idea
 atlassian-ide-plugin.xml
-*.log
-logs/*
+node_modules
+dist
+.tmp
+.sass-cache
+app/bower_components
 !.gitkeep
-node_modules/
-tmp
 .DS_Store
-bower_components/
