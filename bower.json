@@ -1,9 +1,9 @@
 {
 	"name": "annotaria",
 	"description": "AnnOtaria",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"homepage": "https://github.com/ciromattia/annotaria",
-	"license": "ISC",
+	"license": "MIT",
 	"private": true,
 	"dependencies": {
 		"angular": "1.2.15",
