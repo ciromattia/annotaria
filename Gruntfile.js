@@ -382,11 +382,32 @@ module.exports = function (grunt) {
 
 		// Test settings
 		karma: {
-			unit: {
-				configFile: 'test/karma.conf.js',
-				singleRun: true
-			}
+      options: {
+        configFile: 'test/karma.conf.js',
+        singleRun: true
+      },
+			unit: {},
+      travis: {
+        singleRun: true,
+        browsers: ['PhantomJS']
+      }
 		},
+
+    coveralls: {
+      options: {
+        // LCOV coverage file relevant to every target
+        src: 'coverage-results/lcov.info',
+
+        // When true, grunt-coveralls will only print a warning rather than
+        // an error, to prevent CI builds from failing unnecessarily (e.g. if
+        // coveralls.io is down). Optional, defaults to false.
+        force: false
+      },
+      your_target: {
+        // Target-specific LCOV coverage file
+        src: 'coverage-results/extra-results-*.info'
+      }
+    },
 
 		protractor: {
 			options: {
@@ -427,6 +448,14 @@ module.exports = function (grunt) {
 		'protractor:run'
 	]);
 
+  grunt.registerTask('test:travis', [
+    'clean:server',
+    'concurrent:test',
+    'autoprefixer',
+    'connect:test',
+    'karma:travis'
+  ]);
+
 	grunt.registerTask('build', [
 		'clean:dist',
 		'bowerInstall',
@@ -449,4 +478,10 @@ module.exports = function (grunt) {
 		'test',
 		'build'
 	]);
+
+  grunt.registerTask('travis', [
+    'newer:jshint',
+    'test:travis',
+    'build'
+  ]);
 };

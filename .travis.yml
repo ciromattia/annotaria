@@ -10,3 +10,4 @@ before_script:
   - ./node_modules/protractor/bin/webdriver-manager update
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
+script: grunt travis
