@@ -4,6 +4,7 @@ This project _may be_ based upon PHP, AngularJS and Bootstrap.
 
 [![Build Status](https://travis-ci.org/ciromattia/annotaria.png?branch=master)](https://travis-ci.org/ciromattia/annotaria)
 [![Coverage Status](https://coveralls.io/repos/ciromattia/annotaria/badge.png)](https://coveralls.io/r/ciromattia/annotaria)
+[![devDependency Status](https://david-dm.org/ciromattia/annotaria/dev-status.png)](https://david-dm.org/ciromattia/annotaria#info=devDependencies)
 
 ## Building AnnOtaria
 
