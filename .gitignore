@@ -3,7 +3,7 @@ atlassian-ide-plugin.xml
 node_modules
 dist
 .tmp
-.sass-cache
+app/styles/*.css
 app/bower_components
 !.gitkeep
 .DS_Store
