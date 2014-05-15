@@ -11,9 +11,11 @@ For building **AnnOtaria** you need [Node.js](http://nodejs.org/).
 Once you have it installed just run:
 
     npm install
+    bower install
 
 This will install all the required packages.
 
+## Grunt tasks
 To test and build:
 
 	grunt
@@ -26,6 +28,7 @@ To launch unit tests and functional test:
 
 	grunt test
 
+## Scaffolding new components
 AnnOtaria is built with [Yeoman](http://yeoman.io/) so you can use all subtasks of
 
 	yo angular:*
@@ -35,4 +38,4 @@ for component scaffolding.
 Have fun!
 
 ## COPYRIGHT
-Copyright (c) 2014 Ciro Mattia Gonano
+Copyright (c) 2014 Ciro Mattia Gonano, Alex, Pedro Madrigal Gutierrez, Pasquale Corbo
