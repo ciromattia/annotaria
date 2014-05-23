@@ -7,3 +7,6 @@ app/styles/*.css
 app/bower_components
 !.gitkeep
 .DS_Store
+*.pyc
+venv
+*~

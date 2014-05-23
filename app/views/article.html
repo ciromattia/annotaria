@@ -1,1 +1,9 @@
-<span>{{articleBody}}</span>
+<article>
+  <div class="page-header">
+    <h1>{{title}}</h1>
+  </div>
+  <div id="current_article" ng-bind-html="articleBody"></div>
+</article>
+<script>
+  $('article').annotator();
+</script>

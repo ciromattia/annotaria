@@ -6,10 +6,11 @@ angular.module('annotariaApp')
 	 *
 	 * @description
 	 */
-	.controller('ArticleDetailCtrl', ['$scope', '$routeParams', '$http', '$sce',
-		function ($scope, $routeParams, $http, $sce) {
-			$http.get('annotaria-td/' + $routeParams.articlePath).success(function (data) {
+	.controller('ArticleDetailCtrl', ['$scope', '$routeParams', '$http',
+		function ($scope, $routeParams, $http) {
+			$http.jsonp('http://localhost/annotaria-td/article/' + $routeParams.articlePath + '?callback=JSON_CALLBACK').success(function (data) {
 				// TODO: here we should add all the logic for parsing the HTML of the selected article.
-				$scope.articleBody = $sce.trustAsHtml(data);
+        $scope.title = 'My title here';
+				$scope.articleBody = data;
 			});
 		}]);

@@ -1,138 +1,112 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
 <head>
-	<title></title>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<!-- build:css styles/vendor.css -->
-	<!-- bower:css -->
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-	<link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
-	<!-- endbower -->
-	<!-- endbuild -->
-	<!-- build:css({.tmp,app}) styles/main.css -->
-	<link rel="stylesheet" href="styles/main.css">
-	<!-- endbuild -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="fragment" content="!">
+  <title ng-bind-template="AnnOtaria: {{ currentArticle.title}}: {{ currentArticle.title || 'Error: Page not found'}}">AnnOtaria</title>
+  <!-- build:css styles/vendor.css -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//assets.annotateit.org/annotator/v1.2.7/annotator.min.css">
+  <!-- endbuild -->
+  <!-- build:css({.tmp,app}) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
 </head>
 
 <body ng-app="annotariaApp">
 <!--[if lt IE 7]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a
+        href="http://browsehappy.com/">upgrade your browser</a>
+                       to improve your experience.</p>
 <![endif]-->
 
 <!-- "Fork me on GitHub" ribbon -->
-<a href="https://github.com/ciromattia/annotaria"><img id="fork_me_on_github" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+<a href="https://github.com/ciromattia/annotaria"><img id="fork_me_on_github"
+                                                       src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67"
+                                                       alt="Fork me on GitHub"
+                                                       data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 
-<div id="wrapper">
-	<header class="header header-fixed">
-		<section class="navbar navbar-inverse docs-navbar-primary">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-9 header-branding">
-						<a class="brand navbar-brand" href="https://github.com/ciromattia/annotaria">
-							<img class="logo" src="images/annotaria-small.png">
-						</a>
-						<ul class="nav navbar-nav">
-							<li class="divider-vertical"></li>
-							<li><a href="#/"><i class="fa fa-home"></i> Home</a></li>
-							<li class="divider-vertical"></li>
-							<li><a href role="button" data-toggle="modal" data-target="#about">About</a></li>
-							<li class="divider-vertical"></li>
-							<li><a href role="button" data-toggle="modal" data-target="#loginModal">Login</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-					</div>
-				</div>
-			</div>
-		</section>
-	</header>
 
-	<section role="main" class="container main-body">
-		<div class="main-grid main-body-grid">
-			<div class="grid-left">
-				<div ng-include="'views/article_list.html'"></div>
-			</div>
-			<div class="grid-right">
-				<div ng-view></div>
-			</div>
-		</div>
-	</section>
-
-	<footer class="footer">
-		<div class="container">
-			<p class="pull-right"><a back-to-top>Back to top</a></p>
-			<p>Proudly powered by:
-				<a href="http://angularjs.org" title="AngularJS" target="_blank"><img src="https://angularjs.org/img/AngularJS-small.png"></a>
-			</p>
-		</div>
-	</footer>
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://github.com/ciromattia/annotaria">
+        <img class="logo" src="images/annotaria-small.png">
+      </a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href role="button" data-toggle="modal" data-target="#about">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
 </div>
 
+<!-- Begin page content -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div ng-include="'views/article_list.html'"></div>
+    </div>
+    <div class="col-md-8">
+      <div id="loading">Loading...</div>
+      <div ng-view></div>
+    </div>
+  </div>
+</div>
+
+<footer id="footer">
+  <div class="container">
+    <p class="pull-right text-muted"><a back-to-top>Back to top</a></p>
+    <p class="text-muted">Proudly powered by:
+      <a href="http://angularjs.org" title="AngularJS" target="_blank"><img
+              src="https://angularjs.org/img/AngularJS-small.png"></a>
+    </p>
+  </div>
+</footer>
 
 <!-- Modal -->
 <div id="about" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="About AnnOtaria" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="aboutAnnotaria">About AnnOtaria</h4>
-			</div>
-			<div class="modal-body row">
-				<div class="col-md-4">
-					<img class="img-responsive img-rounded" src="images/annotaria.png">
-				</div>
-				<div class="col-md-8">
-					<p>AnnOtaria v.0.1 "Eumetopias"</p>
-					<p>© 2014 Ciro Mattia Gonano.</p>
-					<p>This software is released under
-						<a href="http://opensource.org/licenses/ISC" title="ISC license">ISC license</a>.<br>
-					   You can find the latest version of this software
-						<a href="https://github.com/ciromattia/annotaria">on <i class="fa fa-github"></i> GitHub</a>.
-					</p>
-				</div>
-			</div>
-			<div class="modal-footer"></div>
-		</div>
-	</div>
-</div>
-
-<div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Log In" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="loginModalLabel">Login</h4>
-			</div>
-			<div class="modal-body">
-				<div ng-controller="LoginCtrl">
-					<span></span>
-					<form ng-submit="submit()">
-						<fieldset>
-							<div class="form-group">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user"></i></span>
-									<input class="form-control" ng-model="user.username" type="text" name="user" placeholder="Username" />
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-key"></i></span>
-									<input class="form-control" ng-model="user.password" type="password" name="pass" placeholder="Password" />
-								</div>
-							</div>
-							<button class="btn btn-primary pull-right" type="submit" title="Login">Login</button>
-						</fieldset>
-					</form>
-				</div>
-			</div>
-		</div><!-- /.modal-content -->
-	</div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="aboutAnnotaria">About AnnOtaria</h4>
+      </div>
+      <div class="modal-body row">
+        <div class="col-md-4">
+          <img class="img-responsive img-rounded" src="images/annotaria.png">
+        </div>
+        <div class="col-md-8">
+          <p>AnnOtaria v.0.1 "Eumetopias"</p>
+          <p>© 2014 Ciro Mattia Gonano.</p>
+          <p>This software is released under
+            <a href="http://opensource.org/licenses/ISC" title="ISC license">ISC license</a>.<br>
+             You can find the latest version of this software
+            <a href="https://github.com/ciromattia/annotaria">on <i class="fa fa-github"></i> GitHub</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!--[if lt IE 9]>
@@ -141,23 +115,29 @@
 <![endif]-->
 
 <!-- build:js scripts/vendor.js -->
-<!-- bower:js -->
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="bower_components/angular-resource/angular-resource.js"></script>
-<script src="bower_components/angular-cookies/angular-cookies.js"></script>
-<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<!-- endbower -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script id="angularScript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.8/angular.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.8/angular-resource.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.8/angular-cookies.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.8/angular-sanitize.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.8/angular-route.min.js"></script>
+<script src="//assets.annotateit.org/annotator/v1.2.7/annotator.min.js"></script>
+<!--<script src="//assets.annotateit.org/annotator/v1.2.7/annotator.auth.min.js"></script>
+<script src="//assets.annotateit.org/annotator/v1.2.7/annotator.filter.min.js"></script>
+<script src="//assets.annotateit.org/annotator/v1.2.7/annotator.permissions.min.js"></script>
+<script src="//assets.annotateit.org/annotator/v1.2.7/annotator.store.min.js"></script>
+<script src="//assets.annotateit.org/annotator/v1.2.7/annotator.unsupported.min.js"></script>-->
+<!--<script src="scripts/annotator-plugins/prov.js"></script>
+<script src="scripts/annotator-plugins/lorestore.js"></script>-->
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/main.js"></script>
-<script src="scripts/controllers/article_detail.js"></script>
 <script src="scripts/controllers/article_list.js"></script>
-<script src="scripts/controllers/login.js"></script>
+<script src="scripts/controllers/article_detail.js"></script>
+<script src="scripts/services/http-interceptor.js"></script>
 <!-- endbuild -->
 
 </body>

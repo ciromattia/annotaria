@@ -1,11 +1,11 @@
-<a class="btn toc-toggle visible-xs" ng-click="toc=!toc">Show / Hide available documents</a>
-<div class="side-navigation" ng-show="toc==true" ng-controller="ArticleListCtrl">
-	<h3>Available documents</h3>
-	Filter by: <input ng-model="articlequery">
-	<ul class="nav-list aside-nav articlelist">
-		<li ng-repeat="item in articlelist | filter:articlequery" class="nav-index-listing">
-			<small><a href="#/annotaria-td/{{item.href}}">{{item.title}}</a></small>
-		</li>
-	</ul>
-	<a href="" ng-click="toc=false" class="toc-close visible-xs">Close</a>
+<a class="btn toc-toggle visible-xs" ng-click="notoc=!notoc">Show / Hide available documents</a>
+<div class="side-navigation" ng-show="notoc!=true" ng-controller="ArticleListCtrl">
+  <h3 id="listhdr">Available documents</h3>
+  Filter by: <input ng-model="articlequery">
+  <ul class="nav-list aside-nav articlelist">
+    <li ng-repeat="item in articlelist | filter:articlequery" class="nav-index-listing">
+      <small><a href="#/article/{{item.href}}">{{item.title}}</a></small>
+    </li>
+  </ul>
+  <a href ng-click="notoc=true" class="toc-close visible-xs">Close</a>
 </div>
