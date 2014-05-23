@@ -5,7 +5,7 @@ $(document).ready(main);
 function main() {
 	$.ajax({
 		method: 'GET',
-		url: 'http://localhost/annotaria-td/articlelist',
+		url: 'articles/articlelist',
 		success: function (d) {
 			for (var i = 0; i < d.length; i++) {
 				$('#articlelist').append('<li class="nav-index-listing">' +
@@ -22,7 +22,7 @@ function main() {
 function load(file) {
 	$.ajax({
 		method: 'GET',
-		url: 'http://localhost/annotaria-td/article/' + file,
+		url: 'articles/' + file,
 		success: function (d) {
 			$('#current_article').html(d)
 		},

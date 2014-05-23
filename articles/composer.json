@@ -1,0 +1,5 @@
+{
+    "require": {
+        "klein/klein": "v2.0.2"
+    }
+}
