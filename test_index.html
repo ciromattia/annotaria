@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Home - AnnOtaria</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="//assets.annotateit.org/annotator/v1.2.7/annotator.min.css">
+</head>
+<body>
+
+
+<!-- Begin page content -->
+
+				<ul id="articlelist">
+
+				</ul>
+			<article>
+				<h1>Ciao, io sono un titolo</h1>
+				<div id="current_article"></div>
+
+			</article>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//assets.annotateit.org/annotator/v1.2.7/annotator-full.min.js"></script>
+<script src="js/annotaria.js"></script>
+<script>
+	$('article').annotator().annotator('setupPlugins', null, {
+		Auth: false,
+		Permissions: false,
+		AnnotateItPermissions: {}
+	});
+</script>
+</body>
+</html>
