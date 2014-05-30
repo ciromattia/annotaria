@@ -1,16 +1,25 @@
 'use strict';
+var aperto= false;
 
-$(document).ready(main);
+
+$(document).ready(function(){
+    main();
+    
+$("#noti").html("<div class='alert alert-info'>Put the mouse over the title.</div>"); $('#notify').toggleClass('in'); setTimeout(function(){ $('#notify').toggleClass('in'); }, 5000);
+});
 
 function main() {
 	$.ajax({
 		method: 'GET',
-		url: 'articles/articlelist',
+		url: 'articles/article-list.json',
 		success: function (d) {
+            
 			for (var i = 0; i < d.length; i++) {
+                var stringa= d[i].title;
+                var subb = stringa.substr(0,25);
 				$('#articlelist').append('<li class="nav-index-listing">' +
-				'<small><a href="#" onclick="load(\'' + d[i].href + '\')">' +
-				d[i].title + "</a></li>");
+				'<small><a data-toggle="tooltip" data-placement="left" title="'+d[i].title+'"  href="javascript:load(\'' + d[i].href + '\',\''+d[i].title+'\')">' +
+				subb + "</a></li>");
 			}
 		},
 		error: function (a, b, c) {
@@ -19,15 +28,62 @@ function main() {
 	});
 }
 
-function load(file) {
-	$.ajax({
+function load(file,titolo) { 
+    
+    //alert($('[name="'+sub+'"]').val());
+   if   ($('[name="'+titolo+'"]').val()==titolo) {
+       
+      $("#noti").html("<div class='alert alert-danger'>The document is already open.</div>"); $('#notify').toggleClass('in'); setTimeout(function(){ $('#notify').toggleClass('in'); }, 5000);
+    
+    }else{
+   var string = titolo;
+    var sub = string.substr(0,26);
+        $("#tabs").append('<li id="doc'+titolo+'" class="active"><input type="hidden" name="'+titolo+'" value="'+titolo+'"></input><a href="javascript:reload(\''+file+'\');">'+sub+'</a></li>');
+    //$('#doc'+titolo+'').addClass('active');
+    
+    $.ajax({ 
 		method: 'GET',
 		url: 'articles/' + file,
 		success: function (d) {
+            
+            
+          
+           //  if   ($('[name="'+sub+'"]').val()==sub) {
+                 
+             //}else{
+             //}
+       
+			$('#current_article').html(d)
+          $('#doc'+titolo+'').addClass('active');
+		},
+		error: function (a, b, c) {
+			alert('Cannot load file ' + file)
+		}
+        
+	});
+    }
+    
+         
+}
+
+
+function reload(file){
+   $.ajax({
+		method: 'GET',
+		url: 'articles/' + file,
+		success: function (d) {
+            
+            
+          //$('#doc'+sub+'').addClass('active');
+          
+            
 			$('#current_article').html(d)
 		},
 		error: function (a, b, c) {
 			alert('Cannot load file ' + file)
 		}
 	});
+                           
+
+	
 }
