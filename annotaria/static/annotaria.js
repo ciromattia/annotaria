@@ -2,14 +2,32 @@
 
 var open_docs = {};
 
+
 $(document).ready(function () {
-    get_articlelist();
+    reset();
 //    $("#noti").html("<div class='alert alert-info'>Put the mouse over the title.</div>");
 //    $('#notify').toggleClass('in');
 //    setTimeout(function () {
 //        $('#notify').toggleClass('in');
 //    }, 5000);
 });
+    
+function reset() {
+    $('a[href="#tab_welcome"]').on('shown.bs.tab', function () {
+        $('#annotationlist').html('');
+        $('#annotationListPanel').collapse('hide');
+    });
+    get_articlelist();
+}
+
+function get_key_for_doc(value) {
+    for (var key in open_docs) {
+        if (open_docs.hasOwnProperty(key)) {
+            if (open_docs[key] === value)
+                return key;
+        }
+    }
+}
 
 function get_articlelist() {
     $.ajax({
@@ -34,9 +52,11 @@ function get_articlelist() {
 function registerCloseEvent() {
     $(".closeTab").click(function () {
         //there are multiple elements which has .closeTab icon so close the tab whose close icon is clicked
-        var tabContentId = $(this).parent().attr("li");
-        $(this).parent().remove(); //remove li of tab
+        var tabContentId = $(this).parent().attr("href");
+        $(this).parent().parent().remove(); //remove li of tab
         $('#tabs a:last').tab('show'); // Select first tab
+        $(tabContentId).remove(); //remove respective tab content
+        var file = get_key_for_doc()
     });
 }
 
@@ -48,7 +68,9 @@ function loadArticle(file, title) {
         open_docs[file] = nextTab;
         var trimmed_title = title.substr(0, 20);
         // create the tab
-        $('<li><a href="#tab' + nextTab + '" data-toggle="tab">' + trimmed_title + '</a></li>').appendTo('#tabs');
+        $('<li><a href="#tab' + nextTab + '" data-toggle="tab"><button id="closeTab' + nextTab + '" ' +
+            'class="close closeTab" type="button" >×</button> '
+            + trimmed_title + '</a></li>').appendTo('#tabs');
         // create the tab content
         $('<div class="tab-pane" id="tab' + nextTab + '"><img src="static/ajax-loader.gif"></div>').appendTo('.tab-content');
         $.ajax({
@@ -66,12 +88,19 @@ function loadArticle(file, title) {
         $('#tabs a:last').tab('show');
         $('a[href="#tab' + nextTab + '"]').on('shown.bs.tab', function () {
             get_annotations(file);
-        })
+        });
+        $('#closeTab' + nextTab).click(function () {
+            $('#closeTab' + nextTab).parent().remove(); //remove li of tab
+            $('#tabs a:last').tab('show'); // Select first tab
+            $('#tab' + nextTab).remove(); //remove respective tab content
+            delete open_docs[file];
+        });
     }
     $('#articleListPanel').collapse('hide');
 }
 
 function get_annotations(file) {
+    $('#annotationlist').html('');
     $.ajax({
         method: 'GET',
         url: 'annotations/' + file,
