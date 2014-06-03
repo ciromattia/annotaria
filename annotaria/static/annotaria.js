@@ -1,31 +1,76 @@
 'use strict';
 
 var open_docs = {};
-
+var doc_loaded = false;
+var temp_annotations = [];
 
 $(document).ready(function () {
     reset();
-//    $("#noti").html("<div class='alert alert-info'>Put the mouse over the title.</div>");
-//    $('#notify').toggleClass('in');
-//    setTimeout(function () {
-//        $('#notify').toggleClass('in');
-//    }, 5000);
 });
-    
+
 function reset() {
     $('a[href="#tab_welcome"]').on('shown.bs.tab', function () {
         $('#annotationlist').html('');
         $('#annotationListPanel').collapse('hide');
     });
+    $("#widget_instance").hide();
+    $("#widget_date").hide();
+    $("#widget_longtext").hide();
+    $("#widget_shorttext").hide();
     get_articlelist();
+    redraw_temp_annotations();
+    doc_loaded = false;
 }
 
-function get_key_for_doc(value) {
-    for (var key in open_docs) {
-        if (open_docs.hasOwnProperty(key)) {
-            if (open_docs[key] === value)
-                return key;
-        }
+function send_message(type, message) {
+    $("#noti").html('<div class="alert alert-' + type + '">' + message + '</div>');
+    $('#notify').toggleClass('in');
+    setTimeout(function () {
+        $('#notify').toggleClass('in')
+    }, 5000);        
+}
+
+function redraw_temp_annotations() {
+    var btn = $("#temp_annot_button");
+    btn.html('Unsaved annotations (' + temp_annotations.length + ')')
+    if (temp_annotations.length > 0) {
+        btn.addClass('btn-warning');
+        $('.temp_annot_action').removeClass('disabled');
+    } else {
+        btn.removeClass('btn-warning');
+        $('.temp_annot_action').addClass('disabled');
+    }
+    var tbody = $('#temp_annot_rows');
+    tbody.empty();
+    for (var i = 0; i < temp_annotations.length; i++) {
+        tbody.append('<tr><td>' + temp_annotations[i]['predicate'] + '</td><td>' +
+            temp_annotations[i]['object'] + '</td>');
+    }
+}
+
+function doc_annot_form_onselect(sel) {
+    $("#widget_instance").hide();
+    $("#widget_date").hide();
+    $("#widget_longtext").hide();
+    $("#widget_shorttext").hide();
+    switch (sel.value) {
+        case "hasAuthor":
+        case "hasPublisher":
+            $("#widget_instance").show();
+            break;
+        case "hasPublicationYear":
+            $("#widget_date").show();
+            break;
+        case "hasTitle":
+        case "hasAbstract":
+        case "hasComment":
+            $("#widget_longtext").show();
+            break;
+        case "hasShortTitle":
+            $("#widget_shorttext").show();
+            break;
+        default:
+            break;
     }
 }
 
@@ -38,7 +83,7 @@ function get_articlelist() {
                 var trimmed_title = d[i].title.substr(0, 25);
                 $('#articlelist').append('<li class="nav-index-listing">' +
                     '<small><a data-toggle="tooltip" data-placement="left" title="' + d[i].title +
-                    '" href="javascript:loadArticle(\'' + d[i].href + '\',\'' + d[i].title + '\')">' +
+                    '" href="javascript:load_article(\'' + d[i].href + '\',\'' + d[i].title + '\')">' +
                     trimmed_title + "</a></li>");
             }
         },
@@ -48,19 +93,7 @@ function get_articlelist() {
     });
 }
 
-//this method will register event on close icon on the tab..
-function registerCloseEvent() {
-    $(".closeTab").click(function () {
-        //there are multiple elements which has .closeTab icon so close the tab whose close icon is clicked
-        var tabContentId = $(this).parent().attr("href");
-        $(this).parent().parent().remove(); //remove li of tab
-        $('#tabs a:last').tab('show'); // Select first tab
-        $(tabContentId).remove(); //remove respective tab content
-        var file = get_key_for_doc()
-    });
-}
-
-function loadArticle(file, title) {
+function load_article(file, title) {
     if (file in open_docs) {
         $('#tabs a[href="#tab' + open_docs[file] + '"]').tab('show');
     } else {
@@ -69,10 +102,10 @@ function loadArticle(file, title) {
         var trimmed_title = title.substr(0, 20);
         // create the tab
         $('<li><a href="#tab' + nextTab + '" data-toggle="tab"><button id="closeTab' + nextTab + '" ' +
-            'class="close closeTab" type="button" >×</button> '
+            'class="close closeTab" type="button" >&times;</button> '
             + trimmed_title + '</a></li>').appendTo('#tabs');
         // create the tab content
-        $('<div class="tab-pane" id="tab' + nextTab + '"><img src="static/ajax-loader.gif"></div>').appendTo('.tab-content');
+        $('<div class="tab-pane" id="tab' + nextTab + '"><i class="fa fa-spinner fa-spin"></i></div>').appendTo('.tab-content');
         $.ajax({
             method: 'GET',
             url: 'article/' + file,
@@ -97,6 +130,7 @@ function loadArticle(file, title) {
         });
     }
     $('#articleListPanel').collapse('hide');
+    doc_loaded = file;
 }
 
 function get_annotations(file) {
@@ -107,7 +141,6 @@ function get_annotations(file) {
         success: function (d) {
             if (d.length < 1) {
                 $('#annotationlist').html('');
-                $('#annotationListPanel').collapse('hide');
             } else {
                 for (var i = 0; i < d.length; i++) {
                     var annotation = d[i];
@@ -120,9 +153,10 @@ function get_annotations(file) {
                         annotation['text'] + '</small></a>' +
                         '</li>');
                 }
-                $('#annotationListPanel').collapse('show');
+
                 $('[data-toggle=popover]').popover();
             }
+            $('#annotationListPanel').collapse('show');
         },
         error: function (request, status, error) {
             alert(request.responseText);
@@ -130,3 +164,68 @@ function get_annotations(file) {
     });
 }
 
+function save_annotation() {
+    var annotype = $('#doc_annot_type').find(":selected").text();
+    var anno = {
+        'target': doc_loaded,
+        'author': 'ciromattia-gonano',
+        'author_fullname': 'Ciro Mattia Gonano',
+        'created': new Date().toISOString(),
+        'label': 'a label',
+        'type': annotype,
+        'subject': doc_loaded,
+        'predicate': annotype,
+        'target_start': null,
+        'target_end': null,
+        'target_startoff': null,
+        'target_endoff': null
+    };
+    switch (annotype) {
+        case "hasAuthor":
+        case "hasPublisher":
+            anno['object'] = $("#widget_instance_selector").find(":selected").text();
+            break;
+        case "hasPublicationYear":
+            anno['object'] = $("#widget_date_input").val();
+            break;
+        case "hasTitle":
+        case "hasAbstract":
+        case "hasComment":
+            anno['object'] = $("#widget_longtext_input").val();
+            break;
+        case "hasShortTitle":
+            anno['object'] = $("#widget_shorttext_input").val();
+            break;
+        default:
+            break;
+    }
+    temp_annotations.push(anno);
+    redraw_temp_annotations();
+    $('#doc_annot').modal('hide');
+    send_message('info', 'The annotation has been temporarily saved.<br>You need to store it to make it actually resilient.');
+}
+
+function discard_annotations() {
+    temp_annotations = [];
+    $('#temp_annot').modal('hide');
+    send_message('success', 'Your annotations have been discarded!');
+    redraw_temp_annotations();
+}
+
+function store_annotations() {
+    $.ajax({
+        type: "POST",
+        url: "annotations/",
+        data: {annotations: JSON.stringify(temp_annotations)},
+        success: function (msg) {
+            temp_annotations = [];
+            $('#temp_annot').modal('hide');
+            send_message('success', 'Your annotations have been successfully stored!');
+            redraw_temp_annotations();
+            get_annotations(doc_loaded);
+        },
+        error: function () {
+            send_message('danger', 'Fail to save annotations, check your logs.');
+        }
+    });
+}

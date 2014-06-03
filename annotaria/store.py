@@ -22,7 +22,7 @@ class Store:
     def __init__(self, endpoint):
         self.endpoint = endpoint
         query_ep = self.endpoint + '/query'
-        update_ep = self.endpoint + '/query'
+        update_ep = self.endpoint + '/update'
         self.sparql = SPARQLUpdateStore(queryEndpoint=query_ep,
                                         update_endpoint=update_ep,
                                         bNodeAsURI=True)
@@ -36,11 +36,7 @@ class Store:
         for subject, predicate, obj in graph.triples((None, None, None)):
             triple = "%s %s %s ." % (subject.n3(), predicate.n3(), obj.n3())
             query_string += "INSERT DATA { %s };\n" % triple
-        r = self.sparql.update(query_string, initNs=initNS)
-        content = r.read()  # we expect no content
-        if r.status not in (200, 204):
-            raise Exception("Could not update: %d %s\n%s" % (
-                r.status, r.reason, content))
+        self.sparql.update(query=query_string, initNs=initNS)
         return
 
     def query_article(self, article):
