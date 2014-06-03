@@ -44,6 +44,7 @@ class Store:
         return
 
     def query_article(self, article):
+        escaped = article.replace('(', '\(').replace(')', '\)')
         ret = []
         query = """
         SELECT DISTINCT ?author ?author_fullname ?date ?label ?type
@@ -60,11 +61,11 @@ class Store:
             OPTIONAL { ?body rdf:subject ?body_s }
             OPTIONAL { ?body rdf:predicate ?body_p }
             OPTIONAL { ?body rdf:object ?body_o }
-            { ?annotation oa:hasTarget ao:""" + article + """ }
+            { ?annotation oa:hasTarget ao:""" + escaped + """ }
              UNION
             { ?annotation oa:hasTarget ?bnode .
               ?bnode rdf:type oa:SpecificResource ;
-                    oa:hasSource ao:""" + article + """ ;
+                    oa:hasSource ao:""" + escaped + """ ;
                     oa:hasSelector ?selector .
               ?selector rdf:type oa:FragmentSelector ;
                     rdf:value ?target_start ;

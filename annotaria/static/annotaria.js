@@ -1,14 +1,14 @@
 'use strict';
-var aperto = false;
-var j = 0;
+
+var open_docs = {};
 
 $(document).ready(function () {
     get_articlelist();
-    $("#noti").html("<div class='alert alert-info'>Put the mouse over the title.</div>");
-    $('#notify').toggleClass('in');
-    setTimeout(function () {
-        $('#notify').toggleClass('in');
-    }, 5000);
+//    $("#noti").html("<div class='alert alert-info'>Put the mouse over the title.</div>");
+//    $('#notify').toggleClass('in');
+//    setTimeout(function () {
+//        $('#notify').toggleClass('in');
+//    }, 5000);
 });
 
 function get_articlelist() {
@@ -17,15 +17,15 @@ function get_articlelist() {
         url: 'articles',
         success: function (d) {
             for (var i = 0; i < d.length; i++) {
-                var stringa = d[i].title;
-                var subb = stringa.substr(0, 25);
+                var trimmed_title = d[i].title.substr(0, 25);
                 $('#articlelist').append('<li class="nav-index-listing">' +
-                    '<small><a data-toggle="tooltip" data-placement="left" title="' + d[i].title + '"   href="javascript:load(\'' + d[i].href + '\',\'' + d[i].title + '\')">' +
-                    subb + "</a></li>");
+                    '<small><a data-toggle="tooltip" data-placement="left" title="' + d[i].title +
+                    '" href="javascript:loadArticle(\'' + d[i].href + '\',\'' + d[i].title + '\')">' +
+                    trimmed_title + "</a></li>");
             }
         },
-        error: function (a, b, c) {
-            alert('No documents.')
+        error: function (request, status, error) {
+            alert(request.responseText);
         }
     });
 }
@@ -40,46 +40,32 @@ function registerCloseEvent() {
     });
 }
 
-function load(file, titolo) {
-    if ($('[name="' + titolo + '"]').val() == titolo) {
-
-        $("#noti").html("<div class='alert alert-danger'>The document is already open.</div>");
-        $('#notify').toggleClass('in');
-        setTimeout(function () {
-            $('#notify').toggleClass('in');
-        }, 5000);
+function loadArticle(file, title) {
+    if (file in open_docs) {
+        $('#tabs a[href="#tab' + open_docs[file] + '"]').tab('show');
     } else {
-        var sub = titolo.substr(0, 20);
-        if (j < 3) {
-            $("#tabs").append('<li class="active" class="close closeTab" id="doc' + titolo + '" >' +
-                '<button class="close closeTab" type="button" >×</button>' +
-                '<input type="hidden" name="' + titolo + '" value="' + titolo + '"></input>' +
-                '<a href="javascript:reload(\'' + file + '\');">' + sub + '</a>' +
-                '</li>');
-            $('#articleListPanel').collapse('hide');
-            j++;
-            $.ajax({
-                method: 'GET',
-                url: 'article/' + file,
-                success: function (d) {
-                    $('#current_article').html(d['body']);
-                    $('#doc' + titolo + '').addClass('active');
-                    get_annotations(file);
-                },
-                error: function () {
-                    alert('Cannot load file ' + file)
-                }
-
-            });
-        } else {
-            $("#noti").html("<div class='alert alert-danger'>You can open only 3 Document</div>");
-            $('#notify').toggleClass('in');
-            setTimeout(function () {
-                $('#notify').toggleClass('in');
-            }, 5000);
-        }
-
+        var nextTab = $('#tabs li').size() + 1;
+        open_docs[file] = nextTab;
+        var trimmed_title = title.substr(0, 20);
+        // create the tab
+        $('<li><a href="#tab' + nextTab + '" data-toggle="tab">' + trimmed_title + '</a></li>').appendTo('#tabs');
+        // create the tab content
+        $('<div class="tab-pane" id="tab' + nextTab + '"><img src="static/ajax-loader.gif"></div>').appendTo('.tab-content');
+        $.ajax({
+            method: 'GET',
+            url: 'article/' + file,
+            success: function (d) {
+                $('#tab' + nextTab).html(d['body']);
+                get_annotations(file);
+            },
+            error: function (request, status, error) {
+                alert(request.responseText);
+            }
+        });
+        // make the new tab active
+        $('#tabs a:last').tab('show');
     }
+    $('#articleListPanel').collapse('hide');
 }
 
 function reload(file) {
@@ -121,7 +107,7 @@ function get_annotations(file) {
             }
         },
         error: function (request, status, error) {
-           alert(request.responseText);
+            alert(request.responseText);
         }
     });
 }
