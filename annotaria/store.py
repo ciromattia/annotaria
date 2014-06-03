@@ -48,10 +48,12 @@ class Store:
         query = """
         SELECT DISTINCT ?annotation
         WHERE {
-            {?annotation oa:hasTarget oa:""" + article + """ . }
+            ?annotation rdf:type oa:Annotation .
+            {?annotation oa:hasTarget ao:""" + article + """ . }
              UNION
             {?annotation oa:hasTarget ?bnode .
-             ?bnode oa:hasSource oa:""" + article + """ . }
+             ?bnode rdf:type oa:SpecificResource ;
+                    oa:hasSource ao:""" + article + """ . }
         }"
         """
         ret = self.sparql.query(query, initNs=initNS)
