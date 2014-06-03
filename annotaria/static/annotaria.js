@@ -64,22 +64,11 @@ function loadArticle(file, title) {
         });
         // make the new tab active
         $('#tabs a:last').tab('show');
+        $('a[href="#tab' + nextTab + '"]').on('shown.bs.tab', function () {
+            get_annotations(file);
+        })
     }
     $('#articleListPanel').collapse('hide');
-}
-
-function reload(file) {
-    $.ajax({
-        method: 'GET',
-        url: 'article/' + file,
-        success: function (d) {
-            $('#current_article').html(d['body']);
-            get_annotations(file);
-        },
-        error: function (a, b, c) {
-            alert('Cannot load file ' + file)
-        }
-    });
 }
 
 function get_annotations(file) {
