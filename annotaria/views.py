@@ -92,32 +92,32 @@ def set_annotations():
     return jsonify(store.store_annotations(annotations))
 
 
-# get a single annotation
-@app.route('/annotations/<int:annotation_id>', methods=['GET'])
-def read_annotation(annotation_id):
-    store = Store(app.config['SPARQL_ENDPOINT'])
-    annotation = store.query_annotation(annotation_id)
-    if not annotation:
-        return jsonify('Annotation not found!', status=404)
-    return jsonify(annotation)
-
-
-# update a single annotation
-@app.route('/annotations/<int:annotation_id>', methods=['POST', 'PUT'])
-def update_annotation(annotation_id):
-    store = Store(app.config['SPARQL_ENDPOINT'])
-    annotation = store.query_annotation(annotation_id)
-    if not annotation:
-        return jsonify('Annotation not found! No update performed.', status=404)
-    return jsonify(annotation)
-
-
-# delete a single annotation
-@app.route('/annotations/<int:annotation_id>', methods=['DELETE'])
-def delete_annotation(annotation_id):
-    store = Store(app.config['SPARQL_ENDPOINT'])
-    annotation = store.query_annotation(annotation_id)
-    if not annotation:
-        return jsonify('Annotation not found. No delete performed.', status=404)
-    annotation.delete()
-    return '', 204
+# # get a single annotation
+# @app.route('/annotations/<int:annotation_id>', methods=['GET'])
+# def read_annotation(annotation_id):
+#     store = Store(app.config['SPARQL_ENDPOINT'])
+#     annotation = store.query_annotation(annotation_id)
+#     if not annotation:
+#         return jsonify('Annotation not found!', status=404)
+#     return jsonify(annotation)
+#
+#
+# # update a single annotation
+# @app.route('/annotations/<int:annotation_id>', methods=['POST', 'PUT'])
+# def update_annotation(annotation_id):
+#     store = Store(app.config['SPARQL_ENDPOINT'])
+#     annotation = store.query_annotation(annotation_id)
+#     if not annotation:
+#         return jsonify('Annotation not found! No update performed.', status=404)
+#     return jsonify(annotation)
+#
+#
+# # delete a single annotation
+# @app.route('/annotations/<int:annotation_id>', methods=['DELETE'])
+# def delete_annotation(annotation_id):
+#     store = Store(app.config['SPARQL_ENDPOINT'])
+#     annotation = store.query_annotation(annotation_id)
+#     if not annotation:
+#         return jsonify('Annotation not found. No delete performed.', status=404)
+#     annotation.delete()
+#     return '', 204

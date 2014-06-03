@@ -30,8 +30,9 @@ class Store:
     def store_annotations(self, annotations):
         graph = self.init_graph()
         for annotation in annotations:
-            ann = Annotation(annotation)
-            ann.get_rdf(self.sparql)
+            ann = Annotation()
+            ann.parse_json(annotation)
+            ann.get_rdf(graph)
         query_string = ""
         for subject, predicate, obj in graph.triples((None, None, None)):
             triple = "%s %s %s ." % (subject.n3(), predicate.n3(), obj.n3())

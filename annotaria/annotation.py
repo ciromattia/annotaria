@@ -21,9 +21,34 @@ class Annotation:
     def __init__(self):
         self.id = uuid4()
         # init fields
-        self.label = self.type = self.created = self.text = self.uri = self.author =\
-            self.author_fullname = self.target = None
-        self.range = {}
+        self.annotation = {
+            "annotations": [{
+                "type": None,
+                "label": None,
+                "body": {
+                    "label": None,
+                    "subject": None,
+                    "predicate": None,
+                    "literal": None,
+                    "object": None,
+                    "resource": None
+                }
+            }],
+            "target": {
+                "source": None,
+                "start_id": None,
+                "start_off": None,
+                "end_id": None,
+                "end_off": None
+            },
+            "provenance": {
+                "author": {
+                    "name": None,
+                    "email": None
+                },
+                "time": None
+            }
+        }
 
     # Takes an array and parses it into our object
     def parse_json(self, annotation_json):
@@ -32,20 +57,6 @@ class Annotation:
         pass
 
     def parse_rdf(self, annotation_rdf):
-        # ret.append({
-        #     'author':           str(row[0]),
-        #     'author_fullname':  str(row[1]),
-        #     'created':             str(row[2]),
-        #     'label':            str(row[3]),
-        #     'type':             str(row[4]),
-        #     'subject':             str(row[5]),
-        #     'predicate':        str(row[6]),
-        #     'object':           str(row[7]),
-        #     'target_start':     str(row[8]),
-        #     'target_end':       str(row[9]),
-        #     'target_startoff':  int(row[10]),
-        #     'target_endoff':    int(row[11]),
-        # })
         if annotation_rdf['object'] != 'None':
             self.type = annotation_rdf['predicate']
         if annotation_rdf['label'] != 'None':
@@ -70,18 +81,8 @@ class Annotation:
             self.target = 'document'
         return self
 
-    def get_json(self):
-        return {
-            "label": self.label,
-            "type": self.type,
-            "created": self.created,
-            "text": self.text,
-            "uri": self.uri,
-            "range": self.range,
-            "author": self.author,
-            "author_fullname": self.author_fullname,
-            "target": self.target
-        }
+    def get_dict(self):
+        return self.annotation
 
     # Returns an RDF object
     def get_rdf(self, rdf):
@@ -138,7 +139,7 @@ class Annotation:
             rdf.add((reifiedstmt, RDF.object, URIRef(self.text)))
             rdf.add((reifiedstmt, RDF.predicate, FABIO.hasSubjectTerm))
             rdf.add((anno, OA.hasBody, reifiedstmt))
-        elif self.type == "Comment":
+        elif self.type == "hasComment":
             rdf.add((anno, RDFS.label, Literal("Comment")))
             # reifiedstmt = BNode(str(self.id) + "body")
             reifiedstmt = AON[str(self.id) + "_body"]
@@ -156,7 +157,16 @@ class Annotation:
             rdf.add((reifiedstmt, RDF.object, URIRef(self.text)))
             rdf.add((reifiedstmt, RDF.predicate, SEM.denotes))
             rdf.add((anno, OA.hasBody, reifiedstmt))
-        elif self.type == "Author":
+        elif self.type == "hasAuthor":
+            rdf.add((anno, AO.type, Literal("hasAuthor")))
+            # reifiedstmt = BNode(str(self.id) + "body")
+            reifiedstmt = AON[str(self.id) + "_body"]
+            rdf.add((reifiedstmt, RDF.type, RDF.Statement))
+            rdf.add((reifiedstmt, RDF.subject, work))
+            rdf.add((reifiedstmt, RDF.object, AOP[self.text]))
+            rdf.add((reifiedstmt, RDF.predicate, DCTERMS.creator))
+            rdf.add((anno, OA.hasBody, reifiedstmt))
+        elif self.type == "hasPublisher":
             rdf.add((anno, AO.type, Literal("hasAuthor")))
             # reifiedstmt = BNode(str(self.id) + "body")
             reifiedstmt = AON[str(self.id) + "_body"]

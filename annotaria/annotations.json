@@ -1,64 +1,176 @@
 {
     "annotations": [
         {
-            "type": "Title",
-            "created": "2014-05-21T18:00",
-            "text": "Le avventure di Cappuccetto Rosso",
-            "uri": "BMC_Ophthalmol_2013_Mar_28_13_9.html",
-            "range": {},
-            "author": "fabio-vitali",
-            "target": "document"
-        },
-        {
-            "type": "Title",
-            "created": "2014-05-21T18:00",
-            "text": "Little Red Riding Hood",
-            "uri": "BMC_Ophthalmol_2013_Mar_28_13_9.html",
-            "range": {},
-            "author": "fabio-vitali",
-            "target": "document"
-        },
-        {
-            "type": "Subject",
-            "created": "2015-09-08T16:32",
-            "text": "http://dbpedia.org/resource/Medicine",
-            "uri": "BMC_Geriatr_2009_Jul_27_9_31.html",
-            "range": {},
-            "author": "fabio-vitali",
-            "target": "document"
-        },
-        {
-            "type": "Comment",
-            "created": "2014-10-06T10:15",
-            "text": "An interesting article concerning...",
-            "uri": "BMC_Geriatr_2009_Jul_27_9_31.html",
-            "range": {},
-            "author": "james-swetnam",
-            "target": "document"
-        },
-        {
-            "type": "Person",
-            "created": "2014-07-06T09:57",
-            "text": "http://dbpedia.org/resource/James_Dewey_Watso",
-            "uri": "BMC_Cardiovasc_Disord_2012_Jan_31_12_2.html",
-            "range": {
-                "start": "/div[div34]",
-                "end": "/div[div34]",
-                "startOffset": 12,
-                "endOffset": 21
-            },
-            "author": "james-swetnam",
-            "target": "fragment"
-        },
-        {
-            "type": "Author",
-            "created": "2014-10-10T11:04",
-            "text": "david-almond",
-            "uri": "BMC_Bioinformatics_2008_Jan_23_9_40.html",
-            "author": "david-almond",
-            "range": {},
-            "target": "document"
+            "type": "hasComment",
+            "label": "Commento",
+            "body": {
+                "subject": "ao:example-document_ver1",
+                "predicate": "schema:comment",
+                "literal": "Articolo pessimo: illeggibile veramente"
+            }
         }
-    ]
+    ],
+    "target": {
+        "source": "ao:example-document_ver1.html"
+    },
+    "provenance": {
+        "author": {
+            "name": "Pinco Pallino",
+            "email": "pinco.pallino@studio.unibo.it"
+        },
+        "time": "2014-03-12T15:46"
+    }
+}
+
+{
+	"annotations": [
+        {
+			"type": "hasSubject" ,
+			"label": "Soggetto",
+			"body": {
+				"label": "Medicina" ,
+				"subject": "ao:example-document_ver1" ,
+				"predicate": "fabio:hasSubjectTerm",
+				"resource": "http://dbpedia.org/resource/Medicine"
+			}
+	    }],
+	target: {
+		source: "ao:example-document_ver1.html"
+	} ,
+	provenance: {
+		author: {
+			name: "Pinco Pallino" ,
+			email: "pinco.pallino@studio.unibo.it" 
+		} ,
+		time: "2014-03-12T15:46"
+	}
+}
+
+{
+    "annotations": [
+        {
+            "type": "denotesPerson",
+            "label": "Persona",
+            "body": {
+                "label": "Scopritore DNA" ,
+                "subject": "ao:example-document_ver1#div34-12-21" ,
+                "predicate": "sem:denotes",
+                "resource": "http://dbpedia.org/resource/James_Dewey_Watson"
+	        }
+        }
+    ],
+target: {
+	source: "ao:example-document_ver1.html" ,
+	id: "div34" ,
+	start: 12,
+	end: 21
+} ,
+provenance: {
+	author: {
+		name: "Pinco Pallino" ,
+		email: "pinco.pallino@studio.unibo.it" 
+	} ,
+	time: "2014-03-12T15:46"
+}}
+
+
+{
+	annotations: [{
+			type: "hasPublicationYear" ,
+			label: "Anno di pubblicazione" ,
+			body: {
+				label: "Questo articolo è stato pubblicato nel 2013" ,
+				subject: "ao:example-document_ver1"
+				predicate: "fabio:hasPublicationYear"
+				literal: "2013"
+			}
+		},{
+			type: "hasAuthor" ,
+			label: "Autore" ,
+			body: {
+				label: "Questo articolo ha come autore Fabio Vitali" ,
+				subject: "ao:example-document" ,
+				predicate: "dcterms:creator" ,
+				object: "aop:fabio-vitali" 
+			}
+		}
+	],
+	target: {
+		source: "ao:example-document_ver1.html"
+	} ,
+	provenance: {
+		author: {
+			name: "Pinco Pallino"
+			email: "pinco.pallino@studio.unibo.it" 
+		} ,
+		time: "2014-03-12T15:46"
+	}
+}
+
+
+
+
+{
+"annotations": [
+{
+"type": "Title",
+"created": "2014-05-21T18:00",
+"text": "Le avventure di Cappuccetto Rosso",
+"uri": "BMC_Ophthalmol_2013_Mar_28_13_9.html",
+"range": {},
+"author": "fabio-vitali",
+"target": "document"
+},
+{
+"type": "Title",
+"created": "2014-05-21T18:00",
+"text": "Little Red Riding Hood",
+"uri": "BMC_Ophthalmol_2013_Mar_28_13_9.html",
+"range": {},
+"author": "fabio-vitali",
+"target": "document"
+},
+{
+"type": "Subject",
+"created": "2015-09-08T16:32",
+"text": "http://dbpedia.org/resource/Medicine",
+"uri": "BMC_Geriatr_2009_Jul_27_9_31.html",
+"range": {},
+"author": "fabio-vitali",
+"target": "document"
+},
+{
+"type": "Comment",
+"created": "2014-10-06T10:15",
+"text": "An interesting article concerning...",
+"uri": "BMC_Geriatr_2009_Jul_27_9_31.html",
+"range": {},
+"author": "james-swetnam",
+"target": "document"
+},
+{
+"type": "Person",
+"created": "2014-07-06T09:57",
+"text": "http://dbpedia.org/resource/James_Dewey_Watso",
+"uri": "BMC_Cardiovasc_Disord_2012_Jan_31_12_2.html",
+"range": {
+"start": "/div[div34]",
+"end": "/div[div34]",
+"startOffset": 12,
+"endOffset": 21
+},
+"author": "james-swetnam",
+"target": "fragment"
+},
+{
+"type": "Author",
+"created": "2014-10-10T11:04",
+"text": "david-almond",
+"uri": "BMC_Bioinformatics_2008_Jan_23_9_40.html",
+"author": "david-almond",
+"range": {},
+"target": "document"
+}
+]
 }
     

@@ -12,6 +12,7 @@ function reset() {
     $('a[href="#tab_welcome"]').on('shown.bs.tab', function () {
         $('#annotationlist').html('');
         $('#annotationListPanel').collapse('hide');
+        $('#add_annotation_doc').hide();
     });
     $("#widget_instance").hide();
     $("#widget_date").hide();
@@ -20,6 +21,7 @@ function reset() {
     get_articlelist();
     redraw_temp_annotations();
     doc_loaded = false;
+    $('#add_annotation_doc').hide();
 }
 
 function send_message(type, message) {
@@ -27,12 +29,12 @@ function send_message(type, message) {
     $('#notify').toggleClass('in');
     setTimeout(function () {
         $('#notify').toggleClass('in')
-    }, 5000);        
+    }, 5000);
 }
 
 function redraw_temp_annotations() {
     var btn = $("#temp_annot_button");
-    btn.html('Unsaved annotations (' + temp_annotations.length + ')')
+    btn.html('Unsaved annotations (' + temp_annotations.length + ')');
     if (temp_annotations.length > 0) {
         btn.addClass('btn-warning');
         $('.temp_annot_action').removeClass('disabled');
@@ -157,6 +159,7 @@ function get_annotations(file) {
                 $('[data-toggle=popover]').popover();
             }
             $('#annotationListPanel').collapse('show');
+            $('#add_annotation_doc').show();
         },
         error: function (request, status, error) {
             alert(request.responseText);
@@ -167,18 +170,23 @@ function get_annotations(file) {
 function save_annotation() {
     var annotype = $('#doc_annot_type').find(":selected").text();
     var anno = {
-        'target': doc_loaded,
-        'author': 'ciromattia-gonano',
-        'author_fullname': 'Ciro Mattia Gonano',
-        'created': new Date().toISOString(),
-        'label': 'a label',
-        'type': annotype,
-        'subject': doc_loaded,
-        'predicate': annotype,
-        'target_start': null,
-        'target_end': null,
-        'target_startoff': null,
-        'target_endoff': null
+        "type": annotype,
+        "label": null,
+        "body": {
+            "label": null,
+            "subject": null,
+            "predicate": null,
+            "literal": null,
+            "object": null,
+            "resource": null
+        },
+        "target": {
+            "source": doc_loaded,
+            "start_id": null,
+            "start_off": null,
+            "end_id": null,
+            "end_off": null
+        }
     };
     switch (annotype) {
         case "hasAuthor":
@@ -212,11 +220,30 @@ function discard_annotations() {
     redraw_temp_annotations();
 }
 
-function store_annotations() {
+function store_annotations(doc) {
+    var json_anno = {
+        "annotations": [],
+        "target": {
+            "source": doc
+        },
+        "provenance": {
+            "author": {
+                "name": "Ciro Mattia Gonano",
+                "email": "ciromattia@gmail.com"
+            },
+            "time": new Date().toISOString()
+        }
+    };
+    for (var i = 0; i < temp_annotations.length; i++) {
+        var anno = temp_annotations[i];
+        if (anno['target'] != doc)
+            continue;
+        json_anno['annotations'].push(anno)
+    }
     $.ajax({
         type: "POST",
         url: "annotations/",
-        data: {annotations: JSON.stringify(temp_annotations)},
+        data: {data: JSON.stringify(json_anno)},
         success: function (msg) {
             temp_annotations = [];
             $('#temp_annot').modal('hide');
