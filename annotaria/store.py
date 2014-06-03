@@ -46,17 +46,50 @@ class Store:
     def query_article(self, article):
         ret = []
         query = """
-        SELECT DISTINCT ?annotation
+        SELECT DISTINCT ?author ?author_fullname ?date ?label ?type
+         ?body_s ?body_p ?body_o
+         ?target_start ?target_end ?target_startoffset ?target_endoffset
         WHERE {
-            ?annotation rdf:type oa:Annotation .
-            {?annotation oa:hasTarget ao:""" + article + """ . }
+            ?annotation rdf:type oa:Annotation ;
+                oa:annotatedAt ?date ;
+                oa:annotatedBy ?author .
+            OPTIONAL { ?author foaf:name ?author_fullname }
+            OPTIONAL { ?annotation rdfs:label ?label }
+            OPTIONAL { ?annotation ao:type ?type }
+            OPTIONAL { ?annotation oa:hasBody ?body }
+            OPTIONAL { ?body rdf:subject ?body_s }
+            OPTIONAL { ?body rdf:predicate ?body_p }
+            OPTIONAL { ?body rdf:object ?body_o }
+            { ?annotation oa:hasTarget ao:""" + article + """ }
              UNION
-            {?annotation oa:hasTarget ?bnode .
-             ?bnode rdf:type oa:SpecificResource ;
-                    oa:hasSource ao:""" + article + """ . }
-        }"
+            { ?annotation oa:hasTarget ?bnode .
+              ?bnode rdf:type oa:SpecificResource ;
+                    oa:hasSource ao:""" + article + """ ;
+                    oa:hasSelector ?selector .
+              ?selector rdf:type oa:FragmentSelector ;
+                    rdf:value ?target_start ;
+                    oa:start ?target_startoffset ;
+                    oa:end ?target_endoffset }
+        }
         """
-        ret = self.sparql.query(query, initNs=initNS)
+        for row in self.sparql.query(query, initNs=initNS):
+            annotation = Annotation()
+            annotation.parse_rdf({
+                'target': article,
+                'author': str(row[0]),
+                'author_fullname': str(row[1]),
+                'created': str(row[2]),
+                'label': str(row[3]),
+                'type': str(row[4]),
+                'subject': str(row[5]),
+                'predicate': str(row[6]),
+                'object': str(row[7]),
+                'target_start': str(row[8]),
+                'target_end': str(row[9]),
+                'target_startoff': int(row[10]) if row[10] is not None else None,
+                'target_endoff': int(row[11]) if row[11] is not None else None,
+            })
+            ret.append(annotation.get_json())
         return ret
 
     def query_annotation(self, annotation_id):

@@ -35,11 +35,13 @@ def parse_article(html):
 
 
 # ## ROUTING ###
+# root
 @app.route('/')
 def root():
     return render_template('index.html')
 
 
+# retrieve articles list
 @app.route('/articles', methods=['GET'])
 def get_articles():
     path = dirname(realpath(__file__))
@@ -53,6 +55,7 @@ def get_articles():
     return jsonify(ret)
 
 
+# retrieve a single article
 @app.route('/article/<file_name>', methods=['GET'])
 def get_article(file_name):
     try:
@@ -64,6 +67,7 @@ def get_article(file_name):
     return jsonify(ret)
 
 
+# proxy article images
 @app.route('/articles/images/<file_name>', methods=['GET'])
 def get_article_image(file_name):
     try:
@@ -73,14 +77,22 @@ def get_article_image(file_name):
         raise e
 
 
-# CREATE
+# get all annotations for a single article
 @app.route('/annotations/<article>', methods=['GET'])
 def get_annotations(article):
     store = Store(app.config['SPARQL_ENDPOINT'])
     return jsonify(store.query_article(article))
 
 
-# READ
+# store a bunch of annotations in the triple store
+@app.route('/annotations', methods=['POST'])
+def set_annotations():
+    store = Store(app.config['SPARQL_ENDPOINT'])
+    annotations = request.form['annotations']
+    return jsonify(store.store_annotations(annotations))
+
+
+# get a single annotation
 @app.route('/annotations/<int:annotation_id>', methods=['GET'])
 def read_annotation(annotation_id):
     store = Store(app.config['SPARQL_ENDPOINT'])
@@ -90,7 +102,7 @@ def read_annotation(annotation_id):
     return jsonify(annotation)
 
 
-# UPDATE
+# update a single annotation
 @app.route('/annotations/<int:annotation_id>', methods=['POST', 'PUT'])
 def update_annotation(annotation_id):
     store = Store(app.config['SPARQL_ENDPOINT'])
@@ -100,7 +112,7 @@ def update_annotation(annotation_id):
     return jsonify(annotation)
 
 
-# DELETE
+# delete a single annotation
 @app.route('/annotations/<int:annotation_id>', methods=['DELETE'])
 def delete_annotation(annotation_id):
     store = Store(app.config['SPARQL_ENDPOINT'])

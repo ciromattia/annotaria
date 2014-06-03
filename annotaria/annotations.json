@@ -6,7 +6,7 @@
             "text": "Le avventure di Cappuccetto Rosso",
             "uri": "BMC_Ophthalmol_2013_Mar_28_13_9.html",
             "range": {},
-            "user": "fabio-vitali",
+            "author": "fabio-vitali",
             "target": "document"
         },
         {
@@ -15,7 +15,7 @@
             "text": "Little Red Riding Hood",
             "uri": "BMC_Ophthalmol_2013_Mar_28_13_9.html",
             "range": {},
-            "user": "fabio-vitali",
+            "author": "fabio-vitali",
             "target": "document"
         },
         {
@@ -24,7 +24,7 @@
             "text": "http://dbpedia.org/resource/Medicine",
             "uri": "BMC_Geriatr_2009_Jul_27_9_31.html",
             "range": {},
-            "user": "fabio-vitali",
+            "author": "fabio-vitali",
             "target": "document"
         },
         {
@@ -33,7 +33,7 @@
             "text": "An interesting article concerning...",
             "uri": "BMC_Geriatr_2009_Jul_27_9_31.html",
             "range": {},
-            "user": "james-swetnam",
+            "author": "james-swetnam",
             "target": "document"
         },
         {
@@ -47,7 +47,7 @@
                 "startOffset": 12,
                 "endOffset": 21
             },
-            "user": "james-swetnam",
+            "author": "james-swetnam",
             "target": "fragment"
         },
         {
@@ -55,7 +55,7 @@
             "created": "2014-10-10T11:04",
             "text": "david-almond",
             "uri": "BMC_Bioinformatics_2008_Jan_23_9_40.html",
-            "user": "david-almond",
+            "author": "david-almond",
             "range": {},
             "target": "document"
         }

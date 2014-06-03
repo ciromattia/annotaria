@@ -18,22 +18,70 @@ SEM = Namespace("http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#")
 
 
 class Annotation:
-    def __init__(self, annotation_src=None):
+    def __init__(self):
         self.id = uuid4()
         # init fields
-        self.type = self.created = self.text = self.uri = self.user = self.target = None
+        self.label = self.type = self.created = self.text = self.uri = self.author =\
+            self.author_fullname = self.target = None
         self.range = {}
-        if annotation_src is not None:
-            self.parse_dict(annotation_src)
 
     # Takes an array and parses it into our object
-    def parse_dict(self, annotation_src):
-        for key in annotation_src:
-            setattr(self, key, annotation_src[key])
+    def parse_json(self, annotation_json):
+        for key in annotation_json:
+            setattr(self, key, annotation_json[key])
         pass
 
     def parse_rdf(self, annotation_rdf):
-        pass
+        # ret.append({
+        #     'author':           str(row[0]),
+        #     'author_fullname':  str(row[1]),
+        #     'created':             str(row[2]),
+        #     'label':            str(row[3]),
+        #     'type':             str(row[4]),
+        #     'subject':             str(row[5]),
+        #     'predicate':        str(row[6]),
+        #     'object':           str(row[7]),
+        #     'target_start':     str(row[8]),
+        #     'target_end':       str(row[9]),
+        #     'target_startoff':  int(row[10]),
+        #     'target_endoff':    int(row[11]),
+        # })
+        if annotation_rdf['object'] != 'None':
+            self.type = annotation_rdf['predicate']
+        if annotation_rdf['label'] != 'None':
+            self.label = annotation_rdf['label']
+        elif annotation_rdf['type'] != 'None':
+            self.label = annotation_rdf['type']
+        self.created = annotation_rdf['created']
+        self.author = annotation_rdf['author']
+        self.author_fullname = annotation_rdf['author_fullname']
+        self.uri = annotation_rdf['target']
+        self.text = annotation_rdf['object']
+        # we don't translate subject and predicate cause they are inferred by annotation type
+        if annotation_rdf['target_start'] != 'None':
+            self.target = 'fragment'
+            self.range = {
+                "start": annotation_rdf['target_start'],
+                "end": annotation_rdf['target_end'],
+                "startOffset": annotation_rdf['target_startoff'],
+                "endOffset": annotation_rdf['target_endoff']
+            }
+        else:
+            self.target = 'document'
+        return self
+
+    def get_json(self):
+        return {
+            "label": self.label,
+            "type": self.type,
+            "created": self.created,
+            "text": self.text,
+            "uri": self.uri,
+            "range": self.range,
+            "author": self.author,
+            "author_fullname": self.author_fullname,
+            "target": self.target
+        }
 
     # Returns an RDF object
     def get_rdf(self, rdf):
@@ -53,7 +101,7 @@ class Annotation:
         anno = AON[self.id]
         rdf.add((anno, RDF.type, OA.Annotation))
         rdf.add((anno, OA.annotatedAt, Literal(self.created)))
-        rdf.add((anno, OA.annotatedBy, AOP[self.user]))
+        rdf.add((anno, OA.annotatedBy, AOP[self.author]))
 
         # set target
         if self.range:

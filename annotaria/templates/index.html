@@ -62,19 +62,34 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <a class="btn toc-toggle visible-xs" ng-click="notoc=!notoc">Show / Hide available documents</a>
-
-            <div class="side-navigation" ng-show="notoc!=true" ng-controller="ArticleListCtrl">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4>Available documents:</h4>
+            <div class="side-navigation">
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#articleListPanel">
+                                    Available documents</a>
+                            </h4>
+                        </div>
+                        <div id="articleListPanel" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <ul class="nav-list aside-nav articlelist" id="articlelist"></ul>
+                            </div>
+                        </div>
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#annotationListPanel">
+                                    Document metadata</a>
+                            </h4>
+                        </div>
+                        <div id="annotationListPanel" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul class="nav-list aside-nav annotationlist" id="annotationlist"></ul>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="panel-body">
-                        <li class="nav-list aside-nav articlelist" id="articlelist"></li>
-                    </ul>
                 </div>
             </div>
-            <a href ng-click="notoc=true" class="toc-close visible-xs">Close</a>
         </div>
         <div class="col-md-9">
             <article>
@@ -140,9 +155,8 @@
     </div>
 </div>
 
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="//assets.annotateit.org/annotator/v1.2.7/annotator-full.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="{{ url_for('static', filename='annotaria.js') }}"></script>
 
