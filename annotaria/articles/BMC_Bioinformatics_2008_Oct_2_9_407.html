@@ -1,0 +1,1371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html id="h336e9072"><head id="r844l9290"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" id="r460q7823"><title id="c961a1668">Halling-Brown, Moss, and Shepherd: Towards a lightweight generic computational grid framework for biological research</title><link rel="stylesheet" type="text/css" href="jats-preview.css" id="r990m9290"></head><body id="l151i4268">
+      <div id="article1-front" class="front">
+         <div class="metadata two-column table" id="y739f5399">
+            <div class="row" id="v205p6165">
+               <div class="cell" id="r8c4988">
+                  <h4 class="generated" id="r197o9182">Journal Information</h4>
+                  <div class="metadata-group" id="r749x1802">
+                     <p class="metadata-entry" id="a593t2614"><span class="generated" id="s871y3269">Journal ID (<span class="data" id="h187z1488">nlm-ta</span>): </span>BMC Bioinformatics
+                     </p>
+                     <p class="metadata-entry" id="a667u1145"><span class="generated" id="h279i25">Title: </span>BMC Bioinformatics
+                     </p>
+                     <p class="metadata-entry" id="i22h1222"><span class="generated" id="k932v4815">ISSN (<span class="data" id="m905w8924">electronic</span>): </span>1471-2105
+                     </p>
+                     <p class="metadata-entry" id="k649l8941"><span class="generated" id="n822v7990">Publisher: </span>BioMed Central
+                     </p>
+                  </div>
+               </div>
+               <div class="cell" id="y321t5601">
+                  <h4 class="generated" id="d339a5255">Article Information</h4>
+                  <div class="metadata-group" id="h177x3466">
+                     <p class="metadata-entry" id="w25x3731"><span class="generated" id="h265l7728">External link: </span><a target="xrefwindow" href="http://www.biomedcentral.com/1471-2105/9/407" id="d1e82">http://www.biomedcentral.com/1471-2105/9/407</a></p>
+                     <p class="metadata-entry" id="b554q8574"><span class="generated" id="s35w4235">Copyright statement: </span>Copyright &copy; 2008 Halling-Brown et al; licensee BioMed Central Ltd.
+                     </p>
+                     <p class="metadata-entry" id="k185p2209"><span class="generated" id="g573w8510">Copyright: </span>2008, Halling-Brown et al; licensee BioMed Central Ltd.
+                     </p>
+                     <div class="metadata-area" id="m336w8509">
+                        <p class="metadata-entry" id="n854w3570"><span class="generated" id="r974v7848">License (<span class="data" id="j839g8774">open-access, <a href="http://creativecommons.org/licenses/by/2.0" id="h678p4867">http://creativecommons.org/licenses/by/2.0</a></span>): </span></p>
+                        <div class="metadata-chunk" id="t772i4985">
+                           <p class="first" id="d1e106">This is an Open Access article distributed under the terms of the Creative Commons Attribution License (<a target="xrefwindow" href="http://creativecommons.org/licenses/by/2.0" id="d1e108">http://creativecommons.org/licenses/by/2.0</a>), which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited.
+                           </p>
+                        </div>
+                     </div>
+                     <p class="metadata-entry" id="w286l924"><span class="generated" id="o59z6244">Date received: </span>30 June 2008
+                     </p>
+                     <p class="metadata-entry" id="y618q2350"><span class="generated" id="c971r6421">Date accepted: </span>2 October 2008
+                     </p>
+                     <p class="metadata-entry" id="m608q2356"><span class="generated" id="g415d1612">Publication date (<span class="data" id="e93g4490">collection</span>): </span>2008
+                     </p>
+                     <p class="metadata-entry" id="f585z2771"><span class="generated" id="s670i1569">Publication date (<span class="data" id="i129s52">electronic</span>): </span>2 October 2008
+                     </p>
+                     <p class="metadata-entry" id="n8g9814"><span class="generated" id="s363z9808">Volume: </span>9
+                     </p>
+                     <p class="metadata-entry" id="d767b2006"><span class="generated" id="s859u4432">Page: </span>407
+                     </p>
+                     <p class="metadata-entry" id="p688r6297"><span class="generated" id="n942j9729">PubMed ID: </span>18831735
+                     </p>
+                     <p class="metadata-entry" id="e722q1"><span class="generated" id="t598u3398">Article Id (<span class="data" id="v236z5682">pmc</span>): </span>2566987
+                     </p>
+                     <p class="metadata-entry" id="e982h8430"><span class="generated" id="h804x3966">Publisher ID: </span>1471-2105-9-407
+                     </p>
+                     <p class="metadata-entry" id="p5k8966"><span class="generated" id="w846k5889">DOI: </span>10.1186/1471-2105-9-407
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <hr class="part-rule" id="y174f5154"><div class="metadata centered" id="r746l3017">
+            <h1 class="document-title" id="x521g7535">Towards a lightweight generic computational grid framework for biological research</h1>
+         </div>
+         <div class="metadata two-column table" id="m283g8828">
+            <div class="row" id="f735e491">
+               <div class="cell" style="text-align: right" id="x84c5924">
+                  <div class="metadata-group" id="z493a7707">
+                     <p class="metadata-entry" id="y222z4339"><a id="d1e32">
+                           <!-- named anchor --></a>Mark D Halling-Brown<span class="generated" id="v744u9439">[</span><a href="#I1" id="u434p3408">1</a><span class="generated" id="v284g6690">]</span></p>
+                  </div>
+               </div>
+               <div class="cell" id="u909u2655">
+                  <div class="metadata-group" id="i512p7126">
+                     <p class="metadata-entry" id="x663g5161"><span class="generated" id="p610c5076">Email: </span><a href="mailto:m.halling-brown@mail.cryst.bbk.ac.uk" id="n105e7827">m.halling-brown@mail.cryst.bbk.ac.uk</a></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="metadata two-column table" id="z23w8507">
+            <div class="row" id="o85i5436">
+               <div class="cell" style="text-align: right" id="z605e3673">
+                  <div class="metadata-group" id="o427k3383">
+                     <p class="metadata-entry" id="f417t5097"><a id="d1e42">
+                           <!-- named anchor --></a>David S Moss<span class="generated" id="t931b9086">[</span><a href="#I1" id="b281t1526">1</a><span class="generated" id="h343q238">]</span></p>
+                  </div>
+               </div>
+               <div class="cell" id="g97n7763">
+                  <div class="metadata-group" id="i365s3801">
+                     <p class="metadata-entry" id="p446i2734"><span class="generated" id="i646t9571">Email: </span><a href="mailto:d.moss@mail.cryst.bbk.ac.uk" id="s986r3076">d.moss@mail.cryst.bbk.ac.uk</a></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="metadata two-column table" id="d474o5949">
+            <div class="row" id="d816q5781">
+               <div class="cell" style="text-align: right" id="z378m8381">
+                  <div class="metadata-group" id="p429g4619">
+                     <p class="metadata-entry" id="h382o328"><a id="d1e52">
+                           <!-- named anchor --></a>Adrian J Shepherd<span class="generated" id="k830q8080">[</span><a href="#I1" id="l372b2455">1</a><span class="generated" id="l318d3017">]</span></p>
+                  </div>
+               </div>
+               <div class="cell" id="f155f5978">
+                  <div class="metadata-group" id="u455k4964">
+                     <p class="metadata-entry" id="n622h5506"><span class="generated" id="c273k9860">Email: </span><a href="mailto:a.shepherd@mail.cryst.bbk.ac.uk" id="i931g7179">a.shepherd@mail.cryst.bbk.ac.uk</a></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="metadata two-column table" id="s260h5763">
+            <div class="row" id="w675a2452">
+               <div class="cell empty" id="c884m1481"></div>
+               <div class="cell" id="e841z6989">
+                  <div class="metadata-group" id="q727c2176">
+                     <p class="metadata-entry" id="y537l1550"><a id="I1">
+                           <!-- named anchor --></a><span class="generated" id="m680g9187">[</span>1<span class="generated" id="v188k5087">] </span>Institute of Structural and Molecular Biology, School of Crystallography, Birkbeck College, Malet Street, London, WC1E 7HX,
+                        UK
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <hr class="section-rule" id="p727k5588"><div class="metadata two-column table" id="o755m442">
+            <div class="row" id="y861j9082">
+               <div class="cell" style="text-align: right" id="l642p3146">
+                  <h4 class="callout-title" id="q405k2635"><span class="generated" id="p866k6772">Abstract</span></h4>
+               </div>
+               <div class="cell" id="y250t7958">
+                  <div class="section" id="a396a5088"><a id="d1e112">
+                        <!-- named anchor --></a><h3 class="section-title" id="w372j700">Background</h3>
+                     <p id="d1e115">An increasing number of scientific research projects require access to large-scale computational resources. This is particularly
+                        true in the biological field, whether to facilitate the analysis of large high-throughput data sets, or to perform large numbers
+                        of complex simulations &ndash; a characteristic of the emerging field of systems biology.
+                     </p>
+                  </div>
+                  <div class="section" id="y754u2558"><a id="d1e117">
+                        <!-- named anchor --></a><h3 class="section-title" id="r219n5939">Results</h3>
+                     <p id="d1e120">In this paper we present a lightweight generic framework for combining disparate computational resources at multiple sites
+                        (ranging from local computers and clusters to established national Grid services). A detailed guide describing how to set
+                        up the framework is available from the following URL: <a target="xrefwindow" href="http://igrid-ext.cryst.bbk.ac.uk/portal_guide/" id="d1e122">http://igrid-ext.cryst.bbk.ac.uk/portal_guide/</a>.
+                     </p>
+                  </div>
+                  <div class="section" id="y955y9443"><a id="d1e124">
+                        <!-- named anchor --></a><h3 class="section-title" id="i812t4917">Conclusion</h3>
+                     <p id="d1e127">This approach is particularly (but not exclusively) appropriate for large-scale biology projects with multiple collaborators
+                        working at different national or international sites. The framework is relatively easy to set up, hides the complexity of
+                        Grid middleware from the user, and provides access to resources through a single, uniform interface. It has been developed
+                        as part of the European ImmunoGrid project.
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <hr class="part-rule" id="u100c4910"></div>
+      <div id="article1-body" class="body">
+         <div class="section" id="l411o2869"><a id="d1e130">
+               <!-- named anchor --></a><h2 class="main-title" id="y1000l1369">Background</h2>
+            <p id="d1e133">In this paper we describe a Grid solution to the computational challenges arising from the ImmunoGrid project [<a href="#B1" id="k846s7537">1</a>]. ImmunoGrid is an ambitious project that has, as its primary objective, the development of a human immune system simulator
+               spanning multiple levels &ndash; from molecules to organs. Two main versions of the simulator are currently under development: the
+               HIV simulator, designed to model responses to HIV-1 infection [<a href="#B2" id="w181w7059">2</a>] and the SimTriplex simulator, designed to model vaccine schedules for the immunoprevention of mammary carcinoma in HER-2/neu
+               transgenic mouse [<a href="#B3" id="r662f8229">3</a>]. Both simulators are built on a single code base that is written in C and parallelised. The project has also undertaken
+               research that requires the prediction of the location of Major Histocompatibility Complex (MHC) class I epitopes within large
+               sets of microbial sequences (e.g. influenza strains) using pre-trained tools, and predicting the location of MHC class II
+               epitopes using time-consuming molecular dynamics simulations.
+            </p>
+            <p id="d1e144">Many of the characteristics of ImmunoGrid are shared by other biological projects: the involvement of multiple international
+               partners (each bringing their own computational resources to the project); the need to run large numbers of computations,
+               both large and small; and the need to provide an easy-to-use interface for a non-technical user base. From this perspective,
+               the approach presented here can be viewed as a case study that demonstrates the relevance and effectiveness of our chosen
+               solution to a much wider range of biological projects.
+            </p>
+            <p id="d1e146">In the past, many researchers (including ourselves) have had negative experiences attempting to exploit Grid resources for
+               scientific computation. However, significant progress has been made in recent years, notably through the development of lightweight
+               Grid "upper middlewares" (see section below) that insulate users from the underlying access technologies. The framework presented
+               here enables research groups to construct computational Grids that are easy to develop, modify and use.
+            </p>
+            <div class="section" id="e21o664"><a id="d1e148">
+                  <!-- named anchor --></a><h3 class="section-title" id="k87m8855">Requirements</h3>
+               <p id="d1e151">With respect to our ability to access computational resources, the requirements of ImmunoGrid are as follows:</p>
+               <p id="d1e153">&bull; To enable the most complex single simulations to be run, requiring access to a large cluster or supercomputer.</p>
+               <p id="d1e155">&bull; To enable large sets of immune system simulations and epitope predictions to be carried out, both to explore the parameter
+                  space of the simulator and to investigate the effects of a given clinical scenario on multiple individuals.
+               </p>
+               <p id="d1e157">&bull; To support smaller-scale simulations, including runs of the ImmunoGrid educational simulators, for which standards workstations
+                  are sufficient.
+               </p>
+               <p id="d1e159">As foreseen when the project name was chosen, no single partner of ImmunoGrid can guarantee access to sufficient resources
+                  to meet these requirements, so a Grid-based solution is a practical necessity.
+               </p>
+               <p id="d1e161">From the end-user perspective, the requirements of our Grid solution are as follows:</p>
+               <p id="d1e163">&bull; Access to the underlying computational resources should be transparent, i.e. the user should gain automatic access to the
+                  set of resources currently available to him/her without needing to be aware of their underlying organisation. In other words,
+                  the user should be insulated as far as possible from issues concerning administrative boundaries, passwords, operating systems,
+                  etc.
+               </p>
+               <p id="d1e165">&bull; Given that the potential users of our Grid-based simulators are diverse and often non-technical (with direct access by clinicians
+                  an ultimate goal), all relevant resources should be accessible via an easy-to-use interface. From this perspective, a Web
+                  interface is particularly appealing as it ensures that end-users do not need to install client software on their local machines.
+               </p>
+            </div>
+            <div class="section" id="u744z3358"><a id="d1e167">
+                  <!-- named anchor --></a><h3 class="section-title" id="i682h1386">Solutions</h3>
+               <p id="d1e170">To meet the requirements outlined above, a key priority for our computational Grid is that it maximises the range and number
+                  of resources that can be added into it, from local desktop workstations to national/international Grid services such as the
+                  UK National Grid Service [<a href="#B4" id="f845i533">4</a>] (NGS), the European supercomputer Grid DEISA [<a href="#B5" id="s209g5984">5</a>] (Distributed European Infrastructure for Supercomputing Applications), and the US TeraGrid [<a href="#B6" id="h309u4266">6</a>]. The full set of computational resources that we potentially wish to access via our Grid is listed in table <a href="#T1" id="p193p2637">1</a>.
+               </p>
+               <div class="table-wrap panel" style="display: float; clear: both" id="i371q37"><a id="T1">
+                     <!-- named anchor --></a><h5 class="label" id="j756t4700">Table&nbsp;1</h5>
+                  <div class="caption" id="h495t1656">
+                     <p class="first" id="d1e188">The middleware options that allow access to different types of computational resource.</p>
+                  </div>
+                  <table xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" frame="hsides" rules="groups" id="v757v4941"><a id="d1e190">
+                        <!-- named anchor --></a><thead id="t303v6024"><a id="d1e191">
+                           <!-- named anchor --></a><tr id="x248g4833"><a id="d1e192">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="p309r9096"><a id="d1e193">
+                                 <!-- named anchor --></a><b id="l307m3286">Resource Type</b></td>
+                           <td align="left" rowspan="1" colspan="1" id="s976g3925"><a id="d1e196">
+                                 <!-- named anchor --></a><b id="y215m7194">Middleware Access Technologies</b></td>
+                        </tr></thead><tbody id="f729b8954"><a id="d1e199">
+                           <!-- named anchor --></a><tr id="f858f5727"><a id="d1e200">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="h949k665"><a id="d1e201">
+                                 <!-- named anchor --></a>Individual PCs (belonging to group)
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="b171z2576"><a id="d1e203">
+                                 <!-- named anchor --></a>Web Service/GridSAM
+                           </td>
+                        </tr><tr id="l493f3631"><a id="d1e205">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="d522c8638"><a id="d1e206">
+                                 <!-- named anchor --></a>Individual clusters (belonging to group)
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="e367r2765"><a id="d1e208">
+                                 <!-- named anchor --></a>Web Service/GridSAM
+                           </td>
+                        </tr><tr id="n334m8613"><a id="d1e210">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="n442s905"><a id="d1e211">
+                                 <!-- named anchor --></a>CINECA
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="g356u7443"><a id="d1e213">
+                                 <!-- named anchor --></a>UNICORE
+                           </td>
+                        </tr><tr id="a693d6031"><a id="d1e215">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="w228j10"><a id="d1e216">
+                                 <!-- named anchor --></a>NGS (UK)
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="f513c5338"><a id="d1e218">
+                                 <!-- named anchor --></a>Globus/GridSAM
+                           </td>
+                        </tr><tr id="y330z4885"><a id="d1e220">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="b927p5436"><a id="d1e221">
+                                 <!-- named anchor --></a>DEISA (Europe)
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="g208s6544"><a id="d1e223">
+                                 <!-- named anchor --></a>UNICORE/DESHL/GridSAM
+                           </td>
+                        </tr><tr id="f439a658"><a id="d1e225">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="g227y3875"><a id="d1e226">
+                                 <!-- named anchor --></a>TeraGrid (US)
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="h133d3979"><a id="d1e228">
+                                 <!-- named anchor --></a>Globus
+                           </td>
+                        </tr></tbody></table></div>
+               <p id="d1e230">The desire to access a diverse range of computational resources has two practical implications. Firstly, it means we must
+                  aim to support all major existing Grid middleware and platforms. Secondly, it means that the addition of a new Grid node needs
+                  to be as easy as possible, so that individuals and organisations that have resources that can potentially be incorporated
+                  into our Grid are not deterred from doing so.
+               </p>
+               <p id="d1e232">In order to meet the preceding requirements, we have sought to re-use existing solutions wherever possible. At the heart of
+                  our solution are two pieces of "upper middleware", the AHE (the Application Hosting Environment) [<a href="#B7" id="e646h6253">7</a>,<a href="#B8" id="f761x1663">8</a>] and DESHL (DEISA Services for the Heterogeneous management Layer) [<a href="#B9" id="p489m1277">9</a>]. Taken together, these tools provide us with mechanisms for accessing the maximum range of resources whilst shielding us
+                  from most of the complexity associated with the underlying Grid middlewares, such as Globus [<a href="#B10" id="f443x8228">10</a>]. Neither tool on its own is sufficient. For example, we cannot access resources at CINECA using AHE, nor local computing
+                  resources using DESHL.
+               </p>
+               <p id="d1e246">Our framework also allows resources to be accessed via a third mechanism &ndash; the Web Service paradigm. A Web Service provides
+                  an Application Programming Interface (API) that enables users to seamlessly integrate a remotely-hosted service with other
+                  components of the applications they are developing. This approach is becoming increasingly popular in the field of bioinformatics,
+                  with many core services provided by organisations such as the European Bioinformatics Institute [<a href="#B11" id="m989t8847">11</a>] (EBI) already being made available as Web Services, not just via traditional "point-and-click" Web interfaces. For ImmunoGrid,
+                  instances of our simulators can be wrapped as Web Services, deployed on a local machine, and accessed via the Grid framework
+                  described in this paper.
+               </p>
+               <p id="d1e251">Given a set of available resources linked by the ImmunoGrid framework, specific resources are selected automatically by a
+                  simple job broker (by default), or manually (if so desired by the user). One important feature of our solution is that it
+                  allows for the fact that different users will have the right to run jobs on different subsets of available resources. In particular,
+                  only users who have the appropriate Grid certificate will have the right to access a given national/international Grid service
+                  (notably the NGS, DEISA and/or the TeraGrid).
+               </p>
+               <p id="d1e253">The final essential ingredient of our Grid framework is its Web interface. This hides the various underlying middlewares from
+                  the user, who (given relevant permissions) can run multiple simulations on diverse computational resources at various widely-distributed
+                  sites.
+               </p>
+            </div>
+         </div>
+         <div class="section" id="i914h3443"><a id="d1e255">
+               <!-- named anchor --></a><h2 class="main-title" id="t629f6060">Results</h2>
+            <p id="d1e258">The Grid infrastructure described in this paper has been used to run several contrasting applications for the ImmunoGrid project.
+               The primary scientific aim of ImmunoGrid is to develop and validate a virtual human immune system simulator. During the development
+               of the simulator, large numbers of runs with different versions of the simulator software have been carried out using this
+               infrastructure. In addition, we have undertaken large-scale prediction of class I T-cell epitopes using local installations
+               of the prediction software developed at the Center for Biological Sequence Analysis (CBS), Technical University of Denmark
+               (DTU), Copenhagen, Denmark [<a href="#B12" id="f948o8566">12</a>]. We are also currently developing a new method for class II T-cell epitope prediction using molecular dynamics simulations.
+            </p>
+            <p id="d1e263">Here we present three representative case studies that show the amount of time saved by using our Grid-based approach to handle
+               large-scale applications. All timings are measured in wall clock time, as this represents the most relevant measurement for
+               end-user. The individual jobs varied significantly in their computational intensity; when run on the single Birkbeck server,
+               times ranged from fractions of a second for a single CBS prediction to approximately two days for a molecular dynamics simulation.
+               In these case studies, access was restricted to local resources in London (UK), Bologna (Italy) and Boston (US) that were
+               made available by members of the ImmunoGrid Consortium. Details of these resources are given in table <a href="#T2" id="s607k4600">2</a>.
+            </p>
+            <div class="table-wrap panel" style="display: float; clear: both" id="r391s9365"><a id="T2">
+                  <!-- named anchor --></a><h5 class="label" id="t949k3164">Table&nbsp;2</h5>
+               <div class="caption" id="c481y1563">
+                  <p class="first" id="d1e272">Details of the computational resources used in the case study evaluations of the Grid infrastructure.</p>
+               </div>
+               <table xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" frame="hsides" rules="groups" id="j971l9190"><a id="d1e274">
+                     <!-- named anchor --></a><thead id="s223e1977"><a id="d1e275">
+                        <!-- named anchor --></a><tr id="j307p3543"><a id="d1e276">
+                           <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="q596w9516"><a id="d1e277">
+                              <!-- named anchor --></a><b id="d980m3565">Resource</b></td>
+                        <td align="left" rowspan="1" colspan="1" id="x118a4685"><a id="d1e280">
+                              <!-- named anchor --></a><b id="h485e5605">Number of nodes</b></td>
+                        <td align="left" rowspan="1" colspan="1" id="n292d4731"><a id="d1e283">
+                              <!-- named anchor --></a><b id="g446s2044">Specification of a single node</b></td>
+                        <td align="left" rowspan="1" colspan="1" id="e818i741"><a id="d1e286">
+                              <!-- named anchor --></a><b id="r811m7647">Operating System</b></td>
+                        <td align="left" rowspan="1" colspan="1" id="o931c4173"><a id="d1e289">
+                              <!-- named anchor --></a><b id="t225v3208">RAM (Gb)</b></td>
+                     </tr></thead><tbody id="d354n1730"><a id="d1e292">
+                        <!-- named anchor --></a><tr id="d638g8339"><a id="d1e293">
+                           <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="c330j6079"><a id="d1e294">
+                              <!-- named anchor --></a>Server, Birkbeck, London
+                        </td>
+                        <td align="left" rowspan="1" colspan="1" id="m753r5513"><a id="d1e296">
+                              <!-- named anchor --></a>1
+                        </td>
+                        <td align="left" rowspan="1" colspan="1" id="m806l594"><a id="d1e298">
+                              <!-- named anchor --></a>4 &times; 2.66 GHz processors
+                        </td>
+                        <td align="left" rowspan="1" colspan="1" id="y906i4010"><a id="d1e300">
+                              <!-- named anchor --></a>openSUSE 10.2
+                        </td>
+                        <td align="left" rowspan="1" colspan="1" id="z11z8850"><a id="d1e302">
+                              <!-- named anchor --></a>4
+                        </td>
+                     </tr><tr id="e758n1286"><a id="d1e304">
+                           <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="a354p2416"><a id="d1e305">
+                              <!-- named anchor --></a>Local cluster, Birkbeck, London
+                        </td>
+                        <td align="left" rowspan="1" colspan="1" id="n690y6446"><a id="d1e307">
+                              <!-- named anchor --></a>22
+                        </td>
+                        <td align="left" rowspan="1" colspan="1" id="h715p1342"><a id="d1e309">
+                              <!-- named anchor --></a>8 &times; 2.6 GHz 64-bit processors
+                        </td>
+                        <td align="left" rowspan="1" colspan="1" id="y849k5320"><a id="d1e311">
+                              <!-- named anchor --></a>Rocks Cluster 4.3
+                        </td>
+                        <td align="left" rowspan="1" colspan="1" id="s209f6593"><a id="d1e313">
+                              <!-- named anchor --></a>16
+                        </td>
+                     </tr><tr id="h297f1388"><a id="d1e315">
+                           <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="e77w5213"><a id="d1e316">
+                              <!-- named anchor --></a>Local cluster, Dana-Farber Cancer Institute, Boston
+                        </td>
+                        <td align="left" rowspan="1" colspan="1" id="j460a4304"><a id="d1e318">
+                              <!-- named anchor --></a>15
+                        </td>
+                        <td align="left" rowspan="1" colspan="1" id="b695k967"><a id="d1e320">
+                              <!-- named anchor --></a>2 &times; 3.6 GHz Xeon processors
+                        </td>
+                        <td align="left" rowspan="1" colspan="1" id="d265x235"><a id="d1e322">
+                              <!-- named anchor --></a>Red Hat 3.4
+                        </td>
+                        <td align="left" rowspan="1" colspan="1" id="r705b171"><a id="d1e324">
+                              <!-- named anchor --></a>2
+                        </td>
+                     </tr><tr id="a575w5100"><a id="d1e326">
+                           <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="k77s4803"><a id="d1e327">
+                              <!-- named anchor --></a>Supercomputer, CINECA, Bologna
+                        </td>
+                        <td align="left" rowspan="1" colspan="1" id="f911b872"><a id="d1e329">
+                              <!-- named anchor --></a>1280
+                        </td>
+                        <td align="left" rowspan="1" colspan="1" id="o366e6684"><a id="d1e331">
+                              <!-- named anchor --></a>4 &times; Opteron Dual Core 2.6 GHz processors
+                        </td>
+                        <td align="left" rowspan="1" colspan="1" id="x216f7186"><a id="d1e333">
+                              <!-- named anchor --></a>Red Hat Enterprise Linux 4
+                        </td>
+                        <td align="left" rowspan="1" colspan="1" id="n910a9049"><a id="d1e335">
+                              <!-- named anchor --></a>10240
+                        </td>
+                     </tr></tbody></table></div>
+            <div class="section" id="j364n6245"><a id="d1e337">
+                  <!-- named anchor --></a><h3 class="section-title" id="i39j2122">Class I T-cell epitope prediction</h3>
+               <p id="d1e340">For this case study, 40,000 influenza protein sequences were analysed using the CBS T-cell epitope prediction software for
+                  120 MHC alleles, giving a total of 4,800,000 jobs. We estimate (from timings for a subset of 86,552 jobs) that running the
+                  entire batch on the Birkbeck server would take approximately 155 hours. Using the Grid infrastructure presented in this paper,
+                  the total number of jobs was split equally between three resources: the Birkbeck local cluster, the Dana-Farber local cluster,
+                  and the CINECA supercomputer. In this case, the splitting of the jobs over the resources was performed by hand. Splitting
+                  of jobs over the resources can be completed by the resource broker, so long as an appropriate schedule has been implemented.
+                  Subsets of the total number of nodes were used at each resource in order to comply with fair usage guidelines. The resource
+                  usage and wall times are summarised in table <a href="#T3" id="a157z2472">3</a>.
+               </p>
+               <div class="table-wrap panel" style="display: float; clear: both" id="q872v4531"><a id="T3">
+                     <!-- named anchor --></a><h5 class="label" id="j386z9480">Table&nbsp;3</h5>
+                  <div class="caption" id="x975w8455">
+                     <p class="first" id="d1e349">The distribution of jobs and wall timings for the class I epitope prediction case study.</p>
+                  </div>
+                  <table xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" frame="hsides" rules="groups" id="t379g6686"><a id="d1e351">
+                        <!-- named anchor --></a><thead id="d943c6426"><a id="d1e352">
+                           <!-- named anchor --></a><tr id="a692c6466"><a id="d1e353">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="c660z2667"><a id="d1e354">
+                                 <!-- named anchor --></a><b id="j157c7360">Resource</b></td>
+                           <td align="left" rowspan="1" colspan="1" id="g747o675"><a id="d1e357">
+                                 <!-- named anchor --></a><b id="y824r1121">Number of nodes used</b></td>
+                           <td align="left" rowspan="1" colspan="1" id="n736c390"><a id="d1e360">
+                                 <!-- named anchor --></a><b id="t831u6456">Number of jobs</b></td>
+                           <td align="left" rowspan="1" colspan="1" id="w944n1939"><a id="d1e363">
+                                 <!-- named anchor --></a><b id="j271v9828">Wall time</b></td>
+                        </tr></thead><tbody id="o406l4266"><a id="d1e366">
+                           <!-- named anchor --></a><tr id="c230b2774"><a id="d1e367">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="w880s6158"><a id="d1e368">
+                                 <!-- named anchor --></a>Server, Birkbeck
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="y226y8540"><a id="d1e370">
+                                 <!-- named anchor --></a>1
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="j462x6038"><a id="d1e372">
+                                 <!-- named anchor --></a>4,800,000
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="b523a4034"><a id="d1e374">
+                                 <!-- named anchor --></a>155 hrs
+                           </td>
+                        </tr><tr id="s247f2145"><a id="d1e376">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="d50d9059"><a id="d1e377">
+                                 <!-- named anchor --></a>Local cluster, Birkbeck
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="q482g2065"><a id="d1e379">
+                                 <!-- named anchor --></a>11
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="n642x2281"><a id="d1e381">
+                                 <!-- named anchor --></a>1,600,000
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="p274w4651"><a id="d1e383">
+                                 <!-- named anchor --></a>4 hrs 41 mins
+                           </td>
+                        </tr><tr id="g341z96"><a id="d1e385">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="i504n1708"><a id="d1e386">
+                                 <!-- named anchor --></a>Local cluster, Dana-Farber Cancer Institute
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="i656r4478"><a id="d1e388">
+                                 <!-- named anchor --></a>5
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="w365c9253"><a id="d1e390">
+                                 <!-- named anchor --></a>1,600,000
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="r431o7706"><a id="d1e392">
+                                 <!-- named anchor --></a>11 hrs 38 mins
+                           </td>
+                        </tr><tr id="t352x6604"><a id="d1e394">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="c48t2315"><a id="d1e395">
+                                 <!-- named anchor --></a>Supercomputer, CINECA
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="t277w2733"><a id="d1e397">
+                                 <!-- named anchor --></a>16
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="a86x7374"><a id="d1e399">
+                                 <!-- named anchor --></a>1,600,000
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="i877w6079"><a id="d1e401">
+                                 <!-- named anchor --></a>3 hrs 39 mins
+                           </td>
+                        </tr></tbody></table><div class="table-wrap-foot" id="t141b1233">
+                     <p class="first" id="d1e404">The total wall time for the Birkbeck server is an estimate.</p>
+                  </div>
+               </div>
+               <p id="d1e406">This distribution of jobs proved highly successful, with a wall time saving of approximately 6 day (over 90%) compared to
+                  the anticipated execution time with a single machine. One important caveat, however, is that the jobs sent to the CINECA supercomputer
+                  were not held in a queue for a significant period of time. This is certainly not something that was guaranteed, and other
+                  batches of jobs submitted to CINECA have not been so fortunate. Queue length is something that can only be ascertained by
+                  directly logging onto the supercomputer at run time.
+               </p>
+            </div>
+            <div class="section" id="h823i1907"><a id="d1e408">
+                  <!-- named anchor --></a><h3 class="section-title" id="e30a3034">Assessment of vaccination schedule effectiveness</h3>
+               <p id="d1e411">For this case study, the SimTriplex simulator was used to assess the effectiveness of different vaccination schedules in the
+                  prevention of mammary carcinoma in virtual mice that represent real HER-2/neu transgenic mice [<a href="#B3" id="g398g6711">3</a>]. We ran a total of 1,600 vaccine schedules on a population of 100 mice, giving a total of 160,000 jobs. We estimate (from
+                  timings for a subset of 100 jobs) that running the entire batch on the Birkbeck server would take approximately 203 hours.
+               </p>
+               <p id="d1e416">On this occasion we were unable to use the supercomputer at CINECA as it was undergoing maintenance. We therefore submitted
+                  the jobs to the two local clusters at Dana-Farber and Birkbeck. We decided to increase the number of nodes we submitted jobs
+                  to on the Dana-Farber cluster, as it was slower than the Birkbeck cluster in the preceding case study (see Class I T-cell
+                  epitope prediction). The resource usage and wall times are summarised in table <a href="#T4" id="y532p6710">4</a>.
+               </p>
+               <div class="table-wrap panel" style="display: float; clear: both" id="b137d8716"><a id="T4">
+                     <!-- named anchor --></a><h5 class="label" id="i681q6401">Table&nbsp;4</h5>
+                  <div class="caption" id="z43a3358">
+                     <p class="first" id="d1e425">The distribution of jobs and wall timings for the Simtriplex evaluation of vaccine schedules for virtual mice.</p>
+                  </div>
+                  <table xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" frame="hsides" rules="groups" id="m88g4069"><a id="d1e427">
+                        <!-- named anchor --></a><thead id="f261g5183"><a id="d1e428">
+                           <!-- named anchor --></a><tr id="v178v6128"><a id="d1e429">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="y179b2254"><a id="d1e430">
+                                 <!-- named anchor --></a><b id="e845i4549">Resource</b></td>
+                           <td align="left" rowspan="1" colspan="1" id="a499n9296"><a id="d1e433">
+                                 <!-- named anchor --></a><b id="s193m3757">Number of nodes used</b></td>
+                           <td align="left" rowspan="1" colspan="1" id="q538h3329"><a id="d1e436">
+                                 <!-- named anchor --></a><b id="e499e3597">Number of jobs</b></td>
+                           <td align="left" rowspan="1" colspan="1" id="c524a5281"><a id="d1e439">
+                                 <!-- named anchor --></a><b id="z664s9206">Wall time</b></td>
+                        </tr></thead><tbody id="n200b1945"><a id="d1e442">
+                           <!-- named anchor --></a><tr id="k592f3352"><a id="d1e443">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="d66m2720"><a id="d1e444">
+                                 <!-- named anchor --></a>Server, Birkbeck
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="s976t1083"><a id="d1e446">
+                                 <!-- named anchor --></a>1
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="o608a630"><a id="d1e448">
+                                 <!-- named anchor --></a>160,000
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="h516z8687"><a id="d1e450">
+                                 <!-- named anchor --></a>203 hrs (approx.)
+                           </td>
+                        </tr><tr id="z582y6926"><a id="d1e452">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="b482r7599"><a id="d1e453">
+                                 <!-- named anchor --></a>Local cluster, Birkbeck
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="h918c3256"><a id="d1e455">
+                                 <!-- named anchor --></a>11
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="p215d4166"><a id="d1e457">
+                                 <!-- named anchor --></a>80,000
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="e256h4069"><a id="d1e459">
+                                 <!-- named anchor --></a>1 hrs 9 mins
+                           </td>
+                        </tr><tr id="u793n7926"><a id="d1e461">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="f740j2911"><a id="d1e462">
+                                 <!-- named anchor --></a>Local cluster, Dana-Farber Cancer Institute
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="b153y2633"><a id="d1e464">
+                                 <!-- named anchor --></a>10
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="w820h8152"><a id="d1e466">
+                                 <!-- named anchor --></a>80,000
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="q184r183"><a id="d1e468">
+                                 <!-- named anchor --></a>18 hrs 48 mins
+                           </td>
+                        </tr></tbody></table><div class="table-wrap-foot" id="y10j7753">
+                     <p class="first" id="d1e471">The total wall time for the Birkbeck server is an estimate.</p>
+                  </div>
+               </div>
+               <p id="d1e473">Again, we achieved a substantial saving in wall time (over 90%, equivalent to nearly 8 days) compared to the anticipated time
+                  on a single machine. It is worth pointing out, however, that the relative performance of the Dana-Farber cluster (compared
+                  to the Birkbeck cluster) was significantly worse than anticipated after the results of the first case study (see Class I T-cell
+                  epitope prediction). Indeed, had all the jobs been submitted to the Birkbeck cluster, the saving would have been significantly
+                  higher (although, given that ImmunoGrid does not have exclusive access to the Birkbeck cluster, this may not have been a practical
+                  option).
+               </p>
+               <p id="d1e475">This apparent inconsistency in the performance of the Birkbeck and Dana-Farber local clusters with respect to the two case
+                  studies is not easy to explain, but neither is it entirely unexpected. Ultimately it may be attributable to a complex interplay
+                  between the CPU, memory and IO characteristics of the jobs executed, or to other factors we are unaware of (such as the possible
+                  side-effects of other jobs that happened to be running on the clusters at the same time). Consequently, we cannot guarantee
+                  that the timings would be more-or-less the same even if we ran them again with the same distribution of jobs.
+               </p>
+            </div>
+            <div class="section" id="o354a756"><a id="d1e477">
+                  <!-- named anchor --></a><h3 class="section-title" id="i48u3285">Towards class II T-cell epitope prediction</h3>
+               <p id="d1e480">For this case study, we simulated the binding of peptides to class I MHC proteins using NAMD (NAnoscale Molecular Dynamics)
+                  ABF (Adaptive Biasing Force) software [<a href="#B13" id="i184o6550">13</a>]. Ultimately the aim is to develop a class II prediction method, but the current lack of class II data means that we are
+                  using class I data during the development stage. We estimate (from timings for a single job) that running a batch of 120 jobs
+                  on the Birkbeck server would take approximately 5,760 hours. For this case study we sent half of the jobs to the Birkbeck
+                  cluster, and half to the supercomputer at CINECA. The resource usage and wall times are summarised in table <a href="#T5" id="s392j6989">5</a>.
+               </p>
+               <div class="table-wrap panel" style="display: float; clear: both" id="s524o9726"><a id="T5">
+                     <!-- named anchor --></a><h5 class="label" id="a392z50">Table&nbsp;5</h5>
+                  <div class="caption" id="s733v3093">
+                     <p class="first" id="d1e492">The distribution of jobs and wall timings for the prediction of class II T-cell epitope binding using ABF.</p>
+                  </div>
+                  <table xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" frame="hsides" rules="groups" id="f331o9472"><a id="d1e494">
+                        <!-- named anchor --></a><thead id="u726m5857"><a id="d1e495">
+                           <!-- named anchor --></a><tr id="q355o5180"><a id="d1e496">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="i379z939"><a id="d1e497">
+                                 <!-- named anchor --></a><b id="h810z5303">Resource</b></td>
+                           <td align="left" rowspan="1" colspan="1" id="l358d6282"><a id="d1e500">
+                                 <!-- named anchor --></a><b id="z346t5410">Number of nodes used</b></td>
+                           <td align="left" rowspan="1" colspan="1" id="v647a3551"><a id="d1e503">
+                                 <!-- named anchor --></a><b id="c317n9998">Number of jobs</b></td>
+                           <td align="left" rowspan="1" colspan="1" id="f431k3635"><a id="d1e506">
+                                 <!-- named anchor --></a><b id="l329g6144">Wall time</b></td>
+                        </tr></thead><tbody id="a19u7196"><a id="d1e509">
+                           <!-- named anchor --></a><tr id="b314w5420"><a id="d1e510">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="l693a7047"><a id="d1e511">
+                                 <!-- named anchor --></a>Server, Birkbeck
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="k547g4246"><a id="d1e513">
+                                 <!-- named anchor --></a>1
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="b14l8774"><a id="d1e515">
+                                 <!-- named anchor --></a>120
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="q372n7397"><a id="d1e517">
+                                 <!-- named anchor --></a>5760 hrs
+                           </td>
+                        </tr><tr id="w464x7257"><a id="d1e519">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="p258b8412"><a id="d1e520">
+                                 <!-- named anchor --></a>Local cluster, Birkbeck
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="a820f667"><a id="d1e522">
+                                 <!-- named anchor --></a>8
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="n372i1767"><a id="d1e524">
+                                 <!-- named anchor --></a>60
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="w695m7169"><a id="d1e526">
+                                 <!-- named anchor --></a>123 hrs 55 mins
+                           </td>
+                        </tr><tr id="b718x3413"><a id="d1e528">
+                              <!-- named anchor --></a><td align="left" rowspan="1" colspan="1" id="f72k338"><a id="d1e529">
+                                 <!-- named anchor --></a>Supercomputer, CINECA
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="t341n5026"><a id="d1e531">
+                                 <!-- named anchor --></a>64
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="o398f6691"><a id="d1e533">
+                                 <!-- named anchor --></a>60
+                           </td>
+                           <td align="left" rowspan="1" colspan="1" id="t117d4156"><a id="d1e535">
+                                 <!-- named anchor --></a>746 hrs
+                           </td>
+                        </tr></tbody></table><div class="table-wrap-foot" id="s389w4303">
+                     <p class="first" id="d1e538">The total wall time for the Birkbeck server is an estimate.</p>
+                  </div>
+               </div>
+               <p id="d1e540">Once again we achieved a substantial saving in wall time (around 87%, equivalent to over 200 days) compared to the anticipated
+                  time on a single machine. Here the majority of the CINECA time is, in fact, queuing time.
+               </p>
+            </div>
+         </div>
+         <div class="section" id="e958y807"><a id="d1e542">
+               <!-- named anchor --></a><h2 class="main-title" id="t135e5044">Discussion and conclusion</h2>
+            <p id="d1e545">The number of scientific research projects that would benefit from having access to large-scale computational resources is
+               increasing. With the growing prevalence of large high-throughput data sets, this is true for many sciences, but it is certainly
+               a characteristic of systems biology research, where the need to run large numbers of computationally intensive simulations
+               is commonplace. Many projects will have access to sufficient resources in the form of a large local cluster or (following
+               a successful application for access time) a national/international production-quality Grid. However, many others will struggle
+               to satisfy their demand for computational power via these routes. Moreover, to rely on a single source for access to resources
+               is inherently risky; local clusters can fail, or require maintenance or upgrading at crucial times, and long-term access on
+               demand is rarely available to academic users of production Grids. It is also worth emphasising that, given the demand for
+               such resources that lengthy queuing times are commonplace.
+            </p>
+            <p id="d1e547">In this paper we have presented a lightweight Grid framework that aims to provide researchers with a transparent mechanism
+               for accessing a wide range of computational resources. It is particularly appropriate for consortia of research groups that
+               are collaborating on a particular project, as it allows each group to contribute its own local resources to the Grid with
+               minimal effort. We have demonstrated that the framework can be used to build a Grid capable of accessing a diverse range of
+               computational resources (local clusters, Web Services running on a single server, supercomputers, national Grids), and have
+               used it successfully to run a range of jobs for the ImmunoGrid project. Currently we are further extending the framework to
+               enable job submission to PI2S2 [<a href="#B14" id="h506y1488">14</a>], the Sicilian Grid using gLite [<a href="#B15" id="d382z8769">15</a>] middleware [<a href="#B16" id="e889w8448">16</a>].
+            </p>
+            <p id="d1e558">The hallmarks of our framework are its flexibility, ease of installation, and ease of use. This comes at a certain cost, however.
+               Currently it is not feasible to rapidly develop a new Grid infrastructure capable of integrating such a diverse range of resources
+               that is of production quality. Production Grids typically require services to be constantly monitored, sophisticated schemes
+               for handling errors, and the provision of dedicated user support [<a href="#B17" id="x603g1460">17</a>]. Indeed, it is worth noting that even national Grid services are typically rather limited in this respect. For example,
+               users of the NGS need to manually interact with individual Grid nodes in order to ascertain which resources have the shortest
+               queues. The time required to develop such a Grid makes it an impractical proposition for all but the largest and longest-running
+               projects, and no off-the-shelf solution is currently available. (As noted in the section below, we have deliberately designed
+               the framework in a modular way, so that when a suitable meta-broker becomes available, we will be able to utilise it.) Nevertheless,
+               notwithstanding the non-optimal deployment of resources, we believe the Grid framework presented here represents a reasonable
+               compromise.
+            </p>
+         </div>
+         <div class="section" id="j686q4221"><a id="d1e563">
+               <!-- named anchor --></a><h2 class="main-title" id="k213n574">Methods</h2>
+            <p id="d1e566">In this paper we are primarily concerned with describing the functionality of the Grid infrastructure that has been developed
+               and used by the ImmunoGrid project, with particular emphasis on its flexibility, ease of deployment, and ease of use. Hence
+               the focus here is on the upper layers of our infrastructure. This paper describes the provision of a generic interface to
+               DESHL, the AHE, and Web Services. These solutions were selected on the basis of the combined coverage they provide in terms
+               of access to computational resources (as summarised in table <a href="#T1" id="u599d9075">1</a>), and their relative ease of deployment and use. As we will show, the effort required to integrate these solutions within
+               a single, coherent infrastructure is comparatively modest. Most of the tasks described do not require a specialist developer
+               as a detailed guide is provided. However, when customisation of the interface or alterations to the resource broker or other
+               aspects of the grid infrastructure are required, a technically competent user will be necessary.
+            </p>
+            <p id="d1e571">A schematic overview of our Grid infrastructure is presented in figure <a href="#F1" id="a775j3163">1</a>. At the top level it comprises a single web-based interface coupled to a resource broker/job launcher. The broker/launcher
+               accesses DESHL and the AHE via middleware-specific scripts, and Web Services via standard SOAP protocols. The main benefit
+               of this approach is that it allows us to launch jobs simultaneously on different national/international Grid services, on
+               local computational resources and as Web Services through a single, unified interface. Using this approach, we effectively
+               hide the complexity and diversity of the underlying middlewares and resources from the end user.
+            </p>
+            <div class="fig panel" style="display: float; clear: both" id="d249r8462"><a id="F1">
+                  <!-- named anchor --></a><h5 class="label" id="p350o5897">Figure&nbsp;1</h5>
+               <div class="caption" id="d349m7473">
+                  <p class="first" id="d1e580"><b id="z259x4658">A schematic overview of the Grid infrastructure described in this paper</b>. Abbreviations are as follows: JSDL = Job Submission Description Language; RSL = Resource Specification Language; NJS = Network
+                     Job Scheduler.
+                  </p>
+               </div><img alt="1471-2105-9-407-1" src="images/1471-2105-9-407-1.jpg" id="v163m6473"></div>
+            <div class="section" id="w896b1203"><a id="d1e585">
+                  <!-- named anchor --></a><h3 class="section-title" id="z728d309">Upper middleware</h3>
+               <p id="d1e588">Arguably the most important ingredient in our framework is the role played by "upper middleware" (AHE and DESHL), as it hides
+                  much of the complexity of the Grid both from those developing a new Grid infrastructure and from the users of that infrastructure.
+                  Without upper middleware, the whole enterprise would be prohibitively complicated and time-consuming for most scientific institutions
+                  or consortiums to undertake. AHE and DESHL play a key role in the deployment of software to different computational resources
+                  and in the management of jobs. Both AHE and DESHL provide a command-line interface via which a job can be launched, its progress
+                  monitored, and its output (both intermediate and final) retrieved. There are, however, some important differences.
+               </p>
+               <p id="d1e590">The Application Hosting Environment (AHE) is a lightweight environment designed to run unmodified applications on diverse,
+                  distributed Grid resources. An explicit design goal of AHE is to hide the underlying complexity (of the Grid middleware, of
+                  the host environment and of how executables are set up) from the end user. Currently this is achieved using GridSAM [<a href="#B18" id="n625c2331">18</a>] (Grid Job Submission and Monitoring Web Service), but a UNICORE (Uniform Interface to Computing Resources [<a href="#B19" id="i180t63">19</a>]) plugin recently been developed and has been used by the Coveney group [<a href="#B20" id="l110v680">20</a>]. The UNICORE plugin is not available as part of the AHE package. After the initial deployment of AHE, a simple Job Submission
+                  Description Language (JSDL) file must be produced for each combination of software and resource that the AHE will have access
+                  to. This is the only manual intervention required, and it need only be done once for each software/resource combination. Thereafter,
+                  the AHE provides a list of available resources upon which the software has been installed. Jobs can then be run by simply
+                  selecting resources from the list (see Resource brokering and job launching); there is no need to access any resources directly.
+                  The AHE is easy to install as part of the OMII [<a href="#B21" id="c852o7124">21</a>] stack.
+               </p>
+               <p id="d1e604">DESHL is somewhat less flexible than the AHE, but it does provide essential mechanisms for accessing European supercomputers
+                  via UNICORE. In the context of the ImmunoGrid project, such resources are available via DEISA and at CINECA (a member of the
+                  ImmunoGrid Consortium). Setting up access to a supercomputer via DESHL is somewhat less transparent than adding a resource
+                  using the AHE, as scripts need to be written that manage access to a named user space.
+               </p>
+            </div>
+            <div class="section" id="j214z5370"><a id="d1e606">
+                  <!-- named anchor --></a><h3 class="section-title" id="l135b4267">Accessing local resource</h3>
+               <p id="d1e609">There are two ways that a local resource can be accessed via our system &ndash; using the AHE, or as a Web Service. The fundamental
+                  difference between these two approaches is that a given resource is made available for any application using the AHE route,
+                  whereas the Web Services approach makes a specific application available. The practical differences between these two approaches
+                  are relatively minor.
+               </p>
+               <p id="d1e611">In order to access a new local resource using the AHE, an Apache Tomcat [<a href="#B22" id="o595a7332">22</a>] server needs to be installed on the local machine together with an instance of GridSAM (an Open Source job submission and
+                  monitoring Web Service). These are automatically installed and configured (without recourse to special administrative rights)
+                  when the OMII stack is installed on the machine. The final step is simply to edit the configuration of the GridSAM instance
+                  so that it points to the locally installed software that we wish to use.
+               </p>
+               <p id="d1e616">Providing access to a local resource using Web Services is slightly more complicated. It can be achieved either by 'wrapping'
+                  the software in a simple Web Service shell or by pointing a Web Service execution at the local software. In either case, this
+                  involves writing some code, such as a Web Service Definition Language (WSDL) file. An application server or Web server is
+                  required to host the Web Service.
+               </p>
+               <p id="d1e618">Both of these approaches to the incorporation of local resources into a Grid are documented in detail on the portal website
+                  [<a href="#B23" id="k335q3685">23</a>].
+               </p>
+            </div>
+            <div class="section" id="t50d5828"><a id="d1e623">
+                  <!-- named anchor --></a><h3 class="section-title" id="i215y3994">Security</h3>
+               <p id="d1e626">Both UNICORE and AHE handle security and authorisation using X.509 digital certificates [<a href="#B24" id="b173t5635">24</a>]. This largely enables us to manage the security of our Grid using a single, uniform approach. Users who have their own Grid
+                  certificates for accessing NGS and DEISA resources are able to upload them, thereby gaining access to those resources. However,
+                  we anticipate that the majority of end users will not have their own certificates. To allow such users access to local Grid
+                  resources, a self-signed certificate can be generated for the portal or each user. This self-signed certificate will provide
+                  access to local Grid resources only.
+               </p>
+               <p id="d1e631">Both UNICORE and AHE (together with most X.509 certificate authorised (CA) middlewares) require that the certificate is presented
+                  on a MyProxy server [<a href="#B25" id="z147d4311">25</a>] (this includes the self-signed certificates). This ensures that the certificate's password need only be entered once during
+                  the submission process. To enable certificates to be deployed in this manner, the Web interface to our system has a link to
+                  the Java Web Start [<a href="#B26" id="u30b3094">26</a>] JNLP [<a href="#B27" id="w79p9252">27</a>] (Java Network Launching Protocol) MyProxy Upload Tool. Although this is not a fully automated solution (as it requires the
+                  user to manually enter the location of the certificate as well as enter the password), it is currently the most reliable.
+                  The self-signed certificates are handled in exactly the same manner as the CA certificates so provide the same security features.
+               </p>
+            </div>
+            <div class="section" id="c430c8062"><a id="d1e642">
+                  <!-- named anchor --></a><h3 class="section-title" id="y957l542">Resource brokering and job launching</h3>
+               <p id="d1e645">Currently our infrastructure uses a simple PHP script to handle resource brokering and job launching. Jobs are allocated to
+                  resources according to whether the user has a Grid certificate, and by taking into account the anticipated job length compared
+                  to any limits imposed by specific resources. For example, when the job involves running the ImmunoGrid simulator, specific
+                  settings within the simulator configuration file (such as the maximum number of iterations it will run for, and the length
+                  of the bit-string used to represent molecular interactions) are used to estimate job length. From the list of resources deemed
+                  to be both available and appropriate for running a given job, specific resources are allocated at random. Alternatively, the
+                  end user may select which of the appropriate resources they wish to uses for running a given batch of jobs.
+               </p>
+               <p id="d1e647">Although this approach is sufficient for our current requirements, a more sophisticated resource broker that seeks to optimise
+                  total execution time and ensure fairness within the context of agreed policies on resource usage will be appropriate for many
+                  applications. A wide range of approaches are possible [<a href="#B28" id="v40q1357">28</a>]. Unfortunately, deploying an existing Grid resource broker within our framework is currently problematic, as each broker
+                  supports only a subset of possible middlewares. However, this situation may change in the future, given the present interest
+                  in Grid resource meta-brokering [<a href="#B29" id="i61x1491">29</a>].
+               </p>
+               <p id="d1e655">Jobs are launched by a simple job launcher. This executes the appropriate launch command for a given job and resource (this
+                  is different for the AHE, DESHL, and Web Services). The launcher also records the details of the job both on the server's
+                  filesystem and in a local database, and executes the appropriate command line script corresponding to the resource that is
+                  selected. The state of the job is stored in the local database along with any information required to uniquely identify that
+                  job. This allows the appropriate scripts to be called when the user requests the job state to be refreshed.
+               </p>
+               <p id="d1e657">Assuming a given batch job requires a large number of individual parameter files to be created (e.g. a single parameter file
+                  for each job containing the unique parameter settings for that job), these are generated using a Perl script. Where appropriate,
+                  it would be relatively straightforward to provide a Web interface that would enable end-users to generate multiple parameter
+                  files without having to run the Perl scripts directly, but the design of such an interface is application specific.
+               </p>
+            </div>
+            <div class="section" id="f204q9115"><a id="d1e659">
+                  <!-- named anchor --></a><h3 class="section-title" id="a862q4176">Web Interface</h3>
+               <p id="d1e662">The Web interface to our infrastructure provides the end user with simple mechanisms for uploading, launching and monitoring
+                  the progress of jobs, as well as for retrieving and displaying results. The interface comprises PHP Web pages, with AJAX and
+                  DHTML used to give them a modern look and feel. Figure <a href="#F2" id="z449n9960">2</a> shows a screen shot of the interface.
+               </p>
+               <div class="fig panel" style="display: float; clear: both" id="p845l427"><a id="F2">
+                     <!-- named anchor --></a><h5 class="label" id="c730r1783">Figure&nbsp;2</h5>
+                  <div class="caption" id="b412w7784">
+                     <p class="first" id="d1e671"><b id="h762k6257">A screenshot of the job submission process.</b> Jobs are being submitted to a local AHE resource.
+                     </p>
+                  </div><img alt="1471-2105-9-407-2" src="images/1471-2105-9-407-2.jpg" id="w178f9335"></div>
+               <p id="d1e676">The interface is loosely coupled to the resource broker/job launcher and has been developed in a modular way to facilitate
+                  it being adapted to handle new applications. In this respect, the module that handles the output files generated by a given
+                  batch of jobs is a key issue, as the appropriate behaviour for this module is application specific. For our ImmunoGrid simulator
+                  application, we have developed an interface using the JPGraph [<a href="#B30" id="w190l3243">30</a>] object-oriented graph-creation library that enables the user to visualise how various simulator parameters (e.g. the levels
+                  of antigen, T-cells and B-cells in the system) varied over the run time of a given simulation. However, for the public downloadable
+                  version of our framework, the default behaviour is to provide the user with access to a tar file containing all the output
+                  files generated by a given job.
+               </p>
+               <p id="d1e681">It is possible that submitted jobs may fail or give errors. The grid middlewares utilised in this paper report when a job
+                  has failed. The user is informed about the state of their jobs when viewing the results section of a specific job. This section
+                  provides a review of the jobs submitted the date they were submitted, the time to expire and the state that each job is in.
+                  The state of the jobs is automatically polled periodically. The states that a job can be are <i id="z365n2183">executed</i>, <i id="y634w4429">running</i>, <i id="p144j633">finished </i>or <i id="s250n996">error</i>. An example of some jobs in various states can be seen in figure <a href="#F3" id="e118t2883">3</a>.
+               </p>
+               <div class="fig panel" style="display: float; clear: both" id="c236i1779"><a id="F3">
+                     <!-- named anchor --></a><h5 class="label" id="e438u4388">Figure&nbsp;3</h5>
+                  <div class="caption" id="p90h2989">
+                     <p class="first" id="d1e702">A screenshot of the different execution states of some example jobs.</p>
+                  </div><img alt="1471-2105-9-407-3" src="images/1471-2105-9-407-3.jpg" id="j857i5378"></div>
+               <p id="d1e705">The instructions for implementing the web interface are contained on the portal guide site: <a target="xrefwindow" href="http://igrid-ext.cryst.bbk.ac.uk/portal_guide/" id="d1e707">http://igrid-ext.cryst.bbk.ac.uk/portal_guide/</a>. There is also a link to a demo of the web interface available from the portal guide.
+               </p>
+            </div>
+         </div>
+         <div class="section" id="u295t7005"><a id="d1e709">
+               <!-- named anchor --></a><h2 class="main-title" id="r581z238">Authors' contributions</h2>
+            <p id="d1e712">All authors conceived of the study, MDHB was responsible for its design and implementation and helped to draft the manuscript.
+               DSM and AJS conceived of the study and were involved in its design and helped to draft the manuscript. All authors read and
+               approved the final manuscript.
+            </p>
+         </div>
+      </div>
+      <div id="article1-back" class="back">
+         <div class="back-section" id="i879k9914"><a id="d1e715">
+               <!-- named anchor --></a><h2 class="main-title" id="j803r6399">Acknowledgements</h2>
+            <div class="section" id="g618y9799"><a id="d1e716">
+                  <!-- named anchor --></a><h3 class="section-title" id="y574v8063">Acknowledgements</h3>
+               <p id="d1e719">This research has been supported by European Commission under FP6-2004-IST-4 contract no. 028069 (the ImmunoGrid project).
+                  We thank Dr Stefan Zasada (UCL) for help with the AHE, Dr Andrew Emerson (CINECA) for help with DESHL, and our colleagues
+                  in the ImmunoGrid project.
+               </p>
+            </div>
+         </div>
+         <div class="back-section" id="u305h9378"><a id="d1e721">
+               <!-- named anchor --></a><h2 class="main-title" id="t25z9379">References</h2>
+            <div class="section ref-list" id="k381i1680"><a id="b462s207">
+                  <!-- named anchor --></a><div class="ref-list table" id="g2r6297">
+                  <div class="row" id="k268k1184">
+                     <div class="ref-label cell" id="r918r5026">
+                        <p class="ref-label" id="s297l3552"><span class="label" id="a942k3856"><span class="generated" id="f654i7977">1</span></span>&nbsp;<a id="B1">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="z924k9488">
+                        <p class="citation" id="t499v5036"><a id="d1e723">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="r973h3770">ImmunoGrid</span> <a target="xrefwindow" href="http://www.immunogrid.eu" id="d1e726">http://www.immunogrid.eu</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="p495a7747">
+                     <div class="ref-label cell" id="g17e1121">
+                        <p class="ref-label" id="h755h5901"><span class="label" id="e919s588"><span class="generated" id="k528t9428">2</span></span>&nbsp;<a id="B2">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="j997c9084">
+                        <p class="citation" id="w111x9976"><a id="d1e728">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="u539a3783"><span class="ref-citation-surname" id="i116x4559">Castiglione</span> <span class="ref-citation-given-name" id="u881l4121">F.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="k812o8222"><span class="ref-citation-surname" id="d798c4651">Pappalardo</span> <span class="ref-citation-given-name" id="d620n7209">F.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="w414q1179"><span class="ref-citation-surname" id="j225a3863">Bernaschi</span> <span class="ref-citation-given-name" id="u495k7195">M.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="b161e5116"><span class="ref-citation-surname" id="y832e9155">Motta</span> <span class="ref-citation-given-name" id="k102p7498">S.  
+                                 	</span></span> <span class="ref-citation-article-title" id="f975h6294">Optimization of HAART by means of Genetic Algorithms and agent based models of HIV infection</span>  <span class="ref-citation-source" id="w693u9707">Bioinformatics</span>.
+                           	  <span class="ref-citation-year" id="s538d8033">2007</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="g969g758">17942443</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="g182l841">
+                     <div class="ref-label cell" id="d532z623">
+                        <p class="ref-label" id="f497m3427"><span class="label" id="s885r2938"><span class="generated" id="j808i5042">3</span></span>&nbsp;<a id="B3">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="w15t2214">
+                        <p class="citation" id="u623y2391"><a id="d1e765">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="g608y1169"><span class="ref-citation-surname" id="r959i7685">Lollini</span> <span class="ref-citation-given-name" id="g629h7900">P-L.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="q684f7300"><span class="ref-citation-surname" id="a540g6581">Motta</span> <span class="ref-citation-given-name" id="e360t2323">S.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="g629a8971"><span class="ref-citation-surname" id="k36k5969">Pappalardo</span> <span class="ref-citation-given-name" id="g973p2170">F.  
+                                 	</span></span> <span class="ref-citation-article-title" id="d681z5044">Discovery of cancer vaccination protocols with a genetic algorithm driving an agent based simulator</span>  <span class="ref-citation-source" id="o280p1770">BMC Bioinformatics</span>.
+                           	  <span class="ref-citation-year" id="z847w1637">2006</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="e471q6547">16857043</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="l668a4853">
+                     <div class="ref-label cell" id="d876q2900">
+                        <p class="ref-label" id="v725r4836"><span class="label" id="i407v6828"><span class="generated" id="f253j353">4</span></span>&nbsp;<a id="B4">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="l473p9360">
+                        <p class="citation" id="f766z124"><a id="d1e795">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="s595u1246">National Grid Service</span> <a target="xrefwindow" href="http://www.grid-support.ac.uk/" id="d1e798">http://www.grid-support.ac.uk/</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="p245j2227">
+                     <div class="ref-label cell" id="i22x2801">
+                        <p class="ref-label" id="h820j9944"><span class="label" id="v498g5004"><span class="generated" id="l499f7763">5</span></span>&nbsp;<a id="B5">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="v678e3457">
+                        <p class="citation" id="q940n1480"><a id="d1e800">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="l1i6078">Distributed European Infrastructure for Supercomputing Applications</span> <a target="xrefwindow" href="http://www.deisa.org/" id="d1e803">http://www.deisa.org/</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="x634j8763">
+                     <div class="ref-label cell" id="t898s3576">
+                        <p class="ref-label" id="s360c3046"><span class="label" id="x41x6120"><span class="generated" id="e340h5131">6</span></span>&nbsp;<a id="B6">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="n548o1051">
+                        <p class="citation" id="d526f1420"><a id="d1e805">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="x230m7700">TeraGrid</span> <a target="xrefwindow" href="http://www.teragrid.org/" id="d1e808">http://www.teragrid.org/</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="c365k2512">
+                     <div class="ref-label cell" id="o51t1842">
+                        <p class="ref-label" id="r246r5471"><span class="label" id="x685n7442"><span class="generated" id="u324v3617">7</span></span>&nbsp;<a id="B7">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="d90i2632">
+                        <p class="citation" id="q510b901"><a id="d1e810">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="r871x1429"><span class="ref-citation-surname" id="v967c7688">Coveney</span> <span class="ref-citation-given-name" id="q501s3262">PV.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="n74j5407"><span class="ref-citation-surname" id="k939p4132">Saksena</span> <span class="ref-citation-given-name" id="m54i4861">RS.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="r519r5791"><span class="ref-citation-surname" id="a628p7479">Zasada</span> <span class="ref-citation-given-name" id="q350c9927">SJ.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="w1000a3992"><span class="ref-citation-surname" id="n177q2446">McKeown</span> <span class="ref-citation-given-name" id="g947y8612">M.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="u989n2695"><span class="ref-citation-surname" id="a223e785">Pickles</span> <span class="ref-citation-given-name" id="c533z7325">S.  
+                                 	</span></span> <span class="ref-citation-article-title" id="h169m4036">The Application Hosting Environment: Lightweight Middleware for Grid-Based Computational Science</span>  <span class="ref-citation-source" id="f876d1349">Comp Phys Comm</span>.
+                           	  <span class="ref-citation-year" id="r173l3758">2007</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="d462r2456">
+                     <div class="ref-label cell" id="x917a3992">
+                        <p class="ref-label" id="h659c9701"><span class="label" id="a886y1770"><span class="generated" id="s550s5132">8</span></span>&nbsp;<a id="B8">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="v925u8983">
+                        <p class="citation" id="r506u9239"><a id="d1e850">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="v298n6825"><span class="ref-citation-surname" id="w169z2435">Zasada</span> <span class="ref-citation-given-name" id="p544q1571">SJ.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="z513h7665"><span class="ref-citation-surname" id="r236m455">Saksena</span> <span class="ref-citation-given-name" id="u499n4041">RS.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="j450m3743"><span class="ref-citation-surname" id="q539m6214">Coveney</span> <span class="ref-citation-given-name" id="h750d10000">PV.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="i867q6664"><span class="ref-citation-surname" id="m400y5257">McKeown</span> <span class="ref-citation-given-name" id="n637q2843">M.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="n703i1856"><span class="ref-citation-surname" id="h798m6275">Pickles</span> <span class="ref-citation-given-name" id="o84y3031">S.  
+                                 	</span></span> <span class="ref-citation-article-title" id="f552c3811">Facilitating User Access to the Grid: A Lightweight Application Hosting Environment for Grid Enabled Computational Science</span>  <span class="ref-citation-source" id="i986j7197">Proceedings of the Second IEEE International Conference on e-Science and Grid Computing</span>.
+                           	  <span class="ref-citation-year" id="v625w5292">2006</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="t877v1375">
+                     <div class="ref-label cell" id="j296w1122">
+                        <p class="ref-label" id="y183h7946"><span class="label" id="v517k6320"><span class="generated" id="f169h552">9</span></span>&nbsp;<a id="B9">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="d254h9189">
+                        <p class="citation" id="y56h1203"><a id="d1e886">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="b586x4542"><span class="ref-citation-surname" id="p646e2217">Sloan</span> <span class="ref-citation-given-name" id="y739y3486">TM.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="r408h5358"><span class="ref-citation-surname" id="y977k4910">Menday</span> <span class="ref-citation-given-name" id="e839z5274">R.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="i873z8244"><span class="ref-citation-surname" id="w247i4966">Seed</span> <span class="ref-citation-given-name" id="z354s1236">T.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="h635z6492"><span class="ref-citation-surname" id="w236p8170">Illingworth</span> <span class="ref-citation-given-name" id="f444w7518">M.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="c449w6126"><span class="ref-citation-surname" id="e807g7023">Trew</span> <span class="ref-citation-given-name" id="v532r8620">AS.  
+                                 	</span></span> <span class="ref-citation-article-title" id="s823c1166">DESHL &ndash; standards based access to a heterogeneous European supercomputing infrastructure</span>  <span class="ref-citation-source" id="n317s4685">Proc 2nd IEEE International Conference on e-Science and Grid Computing</span>.
+                           	  <span class="ref-citation-year" id="w339z547">2006</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="v818q7454">
+                     <div class="ref-label cell" id="q591e7931">
+                        <p class="ref-label" id="d237v4293"><span class="label" id="e321v1085"><span class="generated" id="g254d5673">10</span></span>&nbsp;<a id="B10">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="b606v6072">
+                        <p class="citation" id="y691z2391"><a id="d1e922">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="z257x9265">The Globus Alliance</span> <a target="xrefwindow" href="http://www.globus.org" id="d1e925">http://www.globus.org</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="g56y7000">
+                     <div class="ref-label cell" id="a679i5049">
+                        <p class="ref-label" id="j313m4852"><span class="label" id="s208r8439"><span class="generated" id="w348a297">11</span></span>&nbsp;<a id="B11">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="m961f6633">
+                        <p class="citation" id="w499i2986"><a id="d1e927">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="z718g3152">EBI</span> <a target="xrefwindow" href="http://www.ebi.ac.uk" id="d1e930">http://www.ebi.ac.uk</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="t44b3083">
+                     <div class="ref-label cell" id="h109i2804">
+                        <p class="ref-label" id="g738c4286"><span class="label" id="k389s9913"><span class="generated" id="w996y9938">12</span></span>&nbsp;<a id="B12">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="g599l6866">
+                        <p class="citation" id="l233h8547"><a id="d1e933">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="e614v2888"><span class="ref-citation-surname" id="r555a2913">Buus</span> <span class="ref-citation-given-name" id="t794p8672">S.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="p777j7"><span class="ref-citation-surname" id="y712k1235">Lauemoller</span> <span class="ref-citation-given-name" id="c31z6715">SL.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="m787h5283"><span class="ref-citation-surname" id="h971m5047">Worning</span> <span class="ref-citation-given-name" id="t844g140">P.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="k813u9516"><span class="ref-citation-surname" id="y295k5505">Kesmir</span> <span class="ref-citation-given-name" id="p381j6831">C.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="c542k3759"><span class="ref-citation-surname" id="n677o1401">Frimurer</span> <span class="ref-citation-given-name" id="k63j9097">T.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="c995z6755"><span class="ref-citation-surname" id="i199a5495">Corbet</span> <span class="ref-citation-given-name" id="z967k9919">S.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="v417w7431"><span class="ref-citation-surname" id="g993h1276">Fomsgaard</span> <span class="ref-citation-given-name" id="o867o228">A.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="l800g6533"><span class="ref-citation-surname" id="o552a7691">Hilden</span> <span class="ref-citation-given-name" id="r158s3945">J.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="s783n9708"><span class="ref-citation-surname" id="u346x774">Holm</span> <span class="ref-citation-given-name" id="x522k7261">A.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="o761z630"><span class="ref-citation-surname" id="n102s4373">Brunak</span> <span class="ref-citation-given-name" id="g203q1643">S.  
+                                 	</span></span> <span class="ref-citation-article-title" id="a347l1978">Sensitive quantitative predictions of peptide-MHC binding by a 'Query by Committee' artificial neural network approach</span>  <span class="ref-citation-source" id="g840k5453">Tissue Antigens</span>.
+                           	  <span class="ref-citation-year" id="b748e8064">2003</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="t538g1639">14617044</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="v550u5296">
+                     <div class="ref-label cell" id="a292i4159">
+                        <p class="ref-label" id="p553x905"><span class="label" id="t70f1033"><span class="generated" id="w860l2269">13</span></span>&nbsp;<a id="B13">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="e498a6425">
+                        <p class="citation" id="q198j8437"><a id="d1e1000">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="x720q7189"><span class="ref-citation-surname" id="a570k4802">H&eacute;nin</span> <span class="ref-citation-given-name" id="c782r6716">J.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="k918j9848"><span class="ref-citation-surname" id="l836x2644">Chipot</span> <span class="ref-citation-given-name" id="z183e6756">C.  
+                                 	</span></span> <span class="ref-citation-article-title" id="p810n9298">Overcoming free energy barriers using unconstrained molecular dynamics simulations</span>  <span class="ref-citation-source" id="h482x3467">J Chem Phys</span>.
+                           	  <span class="ref-citation-year" id="k94q313">2004</span>.
+                           PMID:
+                           	 <span class="ref-citation-pmid" id="m877i3850">15291601</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="l448q4285">
+                     <div class="ref-label cell" id="e476q5162">
+                        <p class="ref-label" id="z532u3348"><span class="label" id="h743z295"><span class="generated" id="b978s9406">14</span></span>&nbsp;<a id="B14">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="v874y6970">
+                        <p class="citation" id="p660h4429"><a id="d1e1027">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="t178x4412">PI2S2</span> <a target="xrefwindow" href="http://www.pi2s2.it/" id="d1e1030">http://www.pi2s2.it/</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="z115i946">
+                     <div class="ref-label cell" id="o426g9503">
+                        <p class="ref-label" id="c359f6083"><span class="label" id="c626x1685"><span class="generated" id="m538v1077">15</span></span>&nbsp;<a id="B15">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="y516l6316">
+                        <p class="citation" id="d139k3913"><a id="d1e1032">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="a17k5860">gLite</span> <a target="xrefwindow" href="http://glite.web.cern.ch/glite/" id="d1e1035">http://glite.web.cern.ch/glite/</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="l820l4919">
+                     <div class="ref-label cell" id="j103k3515">
+                        <p class="ref-label" id="o827h8451"><span class="label" id="v381h8038"><span class="generated" id="s786m2540">16</span></span>&nbsp;<a id="B16">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="f501m4451">
+                        <p class="citation" id="u697p6779"><a id="d1e1037">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="e887n8113"><span class="ref-citation-surname" id="w773j3120">Mastriani</span> <span class="ref-citation-given-name" id="g762k1314">E.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="j921b3872"><span class="ref-citation-surname" id="t300m4583">Halling-Brown</span> <span class="ref-citation-given-name" id="o495o8148">MD.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="p90n6338"><span class="ref-citation-surname" id="s206q1062">Shepherd</span> <span class="ref-citation-given-name" id="m220a256">AJ.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="o598d3218"><span class="ref-citation-surname" id="t377f4246">Motta</span> <span class="ref-citation-given-name" id="z167j7579">S.  
+                                 	</span></span> <span class="ref-citation-article-title" id="s229i9525">ImmunoGrid-PI2S2 Integration Architecture</span>  <span class="ref-citation-source" id="h12v7292">Proceedings of Grid Open Days at the University of Palermo</span>.
+                           	  <span class="ref-citation-year" id="c398g7087">2007</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="p408r2836">
+                     <div class="ref-label cell" id="w520e1795">
+                        <p class="ref-label" id="e596a2814"><span class="label" id="o311i5157"><span class="generated" id="c669u6105">17</span></span>&nbsp;<a id="B17">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="l974u1634">
+                        <p class="citation" id="x426w637"><a id="d1e1066">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="a798m6311"><span class="ref-citation-surname" id="k170i168">Richards</span> <span class="ref-citation-given-name" id="b657t7679">A.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="x339c337"><span class="ref-citation-surname" id="g193f5053">Schmidt</span> <span class="ref-citation-given-name" id="j792z4208">J.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="i458w8035"><span class="ref-citation-surname" id="o150y8552">Dew</span> <span class="ref-citation-given-name" id="x513d5570">PM.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="g139i320"><span class="ref-citation-surname" id="n737o7342">Youhanaie</span> <span class="ref-citation-given-name" id="e314s471">F.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="i250q9818"><span class="ref-citation-surname" id="x658d2238">Ford</span> <span class="ref-citation-given-name" id="n146q827">M.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="o288b9422"><span class="ref-citation-surname" id="p714y4573">Geddes</span> <span class="ref-citation-given-name" id="n959r3705">N.  
+                                 	</span></span> <span class="ref-citation-article-title" id="t226k2975">Production Quality e-Science Grid</span>  <span class="ref-citation-source" id="p405d4175">Proceedings of the UK e-Science All Hands Meeting 31st August &ndash; 3rd September, Nottingham UK</span>.
+                           	  <span class="ref-citation-year" id="y803e1957">2004</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="x839e2605">
+                     <div class="ref-label cell" id="p1000t9882">
+                        <p class="ref-label" id="t116l5112"><span class="label" id="o546y2543"><span class="generated" id="h544k2814">18</span></span>&nbsp;<a id="B18">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="n989z8565">
+                        <p class="citation" id="t329v2384"><a id="d1e1105">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="x839r9860">GridSAM</span> <a target="xrefwindow" href="http://gridsam.sourceforge.net/2.0.1/index.html" id="d1e1108">http://gridsam.sourceforge.net/2.0.1/index.html</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="j463t9834">
+                     <div class="ref-label cell" id="d69p7496">
+                        <p class="ref-label" id="u926n7825"><span class="label" id="l207c8845"><span class="generated" id="d153s4320">19</span></span>&nbsp;<a id="B19">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="w182l5571">
+                        <p class="citation" id="q850d9846"><a id="d1e1110">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="j753e6877"><span class="ref-citation-surname" id="k246s7519">Almond</span> <span class="ref-citation-given-name" id="t676s3606">J.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="y264b2209"><span class="ref-citation-surname" id="s615z8063">Snelling</span> <span class="ref-citation-given-name" id="t503k6034">D.  
+                                 	</span></span> <span class="ref-citation-article-title" id="p663u8308">UNICORE: Uniform Access to Supercomputing as an Element of Electronic Commerce</span>  <span class="ref-citation-source" id="j842h5010">Future Generation Computer Systems 613</span>.
+                           	  <span class="ref-citation-year" id="m817w3038">1999</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="m485h8855">
+                     <div class="ref-label cell" id="a54z4099">
+                        <p class="ref-label" id="f668b2601"><span class="label" id="c295w8209"><span class="generated" id="k693z4762">20</span></span>&nbsp;<a id="B20">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="w378d5415">
+                        <p class="citation" id="e461h1308"><a id="d1e1133">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="r230r7058"><span class="ref-citation-surname" id="o883s9050">Zasada</span> <span class="ref-citation-given-name" id="l67i1457">SJ.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="y126a6813"><span class="ref-citation-surname" id="j952p6281">Cheney</span> <span class="ref-citation-given-name" id="u285u6146">BG.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="y459m1263"><span class="ref-citation-surname" id="a116c2756">Saksena</span> <span class="ref-citation-given-name" id="o430d5999">RS.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="i162r4833"><span class="ref-citation-surname" id="w10t8290">Suter</span> <span class="ref-citation-given-name" id="x744m3040">JL.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="q650p4354"><span class="ref-citation-surname" id="k781x278">Coveney</span> <span class="ref-citation-given-name" id="x977d2410">PV.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="n159t2059"><span class="ref-citation-surname" id="k947s411">Essex</span> <span class="ref-citation-given-name" id="r111q132">JW.  
+                                 	</span></span> <span class="ref-citation-article-title" id="e187j2366">Production Level Scientific Simulation Management on International Federated Grids</span>  <span class="ref-citation-source" id="t695z1386">Proceedings of the 2nd TeraGrid Conference</span>.
+                           	  <span class="ref-citation-year" id="d865j9790">2007</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="m754q3235">
+                     <div class="ref-label cell" id="w106q8686">
+                        <p class="ref-label" id="i600e5352"><span class="label" id="p469m7602"><span class="generated" id="e19t4781">21</span></span>&nbsp;<a id="B21">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="m590y7617">
+                        <p class="citation" id="r783u2389"><a id="d1e1172">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="g197k5623">OMII</span> <a target="xrefwindow" href="http://www.omii.ac.uk" id="d1e1175">http://www.omii.ac.uk</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="z267m1738">
+                     <div class="ref-label cell" id="n804l4252">
+                        <p class="ref-label" id="s380y7500"><span class="label" id="q467n4904"><span class="generated" id="d764p6529">22</span></span>&nbsp;<a id="B22">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="b727p4575">
+                        <p class="citation" id="x792n5915"><a id="d1e1177">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="u437l5445">Apache Tomcat</span> <a target="xrefwindow" href="http://www.tomcat.apache.org" id="d1e1180">http://www.tomcat.apache.org</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="g915k5417">
+                     <div class="ref-label cell" id="l414o5141">
+                        <p class="ref-label" id="g77j8815"><span class="label" id="d275j952"><span class="generated" id="j360x8633">23</span></span>&nbsp;<a id="B23">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="z857f1416">
+                        <p class="citation" id="e103m539"><a id="d1e1183">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="r704u3688"><span class="ref-citation-surname" id="s228s5070">Halling-Brown</span> <span class="ref-citation-given-name" id="i794i6071">MD.  
+                                 	</span></span> <span class="ref-citation-article-title" id="z257h2601">Portal Guide</span> <a target="xrefwindow" href="http://igrid-ext.cryst.bbk.ac.uk/portal_guide/" id="d1e1192">http://igrid-ext.cryst.bbk.ac.uk/portal_guide/</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="i98i201">
+                     <div class="ref-label cell" id="c913p8243">
+                        <p class="ref-label" id="r478g7043"><span class="label" id="s416r9140"><span class="generated" id="o249k3308">24</span></span>&nbsp;<a id="B24">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="k456y6619">
+                        <p class="citation" id="q845z5324"><a id="d1e1194">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="c544m1190">Internet X.509 Public Key Infrastructure Certificate Management Protocols, IETF RFC 2510</span> <a target="xrefwindow" href="http://www.faqs.org/rfcs/rfc2510.html" id="d1e1197">http://www.faqs.org/rfcs/rfc2510.html</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="h628a9029">
+                     <div class="ref-label cell" id="g983t4843">
+                        <p class="ref-label" id="h45g845"><span class="label" id="g539r7482"><span class="generated" id="r454s7657">25</span></span>&nbsp;<a id="B25">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="l256a2471">
+                        <p class="citation" id="q373m5122"><a id="d1e1199">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="z508b4702"><span class="ref-citation-surname" id="b533y4200">Novotny</span> <span class="ref-citation-given-name" id="y295r97">J.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="s125i7102"><span class="ref-citation-surname" id="l924o3730">Tuecke</span> <span class="ref-citation-given-name" id="u41g3792">S.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="l35y8857"><span class="ref-citation-surname" id="r912t5782">Welch</span> <span class="ref-citation-given-name" id="p5n5390">V.  
+                                 	</span></span> <span class="ref-citation-article-title" id="o481c9870">An Online Credential Repository for the Grid: MyProxy</span>  <span class="ref-citation-source" id="j24x5254">Proceedings of the Tenth International Symposium on High Performance Distributed Computing (HPDC-10)</span>.
+                           	  <span class="ref-citation-year" id="q72n5614">2001</span>.
+                           IEEE Press
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="z274c5245">
+                     <div class="ref-label cell" id="b327n5288">
+                        <p class="ref-label" id="n772s6997"><span class="label" id="e41l2787"><span class="generated" id="o170c5731">26</span></span>&nbsp;<a id="B26">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="m699y4642">
+                        <p class="citation" id="n583a8229"><a id="d1e1229">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="g175a5063">Sun Developer Network, Java Web Start Technology</span> <a target="xrefwindow" href="http://java.sun.com/products/javawebstart" id="d1e1232">http://java.sun.com/products/javawebstart</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="p196e2152">
+                     <div class="ref-label cell" id="j886y2308">
+                        <p class="ref-label" id="l101w7970"><span class="label" id="n809e1054"><span class="generated" id="q336n2899">27</span></span>&nbsp;<a id="B27">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="w93g3592">
+                        <p class="citation" id="i816q1637"><a id="d1e1234">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="h921l888">JNLP</span> <a target="xrefwindow" href="http://java.sun.com/products/javawebstart/download-spec.html" id="d1e1237">http://java.sun.com/products/javawebstart/download-spec.html</a></p>
+                     </div>
+                  </div>
+                  <div class="row" id="v689p2475">
+                     <div class="ref-label cell" id="g618k4597">
+                        <p class="ref-label" id="m948h6585"><span class="label" id="i739x1169"><span class="generated" id="c232h4370">28</span></span>&nbsp;<a id="B28">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="b582i8142">
+                        <p class="citation" id="b260b7553"><a id="d1e1239">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="y321r4558"><span class="ref-citation-surname" id="q971g2059">Kert&eacute;sz</span> <span class="ref-citation-given-name" id="f687u712">A.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="j3y4954"><span class="ref-citation-surname" id="g177g3387">Kacsuk</span> <span class="ref-citation-given-name" id="h786c2689">P.  
+                                 	</span></span> <span class="ref-citation-article-title" id="a698r6005">A Taxonomy of Grid Resource Brokers</span>  <span class="ref-citation-source" id="r433q6183">6th Austrian-Hungarian Workshop on Distributed and Parallel Systems (DAPSYS 2006) in conjunction with the Austrian Grid Symposium
+                              2006, Innsbruck, Austria</span>.
+                           	  <span class="ref-citation-year" id="s690f1206">2006</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="l866m3068">
+                     <div class="ref-label cell" id="g581h8128">
+                        <p class="ref-label" id="w966u3185"><span class="label" id="k930u1967"><span class="generated" id="p756g5107">29</span></span>&nbsp;<a id="B29">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="g11i154">
+                        <p class="citation" id="k266d3313"><a id="d1e1262">
+                              <!-- named anchor --></a><span class="ref-citation-name" id="o472e2364"><span class="ref-citation-surname" id="h538v1576">Kert&eacute;sz</span> <span class="ref-citation-given-name" id="g308b5399">A.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="a653y4840"><span class="ref-citation-surname" id="w879z4381">Kacsuk</span> <span class="ref-citation-given-name" id="t753z5764">P.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="o39o1853"><span class="ref-citation-surname" id="a195d7277">Rodero</span> <span class="ref-citation-given-name" id="j306v604">I.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="f35z8859"><span class="ref-citation-surname" id="f874l9996">Guim</span> <span class="ref-citation-given-name" id="x205u8027">F.  
+                                 	</span></span>
+                           	,
+                           <span class="ref-citation-name" id="e197a9599"><span class="ref-citation-surname" id="o314n2069">Corbalan</span> <span class="ref-citation-given-name" id="h976v5793">J.  
+                                 	</span></span> <span class="ref-citation-article-title" id="s539h4462">Meta-Brokering requirements and research directions in state-of-the-art Grid Resource Management</span>  <span class="ref-citation-source" id="j816y753">CoreGRID Technical Report Number TR-0116</span>.
+                           	  <span class="ref-citation-year" id="k604e1231">2007</span>.
+                           
+                        </p>
+                     </div>
+                  </div>
+                  <div class="row" id="t616j2566">
+                     <div class="ref-label cell" id="y607r4937">
+                        <p class="ref-label" id="t695k3598"><span class="label" id="w71x7331"><span class="generated" id="f545j2647">30</span></span>&nbsp;<a id="B30">
+                              <!-- named anchor --></a></p>
+                     </div>
+                     <div class="ref-content cell" id="q461w8507">
+                        <p class="citation" id="q325t4951"><a id="d1e1296">
+                              <!-- named anchor --></a><span class="ref-citation-article-title" id="f737d1981">JPGraph</span> <a target="xrefwindow" href="http://www.aditus.nu/jpgraph" id="d1e1299">http://www.aditus.nu/jpgraph</a></p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="article1-footer" class="footer">
+         <hr class="part-rule" id="l495h9409"><div class="metadata" id="i1q6907">
+            <h4 class="generated" id="v901z3141">Article Information (continued)</h4>
+            <div class="metadata-group" id="j898f8759">
+               <div class="metadata-area" id="v894o4357">
+                  <p class="metadata-entry" id="z322g7089"><span class="generated" id="q511t9257">Categories: </span></p>
+                  <div class="metadata-chunk" id="o832v1260">
+                     <p class="metadata-entry" id="d183v4389"><span class="generated" id="g620t8768">Subject: </span>Research Article
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <hr class="part-rule" id="y799k6897"><div class="branding" id="t610p3436">
+            <p id="w955p706">This display is generated from NISO JATS XML with <b id="y195u2794">jats-html.xsl</b>. The XSLT engine is SAXON 9.2.0.6 from Saxonica.
+            </p>
+         </div>
+      </div>
+   </body></html>
