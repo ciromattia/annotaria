@@ -12,6 +12,7 @@ function reset() {
     $('a[href="#tab_welcome"]').on('shown.bs.tab', function () {
         $('#annotationlist').html('');
         $('#annotationListPanel').collapse('hide');
+        $('#annotationListPanel').collapse('hide');
         $('#add_annotation_doc').hide();
     });
     $("#create_ranged_annot_button").hide();
@@ -95,7 +96,7 @@ function get_articlelist() {
             for (var i = 0; i < d.length; i++) {
                 var trimmed_title = d[i].title.substr(0, 25);
                 $('#articlelist').append('<li class="nav-index-listing">' +
-                    '<small><a data-toggle="tooltip" data-placement="left" title="' + d[i].title +
+                    '<small><a title="' + d[i].title +
                     '" href="javascript:load_article(\'' + d[i].href + '\',\'' + d[i].title + '\')">' +
                     trimmed_title + "</a></li>");
             }

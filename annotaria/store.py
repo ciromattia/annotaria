@@ -90,7 +90,7 @@ class Store:
                 'target_startoff': int(row[10]) if row[10] is not None else None,
                 'target_endoff': int(row[11]) if row[11] is not None else None,
             })
-            ret.append(annotation.get_json())
+            ret.append(annotation.annotation)
         return ret
 
     def query_authors(self):
