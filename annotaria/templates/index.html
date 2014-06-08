@@ -15,8 +15,8 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon"/>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon"/>
@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='datepicker.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='jats.css') }}">
 </head>
 <body>
 
@@ -35,7 +36,7 @@
                                                        alt="Fork me on GitHub"
                                                        data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 <!-- Fixed navbar -->
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-fixed-top " role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -52,8 +53,11 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href role="button" data-toggle="modal" data-target="#about">About</a></li>
-                <li><a href id="temp_annot_button" class="btn" role="button" data-toggle="modal" data-target="#temp_annot">Unsaved
+                <li><a href id="temp_annot_button" class="btn" role="button" data-toggle="modal"
+                       data-target="#temp_annot">Unsaved
                     annotations</a></li>
+                <li><a href id="create_ranged_annot_button" class="btn btn-primary" role="button" data-toggle="modal"
+                       data-target="#doc_annot">Create annotation</a></li>
             </ul>
         </div>
         <!--/.nav-collapse -->
@@ -64,7 +68,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-            <div class="side-navigation">
+            <div class="side-navigation" data-spy="affix">
                 <div class="panel-group" id="accordion">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -87,7 +91,8 @@
                         <div id="annotationListPanel" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <ul class="nav-list aside-nav" id="annotationlist"></ul>
-                                <p><a href role="button" id="add_annotation_doc" data-toggle="modal" data-target="#doc_annot">
+                                <p><a href role="button" id="add_annotation_doc" data-toggle="modal"
+                                      data-target="#doc_annot">
                                     <small><i class="fa fa-plus"></i> add an annotation...</small>
                                 </a></p>
                             </div>
@@ -130,7 +135,7 @@
     <div class="container">
         <p class="pull-right text-muted"><a back-to-top>Back to top</a></p>
 
-        <p class="text-muted">Proudly powered by: Annotaria Group. "AlmaMater"
+        <p class="text-muted">Proudly powered by: Kappa group
         </p>
     </div>
 </footer>
@@ -184,11 +189,20 @@
                             <option value="hasComment">hasComment</option>
                         </select>
                     </div>
-                    <div class="form-group" id="widget_instance">
-                        <select multiple class="form-control" id="widget_instance_selector">
-                            <option>Fabio Vitali</option>
-                            <option>Angelo Di Iori</option>
-                        </select>
+                    <div class="form-group row" id="widget_instance">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <select multiple class="form-control" id="widget_instance_selector">
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <fieldset>
+                                <input id="widget_instance_new_id" type="text" class="form-control" placeholder="Id" maxlength="80">
+                                <input id="widget_instance_new_name" type="text" class="form-control" placeholder="Name" maxlength="80">
+                                <input id="widget_instance_new_email" type="email" class="form-control" placeholder="Email" maxlength="80">
+                                <button type="button" class="btn btn-primary pull-right" id="widget_instance_new_save" onclick="save_author()"><i
+                        class="fa fa-check"></i> Create new</button>
+                            </fieldset>
+                        </div>
                     </div>
                     <div class="form-group" id="widget_date">
                         <div class="input-append date" id="widget_date_picker" data-date="12-02-2012"
@@ -198,7 +212,8 @@
                         </div>
                     </div>
                     <div class="form-group" id="widget_shorttext">
-                        <input id="widget_shorttext_input" type="text" class="form-control" placeholder="Text input" maxlength="80">
+                        <input id="widget_shorttext_input" type="text" class="form-control" placeholder="Text input"
+                               maxlength="80">
                     </div>
                     <div class="form-group" id="widget_longtext">
                         <textarea id="widget_longtext_input" class="form-control" rows="4"></textarea>
@@ -227,10 +242,12 @@
             <div class="modal-body">
                 <div class="table-responsive">
                     <table class="table table-striped">
-                        <thead><tr>
+                        <thead>
+                        <tr>
                             <th>Annotation type</th>
                             <th>Value</th>
-                        </tr></thead>
+                        </tr>
+                        </thead>
                         <tbody id="temp_annot_rows"></tbody>
                     </table>
                 </div>
@@ -238,7 +255,8 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close
                 </button>
-                <button type="button" class="temp_annot_action btn btn-danger" onclick="discard_annotations()"><i class="fa fa-times"></i> Discard
+                <button type="button" class="temp_annot_action btn btn-danger" onclick="discard_annotations()"><i
+                        class="fa fa-times"></i> Discard
                     all annotations
                 </button>
                 <button type="button" class="temp_annot_action btn btn-primary" onclick="store_annotations()"><i

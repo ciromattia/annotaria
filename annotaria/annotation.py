@@ -22,18 +22,16 @@ class Annotation:
         self.id = uuid4()
         # init fields
         self.annotation = {
-            "annotations": [{
-                "type": None,
+            "type": None,
+            "label": None,
+            "body": {
                 "label": None,
-                "body": {
-                    "label": None,
-                    "subject": None,
-                    "predicate": None,
-                    "literal": None,
-                    "object": None,
-                    "resource": None
-                }
-            }],
+                "subject": None,
+                "predicate": None,
+                "literal": None,
+                "object": None,
+                "resource": None
+            },
             "target": {
                 "source": None,
                 "start_id": None,
@@ -51,9 +49,13 @@ class Annotation:
         }
 
     # Takes an array and parses it into our object
-    def parse_json(self, annotation_json):
-        for key in annotation_json:
-            setattr(self, key, annotation_json[key])
+    def parse_json(self, annotation, target, provenance):
+        for key in annotation:
+            setattr(self.annotation, key, annotation[key])
+        for key in target:
+            setattr(self.annotation['target'], key, annotation[key])
+        for key in provenance:
+            setattr(self.annotation['provenance'], key, annotation[key])
         pass
 
     def parse_rdf(self, annotation_rdf):
@@ -122,7 +124,20 @@ class Annotation:
             rdf.add((anno, OA.hasTarget, item))
 
         # process specific annotation types
-        if self.type == "Title":
+        if self.type == "hasAuthor":
+            rdf.add((anno, AO.type, Literal("hasAuthor")))
+            # reifiedstmt = BNode(str(self.id) + "body")
+            reifiedstmt = AON[str(self.id) + "_body"]
+            rdf.add((reifiedstmt, RDF.type, RDF.Statement))
+            rdf.add((reifiedstmt, RDF.subject, work))
+            rdf.add((reifiedstmt, RDF.object, AOP[self.text]))
+            rdf.add((reifiedstmt, RDF.predicate, DCTERMS.creator))
+            rdf.add((anno, OA.hasBody, reifiedstmt))
+        elif self.type == "hasPublisher":
+            pass
+        elif self.type == "hasPublicationYear":
+            pass
+        elif self.type == "hasTitle":
             rdf.add((anno, RDFS.label, Literal("Title")))
             # reifiedstmt = BNode(str(self.id) + "body")
             reifiedstmt = AON[str(self.id) + "_body"]
@@ -130,14 +145,21 @@ class Annotation:
             rdf.add((reifiedstmt, RDF.subject, expression))
             rdf.add((reifiedstmt, RDF.predicate, FABIO.hasTitle))
             rdf.add((anno, OA.hasBody, reifiedstmt))
-        elif self.type == "Subject":
-            rdf.add((anno, RDFS.label, Literal("Subject")))
+        elif self.type == "hasAbstract":
+            rdf.add((anno, RDFS.label, Literal("Title")))
             # reifiedstmt = BNode(str(self.id) + "body")
             reifiedstmt = AON[str(self.id) + "_body"]
             rdf.add((reifiedstmt, RDF.type, RDF.Statement))
             rdf.add((reifiedstmt, RDF.subject, expression))
-            rdf.add((reifiedstmt, RDF.object, URIRef(self.text)))
-            rdf.add((reifiedstmt, RDF.predicate, FABIO.hasSubjectTerm))
+            rdf.add((reifiedstmt, RDF.predicate, FABIO.hasTitle))
+            rdf.add((anno, OA.hasBody, reifiedstmt))
+        elif self.type == "hasShortTitle":
+            rdf.add((anno, RDFS.label, Literal("Title")))
+            # reifiedstmt = BNode(str(self.id) + "body")
+            reifiedstmt = AON[str(self.id) + "_body"]
+            rdf.add((reifiedstmt, RDF.type, RDF.Statement))
+            rdf.add((reifiedstmt, RDF.subject, expression))
+            rdf.add((reifiedstmt, RDF.predicate, FABIO.hasTitle))
             rdf.add((anno, OA.hasBody, reifiedstmt))
         elif self.type == "hasComment":
             rdf.add((anno, RDFS.label, Literal("Comment")))
@@ -157,23 +179,14 @@ class Annotation:
             rdf.add((reifiedstmt, RDF.object, URIRef(self.text)))
             rdf.add((reifiedstmt, RDF.predicate, SEM.denotes))
             rdf.add((anno, OA.hasBody, reifiedstmt))
-        elif self.type == "hasAuthor":
-            rdf.add((anno, AO.type, Literal("hasAuthor")))
+        elif self.type == "Subject":
+            rdf.add((anno, RDFS.label, Literal("Subject")))
             # reifiedstmt = BNode(str(self.id) + "body")
             reifiedstmt = AON[str(self.id) + "_body"]
             rdf.add((reifiedstmt, RDF.type, RDF.Statement))
-            rdf.add((reifiedstmt, RDF.subject, work))
-            rdf.add((reifiedstmt, RDF.object, AOP[self.text]))
-            rdf.add((reifiedstmt, RDF.predicate, DCTERMS.creator))
+            rdf.add((reifiedstmt, RDF.subject, expression))
+            rdf.add((reifiedstmt, RDF.object, URIRef(self.text)))
+            rdf.add((reifiedstmt, RDF.predicate, FABIO.hasSubjectTerm))
             rdf.add((anno, OA.hasBody, reifiedstmt))
-        elif self.type == "hasPublisher":
-            rdf.add((anno, AO.type, Literal("hasAuthor")))
-            # reifiedstmt = BNode(str(self.id) + "body")
-            reifiedstmt = AON[str(self.id) + "_body"]
-            rdf.add((reifiedstmt, RDF.type, RDF.Statement))
-            rdf.add((reifiedstmt, RDF.subject, work))
-            rdf.add((reifiedstmt, RDF.object, AOP[self.text]))
-            rdf.add((reifiedstmt, RDF.predicate, DCTERMS.creator))
-            rdf.add((anno, OA.hasBody, reifiedstmt))
-
+        
         return rdf

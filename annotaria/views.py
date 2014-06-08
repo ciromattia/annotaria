@@ -84,7 +84,7 @@ def get_annotations(article):
     return jsonify(store.query_article(article))
 
 
-# store a bunch of annotations in the triple store
+# store one or more annotations in the triple store
 @app.route('/annotations/', methods=['POST'])
 def set_annotations():
     store = Store(app.config['SPARQL_ENDPOINT'])
@@ -92,32 +92,15 @@ def set_annotations():
     return jsonify(store.store_annotations(annotations))
 
 
-# # get a single annotation
-# @app.route('/annotations/<int:annotation_id>', methods=['GET'])
-# def read_annotation(annotation_id):
-#     store = Store(app.config['SPARQL_ENDPOINT'])
-#     annotation = store.query_annotation(annotation_id)
-#     if not annotation:
-#         return jsonify('Annotation not found!', status=404)
-#     return jsonify(annotation)
-#
-#
-# # update a single annotation
-# @app.route('/annotations/<int:annotation_id>', methods=['POST', 'PUT'])
-# def update_annotation(annotation_id):
-#     store = Store(app.config['SPARQL_ENDPOINT'])
-#     annotation = store.query_annotation(annotation_id)
-#     if not annotation:
-#         return jsonify('Annotation not found! No update performed.', status=404)
-#     return jsonify(annotation)
-#
-#
-# # delete a single annotation
-# @app.route('/annotations/<int:annotation_id>', methods=['DELETE'])
-# def delete_annotation(annotation_id):
-#     store = Store(app.config['SPARQL_ENDPOINT'])
-#     annotation = store.query_annotation(annotation_id)
-#     if not annotation:
-#         return jsonify('Annotation not found. No delete performed.', status=404)
-#     annotation.delete()
-#     return '', 204
+# store one or more annotations in the triple store
+@app.route('/authors', methods=['GET'])
+def get_authors():
+    store = Store(app.config['SPARQL_ENDPOINT'])
+    return jsonify(store.query_authors())
+
+
+# store one or more annotations in the triple store
+@app.route('/author/', methods=['POST'])
+def set_author():
+    store = Store(app.config['SPARQL_ENDPOINT'])
+    return store.insert_author(json.loads(request.form['data']))

@@ -1,0 +1,318 @@
+/*  Stylesheet for NLM/NCBI  Journal Publishing 3.0 Preview HTML
+    January 2009
+
+    ~~~~~~~~~~~~~~
+    National Center for Biotechnology Information (NCBI)
+    National Library of Medicine (NLM)
+    ~~~~~~~~~~~~~~
+    
+This work is in the public domain and may be reproduced, published or 
+otherwise used without the permission of the National Library of Medicine (NLM).
+
+We request only that the NLM is cited as the source of the work.
+
+Although all reasonable efforts have been taken to ensure the accuracy and 
+reliability of the software and data, the NLM and the U.S. Government  do 
+not and cannot warrant the performance or results that may be obtained  by
+using this software or data. The NLM and the U.S. Government disclaim all 
+warranties, express or implied, including warranties of performance, 
+merchantability or fitness for any particular purpose.
+
+*/
+
+/* --------------- Page setup ------------------------ */
+
+/* page and text defaults */
+
+#current_article div > *:first-child {
+    margin-top: 0
+}
+
+#current_article div {
+    margin-top: 0.5em
+}
+
+#current_article div.front, #current_article div.footer {
+}
+
+#current_article .back, #current_article .body {
+    font-family: serif
+}
+
+#current_article div.metadata {
+    font-family: sans-serif
+}
+
+#current_article div.centered {
+    text-align: center
+}
+
+#current_article div.table {
+    display: table
+}
+
+#current_article div.metadata.table {
+    width: 100%
+}
+
+#current_article div.row {
+    display: table-row
+}
+
+#current_article div.cell {
+    display: table-cell;
+    padding-left: 0.25em;
+    padding-right: 0.25em
+}
+
+#current_article div.metadata div.cell {
+    vertical-align: top
+}
+
+#current_article div.two-column div.cell {
+    width: 50%
+}
+
+#current_article div.one-column div.cell.spanning {
+    width: 100%
+}
+
+#current_article div.metadata-group {
+    margin-top: 0.5em;
+    font-size: 75%
+}
+
+#current_article div.metadata-group > p, #current_article div.metadata-group > div {
+    margin-top: 0.5em
+}
+
+#current_article div.metadata-area * {
+    margin: 0
+}
+
+#current_article div.metadata-chunk {
+    margin-left: 1em
+}
+
+#current_article div.branding {
+    text-align: center
+}
+
+#current_article div.document-title-notes {
+    text-align: center;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto
+}
+
+#current_article div.footnote {
+    font-size: 90%
+}
+
+/* rules */
+#current_article hr.part-rule {
+    border: thin solid black;
+    width: 50%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+#current_article hr.section-rule {
+    border: thin dotted black;
+    width: 50%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+/* superior numbers that are cross-references */
+#current_article .xref {
+    color: red;
+}
+
+/* generated text */
+#current_article .generated {
+    color: gray;
+}
+
+#current_article .warning, #current_article tex-math {
+    font-size: 80%;
+    font-family: sans-serif
+}
+
+#current_article .warning {
+    color: red
+}
+
+#current_article .tex-math {
+    color: green
+}
+
+#current_article .data {
+    color: black;
+}
+
+#current_article .formula {
+    font-family: sans-serif;
+    font-size: 90%
+}
+
+/* --------------- Titling levels -------------------- */
+
+#current_article h1, #current_article h2, #current_article h3,
+#current_article h4, #current_article h5, #current_article h6 {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-family: helvetica, sans-serif;
+    font-weight: bold;
+}
+
+/* titling level 1: document title */
+#current_article .document-title {
+    text-align: center;
+}
+
+/* callout titles appear in a left column (table cell)
+   opposite what they head */
+#current_article .callout-title {
+    text-align: right;
+    margin-top: 0.5em;
+    margin-right: 1em;
+    font-size: 140%
+}
+
+#current_article div.section, #current_article div.back-section {
+    margin-top: 1em;
+    margin-bottom: 0.5em
+}
+
+#current_article div.panel {
+    background-color: white;
+    font-size: 90%;
+    border: thin solid black;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em
+}
+
+#current_article div.blockquote {
+    font-size: 90%;
+    margin: 0.5em 1em;
+}
+
+#current_article div.caption {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em
+}
+
+#current_article div.speech {
+    margin: 0.5em 1em;
+}
+
+#current_article div.verse-group {
+    margin-left: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em
+}
+
+#current_article div.verse-group div.verse-group {
+    margin-left: 1em;
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+#current_article div.note {
+    margin-top: 0;
+    margin-left: 1em;
+    font-size: 85%
+}
+
+#current_article .ref-label {
+    margin-top: 0;
+    vertical-align: top
+}
+
+#current_article .ref-content {
+    margin-top: 0;
+    padding-left: 0.25em
+}
+
+#current_article h5.label {
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+#current_article p {
+    margin-top: 0.5em;
+    margin-bottom: 0
+}
+
+#current_article p.first {
+    margin-top: 0
+}
+
+#current_article p.verse-line, #current_article p.citation {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 2em;
+    text-indent: -2em
+}
+
+#current_article p.address-line {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 2em
+}
+
+#current_article ul, #current_article ol {
+    margin-top: 0.5em
+}
+
+#current_article li {
+    margin-top: 0.5em;
+    margin-bottom: 0
+}
+
+#current_article li > p {
+    margin-top: 0.2em;
+    margin-bottom: 0
+}
+
+#current_article div.def-list {
+    border-spacing: 0.25em
+}
+
+#current_article div.def-list div.cell {
+    vertical-align: top;
+    border-bottom: thin solid black;
+    padding-bottom: 0.5em
+}
+
+#current_article div.def-list div.def-list-head {
+    text-align: left
+}
+
+/* text decoration */
+#current_article .label {
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 80%
+}
+
+#current_article .monospace {
+    font-family: monospace;
+}
+
+#current_article .overline {
+    text-decoration: overline;
+}
+
+#current_article a {
+    text-decoration: none
+}
+
+#current_article a:hover {
+    text-decoration: underline
+}
+
+/* ---------------- End ------------------------------ */

@@ -1,7 +1,8 @@
 # !/usr/local/bin/python
 # -*- coding: utf-8 -*-
 
-from rdflib import ConjunctiveGraph, Namespace
+from os.path import basename
+from rdflib import ConjunctiveGraph, Namespace, Literal
 from rdflib.namespace import DC, DCTERMS, FOAF, RDF, RDFS, XSD
 from rdflib.plugins.stores.sparqlstore import SPARQLUpdateStore
 from annotation import Annotation
@@ -41,17 +42,19 @@ class Store:
         return
 
     def query_article(self, article):
-        escaped = article.replace('(', '\(').replace(')', '\)')
+        escaped = self.escape_sparql(article)
         ret = []
         query = """
         SELECT DISTINCT ?author ?author_fullname ?date ?label ?type
          ?body_s ?body_p ?body_o
          ?target_start ?target_end ?target_startoffset ?target_endoffset
+         ?author_email
         WHERE {
             ?annotation rdf:type oa:Annotation ;
                 oa:annotatedAt ?date ;
                 oa:annotatedBy ?author .
             OPTIONAL { ?author foaf:name ?author_fullname }
+            OPTIONAL { ?author schema:email ?author_email }
             OPTIONAL { ?annotation rdfs:label ?label }
             OPTIONAL { ?annotation ao:type ?type }
             OPTIONAL { ?annotation oa:hasBody ?body }
@@ -90,8 +93,42 @@ class Store:
             ret.append(annotation.get_json())
         return ret
 
-    def query_annotation(self, annotation_id):
-        return
+    def query_authors(self):
+        authors = []
+        query = """
+        SELECT DISTINCT ?author ?author_fullname ?author_email
+        WHERE {
+            ?author foaf:name ?author_fullname .
+            OPTIONAL { ?author schema:email ?author_email }
+        }
+        """
+        for row in self.sparql.query(query, initNs=initNS):
+            authors.append({
+                'author_id': basename(str(row[0])),
+                'author_fullname': str(row[1]),
+                'author_email': str(row[2])
+            })
+        return authors
+
+    # Inserts a new author.
+    # Expects a dict:
+    # {
+    #   'author_id': ...,
+    #   'author_fullname': ...,
+    #   'author_email': ...
+    # }
+    def insert_author(self, author):
+        # query_string = 'INSERT DATA { ' +\
+        #                author['author_id'] + ' ' + FOAF.name + ' ' + author['author_fullname']
+        # if 'author_email' in author:
+        #     query_string += ' ; ' + SCHEMA.email + ' ' + author['author_email']
+        # query_string += ' . };'
+        # self.sparql.update(query=query_string, initNs=initNS)
+        a = AOP[author['author_id']]
+        self.sparql.add((a, FOAF.name, Literal(author['author_fullname'])))
+        if 'author_email' in author:
+            self.sparql.add((a, SCHEMA.email, Literal(author['author_email'])))
+        return 'OK'
 
     @staticmethod
     def init_graph():
@@ -99,3 +136,7 @@ class Store:
         for ns in initNS:
             rdf.bind(ns, initNS[ns])
         return rdf
+
+    @staticmethod
+    def escape_sparql(string):
+        return string.replace('(', '\(').replace(')', '\)')

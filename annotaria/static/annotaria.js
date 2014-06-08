@@ -14,6 +14,7 @@ function reset() {
         $('#annotationListPanel').collapse('hide');
         $('#add_annotation_doc').hide();
     });
+    $("#create_ranged_annot_button").hide();
     $("#widget_instance").hide();
     $("#widget_date").hide();
     $("#widget_longtext").hide();
@@ -22,6 +23,9 @@ function reset() {
     redraw_temp_annotations();
     doc_loaded = false;
     $('#add_annotation_doc').hide();
+    $('#current_article').bind({
+        "mouseup": onSelection
+    })
 }
 
 function send_message(type, message) {
@@ -58,6 +62,7 @@ function doc_annot_form_onselect(sel) {
     switch (sel.value) {
         case "hasAuthor":
         case "hasPublisher":
+            get_authors();
             $("#widget_instance").show();
             break;
         case "hasPublicationYear":
@@ -74,6 +79,12 @@ function doc_annot_form_onselect(sel) {
         default:
             break;
     }
+}
+
+function clear_instance_widget() {
+    $("#widget_instance_new_id").val("");
+    $("#widget_instance_new_name").val("");
+    $("#widget_instance_new_email").val("");
 }
 
 function get_articlelist() {
@@ -180,8 +191,8 @@ function save_annotation() {
             "object": null,
             "resource": null
         },
-        "target": {
-            "source": doc_loaded,
+        "source": doc_loaded,
+        "fragment": {
             "start_id": null,
             "start_off": null,
             "end_id": null,
@@ -255,4 +266,81 @@ function store_annotations(doc) {
             send_message('danger', 'Fail to save annotations, check your logs.');
         }
     });
+}
+
+function get_authors() {
+    $('#widget_instance_selector').html('');
+    $.ajax({
+        method: 'GET',
+        url: 'authors',
+        success: function (d) {
+            if (d.length > 0) {
+                for (var i = 0; i < d.length; i++) {
+                    var author = d[i];
+                    var option = '<option value="' +
+                        author['author_id'] + '">' +
+                        author['author_fullname'];
+                    if (author['author_email'] != 'None')
+                        option += ' &lt;' + author['author_email'] + '&gt;';
+                    option += '</option>';
+                    $('#widget_instance_selector').append(option);
+                }
+            }
+        },
+        error: function (request, status, error) {
+            alert(request.responseText);
+        }
+    });
+}
+
+function save_author() {
+    var author = {
+        "author_id": $("#widget_instance_new_id").val(),
+        "author_fullname": $("#widget_instance_new_name").val(),
+        "author_email": $("#widget_instance_new_email").val()
+    };
+    $.ajax({
+        type: "POST",
+        url: "author/",
+        data: {'data': JSON.stringify(author)},
+        success: function (msg) {
+            send_message('success', 'New instance has been successfully stored!');
+            get_authors();
+            clear_instance_widget();
+        },
+        error: function () {
+            send_message('danger', 'Failed to save author, check your logs.');
+        }
+    });
+}
+
+function getRangeObject(selectionObject) {
+    if (selectionObject.getRangeAt)
+        return selectionObject.getRangeAt(0);
+    else { // Safari!
+        var range = document.createRange();
+        range.setStart(selectionObject.anchorNode, selectionObject.anchorOffset);
+        range.setEnd(selectionObject.focusNode, selectionObject.focusOffset);
+        return range;
+    }
+}
+
+function onSelection() {
+    if (!doc_loaded)
+        return false;
+
+    var sel = null;
+    if (window.getSelection) {
+        sel = window.getSelection();
+    } else if (document.getSelection) {
+        sel = document.getSelection();
+    } else if (document.selection) {
+        sel = document.selection.createRange();
+    }
+    var range = getRangeObject(sel);
+    if (range && !range.collapsed) {
+        $('#create_ranged_annot_button').show();
+    } else {
+        $('#create_ranged_annot_button').hide();
+    }
 }
