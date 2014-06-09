@@ -177,7 +177,7 @@ function get_annotations(file) {
                             annotation['body']['object'] + '</small></a></li>');
                     } else {
                         // Add the new selection range
-                        var range = rangy.createRangyRange();
+                        var range = document.createRange();
                         var node = document.getElementById(annotation['target']['start_id']);
                         if (node.firstChild && node.firstChild.nodeType == 3)
                             range.setStart(node.firstChild, annotation['target']['start_off']);
