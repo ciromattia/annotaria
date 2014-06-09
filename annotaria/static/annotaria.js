@@ -156,7 +156,7 @@ function load_article(file, title) {
 function get_annotations(file) {
     var doc_id = open_docs[file];
     $('#annotationlist').html('');
-    $('#tabs a[href="#tab' + doc_id + '"]').html($('#orig' + doc_id).html());
+    $('#tabs a[href="#tab' + doc_id + '"]').replaceWith($('#orig' + doc_id));
     $.ajax({
         method: 'GET',
         url: 'annotations/' + file,
@@ -164,11 +164,13 @@ function get_annotations(file) {
             if (d.length < 1) {
                 $('#annotationlist').html('');
             } else {
-                var rangeArray = [];
+                var fragmentArray = [];
+                var annotation_metadata;
+                var html;
                 for (var i = 0; i < d.length; i++) {
                     var annotation = d[i];
                     if (annotation['target']['start_id'] == null) {
-                        var annotation_metadata = '<div><strong>annotator:</strong> ' + annotation['provenance']['author']['name'] +
+                        annotation_metadata = '<div><strong>annotator:</strong> ' + annotation['provenance']['author']['name'] +
                             '</a><br><strong>created:</strong> ' + annotation['provenance']['time'] + '</div>';
                         $('#annotationlist').append('<li>' +
                             '<a data-container="body" data-toggle="popover" data-html="true" data-placement="top"' +
@@ -176,40 +178,57 @@ function get_annotations(file) {
                             '<small><strong>' + annotation['label'] + ':</strong> ' +
                             annotation['body']['object'] + '</small></a></li>');
                     } else {
+                        var k;
                         // Add the new selection range
                         var range = document.createRange();
                         var node = document.getElementById(annotation['target']['start_id']);
-                        if (node.firstChild && node.firstChild.nodeType == 3)
-                            range.setStart(node.firstChild, annotation['target']['start_off']);
-                        else
+                        if (!node.childNodes)
                             range.setStart(node, annotation['target']['start_off']);
-                        node = document.getElementById(annotation['target']['end_id']);
-                        if (node.firstChild && node.firstChild.nodeType == 3)
-                            range.setEnd(node.firstChild, annotation['target']['end_off']);
                         else
+                            for (k = 0; k < node.childNodes.length ; ++k)
+                                if (!node.childNodes[k].id) {
+                                    range.setStart(node.childNodes[k], annotation['target']['start_off']);
+                                    break;
+                                }
+                        node = document.getElementById(annotation['target']['end_id']);
+                        if (!node.childNodes)
                             range.setEnd(node, annotation['target']['end_off']);
-                        rangeArray.push(range);
+                        else
+                            for (k = 0; k < node.childNodes.length ; ++k)
+                                if (!node.childNodes[k].id) {
+                                    range.setEnd(node.childNodes[k], annotation['target']['end_off']);
+                                    break;
+                                }
+                        annotation_metadata = '<div><strong>annotator:</strong> ' + annotation['provenance']['author']['name'] +
+                            '</a><br><strong>created:</strong> ' + annotation['provenance']['time'] + '</div>';
+                        html = '<a data-container="body" data-toggle="popover" data-html="true" data-placement="top"' +
+                            ' data-content="' + annotation_metadata + '" class="annotaria_fragment">' +
+                            range.toString() + '</a>';
+                        fragmentArray.push({
+                            'offset': ,
+                            'range': range,
+                            'html': html
+                        });
                     }
                 }
-                for (var j = rangeArray.length - 1; j >= 0; j--) {
+                for (var j = fragmentArray.length - 1; j >= 0; j--) {
                     var fragment = null;
-                    var html = '<span class="annotaria_fragment">' + range.toString() + '</span>';
-                    rangeArray[j].deleteContents();
+                    fragmentArray[j]['range'].deleteContents();
                     // Create a DocumentFragment to insert and populate it with HTML
                     // Need to test for the existence of range.createContextualFragment
                     // because it's non-standard and IE 9 does not support it
-                    if (rangeArray[j].createContextualFragment) {
-                        fragment = rangeArray[j].createContextualFragment(html);
+                    if (fragmentArray[j]['range'].createContextualFragment) {
+                        fragment = fragmentArray[j]['range'].createContextualFragment(fragmentArray[j]['html']);
                     } else {
                         // In IE 9 we need to use innerHTML of a temporary element
                         var div = document.createElement("div"), child;
-                        div.innerHTML = html;
+                        div.innerHTML = fragmentArray[j]['html'];
                         fragment = document.createDocumentFragment();
                         while ( (child = div.firstChild) ) {
                             fragment.appendChild(child);
                         }
                     }
-                    rangeArray[j].insertNode(fragment);
+                    fragmentArray[j]['range'].insertNode(fragment);
                 }
             }
             $('[data-toggle=popover]').popover();
@@ -385,51 +404,5 @@ function onSelection() {
     } else {
         $('#create_ranged_annot_button').hide();
         range_selected = null;
-    }
-}
-
-function replaceSelection(html, selectInserted) {
-    var sel, range, fragment;
-
-    if (typeof window.getSelection != "undefined") {
-        // IE 9 and other non-IE browsers
-        sel = window.getSelection();
-
-        // Test that the Selection object contains at least one Range
-        if (sel.getRangeAt && sel.rangeCount) {
-            // Get the first Range (only Firefox supports more than one)
-            range = window.getSelection().getRangeAt(0);
-            range.deleteContents();
-
-            // Create a DocumentFragment to insert and populate it with HTML
-            // Need to test for the existence of range.createContextualFragment
-            // because it's non-standard and IE 9 does not support it
-            if (range.createContextualFragment) {
-                fragment = range.createContextualFragment(html);
-            } else {
-                // In IE 9 we need to use innerHTML of a temporary element
-                var div = document.createElement("div"), child;
-                div.innerHTML = html;
-                fragment = document.createDocumentFragment();
-                while ( (child = div.firstChild) ) {
-                    fragment.appendChild(child);
-                }
-            }
-            var firstInsertedNode = fragment.firstChild;
-            var lastInsertedNode = fragment.lastChild;
-            range.insertNode(fragment);
-            if (selectInserted) {
-                if (firstInsertedNode) {
-                    range.setStartBefore(firstInsertedNode);
-                    range.setEndAfter(lastInsertedNode);
-                }
-                sel.removeAllRanges();
-                sel.addRange(range);
-            }
-        }
-    } else if (document.selection && document.selection.type != "Control") {
-        // IE 8 and below
-        range = document.selection.createRange();
-        range.pasteHTML(html);
     }
 }
