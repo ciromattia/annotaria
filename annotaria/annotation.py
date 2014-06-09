@@ -181,11 +181,7 @@ class Annotation:
             graph.add((resource, RDF.type, OA.SpecificResource))
             selector = AON[anno_id + "_selector"]
             graph.add((selector, RDF.type, OA.FragmentSelector))
-            if self.annotation['target']['start_id'] != self.annotation['target']['end_id']:
-                graph.add((selector, RDF.value, Literal(self.annotation['target']['start_id'] +
-                                                        '!' + self.annotation['target']['end_id'])))
-            else:
-                graph.add((selector, RDF.value, Literal(self.annotation['target']['start_id'])))
+            graph.add((selector, RDF.value, Literal(self.annotation['target']['start_id'])))
             graph.add((selector, OA.start, Literal(self.annotation['target']['start_off'],
                                                    datatype=XSD.nonNegativeIntegeroa)))
             graph.add((selector, OA.end, Literal(self.annotation['target']['end_off'],

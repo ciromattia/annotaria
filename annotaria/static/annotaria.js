@@ -172,6 +172,11 @@ function get_annotations(file) {
                             '<small><strong>' + annotation['label'] + ':</strong> ' +
                             annotation['body']['object'] + '</small></a></li>');
                     } else {
+                        var node = document.getElementById(annotation['target']['start_id']);
+                        if (!node.length)
+                            node = node.firstChild;
+                        render_fragment(node, annotation['target']['start_off'], annotation['target']['end_off'], annotation);
+/*
                         var k;
                         // Add the new selection range
                         var range = document.createRange();
@@ -179,7 +184,7 @@ function get_annotations(file) {
                         if (!node.childNodes)
                             range.setStart(node, annotation['target']['start_off']);
                         else
-                            for (k = 0; k < node.childNodes.length ; ++k)
+                            for (k = 0; k < node.childNodes.length; ++k)
                                 if (!node.childNodes[k].id) {
                                     range.setStart(node.childNodes[k], annotation['target']['start_off']);
                                     break;
@@ -188,7 +193,7 @@ function get_annotations(file) {
                         if (!node.childNodes)
                             range.setEnd(node, annotation['target']['end_off']);
                         else
-                            for (k = 0; k < node.childNodes.length ; ++k)
+                            for (k = 0; k < node.childNodes.length; ++k)
                                 if (!node.childNodes[k].id) {
                                     range.setEnd(node.childNodes[k], annotation['target']['end_off']);
                                     break;
@@ -199,13 +204,15 @@ function get_annotations(file) {
                             ' data-content="' + annotation_metadata + '" class="annotaria_fragment">' +
                             range.toString() + '</a>';
                         fragmentArray.push({
-                            'offset': 0 ,
+                            'offset': 0,
                             'range': range,
                             'html': html
-                        });
+                        });*/
                     }
                 }
-                for (var j = fragmentArray.length - 1; j >= 0; j--) {
+                /*for (var j = fragmentArray.length - 1; j >= 0; j--) {
+                    var node = iframedoc.getElementById(note.target.id).firstChild; //prima era senza firstchild
+                    render_fragment()
                     var fragment = null;
                     fragmentArray[j]['range'].deleteContents();
                     // Create a DocumentFragment to insert and populate it with HTML
@@ -218,12 +225,12 @@ function get_annotations(file) {
                         var div = document.createElement("div"), child;
                         div.innerHTML = fragmentArray[j]['html'];
                         fragment = document.createDocumentFragment();
-                        while ( (child = div.firstChild) ) {
+                        while ((child = div.firstChild)) {
                             fragment.appendChild(child);
                         }
                     }
                     fragmentArray[j]['range'].insertNode(fragment);
-                }
+                }*/
             }
             $('[data-toggle=popover]').popover();
             $('#annotationListPanel').collapse('show');
@@ -233,6 +240,32 @@ function get_annotations(file) {
             alert(request.responseText);
         }
     });
+}
+
+function render_fragment(node, start, end, annotation) {
+    var range = document.createRange();
+    range.setStart(node, start);
+    if (node.length < end) {
+        range.setEnd(node, node.length);
+        if (node.nextSibling == null) {
+            render_fragment(node.parentNode.nextSibling, 0, (end - node.length), annotation);
+        } else {
+            render_fragment(node.nextSibling.firstChild, 0, (end - node.length), annotation);
+        }
+    } else {
+        range.setEnd(node, end);
+    }
+    var annotation_metadata = '<div><strong>annotator:</strong> ' + annotation['provenance']['author']['name'] +
+        '</a><br><strong>created:</strong> ' + annotation['provenance']['time'] + '</div>';
+    var a = document.createElement('a');
+    a.setAttribute('data-container', 'body');
+    a.setAttribute('data-toggle', 'popover');
+    a.setAttribute('data-html', 'true');
+    a.setAttribute('data-placement', 'top');
+    a.setAttribute('data-content', annotation_metadata);
+    a.setAttribute('class', 'annotaria_fragment');
+    range.surroundContents(a);
+    return range;
 }
 
 function save_annotation() {
@@ -248,7 +281,6 @@ function save_annotation() {
             "source": doc_loaded,
             "start_id": null,
             "start_off": null,
-            "end_id": null,
             "end_off": null
         },
         "provenance": {
@@ -261,16 +293,10 @@ function save_annotation() {
         }
     };
     if (range_selected) {
-        var namedAncestor = range_selected.startContainer;
-        while (!namedAncestor.id)
-            namedAncestor = namedAncestor.parentNode;
-        anno["target"]["start_id"] = namedAncestor.id;
-        namedAncestor = range_selected.endContainer;
-        while (!namedAncestor.id)
-            namedAncestor = namedAncestor.parentNode;
-        anno["target"]["end_id"] = namedAncestor.id;
-        anno["target"]["start_off"] = range_selected.startOffset;
-        anno["target"]["end_off"] = range_selected.endOffset;
+        var myRange = parse_range(range_selected);
+        anno["target"]["start_id"] = myRange.container;
+        anno["target"]["start_off"] = myRange.startOffset;
+        anno["target"]["end_off"] = myRange.endOffset;
     }
     switch (annotype) {
         case "hasAuthor":
@@ -399,4 +425,27 @@ function onSelection() {
         $('#create_ranged_annot_button').hide();
         range_selected = null;
     }
+}
+
+function parse_range(range) {
+    var outer_range;
+    var start_offset = Math.min(range.startOffset, range.endOffset);
+    var end_offset = Math.max(range.startOffset, range.endOffset);
+    var namedAncestor = range_selected.commonAncestorContainer;
+    while (!namedAncestor.id)
+        namedAncestor = namedAncestor.parentNode;
+    if (range_selected.startContainer != namedAncestor) {
+        /* calculate new offset */
+        outer_range = range.cloneRange();
+        outer_range.selectNodeContents(namedAncestor);
+        outer_range.setEnd(range.endContainer, range.endOffset);
+        var offset = outer_range.toString().length;
+        start_offset += offset;
+        end_offset += offset;
+    }
+    return {
+        startOffset: start_offset,
+        endOffset: end_offset,
+        container: namedAncestor.id
+    };
 }
