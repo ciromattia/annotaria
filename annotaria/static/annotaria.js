@@ -4,6 +4,7 @@ var open_docs = {};
 var doc_loaded = false;
 var temp_annotations = [];
 var range_selected = null;
+var annotaria_fragment_applier;
 
 $(document).ready(function () {
     reset();
@@ -26,7 +27,10 @@ function reset() {
     $('#add_annotation_doc').hide();
     $('#current_article').bind({
         "mouseup": onSelection
-    })
+    });
+    rangy.init();
+    var classApplierModule = rangy.modules.CssClassApplier;
+    annotaria_fragment_applier = rangy.createCssClassApplier("annotaria_fragment");
 }
 
 function send_message(type, message) {
@@ -152,7 +156,7 @@ function load_article(file, title) {
 function get_annotations(file) {
     var doc_id = open_docs[file];
     $('#annotationlist').html('');
-    $('#tabs a[href="#tab' + doc_id  + '"]').html($('#orig' + doc_id).html());
+    $('#tabs a[href="#tab' + doc_id + '"]').html($('#orig' + doc_id).html());
     $.ajax({
         method: 'GET',
         url: 'annotations/' + file,
@@ -160,8 +164,7 @@ function get_annotations(file) {
             if (d.length < 1) {
                 $('#annotationlist').html('');
             } else {
-                var article = $('#current_article').text();
-                var offsets = {};
+                var rangeArray = [];
                 for (var i = 0; i < d.length; i++) {
                     var annotation = d[i];
                     if (annotation['target']['start_id'] == null) {
@@ -173,6 +176,7 @@ function get_annotations(file) {
                             '<small><strong>' + annotation['label'] + ':</strong> ' +
                             annotation['body']['object'] + '</small></a></li>');
                     } else {
+                        // Add the new selection range
                         var range = document.createRange();
                         var node = document.getElementById(annotation['target']['start_id']);
                         if (node.firstChild && node.firstChild.nodeType == 3)
@@ -184,10 +188,15 @@ function get_annotations(file) {
                             range.setEnd(node.firstChild, annotation['target']['end_off']);
                         else
                             range.setEnd(node, annotation['target']['end_off']);
-                        var newNode = document.createElement('span');
-                        newNode.className = 'annotaria_fragment';
-                        range.surroundContents(newNode);
+                        rangeArray.push(range);
                     }
+                }
+                for (var j = rangeArray.length - 1; j >= 0; j--) {
+                    var mySpan = document.createElement('span');
+                    mySpan.className = 'annotaria_fragment';
+                    mySpan.innerText = range.toString();
+                    rangeArray[j].deleteContents();
+                    rangeArray[j].insertNode(mySpan);
                 }
             }
             $('[data-toggle=popover]').popover();

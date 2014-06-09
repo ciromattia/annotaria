@@ -180,6 +180,21 @@ aop:david-almond2
 #            oa:hasSource ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html ] .
 
 [] a oa:Annotation ;
+    rdfs:label "Comment" ;
+    oa:annotatedAt "2014-07-06T09:57" ;
+    oa:annotatedBy aop:james-swetnam ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object "Not so clear..." ;
+            rdf:predicate schema:comment ;
+            rdf:subject <ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1#s62dc528681a875-10-16> ] ;
+    oa:hasTarget [ a oa:SpecificResource ;
+            oa:hasSelector [ a oa:FragmentSelector ;
+                    rdf:value "s62dc528681a875" ;
+                    oa:start "10"^^xsd:nonNegativeIntegeroa ;
+                    oa:end "16"^^xsd:nonNegativeInteger ] ;
+            oa:hasSource ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html ] .
+
+[] a oa:Annotation ;
     ao:type "hasAuthor" ;
     oa:annotatedAt "2014-10-10T11:04" ;
     oa:annotatedBy aop:david-almond ;
