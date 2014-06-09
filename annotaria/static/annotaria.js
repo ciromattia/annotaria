@@ -4,7 +4,6 @@ var open_docs = {};
 var doc_loaded = false;
 var temp_annotations = [];
 var range_selected = null;
-var annotaria_fragment_applier;
 
 $(document).ready(function () {
     reset();
@@ -28,9 +27,6 @@ function reset() {
     $('#current_article').bind({
         "mouseup": onSelection
     });
-    rangy.init();
-    var classApplierModule = rangy.modules.CssClassApplier;
-    annotaria_fragment_applier = rangy.createCssClassApplier("annotaria_fragment");
 }
 
 function send_message(type, message) {
