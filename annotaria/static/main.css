@@ -49,6 +49,16 @@ code {
     z-index: 5000;
 }
 
+.affix {
+  position: static;
+  width: auto;
+  top: 0;
+}
+
+.annotaria_fragment {
+    background-color: #ff0000;
+}
+
 .flyover {
     left: 150%;
     overflow: hidden;

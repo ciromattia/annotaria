@@ -88,7 +88,7 @@ def get_annotations(article):
 @app.route('/annotations/', methods=['POST'])
 def set_annotations():
     store = Store(app.config['SPARQL_ENDPOINT'])
-    annotations = json.loads(request.form['annotations'])
+    annotations = json.loads(request.form['data'])
     return jsonify(store.store_annotations(annotations))
 
 

@@ -3,20 +3,21 @@
 
 from os.path import basename
 from rdflib import ConjunctiveGraph, Namespace, Literal
-from rdflib.namespace import DC, DCTERMS, FOAF, RDF, RDFS, XSD
+from rdflib.namespace import DC, DCTERMS, FOAF, RDF, RDFS, SKOS, XSD
 from rdflib.plugins.stores.sparqlstore import SPARQLUpdateStore
 from annotation import Annotation
 
 AO = Namespace("http://vitali.web.cs.unibo.it/AnnOtaria/")
 AON = Namespace("http://vitali.web.cs.unibo.it/AnnOtaria/annotation/")
 AOP = Namespace("http://vitali.web.cs.unibo.it/AnnOtaria/person/")
+CITO = Namespace("http://purl.org/spar/cito/")
 FABIO = Namespace("http://purl.org/spar/fabio/")
 FRBR = Namespace("http://purl.org/vocab/frbr/core#")
 OA = Namespace("http://www.w3.org/ns/oa#")
 SCHEMA = Namespace("http://schema.org/")
 SEM = Namespace("http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#")
-initNS = {'ao': AO, 'aon': AON, 'aop': AOP, 'dc': DC, 'dcterms': DCTERMS, 'fabio': FABIO, 'foaf': FOAF, 'frbr': FRBR,
-          'oa': OA, 'rdf': RDF, 'rdfs': RDFS, 'schema': SCHEMA, 'sem': SEM, 'xsd': XSD}
+initNS = {'ao': AO, 'aon': AON, 'aop': AOP, 'cito': CITO, 'dc': DC, 'dcterms': DCTERMS, 'fabio': FABIO, 'foaf': FOAF,
+          'frbr': FRBR, 'oa': OA, 'rdf': RDF, 'rdfs': RDFS, 'schema': SCHEMA, 'sem': SEM, 'skos': SKOS, 'xsd': XSD}
 
 
 class Store:
@@ -29,26 +30,19 @@ class Store:
                                         bNodeAsURI=True)
 
     def store_annotations(self, annotations):
-        graph = self.init_graph()
         for annotation in annotations:
             ann = Annotation()
             ann.parse_json(annotation)
-            ann.get_rdf(graph)
-        query_string = ""
-        for subject, predicate, obj in graph.triples((None, None, None)):
-            triple = "%s %s %s ." % (subject.n3(), predicate.n3(), obj.n3())
-            query_string += "INSERT DATA { %s };\n" % triple
-        self.sparql.update(query=query_string, initNs=initNS)
+            ann.add_to_graph(self.sparql)
         return
 
     def query_article(self, article):
         escaped = self.escape_sparql(article)
         ret = []
         query = """
-        SELECT DISTINCT ?author ?author_fullname ?date ?label ?type
-         ?body_s ?body_p ?body_o
-         ?target_start ?target_end ?target_startoffset ?target_endoffset
-         ?author_email
+        SELECT DISTINCT ?author ?author_fullname ?author_email
+         ?date ?label ?type ?body_s ?body_p ?body_o ?body_l
+         ?target_start ?target_startoffset ?target_endoffset
         WHERE {
             ?annotation rdf:type oa:Annotation ;
                 oa:annotatedAt ?date ;
@@ -61,6 +55,7 @@ class Store:
             OPTIONAL { ?body rdf:subject ?body_s }
             OPTIONAL { ?body rdf:predicate ?body_p }
             OPTIONAL { ?body rdf:object ?body_o }
+            OPTIONAL { ?body rdfs:label ?body_l }
             { ?annotation oa:hasTarget ao:""" + escaped + """ }
              UNION
             { ?annotation oa:hasTarget ?bnode .
@@ -79,18 +74,19 @@ class Store:
                 'target': article,
                 'author': str(row[0]),
                 'author_fullname': str(row[1]),
-                'created': str(row[2]),
-                'label': str(row[3]),
-                'type': str(row[4]),
-                'subject': str(row[5]),
-                'predicate': str(row[6]),
-                'object': str(row[7]),
-                'target_start': str(row[8]),
-                'target_end': str(row[9]),
-                'target_startoff': int(row[10]) if row[10] is not None else None,
-                'target_endoff': int(row[11]) if row[11] is not None else None,
+                'author_email': str(row[2]),
+                'created': str(row[3]),
+                'label': str(row[4]),
+                'type': str(row[5]),
+                'subject': str(row[6]),
+                'predicate': str(row[7]),
+                'object': str(row[8]),
+                'obj_label': str(row[9]),
+                'target_start': str(row[10]),
+                'target_startoff': int(row[11]) if row[11] is not None else None,
+                'target_endoff': int(row[12]) if row[12] is not None else None,
             })
-            ret.append(annotation.annotation)
+            ret.append(annotation.to_dict())
         return ret
 
     def query_authors(self):
@@ -104,7 +100,7 @@ class Store:
         """
         for row in self.sparql.query(query, initNs=initNS):
             authors.append({
-                'author_id': basename(str(row[0])),
+                'author_id': str(row[0]),
                 'author_fullname': str(row[1]),
                 'author_email': str(row[2])
             })

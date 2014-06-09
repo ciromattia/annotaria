@@ -3,6 +3,7 @@
 var open_docs = {};
 var doc_loaded = false;
 var temp_annotations = [];
+var range_selected = null;
 
 $(document).ready(function () {
     reset();
@@ -11,7 +12,6 @@ $(document).ready(function () {
 function reset() {
     $('a[href="#tab_welcome"]').on('shown.bs.tab', function () {
         $('#annotationlist').html('');
-        $('#annotationListPanel').collapse('hide');
         $('#annotationListPanel').collapse('hide');
         $('#add_annotation_doc').hide();
     });
@@ -51,7 +51,7 @@ function redraw_temp_annotations() {
     tbody.empty();
     for (var i = 0; i < temp_annotations.length; i++) {
         tbody.append('<tr><td>' + temp_annotations[i]['predicate'] + '</td><td>' +
-            temp_annotations[i]['object'] + '</td>');
+            temp_annotations[i]['type'] + '</td>');
     }
 }
 
@@ -118,6 +118,7 @@ function load_article(file, title) {
         $('<li><a href="#tab' + nextTab + '" data-toggle="tab"><button id="closeTab' + nextTab + '" ' +
             'class="close closeTab" type="button" >&times;</button> '
             + trimmed_title + '</a></li>').appendTo('#tabs');
+        $('<div id="#orig' + nextTab + '" style="display:none;"></div>').appendTo('#tabs');
         // create the tab content
         $('<div class="tab-pane" id="tab' + nextTab + '"><i class="fa fa-spinner fa-spin"></i></div>').appendTo('.tab-content');
         $.ajax({
@@ -125,6 +126,7 @@ function load_article(file, title) {
             url: 'article/' + file,
             success: function (d) {
                 $('#tab' + nextTab).html(d['body']);
+                $('#orig' + nextTab).html(d['body']);
                 get_annotations(file);
             },
             error: function (request, status, error) {
@@ -148,7 +150,9 @@ function load_article(file, title) {
 }
 
 function get_annotations(file) {
+    var doc_id = open_docs[file];
     $('#annotationlist').html('');
+    $('#tabs a[href="#tab' + doc_id  + '"]').html($('#orig' + doc_id).html());
     $.ajax({
         method: 'GET',
         url: 'annotations/' + file,
@@ -156,20 +160,37 @@ function get_annotations(file) {
             if (d.length < 1) {
                 $('#annotationlist').html('');
             } else {
+                var article = $('#current_article').text();
+                var offsets = {};
                 for (var i = 0; i < d.length; i++) {
                     var annotation = d[i];
-                    var annotation_metadata = '<div><strong>annotator:</strong> ' + annotation['author_fullname'] +
-                        '</a><br><strong>created:</strong> ' + annotation['created'] + '</div>';
-                    $('#annotationlist').append('<li>' +
-                        '<a data-container="body" data-toggle="popover" data-html="true" data-placement="top"' +
-                        ' data-content="' + annotation_metadata + '">' +
-                        '<small><strong>' + annotation['label'] + ':</strong> ' +
-                        annotation['text'] + '</small></a>' +
-                        '</li>');
+                    if (annotation['target']['start_id'] == null) {
+                        var annotation_metadata = '<div><strong>annotator:</strong> ' + annotation['provenance']['author']['name'] +
+                            '</a><br><strong>created:</strong> ' + annotation['provenance']['time'] + '</div>';
+                        $('#annotationlist').append('<li>' +
+                            '<a data-container="body" data-toggle="popover" data-html="true" data-placement="top"' +
+                            ' data-content="' + annotation_metadata + '">' +
+                            '<small><strong>' + annotation['label'] + ':</strong> ' +
+                            annotation['body']['object'] + '</small></a></li>');
+                    } else {
+                        var range = document.createRange();
+                        var node = document.getElementById(annotation['target']['start_id']);
+                        if (node.firstChild && node.firstChild.nodeType == 3)
+                            range.setStart(node.firstChild, annotation['target']['start_off']);
+                        else
+                            range.setStart(node, annotation['target']['start_off']);
+                        node = document.getElementById(annotation['target']['end_id']);
+                        if (node.firstChild && node.firstChild.nodeType == 3)
+                            range.setEnd(node.firstChild, annotation['target']['end_off']);
+                        else
+                            range.setEnd(node, annotation['target']['end_off']);
+                        var newNode = document.createElement('span');
+                        newNode.className = 'annotaria_fragment';
+                        range.surroundContents(newNode);
+                    }
                 }
-
-                $('[data-toggle=popover]').popover();
             }
+            $('[data-toggle=popover]').popover();
             $('#annotationListPanel').collapse('show');
             $('#add_annotation_doc').show();
         },
@@ -186,35 +207,51 @@ function save_annotation() {
         "label": null,
         "body": {
             "label": null,
-            "subject": null,
-            "predicate": null,
-            "literal": null,
-            "object": null,
-            "resource": null
+            "object": null
         },
-        "source": doc_loaded,
-        "fragment": {
+        "target": {
+            "source": doc_loaded,
             "start_id": null,
             "start_off": null,
             "end_id": null,
             "end_off": null
+        },
+        "provenance": {
+            "author": {
+                "id": 'ciromattia-gonano',
+                "name": "Ciro Mattia Gonano",
+                "email": "ciromattia@gmail.com"
+            },
+            "time": new Date().toISOString()
         }
     };
+    if (range_selected) {
+        var namedAncestor = range_selected.startContainer;
+        while (!namedAncestor.id)
+            namedAncestor = namedAncestor.parentNode;
+        anno["target"]["start_id"] = namedAncestor.id;
+        namedAncestor = range_selected.endContainer;
+        while (!namedAncestor.id)
+            namedAncestor = namedAncestor.parentNode;
+        anno["target"]["end_id"] = namedAncestor.id;
+        anno["target"]["start_off"] = range_selected.startOffset;
+        anno["target"]["end_off"] = range_selected.endOffset;
+    }
     switch (annotype) {
         case "hasAuthor":
         case "hasPublisher":
-            anno['object'] = $("#widget_instance_selector").find(":selected").text();
+            anno['body']['object'] = $("#widget_instance_selector option:selected").val();
             break;
         case "hasPublicationYear":
-            anno['object'] = $("#widget_date_input").val();
+            anno['body']['object'] = $("#widget_date_input").val();
             break;
         case "hasTitle":
         case "hasAbstract":
         case "hasComment":
-            anno['object'] = $("#widget_longtext_input").val();
+            anno['body']['object'] = $("#widget_longtext_input").val();
             break;
         case "hasShortTitle":
-            anno['object'] = $("#widget_shorttext_input").val();
+            anno['body']['object'] = $("#widget_shorttext_input").val();
             break;
         default:
             break;
@@ -232,30 +269,11 @@ function discard_annotations() {
     redraw_temp_annotations();
 }
 
-function store_annotations(doc) {
-    var json_anno = {
-        "annotations": [],
-        "target": {
-            "source": doc
-        },
-        "provenance": {
-            "author": {
-                "name": "Ciro Mattia Gonano",
-                "email": "ciromattia@gmail.com"
-            },
-            "time": new Date().toISOString()
-        }
-    };
-    for (var i = 0; i < temp_annotations.length; i++) {
-        var anno = temp_annotations[i];
-        if (anno['target'] != doc)
-            continue;
-        json_anno['annotations'].push(anno)
-    }
+function store_annotations() {
     $.ajax({
         type: "POST",
         url: "annotations/",
-        data: {data: JSON.stringify(json_anno)},
+        data: {data: JSON.stringify(temp_annotations)},
         success: function (msg) {
             temp_annotations = [];
             $('#temp_annot').modal('hide');
@@ -341,7 +359,9 @@ function onSelection() {
     var range = getRangeObject(sel);
     if (range && !range.collapsed) {
         $('#create_ranged_annot_button').show();
+        range_selected = range;
     } else {
         $('#create_ranged_annot_button').hide();
+        range_selected = null;
     }
 }

@@ -140,7 +140,7 @@ aop:david-almond2
     oa:annotatedAt "2014-05-21T18:00" ;
     oa:annotatedBy aop:fabio-vitali ;
     oa:hasBody [ a rdf:Statement ;
-            rdf:predicate fabio:hasTitle ;
+            rdf:predicate dcterms:title ;
             rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1 ] ;
     oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
 
@@ -164,20 +164,20 @@ aop:david-almond2
             rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7 ] ;
     oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
 
-[] a oa:Annotation ;
-    rdfs:label "Person" ;
-    oa:annotatedAt "2014-07-06T09:57" ;
-    oa:annotatedBy aop:james-swetnam ;
-    oa:hasBody [ a rdf:Statement ;
-            rdf:object <http://dbpedia.org/resource/James_Dewey_Watson> ;
-            rdf:predicate sem:denotes ;
-            rdf:subject <ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1#div34-12-21> ] ;
-    oa:hasTarget [ a oa:SpecificResource ;
-            oa:hasSelector [ a oa:FragmentSelector ;
-                    rdf:value "div34" ;
-                    oa:start "12"^^xsd:nonNegativeIntegeroa ;
-                    oa:end "21"^^xsd:nonNegativeInteger ] ;
-            oa:hasSource ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html ] .
+#[] a oa:Annotation ;
+#    rdfs:label "Person" ;
+#    oa:annotatedAt "2014-07-06T09:57" ;
+#    oa:annotatedBy aop:james-swetnam ;
+#    oa:hasBody [ a rdf:Statement ;
+#            rdf:object <http://dbpedia.org/resource/James_Dewey_Watson> ;
+#            rdf:predicate sem:denotes ;
+#            rdf:subject <ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1#div34-12-21> ] ;
+#    oa:hasTarget [ a oa:SpecificResource ;
+#            oa:hasSelector [ a oa:FragmentSelector ;
+#                    rdf:value "div34" ;
+#                    oa:start "12"^^xsd:nonNegativeIntegeroa ;
+#                    oa:end "21"^^xsd:nonNegativeInteger ] ;
+#            oa:hasSource ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html ] .
 
 [] a oa:Annotation ;
     ao:type "hasAuthor" ;
