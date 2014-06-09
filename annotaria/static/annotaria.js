@@ -205,7 +205,7 @@ function get_annotations(file) {
                             ' data-content="' + annotation_metadata + '" class="annotaria_fragment">' +
                             range.toString() + '</a>';
                         fragmentArray.push({
-                            'offset': ,
+                            'offset': 0 ,
                             'range': range,
                             'html': html
                         });
