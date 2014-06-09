@@ -150,9 +150,7 @@ function load_article(file, title) {
 }
 
 function get_annotations(file) {
-    var doc_id = open_docs[file];
     $('#annotationlist').html('');
-    $('#tabs a[href="#tab' + doc_id + '"]').replaceWith($('#orig' + doc_id));
     $.ajax({
         method: 'GET',
         url: 'annotations/' + file,
