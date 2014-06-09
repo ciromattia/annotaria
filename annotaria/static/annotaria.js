@@ -177,7 +177,7 @@ function get_annotations(file) {
                             annotation['body']['object'] + '</small></a></li>');
                     } else {
                         // Add the new selection range
-                        var range = document.createRange();
+                        var range = rangy.createRangyRange();
                         var node = document.getElementById(annotation['target']['start_id']);
                         if (node.firstChild && node.firstChild.nodeType == 3)
                             range.setStart(node.firstChild, annotation['target']['start_off']);
@@ -192,11 +192,24 @@ function get_annotations(file) {
                     }
                 }
                 for (var j = rangeArray.length - 1; j >= 0; j--) {
-                    var mySpan = document.createElement('span');
-                    mySpan.className = 'annotaria_fragment';
-                    mySpan.innerText = range.toString();
+                    var fragment = null;
+                    var html = '<span class="annotaria_fragment">' + range.toString() + '</span>';
                     rangeArray[j].deleteContents();
-                    rangeArray[j].insertNode(mySpan);
+                    // Create a DocumentFragment to insert and populate it with HTML
+                    // Need to test for the existence of range.createContextualFragment
+                    // because it's non-standard and IE 9 does not support it
+                    if (rangeArray[j].createContextualFragment) {
+                        fragment = rangeArray[j].createContextualFragment(html);
+                    } else {
+                        // In IE 9 we need to use innerHTML of a temporary element
+                        var div = document.createElement("div"), child;
+                        div.innerHTML = html;
+                        fragment = document.createDocumentFragment();
+                        while ( (child = div.firstChild) ) {
+                            fragment.appendChild(child);
+                        }
+                    }
+                    rangeArray[j].insertNode(fragment);
                 }
             }
             $('[data-toggle=popover]').popover();
@@ -372,5 +385,51 @@ function onSelection() {
     } else {
         $('#create_ranged_annot_button').hide();
         range_selected = null;
+    }
+}
+
+function replaceSelection(html, selectInserted) {
+    var sel, range, fragment;
+
+    if (typeof window.getSelection != "undefined") {
+        // IE 9 and other non-IE browsers
+        sel = window.getSelection();
+
+        // Test that the Selection object contains at least one Range
+        if (sel.getRangeAt && sel.rangeCount) {
+            // Get the first Range (only Firefox supports more than one)
+            range = window.getSelection().getRangeAt(0);
+            range.deleteContents();
+
+            // Create a DocumentFragment to insert and populate it with HTML
+            // Need to test for the existence of range.createContextualFragment
+            // because it's non-standard and IE 9 does not support it
+            if (range.createContextualFragment) {
+                fragment = range.createContextualFragment(html);
+            } else {
+                // In IE 9 we need to use innerHTML of a temporary element
+                var div = document.createElement("div"), child;
+                div.innerHTML = html;
+                fragment = document.createDocumentFragment();
+                while ( (child = div.firstChild) ) {
+                    fragment.appendChild(child);
+                }
+            }
+            var firstInsertedNode = fragment.firstChild;
+            var lastInsertedNode = fragment.lastChild;
+            range.insertNode(fragment);
+            if (selectInserted) {
+                if (firstInsertedNode) {
+                    range.setStartBefore(firstInsertedNode);
+                    range.setEndAfter(lastInsertedNode);
+                }
+                sel.removeAllRanges();
+                sel.addRange(range);
+            }
+        }
+    } else if (document.selection && document.selection.type != "Control") {
+        // IE 8 and below
+        range = document.selection.createRange();
+        range.pasteHTML(html);
     }
 }
