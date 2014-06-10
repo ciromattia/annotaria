@@ -5,14 +5,17 @@ var doc_loaded = false;
 var temp_annotations = [];
 var range_selected = null;
 
-var map_type_to_label = {
+var doc_anno_types = {
     'hasAuthor': 'Autore',
     'hasPublisher': 'Editore',
     'hasPublicationYear': 'Anno di pubblicazione',
     'hasTitle': 'Titolo',
     'hasAbstract': 'Abstract',
     'hasShortTitle': 'Titolo breve',
-    'hasComment': 'Commento',
+    'hasComment': 'Commento'
+};
+
+var frag_anno_types = {
     'denotesPerson': 'Indicazione di persona',
     'denotesPlace': 'Indicazione di luogo',
     'denotesDisease': 'Indicazione di malattia',
@@ -21,8 +24,9 @@ var map_type_to_label = {
     'hasClarityScore': 'Chiarezza',
     'hasOriginalityScore': 'Originalità',
     'hasFormattingScore': 'Formattazione',
-    'cites': 'Citazione'
-}
+    'cites': 'Citazione',
+    'hasComment': 'Commento'
+};
 
 $(document).ready(function () {
     reset();
@@ -34,6 +38,7 @@ function reset() {
         $('#annotationListPanel').collapse('hide');
         $('#add_annotation_doc').hide();
     });
+    $('#doc_annot').on('show.bs.modal', redraw_annotation_types_selector);
     $("#create_ranged_annot_button").hide();
     $("#widget_instance").hide();
     $("#widget_date").hide();
@@ -72,6 +77,16 @@ function redraw_temp_annotations() {
         tbody.append('<tr><td>' + temp_annotations[i]['predicate'] + '</td><td>' +
             temp_annotations[i]['type'] + '</td>');
     }
+}
+
+function redraw_annotation_types_selector() {
+    $('#doc_annot_type').html('<option value="" selected disabled>select the annotation type</option>');
+    var map = range_selected ? frag_anno_types : doc_anno_types;
+    $.each(map, function (idx, val) {
+        var option = '<option value="' +
+            idx + '">' + val + '</option>';
+        $('#doc_annot_type').append(option);
+    });
 }
 
 function doc_annot_form_onselect(sel) {
@@ -178,86 +193,24 @@ function get_annotations(file, docid) {
             if (d.length < 1) {
                 $('#annotationlist').html('');
             } else {
-                var fragmentArray = [];
-                var annotation_metadata;
-                var html;
                 for (var i = 0; i < d.length; i++) {
                     var annotation = d[i];
                     if (annotation['target']['start_id'] == null) {
-                        annotation_metadata = '<div><strong>annotator:</strong> ' + annotation['provenance']['author']['name'] +
-                            '</a><br><strong>created:</strong> ' + annotation['provenance']['time'] + '</div>';
-                        $('#annotationlist').append('<li>' +
-                            '<a data-container="body" data-toggle="popover" data-html="true" data-placement="top"' +
-                            ' data-content="' + annotation_metadata + '">' +
-                            '<small><strong>' + annotation['label'] + ':</strong> ' +
-                            annotation['body']['object'] + '</small></a></li>');
+                        var a = document.createElement('a');
+                        a.setAttribute('data-container', 'body');
+                        a.setAttribute('data-toggle', 'popover');
+                        a.setAttribute('data-html', 'true');
+                        a.setAttribute('data-content', build_metadata(annotation));
+                        a.innerHTML = '<small><strong>' + annotation['label'] + ':</strong> ' +
+                            annotation['body']['object'] + '</small>';
+                        var li = document.createElement('li');
+                        li.appendChild(a);
+                        $('#annotationlist').append(li);
                     } else {
                         var node = document.getElementById(annotation['target']['start_id']);
                         render_fragment(node, annotation['target']['start_off'], annotation['target']['end_off'], annotation);
-                        
-                        /*
-                        var docrange = range.createRange();
-                        docrange.selectNodeContents($('#current_article'));
-                        outer_range.setEnd(range.endContainer, range.endOffset);
-                        var offset = outer_range.toString().length;
-                        start_offset += offset;
-                        end_offset += offset;
-                        */
-                        /*
-                        var k;
-                        // Add the new selection range
-                        var range = document.createRange();
-                        var node = document.getElementById(annotation['target']['start_id']);
-                        if (!node.childNodes)
-                            range.setStart(node, annotation['target']['start_off']);
-                        else
-                            for (k = 0; k < node.childNodes.length; ++k)
-                                if (!node.childNodes[k].id) {
-                                    range.setStart(node.childNodes[k], annotation['target']['start_off']);
-                                    break;
-                                }
-                        node = document.getElementById(annotation['target']['end_id']);
-                        if (!node.childNodes)
-                            range.setEnd(node, annotation['target']['end_off']);
-                        else
-                            for (k = 0; k < node.childNodes.length; ++k)
-                                if (!node.childNodes[k].id) {
-                                    range.setEnd(node.childNodes[k], annotation['target']['end_off']);
-                                    break;
-                                }
-                        annotation_metadata = '<div><strong>annotator:</strong> ' + annotation['provenance']['author']['name'] +
-                            '</a><br><strong>created:</strong> ' + annotation['provenance']['time'] + '</div>';
-                        html = '<a data-container="body" data-toggle="popover" data-html="true" data-placement="top"' +
-                            ' data-content="' + annotation_metadata + '" class="annotaria_fragment">' +
-                            range.toString() + '</a>';
-                        fragmentArray.push({
-                            'offset': 0,
-                            'range': range,
-                            'html': html
-                        });*/
                     }
                 }
-                /*for (var j = fragmentArray.length - 1; j >= 0; j--) {
-                    var node = iframedoc.getElementById(note.target.id).firstChild; //prima era senza firstchild
-                    render_fragment()
-                    var fragment = null;
-                    fragmentArray[j]['range'].deleteContents();
-                    // Create a DocumentFragment to insert and populate it with HTML
-                    // Need to test for the existence of range.createContextualFragment
-                    // because it's non-standard and IE 9 does not support it
-                    if (fragmentArray[j]['range'].createContextualFragment) {
-                        fragment = fragmentArray[j]['range'].createContextualFragment(fragmentArray[j]['html']);
-                    } else {
-                        // In IE 9 we need to use innerHTML of a temporary element
-                        var div = document.createElement("div"), child;
-                        div.innerHTML = fragmentArray[j]['html'];
-                        fragment = document.createDocumentFragment();
-                        while ((child = div.firstChild)) {
-                            fragment.appendChild(child);
-                        }
-                    }
-                    fragmentArray[j]['range'].insertNode(fragment);
-                }*/
             }
             $('[data-toggle=popover]').popover();
             $('#annotationListPanel').collapse('show');
@@ -293,10 +246,22 @@ function render_fragment(node, start, end, annotation) {
     } else {
         range.setEnd(node, end);
     }
+    
+    var a = document.createElement('a');
+    a.setAttribute('data-container', 'body');
+    a.setAttribute('data-toggle', 'popover');
+    a.setAttribute('data-html', 'true');
+    a.setAttribute('data-content', build_metadata(annotation));
+    a.setAttribute('class', 'annotaria_fragment ' + annotation['type']);
+    range.surroundContents(a);
+    return range;
+}
+
+function build_metadata(annotation) {
     // build metadata
     var annotation_metadata = '<div><strong>' + annotation['label'] + '</strong>' +
         '<br><em>' + annotation['body']['object'] + '</em><br>';
-    
+
     // provenance
     var author_name = annotation['provenance']['author']['name'];
     if (annotation['provenance']['author']['email'])
@@ -304,21 +269,15 @@ function render_fragment(node, start, end, annotation) {
     annotation_metadata += '<hr><strong>annotator:</strong> <a href="' +
         annotation['provenance']['author']['id'] + '" target="_blank">' + author_name +
         '</a><br><strong>created:</strong> ' + annotation['provenance']['time'] + '</div>';
-    var a = document.createElement('a');
-    a.setAttribute('data-container', 'body');
-    a.setAttribute('data-toggle', 'popover');
-    a.setAttribute('data-html', 'true');
-    a.setAttribute('data-content', annotation_metadata);
-    a.setAttribute('class', 'annotaria_fragment ' + annotation['type']);
-    range.surroundContents(a);
-    return range;
+    
+    return annotation_metadata;
 }
 
 function save_annotation() {
-    var annotype = $('#doc_annot_type').find(":selected").text();
+    var annotype = $('#doc_annot_type').find(":selected").val();
     var anno = {
         "type": annotype,
-        "label": null,
+        "label": $('#doc_annot_type').find(":selected").text(),
         "body": {
             "label": null,
             "object": null
@@ -347,7 +306,7 @@ function save_annotation() {
     switch (annotype) {
         case "hasAuthor":
         case "hasPublisher":
-            anno['body']['object'] = $("#widget_instance_selector option:selected").val();
+            anno['body']['object'] = $('#widget_instance_selector').find(':selected').val();
             break;
         case "hasPublicationYear":
             anno['body']['object'] = $("#widget_date_input").val();

@@ -55,6 +55,40 @@ code {
   top: 0;
 }
 
+.nav .btn-primary, .nav .btn-warning {
+    color: #ffffff !important;
+}
+
+.flyover {
+    left: 150%;
+    overflow: hidden;
+    position: fixed;
+    width: 50%;
+    opacity: 0.9;
+    z-index: 5000;
+    transition: left 0.6s ease-out 0s;
+}
+
+.flyover-centered {
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.flyover.in {
+    left: 50%;
+}
+
+.flyover-bottom {
+    left: 150%;
+    overflow: hidden;
+    position: fixed;
+    width: 50%;
+    opacity: 0.9;
+    z-index: 5000;
+    transition: left 0.6s ease-out 0s;
+    bottom: 10px;
+}
+
 a.annotaria_fragment {
     color: #333333;
 }

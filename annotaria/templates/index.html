@@ -51,7 +51,6 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
                 <li><a href role="button" data-toggle="modal" data-target="#about">About</a></li>
                 <li><a href id="temp_annot_button" class="btn" role="button" data-toggle="modal"
                        data-target="#temp_annot">Unsaved
@@ -93,7 +92,7 @@
                                 <ul class="nav-list aside-nav" id="annotationlist"></ul>
                                 <p><a href role="button" id="add_annotation_doc" data-toggle="modal"
                                       data-target="#doc_annot">
-                                    <small><i class="fa fa-plus"></i> add an annotation...</small>
+                                    <small><i class="fa fa-plus"></i> add a global annotation...</small>
                                 </a></p>
                             </div>
                         </div>
@@ -180,14 +179,6 @@
                 <form class="annotation doc_annot" role="form">
                     <div class="form-group">
                         <select class="form-control" id="doc_annot_type" onchange="doc_annot_form_onselect(this)">
-                            <option value="" selected disabled>select the annotation type</option>
-                            <option value="hasAuthor">hasAuthor</option>
-                            <option value="hasPublisher">hasPublisher</option>
-                            <option value="hasPublicationYear">hasPublicationYear</option>
-                            <option value="hasTitle">hasTitle</option>
-                            <option value="hasAbstract">hasAbstract</option>
-                            <option value="hasShortTitle">hasShortTitle</option>
-                            <option value="hasComment">hasComment</option>
                         </select>
                     </div>
                     <div class="form-group row" id="widget_instance">
@@ -206,11 +197,8 @@
                         </div>
                     </div>
                     <div class="form-group" id="widget_date">
-                        <div class="input-append date" id="widget_date_picker" data-date="12-02-2012"
-                             data-date-format="dd-mm-yyyy" data-date-viewmode="years">
-                            <input id="widget_date_input" class="span2" size="16" type="text" value="12-02-2012">
-                            <span class="add-on"><i class="icon-calendar"></i></span>
-                        </div>
+                        <input id="widget_date_input" size="16" type="date" placeholder="2014"
+                                maxlength="4" class="form-control">
                     </div>
                     <div class="form-group" id="widget_shorttext">
                         <input id="widget_shorttext_input" type="text" class="form-control" placeholder="Text input"
@@ -270,7 +258,6 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<script src="{{ url_for('static', filename='bootstrap-datepicker.js') }}"></script>
 <script src="{{ url_for('static', filename='annotaria.js') }}"></script>
 
 </body>
