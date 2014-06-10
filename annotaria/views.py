@@ -2,7 +2,7 @@ import glob
 import json
 from os.path import basename, dirname, realpath
 from BeautifulSoup import BeautifulSoup
-from flask import request, g, redirect, Response, request, render_template, send_from_directory
+from flask import Response, request, render_template, send_from_directory
 from annotaria import app
 from store import Store
 

@@ -155,19 +155,10 @@ function reload_instance_widget() {
                 + '<input id="widget_instance_new_email" type="email" class="form-control" placeholder="Email" maxlength="80">');
             break;
         case 'organization':
-            fs.append('<input id="widget_instance_new_url" type="text" class="form-control" placeholder="Url" maxlength="80">'
-                + '<input id="widget_instance_new_label" type="text" class="form-control" placeholder="Label" maxlength="80">');
-            break;
         case 'place':
-            fs.append('<input id="widget_instance_new_url" type="text" class="form-control" placeholder="Url" maxlength="80">'
-                + '<input id="widget_instance_new_label" type="text" class="form-control" placeholder="Label" maxlength="80">');
-            break;
         case 'disease':
-            fs.append('<input id="widget_instance_new_url" type="text" class="form-control" placeholder="Url" maxlength="80">'
-                + '<input id="widget_instance_new_label" type="text" class="form-control" placeholder="Label" maxlength="80">');
-            break;
         case 'subject':
-            fs.append('<input id="widget_instance_new_url" type="text" class="form-control" placeholder="Url" maxlength="80">'
+            fs.append('<input id="widget_instance_new_uri" type="text" class="form-control" placeholder="Uri" maxlength="80">'
                 + '<input id="widget_instance_new_label" type="text" class="form-control" placeholder="Label" maxlength="80">');
             break;
         default:
@@ -193,14 +184,16 @@ function populate_instances() {
                             var option = '<option value="' +
                                 instance['author_id'] + '">' +
                                 instance['author_fullname'];
-                            if (instance['author_email'] != 'None')
+                            if (instance['author_email'] != null)
                                 option += ' &lt;' + instance['author_email'] + '&gt;';
                             option += '</option>';
+                            break;
                         default:
                             var option = '<option value="' +
                                 instance['id'] + '">' +
                                 instance['label'];
                             option += '</option>';
+                            break;
                     }
                     $('#widget_instance_selector').append(option);
                 }
@@ -213,12 +206,22 @@ function populate_instances() {
 }
 
 function save_instance() {
-    var instance = {
-        "author_id": $("#widget_instance_new_id").val(),
-        "author_fullname": $("#widget_instance_new_name").val(),
-        "author_email": $("#widget_instance_new_email").val()
-    };
-    var url = 'author/';
+    switch (instance_kind) {
+        case 'person':
+            var instance = {
+                "author_id": $("#widget_instance_new_id").val(),
+                "author_fullname": $("#widget_instance_new_name").val(),
+                "author_email": $("#widget_instance_new_email").val()
+            };
+            break;
+        default:
+            var instance = {
+                "id": $("#widget_instance_new_uri").val(),
+                "label": $("#widget_instance_new_label").val()
+            };
+            break;
+    }
+    var url = instance_kind + '/';
     $.ajax({
         type: "POST",
         url: url,

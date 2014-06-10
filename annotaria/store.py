@@ -74,7 +74,7 @@ class Store:
             annotation.parse_rdf({
                 'target': article,
                 'author': row[0].encode('utf-8'),
-                'author_fullname': row[1].encode('utf-8'),
+                'author_fullname': row[1].encode('utf-8') if row[1] is not None else None,
                 'author_email': row[2].encode('utf-8') if row[2] is not None else None,
                 'created': row[3].encode('utf-8') if row[3] is not None else None,
                 'label': row[4].encode('utf-8') if row[4] is not None else None,
@@ -85,7 +85,7 @@ class Store:
                 'obj_label': row[9].encode('utf-8') if row[9] is not None else None,
                 'target_start': row[10].encode('utf-8') if row[10] is not None else None,
                 'target_startoff': int(row[11]) if row[11] is not None else None,
-                'target_endoff': int(row[12]) if row[12] is not None else None,
+                'target_endoff': int(row[12]) if row[12] is not None else None
             })
             ret.append(annotation.to_dict())
         return ret
@@ -113,15 +113,9 @@ class Store:
     # {
     # 'author_id': ...,
     # 'author_fullname': ...,
-    #   'author_email': ...
+    # 'author_email': ...
     # }
     def insert_author(self, author):
-        # query_string = 'INSERT DATA { ' +\
-        #                author['author_id'] + ' ' + FOAF.name + ' ' + author['author_fullname']
-        # if 'author_email' in author:
-        #     query_string += ' ; ' + SCHEMA.email + ' ' + author['author_email']
-        # query_string += ' . };'
-        # self.sparql.update(query=query_string, initNs=initNS)
         a = AOP[author['author_id']]
         self.sparql.add((a, RDF.type, FOAF.Person))
         self.sparql.add((a, FOAF.name, Literal(author['author_fullname'])))
