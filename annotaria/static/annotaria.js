@@ -6,30 +6,37 @@ var temp_annotations = [];
 var range_selected = null;
 var instance_kind = null;
 
+var user = {
+    id: null,
+    name: null,
+    email: null
+};
+
 var doc_anno_types = {
-    'hasAuthor': 'Autore',
-    'hasPublisher': 'Editore',
-    'hasPublicationYear': 'Anno di pubblicazione',
-    'hasTitle': 'Titolo',
+    'hasAuthor': 'Author',
+    'hasPublisher': 'Publisher',
+    'hasPublicationYear': 'Publication year',
+    'hasTitle': 'Title',
     'hasAbstract': 'Abstract',
-    'hasShortTitle': 'Titolo breve',
-    'hasComment': 'Commento'
+    'hasShortTitle': 'Short title',
+    'hasComment': 'Comment'
 };
 
 var frag_anno_types = {
-    'denotesPerson': 'Indicazione di persona',
-    'denotesPlace': 'Indicazione di luogo',
-    'denotesDisease': 'Indicazione di malattia',
-    'hasSubject': 'Soggetto',
-    'relatesTo': 'Relazione',
-    'hasClarityScore': 'Chiarezza',
-    'hasOriginalityScore': 'Originalità',
-    'hasFormattingScore': 'Formattazione',
-    'cites': 'Citazione',
-    'hasComment': 'Commento'
+    'denotesPerson': 'Denotes person',
+    'denotesPlace': 'Denotes place',
+    'denotesDisease': 'Denotes disease',
+    'hasSubject': 'Subject',
+    'relatesTo': 'Relates to',
+    'hasClarityScore': 'Clarity score',
+    'hasOriginalityScore': 'Originality score',
+    'hasFormattingScore': 'Formatting score',
+    'cites': 'Cites',
+    'hasComment': 'Comment'
 };
 
 $(document).ready(function () {
+    setValidators();
     reset();
 });
 
@@ -52,6 +59,9 @@ function reset() {
     $('#add_annotation_doc').hide();
     $('#current_article').bind({
         "mouseup": onSelection
+    });
+    $("button[type=submit]").click(function(event) {
+        event.preventDefault(); // cancel default behavior
     });
 }
 
@@ -315,8 +325,10 @@ function get_annotations(file, docid) {
                         a.setAttribute('data-toggle', 'popover');
                         a.setAttribute('data-html', 'true');
                         a.setAttribute('data-content', build_metadata(annotation));
+                        var label = annotation['body']['label'] != null ?
+                            annotation['body']['label'] : annotation['body']['object'];
                         a.innerHTML = '<small><strong>' + annotation['label'] + ':</strong> ' +
-                            annotation['body']['object'] + '</small>';
+                            label + '</small>';
                         var li = document.createElement('li');
                         li.appendChild(a);
                         $('#annotationlist').append(li);
@@ -387,11 +399,31 @@ function build_metadata(annotation) {
     return annotation_metadata;
 }
 
+function register_user() {
+    user = {
+        id: $('#user_id').val(),
+        name: $('#user_fullname').val(),
+        email: $('#user_email').val()
+    };
+    $('#loginModal').modal('hide');
+    if (user.id && user.name) {
+        var msg = '<em>' + user.name;
+        if (user.email)
+            msg += ' &lt;' + user.email + '&gt;';
+        msg += '</em>';
+    } else {
+        var msg = '<em>not registered</em>';
+    }
+    $('#annotator_data').html('');
+    $('#annotator_data').append(msg);
+}
+
 function save_annotation() {
-    var annotype = $('#doc_annot_type').find(":selected").val();
+    var annotype = $('#doc_annot_type').find(":selected");
+    var author = user.id ? user : {id: 'ciromattia-gonano', name: 'Ciro Mattia Gonano', email: 'ciromattia@gmail.com'};
     var anno = {
-        "type": annotype,
-        "label": $('#doc_annot_type').find(":selected").text(),
+        "type": annotype.val(),
+        "label": annotype.text(),
         "body": {
             "label": null,
             "object": null
@@ -403,11 +435,7 @@ function save_annotation() {
             "end_off": null
         },
         "provenance": {
-            "author": {
-                "id": 'ciromattia-gonano',
-                "name": "Ciro Mattia Gonano",
-                "email": "ciromattia@gmail.com"
-            },
+            "author": author,
             "time": new Date().toISOString()
         }
     };
@@ -417,7 +445,7 @@ function save_annotation() {
         anno["target"]["start_off"] = myRange.startOffset;
         anno["target"]["end_off"] = myRange.endOffset;
     }
-    switch (annotype) {
+    switch (annotype.val()) {
         case "hasAuthor":
         case "hasPublisher":
         case "denotesPerson":
@@ -549,4 +577,40 @@ function parse_range(range) {
         endOffset: end_offset,
         container: namedAncestor.id
     };
+}
+
+function setValidators() {
+    $('#loginModal').on('show.bs.modal', function() {
+        $('#loginForm').bootstrapValidator('resetForm', true);
+    });
+    $('#loginForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'fa fa-check',
+            invalid: 'fa fa-times',
+            validating: 'fa fa-refresh'
+        },
+        fields: {
+            user_id: {
+                validators: {
+                    notEmpty: {
+                        message: 'The User ID is required and cannot be empty'
+                    }
+                }
+            },
+            user_fullname: {
+                validators: {
+                    notEmpty: {
+                        message: 'The Fullname is required and cannot be empty'
+                    }
+                }
+            },
+            user_email: {
+                validators: {
+                    emailAddress: {
+                        message: 'The input is not a valid email address'
+                    }
+                }
+            }
+        }
+    });
 }

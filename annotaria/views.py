@@ -23,6 +23,12 @@ def jsonify(obj, *args, **kwargs):
     return Response(res, mimetype='application/json', *args, **kwargs)
 
 
+# html = lxml.html.document_fromstring(html)
+#     for element, attribute, link, pos in html.iterlinks():
+#         if attribute == "src":
+#             new_src = 'articles/images/' + basename(link) 
+#             element.set('src', new_src)
+#     print lxml.html.tostring(html)
 def parse_article(html):
     soup = BeautifulSoup(html)
     # fix img "src" attribute

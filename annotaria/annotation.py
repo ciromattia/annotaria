@@ -36,23 +36,6 @@ map_type_to_predicate = {
     'cites': CITO.cites
 }
 
-map_predicate_to_type = {
-    str(DCTERMS.creator): 'hasAuthor',
-    str(DCTERMS.publisher): 'hasPublisher',
-    str(FABIO.hasPublicationYear): 'hasPublicationYear',
-    str(DCTERMS.title): 'hasTitle',
-    str(DCTERMS.abstract): 'hasAbstract',
-    str(FABIO.hasShortTitle): 'hasShortTitle',
-    str(SCHEMA.comment): 'hasComment',
-    str(SEM.denotes): 'denotesPerson',
-    str(FABIO.hasSubjectTerm): 'hasSubject',
-    str(SKOS.related): 'relatesTo',
-    str(AO.hasClarityScore): 'hasClarityScore',
-    str(AO.hasOriginalityScore): 'hasOriginalityScore',
-    str(AO.hasFormattingScore): 'hasFormattingScore',
-    str(CITO.cites): 'cites'
-}
-
 map_type_to_label = {
     'hasAuthor': 'Autore',
     'hasPublisher': 'Editore',
@@ -112,8 +95,8 @@ class Annotation:
         if annotation_rdf['label'] != 'None':
             self.annotation['label'] = annotation_rdf['label']
         elif annotation_rdf['type'] != 'None':
-            self.annotation['label'] = annotation_rdf['type']
-        self.annotation['type'] = map_predicate_to_type[annotation_rdf['predicate']]
+            self.annotation['label'] = map_type_to_label[annotation_rdf['type']]
+        self.annotation['type'] = annotation_rdf['type']
         # provenance
         self.annotation['provenance']['author']['id'] = annotation_rdf['author']
         self.annotation['provenance']['author']['name'] = annotation_rdf['author_fullname']
@@ -207,9 +190,9 @@ class Annotation:
             o = Literal(self.annotation['body']['object'],
                         datatype=XSD.date)
         elif self.annotation['type'] == "hasAuthor" or \
-                self.annotation['type'] == "hasPublisher" or \
-                self.annotation['type'] == "denotesPerson" or \
-                self.annotation['type'] == "denotesPlace":
+                        self.annotation['type'] == "hasPublisher" or \
+                        self.annotation['type'] == "denotesPerson" or \
+                        self.annotation['type'] == "denotesPlace":
             o = URIRef(self.annotation['body']['object'])
         else:
             o = Literal(self.annotation['body']['object'])

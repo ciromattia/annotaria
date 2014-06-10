@@ -147,6 +147,12 @@ aop:fabio-vitali a foaf:Person ;
 aop:pedro a foaf:Person ;
     foaf:name "Pedro Madrigal" .
 
+aop:alex a foaf:Person ;
+    foaf:name "Alex Gore" .
+
+aop:pasquale a foaf:Person ;
+    foaf:name "Pasquale Corbo" .
+
 ao:BMC_Bioinformatics_2008_Oct_1_9_406_ver1 a fabio:Expression ;
     fabio:hasRepresentation ao:BMC_Bioinformatics_2008_Oct_1_9_406.html .
 
@@ -299,18 +305,22 @@ ao:BMC_Pediatr_2005_Sep_21_5_38.html a fabio:Item .
 
 [] a oa:Annotation ;
     rdfs:label "Title" ;
+    ao:type "hasTitle" ;
     oa:annotatedAt "2014-05-21T18:00" ;
     oa:annotatedBy aop:fabio-vitali ;
     oa:hasBody [ a rdf:Statement ;
+            rdf:object "PISA. The effect of paracetamol (acetaminophen) and ibuprofen on body temperature in acute stroke: Protocol for a phase II double-blind randomised placebo-controlled trial." ;
             rdf:predicate dcterms:title ;
             rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1 ] ;
     oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
 
 [] a oa:Annotation ;
     rdfs:label "Subject" ;
+    ao:type "hasSubject" ;
     oa:annotatedAt "2015-09-08T16:32" ;
     oa:annotatedBy aop:fabio-vitali ;
     oa:hasBody [ a rdf:Statement ;
+            rdfs:label "Medicine" ;
             rdf:object <http://dbpedia.org/resource/Medicine> ;
             rdf:predicate fabio:hasSubjectTerm ;
             rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1 ] ;
@@ -318,18 +328,20 @@ ao:BMC_Pediatr_2005_Sep_21_5_38.html a fabio:Item .
 
 [] a oa:Annotation ;
     rdfs:label "Comment" ;
-    oa:annotatedAt "2014-10-06T10:15" ;
-    oa:annotatedBy aop:james-swetnam ;
+    ao:type "hasComment" ;
+    oa:annotatedAt "2014-06-06T10:15" ;
+    oa:annotatedBy aop:alex ;
     oa:hasBody [ a rdf:Statement ;
-            rdf:object "An interesting article concerning..." ;
+            rdf:object "An interesting article concerning triage" ;
             rdf:predicate schema:comment ;
             rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7 ] ;
     oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
 
 [] a oa:Annotation ;
     rdfs:label "Comment" ;
-    oa:annotatedAt "2014-07-06T09:57" ;
-    oa:annotatedBy aop:james-swetnam ;
+    ao:type "hasComment" ;
+    oa:annotatedAt "2014-05-06T09:57" ;
+    oa:annotatedBy aop:ciromattia-gonano ;
     oa:hasBody [ a rdf:Statement ;
             rdf:object "Not so clear..." ;
             rdf:predicate schema:comment ;
@@ -342,11 +354,13 @@ ao:BMC_Pediatr_2005_Sep_21_5_38.html a fabio:Item .
             oa:hasSource ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html ] .
 
 [] a oa:Annotation ;
+    rdfs:label "Author" ;
     ao:type "hasAuthor" ;
-    oa:annotatedAt "2014-10-10T11:04" ;
-    oa:annotatedBy aop:david-almond ;
+    oa:annotatedAt "2014-05-10T11:04" ;
+    oa:annotatedBy aop:pasquale ;
     oa:hasBody [ a rdf:Statement ;
-            rdf:object aop:david-almond ;
+            rdfs:label "Ciro Mattia Gonano" ;
+            rdf:object aop:ciromattia-gonano ;
             rdf:predicate dcterms:creator ;
             rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7 ] ;
     oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
