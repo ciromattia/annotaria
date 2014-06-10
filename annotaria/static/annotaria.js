@@ -261,7 +261,7 @@ function render_fragment(node, start, end, annotation) {
     } else {
         range.setEnd(node, end);
     }
-    
+
     var a = document.createElement('a');
     a.setAttribute('data-container', 'body');
     a.setAttribute('data-toggle', 'popover');
@@ -284,7 +284,7 @@ function build_metadata(annotation) {
     annotation_metadata += '<hr><strong>annotator:</strong> <a href="' +
         annotation['provenance']['author']['id'] + '" target="_blank">' + author_name +
         '</a><br><strong>created:</strong> ' + annotation['provenance']['time'] + '</div>';
-    
+
     return annotation_metadata;
 }
 
@@ -361,7 +361,7 @@ function discard_annotations() {
 }
 
 function discard_annotation(i) {
-    temp_annotations[i].remove();
+    temp_annotations.splice(i, 1);
     send_message('success', 'Annotation correctly removed');
     redraw_temp_annotations();
 }
