@@ -52,7 +52,7 @@ def root():
 def get_articles():
     path = dirname(realpath(__file__))
     ret = []
-    for f in glob.glob(path + "/articles/*.html"):
+    for f in sorted(glob.glob(path + "/articles/*.html")):
         if basename(f) != "index.html":  # skip index
             ret.append({
                 'href': basename(f),
