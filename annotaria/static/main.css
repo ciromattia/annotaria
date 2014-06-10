@@ -55,38 +55,39 @@ code {
   top: 0;
 }
 
-.annotaria_fragment {
-    background-color: #ff0000;
+a.annotaria_fragment {
+    color: #333333;
 }
-
-.flyover {
-    left: 150%;
-    overflow: hidden;
-    position: fixed;
-    width: 50%;
-    opacity: 0.9;
-    z-index: 5000;
-    transition: left 0.6s ease-out 0s;
+a.annotaria_fragment :hover {
+    color: #555555;
 }
-
-.flyover-centered {
-    top: 50%;
-    transform: translate(-50%, -50%);
+.hasComment {
+    background-color: #00ffdf;
 }
-
-.flyover.in {
-    left: 50%;
+.denotesPerson {
+    background-color: #ffff00;
 }
-
-.flyover-bottom {
-    left: 150%;
-    overflow: hidden;
-    position: fixed;
-    width: 50%;
-    opacity: 0.9;
-    z-index: 5000;
-    transition: left 0.6s ease-out 0s;
-    bottom: 10px;
+.denotesPlace {
+    background-color: #ffff66;
 }
-
-
+.denotesDisease {
+    background-color: #ffff99;
+}
+.hasSubject {
+    background-color: #ffffcc;
+}
+.relatesTo {
+    background-color: #ccffff;
+}
+.hasClarityScore {
+    background-color: #66ffff;
+}
+.hasOriginalityScore {
+    background-color: #00ffff;
+}
+.hasFormattingScore {
+    background-color: #ccffcc;
+}
+.cites {
+    background-color: #99ffcc;
+}

@@ -5,6 +5,25 @@ var doc_loaded = false;
 var temp_annotations = [];
 var range_selected = null;
 
+var map_type_to_label = {
+    'hasAuthor': 'Autore',
+    'hasPublisher': 'Editore',
+    'hasPublicationYear': 'Anno di pubblicazione',
+    'hasTitle': 'Titolo',
+    'hasAbstract': 'Abstract',
+    'hasShortTitle': 'Titolo breve',
+    'hasComment': 'Commento',
+    'denotesPerson': 'Indicazione di persona',
+    'denotesPlace': 'Indicazione di luogo',
+    'denotesDisease': 'Indicazione di malattia',
+    'hasSubject': 'Soggetto',
+    'relatesTo': 'Relazione',
+    'hasClarityScore': 'Chiarezza',
+    'hasOriginalityScore': 'Originalità',
+    'hasFormattingScore': 'Formattazione',
+    'cites': 'Citazione'
+}
+
 $(document).ready(function () {
     reset();
 });
@@ -274,15 +293,23 @@ function render_fragment(node, start, end, annotation) {
     } else {
         range.setEnd(node, end);
     }
-    var annotation_metadata = '<div><strong>annotator:</strong> ' + annotation['provenance']['author']['name'] +
+    // build metadata
+    var annotation_metadata = '<div><strong>' + annotation['label'] + '</strong>' +
+        '<br><em>' + annotation['body']['object'] + '</em><br>';
+    
+    // provenance
+    var author_name = annotation['provenance']['author']['name'];
+    if (annotation['provenance']['author']['email'])
+        author_name += '<' + annotation['provenance']['author']['email'] + '>';
+    annotation_metadata += '<hr><strong>annotator:</strong> <a href="' +
+        annotation['provenance']['author']['id'] + '" target="_blank">' + author_name +
         '</a><br><strong>created:</strong> ' + annotation['provenance']['time'] + '</div>';
     var a = document.createElement('a');
     a.setAttribute('data-container', 'body');
     a.setAttribute('data-toggle', 'popover');
     a.setAttribute('data-html', 'true');
-    a.setAttribute('data-placement', 'top');
     a.setAttribute('data-content', annotation_metadata);
-    a.setAttribute('class', 'annotaria_fragment');
+    a.setAttribute('class', 'annotaria_fragment ' + annotation['type']);
     range.surroundContents(a);
     return range;
 }
