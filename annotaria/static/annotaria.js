@@ -44,6 +44,7 @@ function reset() {
     $("#widget_date").hide();
     $("#widget_longtext").hide();
     $("#widget_shorttext").hide();
+    $("#widget_choice").hide();
     get_articlelist();
     redraw_temp_annotations();
     doc_loaded = false;
@@ -74,8 +75,8 @@ function redraw_temp_annotations() {
     var tbody = $('#temp_annot_rows');
     tbody.empty();
     for (var i = 0; i < temp_annotations.length; i++) {
-        tbody.append('<tr><td>' + temp_annotations[i]['predicate'] + '</td><td>' +
-            temp_annotations[i]['type'] + '</td>');
+        tbody.append('<tr><td>' + temp_annotations[i]['label'] + '</td><td>' +
+            temp_annotations[i]['body']['object'] + '</td>');
     }
 }
 
@@ -94,9 +95,14 @@ function doc_annot_form_onselect(sel) {
     $("#widget_date").hide();
     $("#widget_longtext").hide();
     $("#widget_shorttext").hide();
+    $("#widget_choice").hide();
     switch (sel.value) {
         case "hasAuthor":
         case "hasPublisher":
+        case "denotesPerson":
+        case "denotesPlace":
+        case "denotesDisease":
+        case "hasSubject":
             get_authors();
             $("#widget_instance").show();
             break;
@@ -110,6 +116,13 @@ function doc_annot_form_onselect(sel) {
             break;
         case "hasShortTitle":
             $("#widget_shorttext").show();
+            break;
+        case "hasClarityScore":
+        case "hasOriginalityScore":
+        case "hasFormattingScore":
+            $("#widget_choice").show();
+            break;
+        case "relatesTo":
             break;
         default:
             break;
@@ -306,6 +319,10 @@ function save_annotation() {
     switch (annotype) {
         case "hasAuthor":
         case "hasPublisher":
+        case "denotesPerson":
+        case "denotesPlace":
+        case "denotesDisease":
+        case "hasSubject":
             anno['body']['object'] = $('#widget_instance_selector').find(':selected').val();
             break;
         case "hasPublicationYear":
@@ -319,6 +336,12 @@ function save_annotation() {
         case "hasShortTitle":
             anno['body']['object'] = $("#widget_shorttext_input").val();
             break;
+        case "hasClarityScore":
+        case "hasOriginalityScore":
+        case "hasFormattingScore":
+            anno['body']['object'] = $("#widget_choice_input").val();
+            break;
+        case "relatesTo":
         default:
             break;
     }

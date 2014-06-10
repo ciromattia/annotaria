@@ -164,6 +164,8 @@ class Annotation:
 
         # build annotation
         anno = AON[anno_id]
+        graph.add((anno, AO.type, Literal(self.annotation['type'])))
+        graph.add((anno, RDFS.label, Literal(self.annotation['label'])))
 
         # set PROVENANCE
         graph.add((anno, RDF.type, OA.Annotation))
@@ -194,7 +196,6 @@ class Annotation:
 
         # build BODY upon annotation type
         (s, p, o) = self.get_resources_upon_type()
-        graph.add((anno, AO.type, Literal("hasAuthor")))
         reifiedstmt = AON[anno_id + "_body"]
         graph.add((reifiedstmt, RDF.type, RDF.Statement))
         graph.add((reifiedstmt, RDF.subject, s))
