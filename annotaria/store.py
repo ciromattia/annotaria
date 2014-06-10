@@ -1,7 +1,6 @@
 # !/usr/local/bin/python
 # -*- coding: utf-8 -*-
 
-from os.path import basename
 from rdflib import ConjunctiveGraph, Namespace, Literal
 from rdflib.namespace import DC, DCTERMS, FOAF, RDF, RDFS, SKOS, XSD
 from rdflib.plugins.stores.sparqlstore import SPARQLUpdateStore

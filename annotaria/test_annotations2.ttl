@@ -1,0 +1,523 @@
+@prefix ao: <http://vitali.web.cs.unibo.it/AnnOtaria/> .
+@prefix aop: <http://vitali.web.cs.unibo.it/AnnOtaria/person/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fabio: <http://purl.org/spar/fabio/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix frbr: <http://purl.org/vocab/frbr/core#> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix sem: <http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+########################################################
+# FRBR Works
+########################################################
+ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html ;
+    frbr:realization ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1 .
+
+ao:Adv_Virol_2012_Apr_2_2012_803535 a fabio:Work ;
+    fabio:hasPortrayal ao:Adv_Virol_2012_Apr_2_2012_803535.html ;
+    frbr:realization ao:Adv_Virol_2012_Apr_2_2012_803535_ver1 .
+
+ao:BMC_Bioinformatics_2008_Jan_23_9_40 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Bioinformatics_2008_Jan_23_9_40.html ;
+    frbr:realization ao:BMC_Bioinformatics_2008_Jan_23_9_40_ver1 .
+
+ao:BMC_Bioinformatics_2008_Sep_30_9_405 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Bioinformatics_2008_Sep_30_9_405.html ;
+    frbr:realization ao:BMC_Bioinformatics_2008_Sep_30_9_405_ver1 .
+
+ao:BMC_Cardiovasc_Disord_2012_Jan_31_12_2 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Cardiovasc_Disord_2012_Jan_31_12_2.html ;
+    frbr:realization ao:BMC_Cardiovasc_Disord_2012_Jan_31_12_2_ver1 .
+
+ao:BMC_Geriatr_2010_Jan_24_10_3 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Geriatr_2010_Jan_24_10_3.html ;
+    frbr:realization ao:BMC_Geriatr_2010_Jan_24_10_3_ver1 .
+
+ao:BMC_Geriatr_2010_May_27_10_28 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Geriatr_2010_May_27_10_28.html ;
+    frbr:realization ao:BMC_Geriatr_2010_May_27_10_28_ver1 .
+
+ao:BMC_Geriatr_2012_Jan_12_12_2 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Geriatr_2012_Jan_12_12_2.html ;
+    frbr:realization ao:BMC_Geriatr_2012_Jan_12_12_2_ver1 .
+
+ao:BMC_Ophthalmol_2011_Jan_21_11_2 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Ophthalmol_2011_Jan_21_11_2.html ;
+    frbr:realization ao:BMC_Ophthalmol_2011_Jan_21_11_2_ver1 .
+
+ao:BMC_Ophthalmol_2013_Mar_28_13_9 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Ophthalmol_2013_Mar_28_13_9.html ;
+    frbr:realization ao:BMC_Ophthalmol_2013_Mar_28_13_9_ver1 .
+
+########################################################
+# FRBR Expressions
+########################################################
+
+ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
+
+ao:BMC_Bioinformatics_2008_Jan_23_9_40_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Bioinformatics_2008_Jan_23_9_40.html .
+
+ao:BMC_Bioinformatics_2008_Sep_30_9_405_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Bioinformatics_2008_Sep_30_9_405.html .
+
+ao:BMC_Cardiovasc_Disord_2012_Jan_31_12_2_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Cardiovasc_Disord_2012_Jan_31_12_2.html .
+
+ao:BMC_Geriatr_2009_Jul_27_9_31_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Geriatr_2009_Jul_27_9_31.html .
+
+ao:BMC_Geriatr_2010_Jan_24_10_3_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Geriatr_2010_Jan_24_10_3.html .
+
+ao:BMC_Geriatr_2010_May_27_10_28_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Geriatr_2010_May_27_10_28.html .
+
+ao:BMC_Geriatr_2012_Jan_12_12_2_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Geriatr_2012_Jan_12_12_2.html .
+
+ao:BMC_Ophthalmol_2011_Jan_21_11_2_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Ophthalmol_2011_Jan_21_11_2.html .
+
+ao:BMC_Ophthalmol_2013_Mar_28_13_9_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Ophthalmol_2013_Mar_28_13_9.html .
+
+########################################################
+# FRBR Items
+########################################################
+
+ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html a fabio:Item .
+
+ao:BMC_Bioinformatics_2008_Jan_23_9_40.html a fabio:Item .
+
+ao:BMC_Bioinformatics_2008_Sep_30_9_405.html a fabio:Item .
+
+ao:BMC_Cardiovasc_Disord_2012_Jan_31_12_2.html a fabio:Item .
+
+ao:BMC_Geriatr_2010_Jan_24_10_3.html a fabio:Item .
+
+ao:BMC_Geriatr_2010_May_27_10_28.html a fabio:Item .
+
+ao:BMC_Geriatr_2012_Jan_12_12_2.html a fabio:Item .
+
+ao:BMC_Ophthalmol_2011_Jan_21_11_2.html a fabio:Item .
+
+ao:BMC_Ophthalmol_2013_Mar_28_13_9.html a fabio:Item .
+
+ao:BMC_Geriatr_2009_Jul_27_9_31.html a fabio:Item .
+
+########################################################
+# People
+########################################################
+
+aop:fabio-vitali
+    schema:email "fabio.vitali@cs.unibo.it" ;
+    foaf:name "Pinco Pallino" .
+
+aop:james-swetnam
+    foaf:name "James Swetnam" .
+
+aop:david-almond
+    foaf:name "David Almond" .
+    foaf:organization "Chemistry"
+    
+aop:david-almond2
+    schema:email "david.almond@nyumc.org" ;
+    foaf:name "David Almond" .
+   
+aop:carl-senders
+    schema:email "carlsenders@yeye.org" ;
+    foaf:name "Carl Senders" .
+    
+aop:carlo-roserba
+    schema:email "carloroserba@chimica.org" ;
+    foaf:name "Carlo Roserba" .
+    
+aop:fabio-cannavaro
+    schema:email "fabio-canna@nyumc.org";
+    foaf:name "Fabio Cannavaro".
+
+aop:carlo-ancelotti
+    schema:email "carletto@nyumc.org";
+    foaf:name "Carlo Ancelotti".
+    
+
+########################################################
+# Annotations
+########################################################
+
+[] a oa:Annotation ;
+    rdfs:label "Title" ;
+    oa:annotatedAt "2014-05-21T18:00" ;
+    oa:annotatedBy aop:fabio-vitali ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:predicate fabio:hasTitle ;
+            rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1 ] ;
+    oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
+
+[] a oa:Annotation ;
+    rdfs:label "Subject" ;
+    oa:annotatedAt "2015-09-08T16:32" ;
+    oa:annotatedBy aop:fabio-vitali ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object <http://dbpedia.org/resource/Medicine> ;
+            rdf:predicate fabio:hasSubjectTerm ;
+            rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1 ] ;
+    oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
+
+[] a oa:Annotation ;
+    rdfs:label "Comment" ;
+    oa:annotatedAt "2014-10-06T10:15" ;
+    oa:annotatedBy aop:james-swetnam ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object "An interesting article concerning..." ;
+            rdf:predicate schema:comment ;
+            rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7 ] ;
+    oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
+
+[] a oa:Annotation ;
+    rdfs:label "Person" ;
+    oa:annotatedAt "2014-07-06T09:57" ;
+    oa:annotatedBy aop:james-swetnam ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object <http://dbpedia.org/resource/James_Dewey_Watson> ;
+            rdf:predicate sem:denotes ;
+            rdf:subject <ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1#div34-12-21> ] ;
+    oa:hasTarget [ a oa:SpecificResource ;
+            oa:hasSelector [ a oa:FragmentSelector ;
+                    rdf:value "div34" ;
+                    oa:start "12"^^xsd:nonNegativeIntegeroa ;
+                    oa:end "21"^^xsd:nonNegativeInteger ] ;
+            oa:hasSource ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html ] .
+
+[] a oa:Annotation ;
+    ao:type "hasAuthor" ;
+    oa:annotatedAt "2014-10-10T11:04" ;
+    oa:annotatedBy aop:david-almond ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object aop:david-almond ;
+            rdf:predicate dcterms:creator ;
+            rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7 ] ;
+    oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
+    
+[] oa:Annotation ;
+	rdfs:label "Comment" ;
+	oa:annotatedAt "2014-05-12T15:10" 
+	oa:annotatedBy <mailto:carloroserba@chimica.org> ;
+	oa:hasBody  [ a rdf:Statement ;
+            rdf:object "Molto Interessante" ;
+            rdf:predicate schema:comment ;
+            rdf:subject ao:BMC_Bioinformatics_2008_Sep_30_9_405_ver1 ] ;
+    oa:hasTarget ao:BMC_Bioinformatics_2008_Sep_30_9_405.html .
+	
+[] a oa:Annotation ;
+    rdfs:label "Person" ;
+    oa:annotatedAt "2014-05-20T10:57" ;
+    oa:annotatedBy aop:carl-sanders ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object <http://dbpedia.org/resource/Carl_Sanders> ;
+            rdf:predicate sem:denotes ;
+            rdf:subject <ao:BMC_Geriatr_2009_Jul_27_9_31_ver1#div33-11-20> ] ;
+    oa:hasTarget [ a oa:SpecificResource ;
+            oa:hasSelector [ a oa:FragmentSelector ;
+                    rdf:value "div33" ;
+                    oa:start "10"^^xsd:nonNegativeIntegeroa ;
+                    oa:end "15"^^xsd:nonNegativeInteger ] ;
+            oa:hasSource ao:BMC_Geriatr_2009_Jul_27_9_31.html ] .
+   
+[] a oa:Annotation ;
+    rdfs:label "Publication Year" ;
+    oa:annotatedAt "2014-03-30T12:00" ;
+    oa:annotatedBy aop:fabio-vitali ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object "27/03/2002" ;
+            rdf:predicate fabio:hasPublicationYear ;
+            rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1 ] ;
+    oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .   
+    
+          
+[] a oa:Annotation ;
+    ao:type "hasAuthor" ;
+    oa:annotatedAt "2012-02-10T10:04" ;
+    oa:annotatedBy aop:carlo-roserba ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object aop:carlo-roserba ;
+            rdf:predicate dcterms:creator ;
+            rdf:subject ao:Adv_Virol_2012_Apr_2_2012_803535 ] ;
+    oa:hasTarget ao:Adv_Virol_2012_Apr_2_2012_803535.html .
+    
+[] a oa:Annotation ;
+    ao:type "hasPublisher" ;
+    oa:annotatedAt "2011-09-03T08:04" ;
+    oa:annotatedBy aop:david-almond ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object aop:david-almond ;
+            rdf:predicate dcterms:publisher ;
+            rdf:subject ao:BMC_Ophthalmol_2013_Mar_28_13_9_ver1 ] ;
+    oa:hasTarget ao:BMC_Ophthalmol_2013_Mar_28_13_9.html .
+    
+ [] a oa:Annotation ;
+    rdfs:label "Person" ;
+    oa:annotatedAt "2014-05-20T10:57" ;
+    oa:annotatedBy aop:carlo-roserba ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object <http://dbpedia.org/resource/Carlo_Roserba> ;
+            rdf:predicate sem:denotes ;
+            rdf:subject <ao:BMC_Geriatr_2010_Jan_24_10_3_ver1#div23-11-20> ] ;
+    oa:hasTarget [ a oa:SpecificResource ;
+            oa:hasSelector [ a oa:FragmentSelector ;
+                    rdf:value "div33" ;
+                    oa:start "10"^^xsd:nonNegativeIntegeroa ;
+                    oa:end "15"^^xsd:nonNegativeInteger ] ;
+            oa:hasSource ao:BMC_Geriatr_2010_Jan_24_10_3.html ] .   
+            
+[] a oa:Annotation ;
+    rdfs:label "Short Title" ;
+    oa:annotatedAt "2014-10-11T09:05" ;
+    oa:annotatedBy aop:fabio-vitali ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object "Un lungo percorso.." ;
+            rdf:predicate fabio:hasShortTitle ;
+            rdf:subject ao:BMC_Cardiovasc_Disord_2012_Jan_31_12_2_ver1 ] ;
+    oa:hasTarget ao:BMC_Cardiovasc_Disord_2012_Jan_31_12_2.html . 
+    
+[] oa:Annotation ;
+	rdfs:label "Comment" ;
+	oa:annotatedAt "2012-01-23T14:10" 
+	oa:annotatedBy aop:david-almond2 ;
+	oa:hasBody  [ a rdf:Statement ;
+            rdf:object "Qui si poteva fare meglio" ;
+            rdf:predicate schema:comment ;
+            rdf:subject ao:BMC_Geriatr_2010_Jan_24_10_3_ver1 ] ;
+    oa:hasTarget ao:BMC_Geriatr_2010_Jan_24_10_3.html .    
+    
+[] a oa:Annotation ;
+    rdfs:label "Publication Year" ;
+    oa:annotatedAt "2014-12-31T12:00" ;
+    oa:annotatedBy aop:carl-senders ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object "23/09/2008" ;
+            rdf:predicate fabio:hasPublicationYear ;
+            rdf:subject ao:BMC_Bioinformatics_2008_Jan_23_9_40_ver1 ] ;
+    oa:hasTarget ao:BMC_Bioinformatics_2008_Jan_23_9_40.html .   
+    
+[] a oa:Annotation ;
+    rdfs:label "Person" ;
+    oa:annotatedAt "2014-04-12T09:01" ;
+    oa:annotatedBy aop:fabio-vitali ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object <http://vitali.web.cs.unibo.it/> ;
+            rdf:predicate sem:denotes ;
+            rdf:subject <ao:BMC_Bioinformatics_2008_Sep_30_9_405_ver1#div12-12-21> ] ;
+    oa:hasTarget [ a oa:SpecificResource ;
+            oa:hasSelector [ a oa:FragmentSelector ;
+                    rdf:value "div34" ;
+                    oa:start "12"^^xsd:nonNegativeIntegeroa ;
+                    oa:end "21"^^xsd:nonNegativeInteger ] ;
+            oa:hasSource ao:BMC_Bioinformatics_2008_Sep_30_9_405.html ] .   
+            
+aop:fabio-cannavaro
+  schema:email
+"fabio-canna@nyumc.org";
+  foaf:name "Fabio Cannavaro".
+
+aop:carlo-ancelotti
+  schema:email
+"carletto@nyumc.org";
+  foaf:name "Carlo Ancelotti".
+
+[] a oa:Annotation ;
+    rdfs:label "Title" ;
+    oa:annotatedAt "2014-06-08T22:00" ;
+    oa:annotatedBy aop:fabio-vitali ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:predicate fabio:hasTitle ;
+            rdf:subject ao:Adv_Virol_2012_Apr_2_2012_803535_ver1] ;
+    oa:hasTarget ao:Adv_Virol_2012_Apr_2_2012_803535.html .
+
+[] a oa:Annotation ;
+    rdfs:label "Subject" ;
+    oa:annotatedAt "2015-05-10T15:40" ;
+    oa:annotatedBy aop:fabio-vitali ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object <http://wiki.dbpedia.org/DBpediaMobile> ;
+            rdf:predicate fabio:hasSubjectTerm ;
+            rdf:subject ao:Adv_Virol_2012_Apr_2_2012_803535_ver1] ;
+    oa:hasTarget ao:Adv_Virol_2012_Apr_2_2012_803535.html .
+
+[] a oa:Annotation ;
+    rdfs:label "Comment" ;
+    oa:annotatedAt "2014-11-22T13:15" ;
+    oa:annotatedBy aop:james-swetnam ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object "The article about health..." ;
+            rdf:predicate schema:comment ;
+            rdf:subject ao:Adv_Virol_2012_Apr_2_2012_803535_ver1 ] ;
+    oa:hasTarget ao:Adv_Virol_2012_Apr_2_2012_803535.html .
+
+[] a oa:Annotation ;
+    rdfs:label "Person" ;
+    oa:annotatedAt "2013-11-03T02:57" ;
+    oa:annotatedBy aop:james-swetnam ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object <http://wiki.dbpedia.org/DBpediaMobile> ;
+            rdf:predicate sem:denotes ;
+            rdf:subject <ao:Adv_Virol_2012_Apr_2_2012_803535_ver1#div01-07-15> ] ;
+    oa:hasTarget [ a oa:SpecificResource ;
+            oa:hasSelector [ a oa:FragmentSelector ;
+                    rdf:value "div01" ;
+                    oa:start "07"^^xsd:nonNegativeIntegeroa ;
+                    oa:end "15"^^xsd:nonNegativeInteger ] ;
+            oa:hasSource ao:Adv_Virol_2012_Apr_2_2012_803535.html ] .
+
+[] a oa:Annotation ;
+    ao:type "hasAuthor" ;
+    oa:annotatedAt "2014-02-19T09:50" ;
+    oa:annotatedBy aop:david-almond ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object aop:david-almond ;
+            rdf:predicate dcterms:creator ;
+            rdf:subject ao:Adv_Virol_2012_Apr_2_2012_803535_ver1] ;
+    oa:hasTarget ao:Adv_Virol_2012_Apr_2_2012_803535.html .
+
+[] a oa:Annotation ;
+    rdfs:label "Comment" ;
+    oa:annotatedAt "2015-11-22T09:15" ;
+    oa:annotatedBy aop:fabio-vitali ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object "This page is very..." ;
+            rdf:predicate schema:comment ;
+            rdf:subject ao:BMC_Geriatr_2010_Jan_24_10_3_ver1 ] ;
+    oa:hasTarget ao:BMC_Geriatr_2010_Jan_24_10_3.html .
+
+[] a oa:Annotation ;
+    rdfs:label "Comment" ;
+    oa:annotatedAt "2013-07-12T00:15" ;
+    oa:annotatedBy aop:david-almond ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object "The article about Bioinformatics..." ;
+            rdf:predicate schema:comment ;
+            rdf:subject ao:BMC_Bioinformatics_2008_Sep_30_9_405_ver1] ;
+    oa:hasTarget ao:BMC_Bioinformatics_2008_Sep_30_9_405.html .
+
+[] a oa:Annotation ;
+    ao:type "hasAuthor" ;
+    oa:annotatedAt "2015-01-10T08:33" ;
+    oa:annotatedBy aop:david-almond2 ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object aop:david-almond2 ;
+            rdf:predicate dcterms:creator ;
+            rdf:subject ao:BMC_Ophthalmol_2013_Mar_28_13_9_ver1] ;
+    oa:hasTarget ao:BMC_Ophthalmol_2013_Mar_28_13_9.html .
+
+[] a oa:Annotation ;
+    ao:type "hasAuthor" ;
+    oa:annotatedAt "2014-02-19T10:55" ;
+    oa:annotatedBy aop:david-almond2 ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object aop:david-almond2 ;
+            rdf:predicate dcterms:creator ;
+            rdf:subject ao:BMC_Ophthalmol_2011_Jan_21_11_2_ver1] ;
+    oa:hasTarget ao:BMC_Ophthalmol_2011_Jan_21_11_2.html .
+
+[] a oa:Annotation ;
+    ao:type "hasAuthor" ;
+    oa:annotatedAt "2013-01-12T10:50" ;
+    oa:annotatedBy aop:fabio-vitali ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object aop:fabio-vitali ;
+            rdf:predicate dcterms:creator ;
+            rdf:subject ao:BMC_Geriatr_2010_May_27_10_28_ver1] ;
+    oa:hasTarget ao:BMC_Geriatr_2010_May_27_10_28.html .
+
+[] a oa:Annotation ;
+    rdfs:label "Person" ;
+    oa:annotatedAt "2013-06-15T09:50" ;
+    oa:annotatedBy aop:james-swetnam ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object <http://dbpedia.org/resource/the-author> ;
+            rdf:predicate sem:denotes ;
+            rdf:subject         
+        <ao:BMC_Bioinformatics_2008_Sep_30_9_405_ver1#div25-10-18> ] ;
+    oa:hasTarget [ a oa:SpecificResource ;
+            oa:hasSelector [ a oa:FragmentSelector ;
+                    rdf:value "div25" ;
+                    oa:start "10"^^xsd:nonNegativeIntegeroa ;
+                    oa:end "18"^^xsd:nonNegativeInteger ] ;
+            oa:hasSource                                     
+            ao:BMC_Bioinformatics_2008_Sep_30_9_405.html].
+
+[] a oa:Annotation ;
+    rdfs:label "Person" ;
+    oa:annotatedAt "2014-06-01T08:52" ;
+    oa:annotatedBy aop:carlo-ancelotti ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object <http://www.carletto.com/RealMadrid> ;
+            rdf:predicate sem:denotes ;
+            rdf:subject         
+        <ao:marca_RealMadrid_2013_sep_30_08_501_ver1#div12-03-34> ] ;
+    oa:hasTarget [ a oa:SpecificResource ;
+            oa:hasSelector [ a oa:FragmentSelector ;
+                    rdf:value "div12" ;
+                    oa:start "03"^^xsd:nonNegativeIntegeroa ;
+                    oa:end "34"^^xsd:nonNegativeInteger ] ;
+            oa:hasSource                                     
+            ao:marca_RealMadrid_2013_sep_30_08_501.html].
+
+[] a oa:Annotation ;
+    rdfs:label "Person" ;
+    oa:annotatedAt "2014-06-02T10:33" ;
+    oa:annotatedBy aop:carlo-ancelotti ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object <http://www.carletto.com/RealMadrid> ;
+            rdf:predicate sem:denotes ;
+            rdf:subject         
+        <ao:as_RealMadrid_2013_sep_30_09_504_ver1#div15-20-12> ] ;
+    oa:hasTarget [ a oa:SpecificResource ;
+            oa:hasSelector [ a oa:FragmentSelector ;
+                    rdf:value "div15" ;
+                    oa:start "20"^^xsd:nonNegativeIntegeroa ;
+                    oa:end "12"^^xsd:nonNegativeInteger ] ;
+            oa:hasSource                                     
+            ao:as_RealMadrid_2013_sep_30_09_504.html].
+
+[] a oa:Annotation ;
+    rdfs:label "Person" ;
+    oa:annotatedAt "2012-07-13T11:43" ;
+    oa:annotatedBy aop:fabio-cannavaro ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object <http://www.cannavaro.com/football_player> ;
+            rdf:predicate sem:denotes ;
+            rdf:subject         
+        <ao:gazzetta_genn_01_2011_ver2#div22-20-11> ] ;
+    oa:hasTarget [ a oa:SpecificResource ;
+            oa:hasSelector [ a oa:FragmentSelector ;
+                    rdf:value "div22" ;
+                    oa:start "20"^^xsd:nonNegativeIntegeroa ;
+                    oa:end "11"^^xsd:nonNegativeInteger ] ;
+            oa:hasSource                                     
+            ao:gazzetta_genn_01_2011.html].
+
+[] a oa:Annotation ;
+    rdfs:label "Person" ;
+    oa:annotatedAt "2012-09-14T13:05" ;
+    oa:annotatedBy aop:fabio-cannavaro ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object <http://www.cannavaro.com/football_player> ;
+            rdf:predicate sem:denotes ;
+            rdf:subject         
+        <ao:gazzetta_feb_03_2011_ver3#div23-17-09> ] ;
+    oa:hasTarget [ a oa:SpecificResource ;
+            oa:hasSelector [ a oa:FragmentSelector ;
+                    rdf:value "div23" ;
+                    oa:start "17"^^xsd:nonNegativeIntegeroa ;
+                    oa:end "09"^^xsd:nonNegativeInteger ] ;
+            oa:hasSource                                     
+            ao:gazzetta_feb_03_2011.html].   
