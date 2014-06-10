@@ -118,7 +118,6 @@ function load_article(file, title) {
         $('<li><a href="#tab' + nextTab + '" data-toggle="tab"><button id="closeTab' + nextTab + '" ' +
             'class="close closeTab" type="button" >&times;</button> '
             + trimmed_title + '</a></li>').appendTo('#tabs');
-        $('<div id="#orig' + nextTab + '" style="display:none;"></div>').appendTo('#tabs');
         // create the tab content
         $('<div class="tab-pane" id="tab' + nextTab + '"><i class="fa fa-spinner fa-spin"></i></div>').appendTo('.tab-content');
         $.ajax({
@@ -136,7 +135,7 @@ function load_article(file, title) {
         // make the new tab active
         $('#tabs a:last').tab('show');
         $('a[href="#tab' + nextTab + '"]').on('shown.bs.tab', function () {
-            get_annotations(file);
+            get_annotations(file, nextTab);
         });
         $('#closeTab' + nextTab).click(function () {
             $('#closeTab' + nextTab).parent().remove(); //remove li of tab
@@ -149,8 +148,10 @@ function load_article(file, title) {
     doc_loaded = file;
 }
 
-function get_annotations(file) {
+function get_annotations(file, docid) {
     $('#annotationlist').html('');
+    $('.annotaria_fragment').contents().unwrap();
+    document.getElementById('current_article').normalize();
     $.ajax({
         method: 'GET',
         url: 'annotations/' + file,
@@ -173,10 +174,17 @@ function get_annotations(file) {
                             annotation['body']['object'] + '</small></a></li>');
                     } else {
                         var node = document.getElementById(annotation['target']['start_id']);
-                        if (!node.length)
-                            node = node.firstChild;
                         render_fragment(node, annotation['target']['start_off'], annotation['target']['end_off'], annotation);
-/*
+                        
+                        /*
+                        var docrange = range.createRange();
+                        docrange.selectNodeContents($('#current_article'));
+                        outer_range.setEnd(range.endContainer, range.endOffset);
+                        var offset = outer_range.toString().length;
+                        start_offset += offset;
+                        end_offset += offset;
+                        */
+                        /*
                         var k;
                         // Add the new selection range
                         var range = document.createRange();
@@ -244,13 +252,24 @@ function get_annotations(file) {
 
 function render_fragment(node, start, end, annotation) {
     var range = document.createRange();
+    while (!node.hasOwnProperty('length'))
+        node = node.firstChild;
+    while (node.length < start) {
+        start -= node.length;
+        end -= node.length;
+        if (node.nextSibling == null) {
+            node = node.parentNode.nextSibling;
+        } else {
+            node = node.nextSibling.firstChild;
+        }
+    }
     range.setStart(node, start);
     if (node.length < end) {
         range.setEnd(node, node.length);
         if (node.nextSibling == null) {
             render_fragment(node.parentNode.nextSibling, 0, (end - node.length), annotation);
         } else {
-            render_fragment(node.nextSibling.firstChild, 0, (end - node.length), annotation);
+            render_fragment(node.nextSibling, 0, (end - node.length), annotation);
         }
     } else {
         range.setEnd(node, end);
@@ -428,18 +447,30 @@ function onSelection() {
 }
 
 function parse_range(range) {
-    var outer_range;
     var start_offset = Math.min(range.startOffset, range.endOffset);
     var end_offset = Math.max(range.startOffset, range.endOffset);
-    var namedAncestor = range_selected.commonAncestorContainer;
+    var length = range.toString().length;
+    var startContainer = range.startContainer.parentNode;
+    var sib = range.startContainer.previousSibling;
+    while (sib) {
+        if (sib.hasOwnProperty('length')) {
+            start_offset += sib.length;
+            end_offset += sib.length;
+        } else {
+            start_offset += sib.firstChild.length;
+            end_offset += sib.firstChild.length;
+        }
+        sib = sib.previousSibling;
+    }
+    var namedAncestor = range.commonAncestorContainer;
     while (!namedAncestor.id)
         namedAncestor = namedAncestor.parentNode;
-    if (range_selected.startContainer != namedAncestor) {
+    if (startContainer != namedAncestor) {
         /* calculate new offset */
-        outer_range = range.cloneRange();
+        var outer_range = range.cloneRange();
         outer_range.selectNodeContents(namedAncestor);
         outer_range.setEnd(range.endContainer, range.endOffset);
-        var offset = outer_range.toString().length;
+        var offset = outer_range.toString().length - length;
         start_offset += offset;
         end_offset += offset;
     }
