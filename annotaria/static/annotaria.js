@@ -76,7 +76,9 @@ function redraw_temp_annotations() {
     tbody.empty();
     for (var i = 0; i < temp_annotations.length; i++) {
         tbody.append('<tr><td>' + temp_annotations[i]['label'] + '</td><td>' +
-            temp_annotations[i]['body']['object'] + '</td>');
+            temp_annotations[i]['body']['object'] + '</td><td><button type="button"' +
+            ' onclick="discard_annotation(' + i + ')"><i class="fa fa-times-circle-o"></i></button>' +
+            '</td>');
     }
 }
 
@@ -355,6 +357,12 @@ function discard_annotations() {
     temp_annotations = [];
     $('#temp_annot').modal('hide');
     send_message('success', 'Your annotations have been discarded!');
+    redraw_temp_annotations();
+}
+
+function discard_annotation(i) {
+    temp_annotations[i].remove();
+    send_message('success', 'Annotation correctly removed');
     redraw_temp_annotations();
 }
 
