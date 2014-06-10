@@ -37,22 +37,22 @@ map_type_to_predicate = {
 }
 
 map_type_to_label = {
-    'hasAuthor': 'Autore',
-    'hasPublisher': 'Editore',
-    'hasPublicationYear': 'Anno di pubblicazione',
-    'hasTitle': 'Titolo',
+    'hasAuthor': 'Author',
+    'hasPublisher': 'Publisher',
+    'hasPublicationYear': 'Publication year',
+    'hasTitle': 'Title',
     'hasAbstract': 'Abstract',
-    'hasShortTitle': 'Titolo breve',
-    'hasComment': 'Commento',
-    'denotesPerson': 'Indicazione di persona',
-    'denotesPlace': 'Indicazione di luogo',
-    'denotesDisease': 'Indicazione di malattia',
-    'hasSubject': 'Soggetto',
-    'relatesTo': 'Relazione',
-    'hasClarityScore': 'Chiarezza',
-    'hasOriginalityScore': 'Originalità',
-    'hasFormattingScore': 'Formattazione',
-    'cites': 'Citazione'
+    'hasShortTitle': 'Short title',
+    'hasComment': 'Comment',
+    'denotesPerson': 'Denotes person',
+    'denotesPlace': 'Denotes place',
+    'denotesDisease': 'Denotes disease',
+    'hasSubject': 'Subject',
+    'relatesTo': 'Relates to',
+    'hasClarityScore': 'Clarity score',
+    'hasOriginalityScore': 'Originality score',
+    'hasFormattingScore': 'Formatting score',
+    'cites': 'Cites'
 }
 
 

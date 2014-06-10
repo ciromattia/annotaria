@@ -31,7 +31,7 @@ var frag_anno_types = {
     'hasClarityScore': 'Clarity score',
     'hasOriginalityScore': 'Originality score',
     'hasFormattingScore': 'Formatting score',
-    'cites': 'Cites',
+    //'cites': 'Cites',
     'hasComment': 'Comment'
 };
 
@@ -132,6 +132,10 @@ function doc_annot_form_onselect(sel) {
             instance_kind = 'subject';
             reload_instance_widget();
             break;
+        case "relatesTo":
+            instance_kind = 'dbpedia';
+            reload_instance_widget();
+            break;
         case "hasPublicationYear":
             $("#widget_date").show();
             break;
@@ -168,6 +172,7 @@ function reload_instance_widget() {
         case 'place':
         case 'disease':
         case 'subject':
+        case 'dbpedia':
             fs.append('<input id="widget_instance_new_uri" type="text" class="form-control" placeholder="Uri" maxlength="80">'
                 + '<input id="widget_instance_new_label" type="text" class="form-control" placeholder="Label" maxlength="80">');
             break;

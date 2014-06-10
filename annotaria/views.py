@@ -166,3 +166,17 @@ def get_subject():
 def set_subject():
     store = Store(app.config['SPARQL_ENDPOINT'])
     return store.insert_concept(json.loads(request.form['data']))
+
+
+# store one or more annotations in the triple store
+@app.route('/dbpedia', methods=['GET'])
+def get_dbpedia():
+    store = Store(app.config['SPARQL_ENDPOINT'])
+    return jsonify(store.query_concept())
+
+
+# store one or more annotations in the triple store
+@app.route('/dbpedia/', methods=['POST'])
+def set_dbpedia():
+    store = Store(app.config['SPARQL_ENDPOINT'])
+    return store.insert_concept(json.loads(request.form['data']))

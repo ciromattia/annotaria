@@ -42,7 +42,7 @@ code {
 }
 
 #fork_me_on_github {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     border: 0;
@@ -50,9 +50,9 @@ code {
 }
 
 .affix {
-  position: static;
-  width: auto;
-  top: 0;
+    position: static;
+    width: auto;
+    top: 0;
 }
 
 .nav .btn-primary, .nav .btn-warning {
@@ -92,36 +92,47 @@ code {
 a.annotaria_fragment {
     color: #333333;
 }
+
 a.annotaria_fragment :hover {
     color: #555555;
 }
+
 .hasComment {
     background-color: #00ffdf;
 }
+
 .denotesPerson {
     background-color: #ffff00;
 }
+
 .denotesPlace {
     background-color: #ffff66;
 }
+
 .denotesDisease {
     background-color: #ffff99;
 }
+
 .hasSubject {
     background-color: #ffffcc;
 }
+
 .relatesTo {
     background-color: #ccffff;
 }
+
 .hasClarityScore {
     background-color: #66ffff;
 }
+
 .hasOriginalityScore {
     background-color: #00ffff;
 }
+
 .hasFormattingScore {
     background-color: #ccffcc;
 }
+
 .cites {
     background-color: #99ffcc;
 }
