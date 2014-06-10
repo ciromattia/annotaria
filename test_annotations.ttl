@@ -1,0 +1,352 @@
+@prefix ao: <http://vitali.web.cs.unibo.it/AnnOtaria/> .
+@prefix aon: <http://vitali.web.cs.unibo.it/AnnOtaria/annotation/> .
+@prefix aop: <http://vitali.web.cs.unibo.it/AnnOtaria/person/> .
+@prefix cito: <http://purl.org/spar/cito/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fabio: <http://purl.org/spar/fabio/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix frbr: <http://purl.org/vocab/frbr/core#> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix sem: <http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ao:BMC_Bioinformatics_2008_Oct_1_9_406 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Bioinformatics_2008_Oct_1_9_406.html ;
+    frbr:realization ao:BMC_Bioinformatics_2008_Oct_1_9_406_ver1 .
+
+ao:BMC_Bioinformatics_2008_Oct_2_9_407 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Bioinformatics_2008_Oct_2_9_407.html ;
+    frbr:realization ao:BMC_Bioinformatics_2008_Oct_2_9_407_ver1 .
+
+ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html ;
+    frbr:realization ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1 .
+
+ao:BMC_Cardiovasc_Disord_2003_Feb_6_3_2 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Cardiovasc_Disord_2003_Feb_6_3_2.html ;
+    frbr:realization ao:BMC_Cardiovasc_Disord_2003_Feb_6_3_2_ver1 .
+
+ao:BMC_Cardiovasc_Disord_2005_Aug_19_5_24 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Cardiovasc_Disord_2005_Aug_19_5_24.html ;
+    frbr:realization ao:BMC_Cardiovasc_Disord_2005_Aug_19_5_24_ver1 .
+
+ao:BMC_Cardiovasc_Disord_2005_Aug_25_5_25 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Cardiovasc_Disord_2005_Aug_25_5_25.html ;
+    frbr:realization ao:BMC_Cardiovasc_Disord_2005_Aug_25_5_25_ver1 .
+
+ao:BMC_Cardiovasc_Disord_2008_Dec_18_8_39 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Cardiovasc_Disord_2008_Dec_18_8_39.html ;
+    frbr:realization ao:BMC_Cardiovasc_Disord_2008_Dec_18_8_39_ver1 .
+
+ao:BMC_Geriatr_2004_Jul_2_4_5 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Geriatr_2004_Jul_2_4_5.html ;
+    frbr:realization ao:BMC_Geriatr_2004_Jul_2_4_5_ver1 .
+
+ao:BMC_Geriatr_2004_Oct_15_4_9 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Geriatr_2004_Oct_15_4_9.html ;
+    frbr:realization ao:BMC_Geriatr_2004_Oct_15_4_9_ver1 .
+
+ao:BMC_Geriatr_2006_Jan_27_6_3 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Geriatr_2006_Jan_27_6_3.html ;
+    frbr:realization ao:BMC_Geriatr_2006_Jan_27_6_3_ver1 .
+
+ao:BMC_Geriatr_2006_Jul_31_6_9 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Geriatr_2006_Jul_31_6_9.html ;
+    frbr:realization ao:BMC_Geriatr_2006_Jul_31_6_9_ver1 .
+
+ao:BMC_Geriatr_2007_Dec_19_7_29 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Geriatr_2007_Dec_19_7_29.html ;
+    frbr:realization ao:BMC_Geriatr_2007_Dec_19_7_29_ver1 .
+
+ao:BMC_Geriatr_2008_Aug_17_8_19 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Geriatr_2008_Aug_17_8_19.html ;
+    frbr:realization ao:BMC_Geriatr_2008_Aug_17_8_19_ver1 .
+
+ao:BMC_Med_Genet_2007_Mar_22_8_13 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Med_Genet_2007_Mar_22_8_13.html ;
+    frbr:realization ao:BMC_Med_Genet_2007_Mar_22_8_13_ver1 .
+
+ao:BMC_Med_Genet_2007_May_30_8_28 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Med_Genet_2007_May_30_8_28.html ;
+    frbr:realization ao:BMC_Med_Genet_2007_May_30_8_28_ver1 .
+
+ao:BMC_Med_Genet_2009_Jan_30_10_9 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Med_Genet_2009_Jan_30_10_9.html ;
+    frbr:realization ao:BMC_Med_Genet_2009_Jan_30_10_9_ver1 .
+
+ao:BMC_Ophthalmol_2008_Aug_17_8_15 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Ophthalmol_2008_Aug_17_8_15.html ;
+    frbr:realization ao:BMC_Ophthalmol_2008_Aug_17_8_15_ver1 .
+
+ao:BMC_Pediatr_2003_Sep_4_3_10 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Pediatr_2003_Sep_4_3_10.html ;
+    frbr:realization ao:BMC_Pediatr_2003_Sep_4_3_10_ver1 .
+
+ao:BMC_Pediatr_2004_Aug_31_4_16 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Pediatr_2004_Aug_31_4_16.html ;
+    frbr:realization ao:BMC_Pediatr_2004_Aug_31_4_16_ver1 .
+
+ao:BMC_Pediatr_2004_Aug_7_4_15 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Pediatr_2004_Aug_7_4_15.html ;
+    frbr:realization ao:BMC_Pediatr_2004_Aug_7_4_15_ver1 .
+
+ao:BMC_Pediatr_2004_Dec_14_4_24 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Pediatr_2004_Dec_14_4_24.html ;
+    frbr:realization ao:BMC_Pediatr_2004_Dec_14_4_24_ver1 .
+
+ao:BMC_Pediatr_2004_Feb_11_4_3 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Pediatr_2004_Feb_11_4_3.html ;
+    frbr:realization ao:BMC_Pediatr_2004_Feb_11_4_3_ver1 .
+
+ao:BMC_Pediatr_2004_Jul_8_4_12 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Pediatr_2004_Jul_8_4_12.html ;
+    frbr:realization ao:BMC_Pediatr_2004_Jul_8_4_12_ver1 .
+
+ao:BMC_Pediatr_2004_Sep_1_4_17 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Pediatr_2004_Sep_1_4_17.html ;
+    frbr:realization ao:BMC_Pediatr_2004_Sep_1_4_17_ver1 .
+
+ao:BMC_Pediatr_2005_Dec_5_5_45 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Pediatr_2005_Dec_5_5_45.html ;
+    frbr:realization ao:BMC_Pediatr_2005_Dec_5_5_45_ver1 .
+
+ao:BMC_Pediatr_2005_Jun_28_5_19 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Pediatr_2005_Jun_28_5_19.html ;
+    frbr:realization ao:BMC_Pediatr_2005_Jun_28_5_19_ver1 .
+
+ao:BMC_Pediatr_2005_Nov_9_5_40 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Pediatr_2005_Nov_9_5_40.html ;
+    frbr:realization ao:BMC_Pediatr_2005_Nov_9_5_40_ver1 .
+
+ao:BMC_Pediatr_2005_Sep_21_5_38 a fabio:Work ;
+    fabio:hasPortrayal ao:BMC_Pediatr_2005_Sep_21_5_38.html ;
+    frbr:realization ao:BMC_Pediatr_2005_Sep_21_5_38_ver1 .
+
+<http://vitali.web.cs.unibo.it/AnnOtaria/Breast_Cancer_Res_2005_Jul_27_7(5)_R775-R779> a fabio:Work ;
+    fabio:hasPortrayal <http://vitali.web.cs.unibo.it/AnnOtaria/Breast_Cancer_Res_2005_Jul_27_7(5)_R775-R779.html> ;
+    frbr:realization <http://vitali.web.cs.unibo.it/AnnOtaria/Breast_Cancer_Res_2005_Jul_27_7(5)_R775-R779_ver1> .
+
+<http://vitali.web.cs.unibo.it/AnnOtaria/Breast_Cancer_Res_2005_Jun_16_7(5)_R669-R680> a fabio:Work ;
+    fabio:hasPortrayal <http://vitali.web.cs.unibo.it/AnnOtaria/Breast_Cancer_Res_2005_Jun_16_7(5)_R669-R680.html> ;
+    frbr:realization <http://vitali.web.cs.unibo.it/AnnOtaria/Breast_Cancer_Res_2005_Jun_16_7(5)_R669-R680_ver1> .
+
+aop:ciromattia-gonano a foaf:Person ;
+    schema:email "ciromattia@gmail.com" ;
+    foaf:name "Ciro Mattia Gonano" .
+
+aop:fabio-vitali a foaf:Person ;
+    schema:email "fabio@cs.unibo.it" ;
+    foaf:name "Fabio Vitali" .
+
+aop:pedro a foaf:Person ;
+    foaf:name "Pedro Madrigal" .
+
+ao:BMC_Bioinformatics_2008_Oct_1_9_406_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Bioinformatics_2008_Oct_1_9_406.html .
+
+ao:BMC_Bioinformatics_2008_Oct_2_9_407_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Bioinformatics_2008_Oct_2_9_407.html .
+
+ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
+
+ao:BMC_Cardiovasc_Disord_2003_Feb_6_3_2_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Cardiovasc_Disord_2003_Feb_6_3_2.html .
+
+ao:BMC_Cardiovasc_Disord_2005_Aug_19_5_24_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Cardiovasc_Disord_2005_Aug_19_5_24.html .
+
+ao:BMC_Cardiovasc_Disord_2005_Aug_25_5_25_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Cardiovasc_Disord_2005_Aug_25_5_25.html .
+
+ao:BMC_Cardiovasc_Disord_2008_Dec_18_8_39_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Cardiovasc_Disord_2008_Dec_18_8_39.html .
+
+ao:BMC_Geriatr_2004_Jul_2_4_5_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Geriatr_2004_Jul_2_4_5.html .
+
+ao:BMC_Geriatr_2004_Oct_15_4_9_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Geriatr_2004_Oct_15_4_9.html .
+
+ao:BMC_Geriatr_2006_Jan_27_6_3_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Geriatr_2006_Jan_27_6_3.html .
+
+ao:BMC_Geriatr_2006_Jul_31_6_9_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Geriatr_2006_Jul_31_6_9.html .
+
+ao:BMC_Geriatr_2007_Dec_19_7_29_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Geriatr_2007_Dec_19_7_29.html .
+
+ao:BMC_Geriatr_2008_Aug_17_8_19_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Geriatr_2008_Aug_17_8_19.html .
+
+ao:BMC_Med_Genet_2007_Mar_22_8_13_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Med_Genet_2007_Mar_22_8_13.html .
+
+ao:BMC_Med_Genet_2007_May_30_8_28_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Med_Genet_2007_May_30_8_28.html .
+
+ao:BMC_Med_Genet_2009_Jan_30_10_9_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Med_Genet_2009_Jan_30_10_9.html .
+
+ao:BMC_Ophthalmol_2008_Aug_17_8_15_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Ophthalmol_2008_Aug_17_8_15.html .
+
+ao:BMC_Pediatr_2003_Sep_4_3_10_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Pediatr_2003_Sep_4_3_10.html .
+
+ao:BMC_Pediatr_2004_Aug_31_4_16_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Pediatr_2004_Aug_31_4_16.html .
+
+ao:BMC_Pediatr_2004_Aug_7_4_15_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Pediatr_2004_Aug_7_4_15.html .
+
+ao:BMC_Pediatr_2004_Dec_14_4_24_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Pediatr_2004_Dec_14_4_24.html .
+
+ao:BMC_Pediatr_2004_Feb_11_4_3_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Pediatr_2004_Feb_11_4_3.html .
+
+ao:BMC_Pediatr_2004_Jul_8_4_12_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Pediatr_2004_Jul_8_4_12.html .
+
+ao:BMC_Pediatr_2004_Sep_1_4_17_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Pediatr_2004_Sep_1_4_17.html .
+
+ao:BMC_Pediatr_2005_Dec_5_5_45_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Pediatr_2005_Dec_5_5_45.html .
+
+ao:BMC_Pediatr_2005_Jun_28_5_19_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Pediatr_2005_Jun_28_5_19.html .
+
+ao:BMC_Pediatr_2005_Nov_9_5_40_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Pediatr_2005_Nov_9_5_40.html .
+
+ao:BMC_Pediatr_2005_Sep_21_5_38_ver1 a fabio:Expression ;
+    fabio:hasRepresentation ao:BMC_Pediatr_2005_Sep_21_5_38.html .
+
+<http://vitali.web.cs.unibo.it/AnnOtaria/Breast_Cancer_Res_2005_Jul_27_7(5)_R775-R779_ver1> a fabio:Expression ;
+    fabio:hasRepresentation <http://vitali.web.cs.unibo.it/AnnOtaria/Breast_Cancer_Res_2005_Jul_27_7(5)_R775-R779.html> .
+
+<http://vitali.web.cs.unibo.it/AnnOtaria/Breast_Cancer_Res_2005_Jun_16_7(5)_R669-R680_ver1> a fabio:Expression ;
+    fabio:hasRepresentation <http://vitali.web.cs.unibo.it/AnnOtaria/Breast_Cancer_Res_2005_Jun_16_7(5)_R669-R680.html> .
+
+ao:BMC_Bioinformatics_2008_Oct_1_9_406.html a fabio:Item .
+
+ao:BMC_Bioinformatics_2008_Oct_2_9_407.html a fabio:Item .
+
+ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html a fabio:Item .
+
+ao:BMC_Cardiovasc_Disord_2003_Feb_6_3_2.html a fabio:Item .
+
+ao:BMC_Cardiovasc_Disord_2005_Aug_19_5_24.html a fabio:Item .
+
+ao:BMC_Cardiovasc_Disord_2005_Aug_25_5_25.html a fabio:Item .
+
+ao:BMC_Cardiovasc_Disord_2008_Dec_18_8_39.html a fabio:Item .
+
+ao:BMC_Geriatr_2004_Jul_2_4_5.html a fabio:Item .
+
+ao:BMC_Geriatr_2004_Oct_15_4_9.html a fabio:Item .
+
+ao:BMC_Geriatr_2006_Jan_27_6_3.html a fabio:Item .
+
+ao:BMC_Geriatr_2006_Jul_31_6_9.html a fabio:Item .
+
+ao:BMC_Geriatr_2007_Dec_19_7_29.html a fabio:Item .
+
+ao:BMC_Geriatr_2008_Aug_17_8_19.html a fabio:Item .
+
+ao:BMC_Med_Genet_2007_Mar_22_8_13.html a fabio:Item .
+
+ao:BMC_Med_Genet_2007_May_30_8_28.html a fabio:Item .
+
+ao:BMC_Med_Genet_2009_Jan_30_10_9.html a fabio:Item .
+
+ao:BMC_Ophthalmol_2008_Aug_17_8_15.html a fabio:Item .
+
+ao:BMC_Pediatr_2003_Sep_4_3_10.html a fabio:Item .
+
+ao:BMC_Pediatr_2004_Aug_31_4_16.html a fabio:Item .
+
+ao:BMC_Pediatr_2004_Aug_7_4_15.html a fabio:Item .
+
+ao:BMC_Pediatr_2004_Dec_14_4_24.html a fabio:Item .
+
+ao:BMC_Pediatr_2004_Feb_11_4_3.html a fabio:Item .
+
+ao:BMC_Pediatr_2004_Jul_8_4_12.html a fabio:Item .
+
+ao:BMC_Pediatr_2004_Sep_1_4_17.html a fabio:Item .
+
+ao:BMC_Pediatr_2005_Dec_5_5_45.html a fabio:Item .
+
+ao:BMC_Pediatr_2005_Jun_28_5_19.html a fabio:Item .
+
+ao:BMC_Pediatr_2005_Nov_9_5_40.html a fabio:Item .
+
+ao:BMC_Pediatr_2005_Sep_21_5_38.html a fabio:Item .
+
+<http://vitali.web.cs.unibo.it/AnnOtaria/Breast_Cancer_Res_2005_Jul_27_7(5)_R775-R779.html> a fabio:Item .
+
+<http://vitali.web.cs.unibo.it/AnnOtaria/Breast_Cancer_Res_2005_Jun_16_7(5)_R669-R680.html> a fabio:Item .
+
+[] a oa:Annotation ;
+    rdfs:label "Title" ;
+    oa:annotatedAt "2014-05-21T18:00" ;
+    oa:annotatedBy aop:fabio-vitali ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:predicate dcterms:title ;
+            rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1 ] ;
+    oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
+
+[] a oa:Annotation ;
+    rdfs:label "Subject" ;
+    oa:annotatedAt "2015-09-08T16:32" ;
+    oa:annotatedBy aop:fabio-vitali ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object <http://dbpedia.org/resource/Medicine> ;
+            rdf:predicate fabio:hasSubjectTerm ;
+            rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1 ] ;
+    oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
+
+[] a oa:Annotation ;
+    rdfs:label "Comment" ;
+    oa:annotatedAt "2014-10-06T10:15" ;
+    oa:annotatedBy aop:james-swetnam ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object "An interesting article concerning..." ;
+            rdf:predicate schema:comment ;
+            rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7 ] ;
+    oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
+
+[] a oa:Annotation ;
+    rdfs:label "Comment" ;
+    oa:annotatedAt "2014-07-06T09:57" ;
+    oa:annotatedBy aop:james-swetnam ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object "Not so clear..." ;
+            rdf:predicate schema:comment ;
+            rdf:subject <ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1#s62dc528681a875-10-16> ] ;
+    oa:hasTarget [ a oa:SpecificResource ;
+            oa:hasSelector [ a oa:FragmentSelector ;
+                    rdf:value "s62dc528681a875" ;
+                    oa:start "10"^^xsd:nonNegativeIntegeroa ;
+                    oa:end "16"^^xsd:nonNegativeInteger ] ;
+            oa:hasSource ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html ] .
+
+[] a oa:Annotation ;
+    ao:type "hasAuthor" ;
+    oa:annotatedAt "2014-10-10T11:04" ;
+    oa:annotatedBy aop:david-almond ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object aop:david-almond ;
+            rdf:predicate dcterms:creator ;
+            rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7 ] ;
+    oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .

@@ -38,12 +38,15 @@ for f in glob.glob(path + "/annotaria/articles/*.html"):
 
 # add some people
 p = AOP['ciromattia-gonano']
+graph.add((p, RDF.type, FOAF.Person))
 graph.add((p, SCHEMA.email, Literal('ciromattia@gmail.com')))
 graph.add((p, FOAF.name, Literal('Ciro Mattia Gonano')))
 p = AOP['fabio-vitali']
+graph.add((p, RDF.type, FOAF.Person))
 graph.add((p, SCHEMA.email, Literal('fabio@cs.unibo.it')))
 graph.add((p, FOAF.name, Literal('Fabio Vitali')))
 p = AOP['pedro']
+graph.add((p, RDF.type, FOAF.Person))
 graph.add((p, FOAF.name, Literal('Pedro Madrigal')))
 
 

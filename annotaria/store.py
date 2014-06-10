@@ -1,7 +1,7 @@
 # !/usr/local/bin/python
 # -*- coding: utf-8 -*-
 
-from rdflib import ConjunctiveGraph, Namespace, Literal
+from rdflib import ConjunctiveGraph, Namespace, Literal, URIRef
 from rdflib.namespace import DC, DCTERMS, FOAF, RDF, RDFS, SKOS, XSD
 from rdflib.plugins.stores.sparqlstore import SPARQLUpdateStore
 from annotation import Annotation
@@ -10,13 +10,15 @@ AO = Namespace("http://vitali.web.cs.unibo.it/AnnOtaria/")
 AON = Namespace("http://vitali.web.cs.unibo.it/AnnOtaria/annotation/")
 AOP = Namespace("http://vitali.web.cs.unibo.it/AnnOtaria/person/")
 CITO = Namespace("http://purl.org/spar/cito/")
+DBPEDIA = Namespace("http://dbpedia.org/resource/")
 FABIO = Namespace("http://purl.org/spar/fabio/")
 FRBR = Namespace("http://purl.org/vocab/frbr/core#")
 OA = Namespace("http://www.w3.org/ns/oa#")
 SCHEMA = Namespace("http://schema.org/")
 SEM = Namespace("http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#")
-initNS = {'ao': AO, 'aon': AON, 'aop': AOP, 'cito': CITO, 'dc': DC, 'dcterms': DCTERMS, 'fabio': FABIO, 'foaf': FOAF,
-          'frbr': FRBR, 'oa': OA, 'rdf': RDF, 'rdfs': RDFS, 'schema': SCHEMA, 'sem': SEM, 'skos': SKOS, 'xsd': XSD}
+initNS = {'ao': AO, 'aon': AON, 'aop': AOP, 'cito': CITO, 'dc': DC, 'dcterms': DCTERMS, 'dbpedia': DBPEDIA,
+          'fabio': FABIO, 'foaf': FOAF, 'frbr': FRBR, 'oa': OA, 'rdf': RDF, 'rdfs': RDFS, 'schema': SCHEMA, 'sem': SEM,
+          'skos': SKOS, 'xsd': XSD}
 
 
 class Store:
@@ -93,23 +95,24 @@ class Store:
         query = """
         SELECT DISTINCT ?author ?author_fullname ?author_email
         WHERE {
-            ?author foaf:name ?author_fullname .
+            ?author a foaf:Person ;
+                foaf:name ?author_fullname .
             OPTIONAL { ?author schema:email ?author_email }
         }
         """
         for row in self.sparql.query(query, initNs=initNS):
             authors.append({
-                'author_id': str(row[0]),
-                'author_fullname': str(row[1]),
-                'author_email': str(row[2])
+                'author_id': row[0].encode('utf-8'),
+                'author_fullname': row[1].encode('utf-8'),
+                'author_email': row[2].encode('utf-8') if row[2] is not None else None,
             })
         return authors
 
     # Inserts a new author.
     # Expects a dict:
     # {
-    #   'author_id': ...,
-    #   'author_fullname': ...,
+    # 'author_id': ...,
+    # 'author_fullname': ...,
     #   'author_email': ...
     # }
     def insert_author(self, author):
@@ -120,9 +123,76 @@ class Store:
         # query_string += ' . };'
         # self.sparql.update(query=query_string, initNs=initNS)
         a = AOP[author['author_id']]
+        self.sparql.add((a, RDF.type, FOAF.Person))
         self.sparql.add((a, FOAF.name, Literal(author['author_fullname'])))
         if 'author_email' in author:
             self.sparql.add((a, SCHEMA.email, Literal(author['author_email'])))
+        return 'OK'
+
+    def query_organization(self):
+        ret = []
+        query = """
+        SELECT DISTINCT ?node ?label
+        WHERE {
+            ?node a foaf:Organization ;
+                foaf:name ?label .
+        }
+        """
+        for row in self.sparql.query(query, initNs=initNS):
+            ret.append({
+                'id': row[0].encode('utf-8'),
+                'label': row[1].encode('utf-8')
+            })
+        return ret
+
+    def query_place(self):
+        ret = []
+        query = """
+        SELECT DISTINCT ?node ?label
+        WHERE {
+            ?node a dbpedia:Place ;
+                rdfs:label ?label .
+        }
+        """
+        for row in self.sparql.query(query, initNs=initNS):
+            ret.append({
+                'id': row[0].encode('utf-8'),
+                'label': row[1].encode('utf-8')
+            })
+        return ret
+
+    def query_concept(self):
+        ret = []
+        query = """
+        SELECT DISTINCT ?node ?label
+        WHERE {
+            ?node a skos:Concept ;
+                rdfs:label ?label .
+        }
+        """
+        for row in self.sparql.query(query, initNs=initNS):
+            ret.append({
+                'id': row[0].encode('utf-8'),
+                'label': row[1].encode('utf-8')
+            })
+        return ret
+
+    def insert_organization(self, data):
+        a = URIRef(data['id'])
+        self.sparql.add((a, RDF.type, FOAF.Organization))
+        self.sparql.add((a, FOAF.name, Literal(data['label'])))
+        return 'OK'
+
+    def insert_place(self, data):
+        a = URIRef(data['id'])
+        self.sparql.add((a, RDF.type, DBPEDIA.Place))
+        self.sparql.add((a, RDFS.label, Literal(data['label'])))
+        return 'OK'
+
+    def insert_concept(self, data):
+        a = URIRef(data['id'])
+        self.sparql.add((a, RDF.type, SKOS.Concept))
+        self.sparql.add((a, RDFS.label, Literal(data['label'])))
         return 'OK'
 
     @staticmethod

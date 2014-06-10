@@ -93,14 +93,70 @@ def set_annotations():
 
 
 # store one or more annotations in the triple store
-@app.route('/authors', methods=['GET'])
-def get_authors():
+@app.route('/person', methods=['GET'])
+def get_person():
     store = Store(app.config['SPARQL_ENDPOINT'])
     return jsonify(store.query_authors())
 
 
 # store one or more annotations in the triple store
-@app.route('/author/', methods=['POST'])
-def set_author():
+@app.route('/person/', methods=['POST'])
+def set_person():
     store = Store(app.config['SPARQL_ENDPOINT'])
     return store.insert_author(json.loads(request.form['data']))
+
+
+# store one or more annotations in the triple store
+@app.route('/organization', methods=['GET'])
+def get_organization():
+    store = Store(app.config['SPARQL_ENDPOINT'])
+    return jsonify(store.query_organization())
+
+
+# store one or more annotations in the triple store
+@app.route('/organization/', methods=['POST'])
+def set_organization():
+    store = Store(app.config['SPARQL_ENDPOINT'])
+    return store.insert_organization(json.loads(request.form['data']))
+
+
+# store one or more annotations in the triple store
+@app.route('/place', methods=['GET'])
+def get_place():
+    store = Store(app.config['SPARQL_ENDPOINT'])
+    return jsonify(store.query_place())
+
+
+# store one or more annotations in the triple store
+@app.route('/place/', methods=['POST'])
+def set_place():
+    store = Store(app.config['SPARQL_ENDPOINT'])
+    return store.insert_place(json.loads(request.form['data']))
+
+
+# store one or more annotations in the triple store
+@app.route('/disease', methods=['GET'])
+def get_disease():
+    store = Store(app.config['SPARQL_ENDPOINT'])
+    return jsonify(store.query_concept())
+
+
+# store one or more annotations in the triple store
+@app.route('/disease/', methods=['POST'])
+def set_disease():
+    store = Store(app.config['SPARQL_ENDPOINT'])
+    return store.insert_concept(json.loads(request.form['data']))
+
+
+# store one or more annotations in the triple store
+@app.route('/subject', methods=['GET'])
+def get_subject():
+    store = Store(app.config['SPARQL_ENDPOINT'])
+    return jsonify(store.query_concept())
+
+
+# store one or more annotations in the triple store
+@app.route('/subject/', methods=['POST'])
+def set_subject():
+    store = Store(app.config['SPARQL_ENDPOINT'])
+    return store.insert_concept(json.loads(request.form['data']))

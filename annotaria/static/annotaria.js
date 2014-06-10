@@ -4,6 +4,7 @@ var open_docs = {};
 var doc_loaded = false;
 var temp_annotations = [];
 var range_selected = null;
+var instance_kind = null;
 
 var doc_anno_types = {
     'hasAuthor': 'Autore',
@@ -93,6 +94,7 @@ function redraw_annotation_types_selector() {
 }
 
 function doc_annot_form_onselect(sel) {
+    instance_kind = null;
     $("#widget_instance").hide();
     $("#widget_date").hide();
     $("#widget_longtext").hide();
@@ -100,13 +102,25 @@ function doc_annot_form_onselect(sel) {
     $("#widget_choice").hide();
     switch (sel.value) {
         case "hasAuthor":
-        case "hasPublisher":
         case "denotesPerson":
+            instance_kind = 'person';
+            reload_instance_widget();
+            break;
+        case "hasPublisher":
+            instance_kind = 'organization';
+            reload_instance_widget();
+            break;
         case "denotesPlace":
+            instance_kind = 'place';
+            reload_instance_widget();
+            break;
         case "denotesDisease":
+            instance_kind = 'disease';
+            reload_instance_widget();
+            break;
         case "hasSubject":
-            get_authors();
-            $("#widget_instance").show();
+            instance_kind = 'subject';
+            reload_instance_widget();
             break;
         case "hasPublicationYear":
             $("#widget_date").show();
@@ -131,10 +145,92 @@ function doc_annot_form_onselect(sel) {
     }
 }
 
-function clear_instance_widget() {
-    $("#widget_instance_new_id").val("");
-    $("#widget_instance_new_name").val("");
-    $("#widget_instance_new_email").val("");
+function reload_instance_widget() {
+    var fs = $('#widget_instance_new_entry');
+    fs.html('');
+    switch (instance_kind) {
+        case 'person':
+            fs.append('<input id="widget_instance_new_id" type="text" class="form-control" placeholder="Id" maxlength="80">'
+                + '<input id="widget_instance_new_name" type="text" class="form-control" placeholder="Name" maxlength="80">'
+                + '<input id="widget_instance_new_email" type="email" class="form-control" placeholder="Email" maxlength="80">');
+            break;
+        case 'organization':
+            fs.append('<input id="widget_instance_new_url" type="text" class="form-control" placeholder="Url" maxlength="80">'
+                + '<input id="widget_instance_new_label" type="text" class="form-control" placeholder="Label" maxlength="80">');
+            break;
+        case 'place':
+            fs.append('<input id="widget_instance_new_url" type="text" class="form-control" placeholder="Url" maxlength="80">'
+                + '<input id="widget_instance_new_label" type="text" class="form-control" placeholder="Label" maxlength="80">');
+            break;
+        case 'disease':
+            fs.append('<input id="widget_instance_new_url" type="text" class="form-control" placeholder="Url" maxlength="80">'
+                + '<input id="widget_instance_new_label" type="text" class="form-control" placeholder="Label" maxlength="80">');
+            break;
+        case 'subject':
+            fs.append('<input id="widget_instance_new_url" type="text" class="form-control" placeholder="Url" maxlength="80">'
+                + '<input id="widget_instance_new_label" type="text" class="form-control" placeholder="Label" maxlength="80">');
+            break;
+        default:
+            break;
+    }
+    fs.append('<button type="button" class="btn btn-primary pull-right" id="widget_instance_new_save"' +
+        ' onclick="save_instance()"><i class="fa fa-check"></i> Create new</button>');
+    populate_instances();
+    $("#widget_instance").show();
+}
+
+function populate_instances() {
+    $('#widget_instance_selector').html('');
+    $.ajax({
+        method: 'GET',
+        url: instance_kind,
+        success: function (d) {
+            if (d.length > 0) {
+                for (var i = 0; i < d.length; i++) {
+                    var instance = d[i];
+                    switch (instance_kind) {
+                        case 'person':
+                            var option = '<option value="' +
+                                instance['author_id'] + '">' +
+                                instance['author_fullname'];
+                            if (instance['author_email'] != 'None')
+                                option += ' &lt;' + instance['author_email'] + '&gt;';
+                            option += '</option>';
+                        default:
+                            var option = '<option value="' +
+                                instance['id'] + '">' +
+                                instance['label'];
+                            option += '</option>';
+                    }
+                    $('#widget_instance_selector').append(option);
+                }
+            }
+        },
+        error: function (request, status, error) {
+            alert(request.responseText);
+        }
+    });
+}
+
+function save_instance() {
+    var instance = {
+        "author_id": $("#widget_instance_new_id").val(),
+        "author_fullname": $("#widget_instance_new_name").val(),
+        "author_email": $("#widget_instance_new_email").val()
+    };
+    var url = 'author/';
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {'data': JSON.stringify(instance)},
+        success: function (msg) {
+            send_message('success', 'New instance has been successfully stored!');
+            reload_instance_widget();
+        },
+        error: function () {
+            send_message('danger', 'Failed to save instance, check your logs.');
+        }
+    });
 }
 
 function get_articlelist() {
@@ -380,52 +476,6 @@ function store_annotations() {
         },
         error: function () {
             send_message('danger', 'Fail to save annotations, check your logs.');
-        }
-    });
-}
-
-function get_authors() {
-    $('#widget_instance_selector').html('');
-    $.ajax({
-        method: 'GET',
-        url: 'authors',
-        success: function (d) {
-            if (d.length > 0) {
-                for (var i = 0; i < d.length; i++) {
-                    var author = d[i];
-                    var option = '<option value="' +
-                        author['author_id'] + '">' +
-                        author['author_fullname'];
-                    if (author['author_email'] != 'None')
-                        option += ' &lt;' + author['author_email'] + '&gt;';
-                    option += '</option>';
-                    $('#widget_instance_selector').append(option);
-                }
-            }
-        },
-        error: function (request, status, error) {
-            alert(request.responseText);
-        }
-    });
-}
-
-function save_author() {
-    var author = {
-        "author_id": $("#widget_instance_new_id").val(),
-        "author_fullname": $("#widget_instance_new_name").val(),
-        "author_email": $("#widget_instance_new_email").val()
-    };
-    $.ajax({
-        type: "POST",
-        url: "author/",
-        data: {'data': JSON.stringify(author)},
-        success: function (msg) {
-            send_message('success', 'New instance has been successfully stored!');
-            get_authors();
-            clear_instance_widget();
-        },
-        error: function () {
-            send_message('danger', 'Failed to save author, check your logs.');
         }
     });
 }
