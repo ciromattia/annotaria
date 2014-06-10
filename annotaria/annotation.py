@@ -89,7 +89,6 @@ class Annotation:
                 "source": None,
                 "start_id": None,
                 "start_off": None,
-                "end_id": None,
                 "end_off": None
             },
             "provenance": {
@@ -124,16 +123,7 @@ class Annotation:
         self.annotation['target']['source'] = annotation_rdf['target']
         # if 'target_start' is None it's a global annotation (no fragment selection)
         if annotation_rdf['target_start'] != 'None':
-            # if there's an exclamation mark in the 'target_start' property
-            # the selection spans across multiple elements, so we must split it
-            # to get start_id and end_id
-            if '!' in annotation_rdf['target_start']:
-                elements = annotation_rdf['target_start'].split('!')
-                self.annotation['target']['start_id'] = elements[0]
-                self.annotation['target']['end_id'] = elements[1]
-            else:
-                self.annotation['target']['start_id'] = annotation_rdf['target_start']
-                self.annotation['target']['end_id'] = annotation_rdf['target_start']
+            self.annotation['target']['start_id'] = annotation_rdf['target_start']
             self.annotation['target']['start_off'] = annotation_rdf['target_startoff']
             self.annotation['target']['end_off'] = annotation_rdf['target_endoff']
         # body

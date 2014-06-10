@@ -237,7 +237,7 @@ function get_annotations(file, docid) {
 
 function render_fragment(node, start, end, annotation) {
     var range = document.createRange();
-    while (!node.hasOwnProperty('length'))
+    while (node.nodeType != 3)
         node = node.firstChild;
     while (node.length < start) {
         start -= node.length;
