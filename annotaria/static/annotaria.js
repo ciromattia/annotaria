@@ -364,6 +364,8 @@ function render_fragment(node, start, end, annotation) {
     while (node.length < start) {
         start -= node.length;
         end -= node.length;
+        if (node.nextSibling != null && node.nextSibling.nodeType == 8)
+            node = node.nextSibling;
         if (node.nextSibling == null) {
             node = node.parentNode.nextSibling;
         } else {
@@ -373,6 +375,8 @@ function render_fragment(node, start, end, annotation) {
     range.setStart(node, start);
     if (node.length < end) {
         range.setEnd(node, node.length);
+        if (node.nextSibling != null && node.nextSibling.nodeType == 8)
+            node = node.nextSibling;
         if (node.nextSibling == null) {
             render_fragment(node.parentNode.nextSibling, 0, (end - node.length), annotation);
         } else {
