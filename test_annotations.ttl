@@ -304,6 +304,40 @@ ao:BMC_Pediatr_2005_Sep_21_5_38.html a fabio:Item .
 <http://vitali.web.cs.unibo.it/AnnOtaria/Breast_Cancer_Res_2005_Jun_16_7(5)_R669-R680.html> a fabio:Item .
 
 [] a oa:Annotation ;
+    rdfs:label "Author" ;
+    ao:type "hasAuthor" ;
+    oa:annotatedAt "2014-05-10T11:04" ;
+    oa:annotatedBy aop:pasquale ;
+    oa:hasBody [ a rdf:Statement ;
+            rdfs:label "Ciro Mattia Gonano" ;
+            rdf:object aop:ciromattia-gonano ;
+            rdf:predicate dcterms:creator ;
+            rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7 ] ;
+    oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
+    
+[] a oa:Annotation ;
+    rdfs:label "Publisher" ;
+    ao:type "hasPublisher" ;
+    oa:annotatedAt "2014-05-21T18:00" ;
+    oa:annotatedBy aop:fabio-vitali ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object "BioMed Central (London)" ;
+            rdf:predicate dcterms:publisher ;
+            rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1 ] ;
+    oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
+    
+[] a oa:Annotation ;
+    rdfs:label "Publication year" ;
+    ao:type "hasPublicationYear" ;
+    oa:annotatedAt "2014-05-21T18:00" ;
+    oa:annotatedBy aop:fabio-vitali ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object "2002" ;
+            rdf:predicate fabio:hasPublicationYear ;
+            rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1 ] ;
+    oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
+
+[] a oa:Annotation ;
     rdfs:label "Title" ;
     ao:type "hasTitle" ;
     oa:annotatedAt "2014-05-21T18:00" ;
@@ -315,14 +349,24 @@ ao:BMC_Pediatr_2005_Sep_21_5_38.html a fabio:Item .
     oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
 
 [] a oa:Annotation ;
-    rdfs:label "Subject" ;
-    ao:type "hasSubject" ;
+    rdfs:label "Abstract" ;
+    ao:type "hasAbstract" ;
+    oa:annotatedAt "2014-05-21T18:00" ;
+    oa:annotatedBy aop:fabio-vitali ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object "Background - An increasing number of scientific research projects require access to large-scale computational resources. This is particularly true in the biological field, whether to facilitate the analysis of large high-throughput data sets, or to perform large numbers of complex simulations – a characteristic of the emerging field of systems biology. - Results - In this paper we present a lightweight generic framework for combining disparate computational resources at multiple sites (ranging from local computers and clusters to established national Grid services). A detailed guide describing how to set up the framework is available from the following URL: http://igrid-ext.cryst.bbk.ac.uk/portal_guide/. - Conclusion - This approach is particularly (but not exclusively) appropriate for large-scale biology projects with multiple collaborators working at different national or international sites. The framework is relatively easy to set up, hides the complexity of Grid middleware from the user, and provides access to resources through a single, uniform interface. It has been developed as part of the European ImmunoGrid project." ;
+            rdf:predicate dcterms:abstract ;
+            rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1 ] ;
+    oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
+
+[] a oa:Annotation ;
+    rdfs:label "Short Title" ;
+    ao:type "hasShortTitle" ;
     oa:annotatedAt "2015-09-08T16:32" ;
     oa:annotatedBy aop:fabio-vitali ;
     oa:hasBody [ a rdf:Statement ;
-            rdfs:label "Medicine" ;
-            rdf:object <http://dbpedia.org/resource/Medicine> ;
-            rdf:predicate fabio:hasSubjectTerm ;
+            rdf:object "PISA" ;
+            rdf:predicate fabio:hasShortTitle ;
             rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1 ] ;
     oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
 
@@ -336,6 +380,71 @@ ao:BMC_Pediatr_2005_Sep_21_5_38.html a fabio:Item .
             rdf:predicate schema:comment ;
             rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7 ] ;
     oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
+
+[] a oa:Annotation ;
+    rdfs:label "Subject" ;
+    ao:type "hasSubject" ;
+    oa:annotatedAt "2015-09-08T16:32" ;
+    oa:annotatedBy aop:fabio-vitali ;
+    oa:hasBody [ a rdf:Statement ;
+            rdfs:label "Medicine" ;
+            rdf:object <http://dbpedia.org/resource/Medicine> ;
+            rdf:predicate fabio:hasSubjectTerm ;
+            rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1 ] ;
+    oa:hasTarget [ a oa:SpecificResource ;
+            oa:hasSelector [ a oa:FragmentSelector ;
+                    rdf:value "s62dc528681a875" ;
+                    oa:start "20"^^xsd:nonNegativeIntegeroa ;
+                    oa:end "31"^^xsd:nonNegativeInteger ] ;
+            oa:hasSource ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html ] .
+
+[] a oa:Annotation ;
+    rdfs:label "Clarity score" ;
+    ao:type "hasClarityScore" ;
+    oa:annotatedAt "2014-05-06T09:57" ;
+    oa:annotatedBy aop:ciromattia-gonano ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object "poor" ;
+            rdf:predicate ao:hasClarityScore ;
+            rdf:subject <ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1#d1e157-0-65> ] ;
+    oa:hasTarget [ a oa:SpecificResource ;
+            oa:hasSelector [ a oa:FragmentSelector ;
+                    rdf:value "d1e157" ;
+                    oa:start "0"^^xsd:nonNegativeIntegeroa ;
+                    oa:end "65"^^xsd:nonNegativeInteger ] ;
+            oa:hasSource ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html ] .
+
+[] a oa:Annotation ;
+    rdfs:label "Originality score" ;
+    ao:type "hasOriginalityScore" ;
+    oa:annotatedAt "2014-05-06T09:57" ;
+    oa:annotatedBy aop:ciromattia-gonano ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object "fair" ;
+            rdf:predicate ao:hasOriginalityScore ;
+            rdf:subject <ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1#d1e157-66-73> ] ;
+    oa:hasTarget [ a oa:SpecificResource ;
+            oa:hasSelector [ a oa:FragmentSelector ;
+                    rdf:value "d1e157" ;
+                    oa:start "66"^^xsd:nonNegativeIntegeroa ;
+                    oa:end "73"^^xsd:nonNegativeInteger ] ;
+            oa:hasSource ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html ] .
+
+[] a oa:Annotation ;
+    rdfs:label "Formatting score" ;
+    ao:type "hasFormattingScore" ;
+    oa:annotatedAt "2014-05-06T09:57" ;
+    oa:annotatedBy aop:ciromattia-gonano ;
+    oa:hasBody [ a rdf:Statement ;
+            rdf:object "good" ;
+            rdf:predicate ao:hasFormattingScore ;
+            rdf:subject <ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1#d1e157-92-115> ] ;
+    oa:hasTarget [ a oa:SpecificResource ;
+            oa:hasSelector [ a oa:FragmentSelector ;
+                    rdf:value "d1e157" ;
+                    oa:start "92"^^xsd:nonNegativeIntegeroa ;
+                    oa:end "115"^^xsd:nonNegativeInteger ] ;
+            oa:hasSource ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html ] .
 
 [] a oa:Annotation ;
     rdfs:label "Comment" ;
@@ -353,14 +462,3 @@ ao:BMC_Pediatr_2005_Sep_21_5_38.html a fabio:Item .
                     oa:end "16"^^xsd:nonNegativeInteger ] ;
             oa:hasSource ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html ] .
 
-[] a oa:Annotation ;
-    rdfs:label "Author" ;
-    ao:type "hasAuthor" ;
-    oa:annotatedAt "2014-05-10T11:04" ;
-    oa:annotatedBy aop:pasquale ;
-    oa:hasBody [ a rdf:Statement ;
-            rdfs:label "Ciro Mattia Gonano" ;
-            rdf:object aop:ciromattia-gonano ;
-            rdf:predicate dcterms:creator ;
-            rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7 ] ;
-    oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .

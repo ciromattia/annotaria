@@ -1,7 +1,8 @@
 # !/usr/local/bin/python
 # -*- coding: utf-8 -*-
 
-from rdflib import ConjunctiveGraph, Namespace, Literal, URIRef
+from rfc3987 import parse
+from rdflib import Graph, Namespace, Literal, URIRef
 from rdflib.namespace import DC, DCTERMS, FOAF, RDF, RDFS, SKOS, XSD
 from rdflib.plugins.stores.sparqlstore import SPARQLUpdateStore
 from annotation import Annotation
@@ -16,6 +17,7 @@ FRBR = Namespace("http://purl.org/vocab/frbr/core#")
 OA = Namespace("http://www.w3.org/ns/oa#")
 SCHEMA = Namespace("http://schema.org/")
 SEM = Namespace("http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#")
+BNCF = Namespace("http://purl.org/bncf/")
 initNS = {'ao': AO, 'aon': AON, 'aop': AOP, 'cito': CITO, 'dc': DC, 'dcterms': DCTERMS, 'dbpedia': DBPEDIA,
           'fabio': FABIO, 'foaf': FOAF, 'frbr': FRBR, 'oa': OA, 'rdf': RDF, 'rdfs': RDFS, 'schema': SCHEMA, 'sem': SEM,
           'skos': SKOS, 'xsd': XSD}
@@ -116,7 +118,11 @@ class Store:
     # 'author_email': ...
     # }
     def insert_author(self, author):
-        a = AOP[author['author_id']]
+        try:
+            parse(author['author_id'], rule='IRI')
+            a = author['author_id']
+        except ValueError:
+            a = AOP[author['author_id']]
         self.sparql.add((a, RDF.type, FOAF.Person))
         self.sparql.add((a, FOAF.name, Literal(author['author_fullname'])))
         if 'author_email' in author:
@@ -172,26 +178,38 @@ class Store:
         return ret
 
     def insert_organization(self, data):
-        a = URIRef(data['id'])
+        try:
+            parse(data['id'], rule='IRI')
+            a = URIRef(data['id'])
+        except ValueError:
+            a = AOP[data['id']]
         self.sparql.add((a, RDF.type, FOAF.Organization))
         self.sparql.add((a, FOAF.name, Literal(data['label'])))
         return 'OK'
 
     def insert_place(self, data):
-        a = URIRef(data['id'])
+        try:
+            parse(data['id'], rule='IRI')
+            a = URIRef(data['id'])
+        except ValueError:
+            a = DBPEDIA[data['id']]
         self.sparql.add((a, RDF.type, DBPEDIA.Place))
         self.sparql.add((a, RDFS.label, Literal(data['label'])))
         return 'OK'
 
     def insert_concept(self, data):
-        a = URIRef(data['id'])
+        try:
+            parse(data['id'], rule='IRI')
+            a = URIRef(data['id'])
+        except ValueError:
+            a = BNCF[data['id']]
         self.sparql.add((a, RDF.type, SKOS.Concept))
         self.sparql.add((a, RDFS.label, Literal(data['label'])))
         return 'OK'
 
     @staticmethod
     def init_graph():
-        rdf = ConjunctiveGraph()
+        rdf = Graph()
         for ns in initNS:
             rdf.bind(ns, initNS[ns])
         return rdf
