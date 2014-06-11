@@ -318,6 +318,10 @@ function load_article(file, title) {
 function get_annotations(file, docid) {
     $('#annotationlist').html('');
     $('.annotaria_fragment').contents().unwrap();
+    /* double function to ensure we remove all the tags */
+    $('.annotaria_fragment').replaceWith(function () {
+        return $(this).html()
+    });
     document.getElementById('current_article').normalize();
     $.ajax({
         method: 'GET',
