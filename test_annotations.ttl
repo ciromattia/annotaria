@@ -382,20 +382,20 @@ ao:BMC_Pediatr_2005_Sep_21_5_38.html a fabio:Item .
     oa:hasTarget ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html .
 
 [] a oa:Annotation ;
-    rdfs:label "Subject" ;
-    ao:type "hasSubject" ;
-    oa:annotatedAt "2015-09-08T16:32" ;
+    rdfs:label "Denotes person" ;
+    ao:type "denotesPerson" ;
+    oa:annotatedAt "2014-06-08T16:32" ;
     oa:annotatedBy aop:fabio-vitali ;
     oa:hasBody [ a rdf:Statement ;
-            rdfs:label "Medicine" ;
-            rdf:object <http://dbpedia.org/resource/Medicine> ;
-            rdf:predicate fabio:hasSubjectTerm ;
+            rdfs:label "Ciro Mattia Gonano" ;
+            rdf:object aop:ciromattia-gonano ;
+            rdf:predicate sem:denotes ;
             rdf:subject ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7_ver1 ] ;
     oa:hasTarget [ a oa:SpecificResource ;
             oa:hasSelector [ a oa:FragmentSelector ;
-                    rdf:value "s62dc528681a875" ;
-                    oa:start "20"^^xsd:nonNegativeIntegeroa ;
-                    oa:end "31"^^xsd:nonNegativeInteger ] ;
+                    rdf:value "k10c1c789ea6362" ;
+                    oa:start "1"^^xsd:nonNegativeIntegeroa ;
+                    oa:end "18"^^xsd:nonNegativeIntegeroa ] ;
             oa:hasSource ao:BMC_Cardiovasc_Disord_2002_Mar_27_2_7.html ] .
 
 [] a oa:Annotation ;
