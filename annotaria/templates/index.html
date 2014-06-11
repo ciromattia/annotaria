@@ -66,10 +66,6 @@
                 <li><a href id="create_ranged_annot_button" class="btn btn-primary" role="button" data-toggle="modal"
                        data-target="#doc_annot">Create annotation</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li id="registered_user"></li>
-                <li><a href role="button" data-toggle="modal" data-target="#loginModal">Register</a></li>
-            </ul>
         </div>
         <!--/.nav-collapse -->
     </div>
@@ -87,7 +83,10 @@
                         </div>
                         <div id="annotatorPanel">
                             <div class="panel-body small" id="annotator_data">
-                                <em>not registered (falling back on default)</em>
+                                <p class="text-justify"><em>not registered (falling back on default)</em></p>
+                                <p class="text-center">
+                                    <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#loginModal">register</button>
+                                </p>
                             </div>
                         </div>
                         <div class="panel-heading">
@@ -196,7 +195,7 @@
             </div>
             <div class="modal-body">
                 <!-- The form is placed inside the body of modal -->
-                <form id="loginForm" class="form-horizontal">
+                <form id="loginForm" role="form">
                     <div class="form-group">
                         <input class="form-control" id="user_id" type="text" placeholder="User ID"
                                data-bv-notempty data-bv-notempty-message="The User ID is required">
@@ -208,6 +207,8 @@
                     <div class="form-group">
                         <input class="form-control" id="user_email" type="email" placeholder="Email"
                                data-bv-emailaddress data-bv-emailaddress-message="Please insert a valid email address">
+                    </div>
+                    <div class="form-group">
                         <button type="submit" class="btn btn-primary" onclick="register_user()">Login</button>
                     </div>
                 </form>

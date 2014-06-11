@@ -101,15 +101,15 @@ function redraw_annotation_types_selector() {
             idx + '">' + val + '</option>';
         $('#doc_annot_type').append(option);
     });
-}
-
-function doc_annot_form_onselect(sel) {
-    instance_kind = null;
-    $("#widget_instance").hide();
     $("#widget_date").hide();
     $("#widget_longtext").hide();
     $("#widget_shorttext").hide();
     $("#widget_choice").hide();
+    $("#widget_instance").hide();
+}
+
+function doc_annot_form_onselect(sel) {
+    instance_kind = null;
     switch (sel.value) {
         case "hasAuthor":
         case "denotesPerson":
