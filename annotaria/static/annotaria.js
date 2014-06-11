@@ -56,13 +56,17 @@ function reset() {
     get_articlelist();
     redraw_temp_annotations();
     doc_loaded = false;
-    $('#add_annotation_doc').hide();
     $('#current_article').bind({
         "mouseup": onSelection
     });
-    $("button[type=submit]").click(function(event) {
+    $("button[type=submit]").click(function (event) {
         event.preventDefault(); // cancel default behavior
     });
+    $('#add_annotation_doc').click(function (event) {
+        event.preventDefault();
+        open_global_annotation();
+    })
+        .hide();
 }
 
 function send_message(type, message) {
@@ -549,6 +553,21 @@ function onSelection() {
     }
 }
 
+function open_global_annotation() {
+    if (window.getSelection) {
+        if (window.getSelection().empty) {  // Chrome
+            window.getSelection().empty();
+        } else if (window.getSelection().removeAllRanges) {  // Firefox
+            window.getSelection().removeAllRanges();
+        }
+    } else if (document.selection) {  // IE?
+        document.selection.empty();
+    }
+    $('#create_ranged_annot_button').hide();
+    range_selected = null;
+    $('#doc_annot').modal('show');
+}
+
 function parse_range(range) {
     var start_offset = Math.min(range.startOffset, range.endOffset);
     var end_offset = Math.max(range.startOffset, range.endOffset);
@@ -585,7 +604,7 @@ function parse_range(range) {
 }
 
 function setValidators() {
-    $('#loginModal').on('show.bs.modal', function() {
+    $('#loginModal').on('show.bs.modal', function () {
         $('#loginForm').bootstrapValidator('resetForm', true);
     });
     $('#loginForm').bootstrapValidator({
