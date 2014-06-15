@@ -144,7 +144,6 @@ function doc_annot_form_onselect(sel) {
             $("#widget_shorttext").hide();
             $("#widget_choice").hide();
             $("#widget_longtext").hide(); 
-            $("#widget_instance").hide();
             $("#widget_date").show();
             break;
         case "hasTitle":
